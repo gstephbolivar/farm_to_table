@@ -1,7 +1,20 @@
-import logo from "./logo.svg";
-import "./App.css";
 import { useEffect } from "react";
+import { BrowserRouter, Route, Switch} from "react-router-dom";
 import axios from "axios";
+import Home from "./containers/Home/Home.jsx";
+import AllProducts from "./containers/AllProducts/AllProducts.jsx";
+import Cart from "./containers/Cart/Cart.jsx";
+import Confirmation from "./containers/Confirmation/Confirmation";
+import Login from "./containers/Login/Login";
+import SignUp from "./containers/SignUp/SignUp";
+import OneProduct from "./containers/OneProduct/OneProduct";
+import Products from "./containers/Admin/Products/Products";
+import AddProduct from "./containers/Admin/AddProduct/AddProduct";
+import EditProduct from "./containers/Admin/EditProduct/EditProduct";
+
+
+
+
 
 function App() {
   useEffect(() => {
@@ -10,22 +23,21 @@ function App() {
     });
   }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/home" component={Home} />
+      <Route exact path="/allproducts" component={AllProducts} />
+      <Route exact path="/cart" component={Cart} />
+      <Route exact path="/confirmation" component={Confirmation} />
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/signup" component={SignUp} />
+      <Route exact path="/oneproduct" component={OneProduct} />
+      <Route exact path="/admin" component={Products} />
+      <Route exact path="/admin/add" component={AddProduct} />
+      <Route exact path="/admin/edit" component={EditProduct} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
