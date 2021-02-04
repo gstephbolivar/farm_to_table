@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/gstephbolivar/farm_to_table#readme",
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
     "concurrently": "^5.3.0",
     "express": "^4.17.1",
     "if-env": "^1.0.4",

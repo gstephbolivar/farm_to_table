@@ -1,10 +1,11 @@
 import React from 'react';
+import {Grid, Card} from '@material-ui/core';
 
 const AddProduct = () => {
     return (
-        <div>
-           <h1>This will be where you can add products. Admin Side. </h1> 
-        </div>
+        <Grid container>
+
+        </Grid>
     );
 };
 
