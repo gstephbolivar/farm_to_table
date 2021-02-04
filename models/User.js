@@ -1,6 +1,8 @@
-const { Schema } = require("mongoose");
+const mongoose = require("mongoose");
 
-const UsersSchema = new Schema({
+const Schema = mongoose.Schema;
+
+const UserSchema = new Schema({
   username: {
     type: String,
     unique: true,
@@ -26,3 +28,7 @@ const UsersSchema = new Schema({
     match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
   },
 });
+
+const User = mongoose.model("User", UserSchema);
+
+module.exports = User;

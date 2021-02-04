@@ -1,4 +1,6 @@
-const { Schema } = require("mongoose");
+const mongoose = require("mongoose");
+
+const Schema = mongoose.Schema;
 
 const LineItemSchema = new Schema({
   product: {
@@ -15,3 +17,7 @@ const LineItemSchema = new Schema({
     type: Number,
   },
 });
+
+const LineItem = mongoose.model("LineItem", LineItemSchema);
+
+module.exports = LineItem;
