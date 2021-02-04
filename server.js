@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 
 const app = express();
+const db = require('./models');
 
 const PORT = process.env.PORT || 3001;
 
@@ -35,6 +36,10 @@ app.get("/api/config", (req, res) => {
   res.json({
     success: true,
   });
+});
+
+app.get("/api/products", (req, res) => {
+
 });
 
 app.get("*", (req, res) => {
