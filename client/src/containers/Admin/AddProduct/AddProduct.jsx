@@ -42,8 +42,8 @@ const units = [
 
 const AddProduct = () => {
 
-    const [unitType, setUnitType] = useState("pounds");
-    const [category, setCategory] = useState("fruit")
+    const [unitType, setUnitType] = useState("");
+    const [category, setCategory] = useState("")
     const [productObject, setProductObject] = useState({
        name: "",
        unitSize: 0,
@@ -56,15 +56,19 @@ const AddProduct = () => {
 
     const handleUnitChange = (event) => {
         setUnitType(event.target.value);
+        console.log(unitType);
       };
 
       const handleTypeChange = (event) => {
         setCategory(event.target.value);
+        console.log(category);
+
       };
 
       const handleInputChange = (event) => {
           const {name, value} = event.target;
-          setProductObject({...productObject, [name]: value })
+          setProductObject({...productObject, [name]: value });
+          console.log(productObject)
       }
 
     const handleFormSubmit = (event) => {
@@ -93,10 +97,10 @@ const AddProduct = () => {
 
 
     return (
-    <Grid container direction="column"
+    <Grid container 
     alignItems="center"
     justify="center">
-        <Grid item xs={6} xl={6}>
+        <Grid item xs={6} lg={2} xl={2}>
             <Card>
                 <CardMedia
                 component="img"
