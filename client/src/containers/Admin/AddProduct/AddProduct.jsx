@@ -1,9 +1,36 @@
-import React from 'react';
-import {Grid, Card, CardMedia, CardContent, Typography, CardActionArea, Button, TextField, InputAdornment} from '@material-ui/core';
+import {useState} from 'react';
+import {Grid, Card, CardMedia, CardContent, Typography, CardActionArea, Button, TextField, InputAdornment, MenuItem} from '@material-ui/core';
+
+const units = [
+    {
+      value: 'pounds',
+      label: 'pounds',
+    },
+    {
+      value: 'ounces',
+      label: 'ounces',
+    },
+    {
+      value: 'grams',
+      label: 'grams',
+    },
+    {
+      value: 'pints',
+      label: 'pints',
+    },
+  ];
+  
 
 const AddProduct = () => {
 
-    const submit = () => {
+    const [unit, setUnit] = useState("pounds");
+
+    const handleChange = (event) => {
+        setUnit(event.target.value);
+      };
+
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
         alert("You have added a product.")
     }
 
@@ -42,6 +69,23 @@ const AddProduct = () => {
                         </Grid>
                         <Grid item>
                         <TextField
+                        id="outlined-select-currency"
+                        select
+                        label="Select Unit Type"
+                        value={unit}
+                        onChange={handleChange}
+                        // helperText="Please select your currency"
+                        variant="outlined"
+                        >
+                        {units.map((option) => (
+                            <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                            </MenuItem>
+                        ))}
+                        </TextField>
+                        </Grid>
+                        <Grid item>
+                        <TextField
                         required
                         id="outlined-required"
                         label="Unit Size"
@@ -62,7 +106,7 @@ const AddProduct = () => {
                         </Grid>
                 </CardContent>
                 <CardActionArea>
-                    <Button onClick={submit}>Add Product</Button>
+                    <Button onClick={handleFormSubmit}>Add Product</Button>
                 </CardActionArea>
             </Card>
         </Grid>
