@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import API from "../../../utils/API";
 import {Grid, Card, CardMedia, CardContent, Typography, CardActionArea, Button, TextField, InputAdornment, MenuItem} from '@material-ui/core';
 
 const units = [
@@ -42,8 +43,8 @@ const units = [
 
 const AddProduct = () => {
 
-    const [unitType, setUnitType] = useState("");
-    const [category, setCategory] = useState("")
+    const [unitType, setUnitType] = useState("pounds");
+    const [category, setCategory] = useState("fruit")
     const [productObject, setProductObject] = useState({
        name: "",
        unitSize: 0,
@@ -59,7 +60,7 @@ const AddProduct = () => {
         console.log(unitType);
       };
 
-      const handleTypeChange = (event) => {
+      const handleCategoryChange = (event) => {
         setCategory(event.target.value);
         console.log(category);
 
@@ -73,25 +74,23 @@ const AddProduct = () => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        alert("You have added a product.")
-        // API.addProduct({
-        //     name: productObject.name,
-        //     unitSize: productObject.unitSize,
-        //     price: productObject.price,
-        //     quantity: productObject.quantity,
-        //     category: category, 
-        //     unitType: unitType,
-        //     description: productObject.description,
-        // }).then(() => setProductObject({
-        //     name: "",
-        //     unitSize: 0,
-        //     price: 0,
-        //     quantity: 0,
-        //     category: "", 
-        //     unitType: "",
-        //     description: "", 
-        // })).catch(err => console.log(err));
-
+        API.addProduct({
+            name: productObject.name,
+            unitSize: productObject.unitSize,
+            price: productObject.price,
+            quantity: productObject.quantity,
+            category: category, 
+            unitType: unitType,
+            description: productObject.description,
+        }).then(() => setProductObject({
+            name: "",
+            unitSize: 0,
+            price: 0,
+            quantity: 0,
+            category: "", 
+            unitType: "",
+            description: "", 
+        })).catch(err => console.log(err));
     };
 
 
@@ -100,7 +99,7 @@ const AddProduct = () => {
     <Grid container 
     alignItems="center"
     justify="center">
-        <Grid item xs={6} lg={2} xl={2}>
+        <Grid item xs={6} md={3} lg={1} xl={1}>
             <Card>
                 <CardMedia
                 component="img"
@@ -117,7 +116,7 @@ const AddProduct = () => {
                         label="Select Type"
                         name="category"
                         value={category}
-                        onChange={handleTypeChange}
+                        onChange={handleCategoryChange}
                         // helperText="Please select your currency"
                         variant="outlined"
                         >
@@ -194,6 +193,18 @@ const AddProduct = () => {
                         InputProps={{
                             startAdornment: <InputAdornment position="start">$</InputAdornment>,
                           }}
+                        />
+                        </Grid>
+                        <Grid item>
+                        <TextField
+                        required
+                        id="totalUnits"
+                        label="Quantity"
+                        variant="outlined"
+                        onChange={handleInputChange}
+                        name="quantity"
+                        value={productObject.quantity}
+                        helperText="Enter total number of units"
                         />
                         </Grid>
                         </Grid>
