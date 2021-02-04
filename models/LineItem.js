@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const LineItemSchema = new Schema({
   product: {
     type: Schema.Types.ObjectId,
-    ref: "Product",
+    ref: "Products",
   },
   quantity: {
     type: Number,
