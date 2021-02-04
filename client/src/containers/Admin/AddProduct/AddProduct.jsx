@@ -19,20 +19,78 @@ const units = [
       label: 'pints',
     },
   ];
+
+  const productType = [
+    {
+      value: 'fruit',
+      label: 'fruit',
+    },
+    {
+      value: 'vegetable',
+      label: 'vegetable',
+    },
+    {
+      value: 'meat',
+      label: 'meat',
+    },
+    {
+      value: 'dairy',
+      label: 'dairy',
+    },
+  ];
   
 
 const AddProduct = () => {
 
-    const [unit, setUnit] = useState("pounds");
+    const [unitType, setUnitType] = useState("pounds");
+    const [category, setCategory] = useState("fruit")
+    const [productObject, setProductObject] = useState({
+       name: "",
+       unitSize: 0,
+       price: 0,
+       quantity: 0,
+       category: "", 
+       unitType: "",
+       description: "",
+    })
 
-    const handleChange = (event) => {
-        setUnit(event.target.value);
+    const handleUnitChange = (event) => {
+        setUnitType(event.target.value);
       };
+
+      const handleTypeChange = (event) => {
+        setCategory(event.target.value);
+      };
+
+      const handleInputChange = (event) => {
+          const {name, value} = event.target;
+          setProductObject({...productObject, [name]: value })
+      }
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
         alert("You have added a product.")
-    }
+        // API.addProduct({
+        //     name: productObject.name,
+        //     unitSize: productObject.unitSize,
+        //     price: productObject.price,
+        //     quantity: productObject.quantity,
+        //     category: category, 
+        //     unitType: unitType,
+        //     description: productObject.description,
+        // }).then(() => setProductObject({
+        //     name: "",
+        //     unitSize: 0,
+        //     price: 0,
+        //     quantity: 0,
+        //     category: "", 
+        //     unitType: "",
+        //     description: "", 
+        // })).catch(err => console.log(err));
+
+    };
+
+
 
     return (
     <Grid container direction="column"
@@ -48,32 +106,57 @@ const AddProduct = () => {
                 />
                 <CardContent>
                     <Grid container spacing={1}>
+                    <Grid item>
+                        <TextField
+                        id="selectCategory"
+                        select
+                        label="Select Type"
+                        name="category"
+                        value={category}
+                        onChange={handleTypeChange}
+                        // helperText="Please select your currency"
+                        variant="outlined"
+                        >
+                        {productType.map((option) => (
+                            <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                            </MenuItem>
+                        ))}
+                        </TextField>
+                        </Grid>
                         <Grid item>
                     {/* <Typography variant="h5"> Product Name Goes here </Typography>
                     <Typography variant="body2"> Description goes here </Typography> */}
                         <TextField
                         required
-                        id="outlined-required"
+                        id="productName"
                         label="Product Name"
                         variant="outlined"
+                        onChange={handleInputChange}
+                        name="name"
+                        value={productObject.name}
                         />
                         </Grid>
                         <Grid item>
                         <TextField
-                        id="outlined-multiline-static"
+                        id="productDescription"
                         label="Product Description"
                         multiline
                         rows={2}
                         variant="outlined"
+                        onChange={handleInputChange}
+                        name="description"
+                        value={productObject.description}
                         />
                         </Grid>
                         <Grid item>
                         <TextField
-                        id="outlined-select-currency"
+                        id="unitType"
                         select
+                        name="unitType"
                         label="Select Unit Type"
-                        value={unit}
-                        onChange={handleChange}
+                        value={unitType}
+                        onChange={handleUnitChange}
                         // helperText="Please select your currency"
                         variant="outlined"
                         >
@@ -87,17 +170,23 @@ const AddProduct = () => {
                         <Grid item>
                         <TextField
                         required
-                        id="outlined-required"
+                        id="unitSize"
                         label="Unit Size"
                         variant="outlined"
+                        onChange={handleInputChange}
+                        name="unitSize"
+                        value={productObject.unitSize}
                         />
                         </Grid>
                         <Grid item>
                         <TextField
                         required
-                        id="outlined-required"
+                        id="productPrice"
                         label="Price Per Unit"
                         variant="outlined"
+                        onChange={handleInputChange}
+                        name="price"
+                        value={productObject.price}
                         InputProps={{
                             startAdornment: <InputAdornment position="start">$</InputAdornment>,
                           }}
