@@ -44,7 +44,8 @@ const units = [
 const AddProduct = () => {
 
     const [unitType, setUnitType] = useState("pounds");
-    const [category, setCategory] = useState("fruit")
+    const [category, setCategory] = useState("fruit");
+    const [totalAmount, setTotalAmount] = useState(0);
     const [productObject, setProductObject] = useState({
        name: "",
        unitSize: 0,
@@ -57,20 +58,21 @@ const AddProduct = () => {
 
     const handleUnitChange = (event) => {
         setUnitType(event.target.value);
-        console.log(unitType);
       };
 
       const handleCategoryChange = (event) => {
         setCategory(event.target.value);
-        console.log(category);
+      };
 
+      const handleTotalAmountChange = (event) => {
+        setTotalAmount(event.target.value);
       };
 
       const handleInputChange = (event) => {
           const {name, value} = event.target;
           setProductObject({...productObject, [name]: value });
-          console.log(productObject)
-      }
+          
+      };
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
@@ -78,11 +80,13 @@ const AddProduct = () => {
             name: productObject.name,
             unitSize: productObject.unitSize,
             price: productObject.price,
-            quantity: productObject.quantity,
+            quantity: totalAmount/productObject.unitSize,
             category: category, 
             unitType: unitType,
             description: productObject.description,
-        }).then(() => setProductObject({
+        }).then(() => {
+          setTotalAmount(0)
+          setProductObject({
             name: "",
             unitSize: 0,
             price: 0,
@@ -90,7 +94,7 @@ const AddProduct = () => {
             category: "", 
             unitType: "",
             description: "", 
-        })).catch(err => console.log(err));
+        })}).catch(err => console.log(err));
     };
 
 
@@ -104,12 +108,13 @@ const AddProduct = () => {
                 <CardMedia
                 component="img"
                 height="auto"
-                image="http://www.fillmurray.com/200/200"
+                image="https://previews.123rf.com/images/krisdog/krisdog1512/krisdog151200015/49394957-cartoon-gardener-character-in-a-blue-overalls-holding-a-garden-for-hand-tool-and-giving-a-thumbs-up-.jpg"
                 title="Stock Image"
                 />
                 <CardContent>
                     <Grid container spacing={1}>
                     <Grid item>
+                      {/* What kind of product it is */}
                         <TextField
                         id="selectCategory"
                         select
@@ -127,9 +132,8 @@ const AddProduct = () => {
                         ))}
                         </TextField>
                         </Grid>
+                        {/* the name of the product */}
                         <Grid item>
-                    {/* <Typography variant="h5"> Product Name Goes here </Typography>
-                    <Typography variant="body2"> Description goes here </Typography> */}
                         <TextField
                         required
                         id="productName"
@@ -140,6 +144,7 @@ const AddProduct = () => {
                         value={productObject.name}
                         />
                         </Grid>
+                        {/* description of the product */}
                         <Grid item>
                         <TextField
                         id="productDescription"
@@ -152,6 +157,7 @@ const AddProduct = () => {
                         value={productObject.description}
                         />
                         </Grid>
+                        {/* The unit type the product will be sold by */}
                         <Grid item>
                         <TextField
                         id="unitType"
@@ -170,17 +176,31 @@ const AddProduct = () => {
                         ))}
                         </TextField>
                         </Grid>
+                        {/* The total amount of the product */}
+                        <Grid item>
+                        <TextField
+                        required
+                        id="totalAmount"
+                        label="Total amount of pounds/ounces/etc..."
+                        variant="outlined"
+                        onChange={handleTotalAmountChange}
+                        name="totalAmount"
+                        value={totalAmount}
+                        />
+                        </Grid>
+                        {/* The size of which each unit will be sold (Example: you buy strawberries by the pound in most places, but costco sells them in 3 pound boxes. So a "unit" is either 1 pound or 3 pounds respectively.) */}
                         <Grid item>
                         <TextField
                         required
                         id="unitSize"
-                        label="Unit Size"
+                        label="Unit Size to Sell"
                         variant="outlined"
                         onChange={handleInputChange}
                         name="unitSize"
                         value={productObject.unitSize}
                         />
                         </Grid>
+                        {/* the price at which each unit is sold per unit */}
                         <Grid item>
                         <TextField
                         required
@@ -195,16 +215,18 @@ const AddProduct = () => {
                           }}
                         />
                         </Grid>
+                        {/* This is the total number of "units" that are available to be sold. It is calculated for you as you enter the total amount of each product and the unit size to sell by. */}
                         <Grid item>
                         <TextField
+                        disabled
                         required
-                        id="totalUnits"
+                        id="quantity"
                         label="Quantity"
                         variant="outlined"
                         onChange={handleInputChange}
                         name="quantity"
-                        value={productObject.quantity}
-                        helperText="Enter total number of units"
+                        value={totalAmount/productObject.unitSize}
+                        helperText="Total number of units"
                         />
                         </Grid>
                         </Grid>
