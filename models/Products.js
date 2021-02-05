@@ -6,6 +6,12 @@ const ProductsSchema = new Schema({
   name: {
     type: String,
   },
+  description: {
+    type: String,
+  },
+  unitType: {
+    type: String,
+  },
   unitSize: {
     type: Number,
   },

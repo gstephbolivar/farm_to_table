@@ -11,14 +11,14 @@ import OneProduct from "./containers/OneProduct/OneProduct";
 import Products from "./containers/Admin/Products/Products";
 import AddProduct from "./containers/Admin/AddProduct/AddProduct";
 import EditProduct from "./containers/Admin/EditProduct/EditProduct";
+import CssBaseLine from "@material-ui/core/CssBaseline";
+
 
 function App() {
-  useEffect(() => {
-    axios.get("/api/config").then((response) => {
-      console.log(response.data);
-    });
-  }, []);
+  
   return (
+    <>
+    <CssBaseLine/>
     <BrowserRouter>
       <Switch>
         <Route path="/home" component={Home} />
@@ -34,6 +34,7 @@ function App() {
         <Route exact path="/" component={Home} />
       </Switch>
     </BrowserRouter>
+    </>
   );
 }
 
