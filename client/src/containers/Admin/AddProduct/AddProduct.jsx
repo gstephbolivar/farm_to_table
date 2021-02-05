@@ -186,6 +186,7 @@ const AddProduct = () => {
                         onChange={handleTotalAmountChange}
                         name="totalAmount"
                         value={totalAmount}
+                        type="number"
                         />
                         </Grid>
                         {/* The size of which each unit will be sold (Example: you buy strawberries by the pound in most places, but costco sells them in 3 pound boxes. So a "unit" is either 1 pound or 3 pounds respectively.) */}
@@ -198,6 +199,7 @@ const AddProduct = () => {
                         onChange={handleInputChange}
                         name="unitSize"
                         value={productObject.unitSize}
+                        type="number"
                         />
                         </Grid>
                         {/* the price at which each unit is sold per unit */}
@@ -210,6 +212,7 @@ const AddProduct = () => {
                         onChange={handleInputChange}
                         name="price"
                         value={productObject.price}
+                        type="number"
                         InputProps={{
                             startAdornment: <InputAdornment position="start">$</InputAdornment>,
                           }}
@@ -223,6 +226,7 @@ const AddProduct = () => {
                         id="quantity"
                         label="Quantity"
                         variant="outlined"
+                        type="number"
                         onChange={handleInputChange}
                         name="quantity"
                         value={totalAmount/productObject.unitSize}
