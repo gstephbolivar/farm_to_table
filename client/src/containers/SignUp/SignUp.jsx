@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import API from "../../utils/API";
-import {Grid, Card, CardContent, Typography, CardActionArea, Button, TextField, InputAdornment, MenuItem} from '@material-ui/core';
+import {Grid, Card, CardContent, Typography, CardActionArea, Button, TextField, InputAdornment} from '@material-ui/core';
 
 const SignUp = () => {
     const [userObject, setUserObject] = useState({
