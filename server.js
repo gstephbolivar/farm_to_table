@@ -56,6 +56,15 @@ app.post("/api/products", ({body}, res) => {
     })
 });
 
+//POST api route to create a user
+app.post("/api/users", ({body}, res) => {
+  db.User.create(body).then(result => {
+    res.json(result);
+  }).catch(err => {
+    res.json(err);
+  })
+});
+
 
 
 app.get("*", (req, res) => {
