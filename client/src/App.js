@@ -1,6 +1,4 @@
-import { useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import axios from "axios";
+import { BrowserRouter, Route, Switch} from "react-router-dom";
 import Home from "./containers/Home/Home.jsx";
 import AllProducts from "./containers/AllProducts/AllProducts.jsx";
 import Cart from "./containers/Cart/Cart.jsx";
@@ -12,6 +10,8 @@ import Products from "./containers/Admin/Products/Products";
 import AddProduct from "./containers/Admin/AddProduct/AddProduct";
 import EditProduct from "./containers/Admin/EditProduct/EditProduct";
 import CssBaseLine from "@material-ui/core/CssBaseline";
+import NavBar from "./components/NavBar/NavBar.jsx";
+
 
 
 function App() {
