@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
 import {
   Box,
   Card,
@@ -8,11 +7,11 @@ import {
   Grid,
   List,
   ListItem,
-  //   ListItemIcon,
   ListItemText,
   Typography,
 } from "@material-ui/core";
 
+// List of items that user can choose from to filter food options
 const menuItems = [
   {
     listText: "All",
@@ -34,14 +33,6 @@ const menuItems = [
     listText: "Vegetables",
   },
 ];
-
-// function generate(element) {
-//   return [0, 1, 2].map((value) => {
-//     React.cloneElement(element, {
-//       key: value,
-//     });
-//   });
-// }
 
 const CategoriesCard = () => {
   const [dense, setDense] = useState(false);
