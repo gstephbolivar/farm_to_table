@@ -1,14 +1,17 @@
 import axios from "axios";
 
 export default {
-    
-    // product routes
-addProduct: (product) => {
-    return axios.post("/api/products", product)
-},
+  // product routes
+  addProduct: (product) => {
+    return axios.post("/api/products", product);
+  },
 
-// User routes
-addUser: (user) => {
-    return axios.post("/api/users", user)
-},
-}
+  // User routes
+  addUser: (user) => {
+    return axios.post("/api/users", user);
+  },
+
+  checkUser: (user) => {
+    return axios.get("/api/users", user);
+  },
+};
