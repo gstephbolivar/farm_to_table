@@ -20,6 +20,7 @@ function App() {
     <>
     <CssBaseLine/>
     <BrowserRouter>
+    <NavBar/>
       <Switch>
         <Route path="/home" component={Home} />
         <Route path="/allproducts" component={AllProducts} />
