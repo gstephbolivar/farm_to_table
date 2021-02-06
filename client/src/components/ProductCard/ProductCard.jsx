@@ -20,6 +20,7 @@ const useStyles = makeStyles({
 const ProductCard = () => {
     const classes = useStyles();
 
+
     return (
       <Card className={classes.root}>
         <CardActionArea>
@@ -41,12 +42,16 @@ const ProductCard = () => {
           </CardContent>
         </CardActionArea>
         <CardActions>
+          {/* only displays the buttons if the path is /admin */}
+          {window.location.pathname === "/admin" &&
+          <>
           <Button size="small" color="primary">
             Edit
           </Button>
           <Button size="small" color="primary">
             Delete
           </Button>
+          </>}
         </CardActions>
       </Card>
     );
