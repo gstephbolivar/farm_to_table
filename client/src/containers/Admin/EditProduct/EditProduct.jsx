@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import API from "../../../utils/API";
 import {Grid, Card, CardMedia, CardContent, Typography, CardActionArea, Button, TextField, InputAdornment, MenuItem} from '@material-ui/core';
 
@@ -55,6 +55,10 @@ const AddProduct = () => {
        unitType: "",
        description: "",
     })
+
+    useEffect(() => {
+
+    },[])
 
     const handleUnitChange = (event) => {
         setUnitType(event.target.value);
