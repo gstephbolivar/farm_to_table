@@ -45,7 +45,7 @@ const AddProduct = () => {
 
     const [unitType, setUnitType] = useState("pounds");
     const [category, setCategory] = useState("fruit");
-    const [totalAmount, setTotalAmount] = useState(0);
+    // const [totalAmount, setTotalAmount] = useState(0);
     const [productObject, setProductObject] = useState({
        name: "",
        unitSize: 0,
@@ -54,6 +54,7 @@ const AddProduct = () => {
        category: "", 
        unitType: "",
        description: "",
+       totalAmount: "",
     })
 
     const handleUnitChange = (event) => {
@@ -64,9 +65,9 @@ const AddProduct = () => {
         setCategory(event.target.value);
       };
 
-      const handleTotalAmountChange = (event) => {
-        setTotalAmount(event.target.value);
-      };
+      // const handleTotalAmountChange = (event) => {
+      //   setTotalAmount(event.target.value);
+      // };
 
       const handleInputChange = (event) => {
           const {name, value} = event.target;
@@ -80,12 +81,12 @@ const AddProduct = () => {
             name: productObject.name,
             unitSize: productObject.unitSize,
             price: productObject.price,
-            quantity: totalAmount/productObject.unitSize,
+            quantity: productObject.totalAmount/productObject.unitSize,
             category: category, 
             unitType: unitType,
             description: productObject.description,
+            totalAmount: productObject.totalAmount,
         }).then(() => {
-          setTotalAmount(0)
           setProductObject({
             name: "",
             unitSize: 0,
@@ -93,7 +94,8 @@ const AddProduct = () => {
             quantity: 0,
             category: "", 
             unitType: "",
-            description: "", 
+            description: "",
+            totalAmount:"", 
         })}).catch(err => console.log(err));
     };
 
@@ -103,7 +105,7 @@ const AddProduct = () => {
     <Grid container 
     alignItems="center"
     justify="center">
-        <Grid item xs={6} md={3} lg={1} xl={1}>
+        <Grid item xs={6}>
             <Card>
                 <CardMedia
                 component="img"
@@ -183,9 +185,9 @@ const AddProduct = () => {
                         id="totalAmount"
                         label="Total amount of pounds/ounces/etc..."
                         variant="outlined"
-                        onChange={handleTotalAmountChange}
+                        onChange={handleInputChange}
                         name="totalAmount"
-                        value={totalAmount}
+                        value={productObject.totalAmount}
                         type="number"
                         />
                         </Grid>
@@ -229,7 +231,7 @@ const AddProduct = () => {
                         type="number"
                         onChange={handleInputChange}
                         name="quantity"
-                        value={totalAmount/productObject.unitSize}
+                        value={productObject.totalAmount/productObject.unitSize}
                         helperText="Total number of units"
                         />
                         </Grid>

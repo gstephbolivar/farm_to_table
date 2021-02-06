@@ -12,8 +12,8 @@ getProduct: () => {
 getOneProduct: (id) => {
     return axios.get("/api/products/"+id)
 },
-updateProduct: (product) => {
-    return axios.put("/api/products", product)
+updateProduct: (id,product) => {
+    return axios.put("/api/products/"+id, product)
 },
 
 

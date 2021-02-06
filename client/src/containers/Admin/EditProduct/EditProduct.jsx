@@ -53,7 +53,7 @@ const EditProduct = () => {
 
     const [unitType, setUnitType] = useState("pounds");
     const [category, setCategory] = useState("fruit");
-    const [totalAmount, setTotalAmount] = useState(0);
+    // const [totalAmount, setTotalAmount] = useState(0);
     const [productObject, setProductObject] = useState({
        name: "",
        unitSize: 0,
@@ -62,10 +62,11 @@ const EditProduct = () => {
        category: "", 
        unitType: "",
        description: "",
+       totalAmount:"",
     })
 
     useEffect(() => {
-        API.getOneProduct("601c974c802177dc37d798a9")
+        API.getOneProduct("601ed96979e8ee15033e2fbc")
         .then((res) => {
             setProductObject({
                 name: res.data.name,
@@ -75,6 +76,7 @@ const EditProduct = () => {
                 category: res.data.category, 
                 unitType: res.data.unitType,
                 description: res.data.description,
+                totalAmount:res.data.totalAmount,
             })
         })
     },[])
@@ -87,9 +89,9 @@ const EditProduct = () => {
         setCategory(event.target.value);
       };
 
-      const handleTotalAmountChange = (event) => {
-        setTotalAmount(event.target.value);
-      };
+    //   const handleTotalAmountChange = (event) => {
+    //     setTotalAmount(event.target.value);
+    //   };
 
       const handleInputChange = (event) => {
           const {name, value} = event.target;
@@ -99,16 +101,17 @@ const EditProduct = () => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        API.updateProduct({
+        console.log(productObject);
+        API.updateProduct("601ed96979e8ee15033e2fbc",{
             name: productObject.name,
             unitSize: productObject.unitSize,
             price: productObject.price,
-            quantity: totalAmount/productObject.unitSize,
+            quantity: productObject.totalAmount/productObject.unitSize,
             category: category, 
             unitType: unitType,
             description: productObject.description,
+            totalAmount: productObject.totalAmount,
         }).then(() => {
-          setTotalAmount(0)
           setProductObject({
             name: "",
             unitSize: 0,
@@ -117,6 +120,7 @@ const EditProduct = () => {
             category: "", 
             unitType: "",
             description: "", 
+            totalAmount: "",
         });
         routeChange();
     }).catch(err => console.log(err));
@@ -128,7 +132,7 @@ const EditProduct = () => {
     <Grid container 
     alignItems="center"
     justify="center">
-        <Grid item xs={6} md={3} lg={1} xl={1}>
+        <Grid item xs={6}>
             <Card>
                 <CardMedia
                 component="img"
@@ -208,9 +212,9 @@ const EditProduct = () => {
                         id="totalAmount"
                         label="Total amount of pounds/ounces/etc..."
                         variant="outlined"
-                        onChange={handleTotalAmountChange}
+                        onChange={handleInputChange}
                         name="totalAmount"
-                        value={totalAmount}
+                        value={productObject.totalAmount}
                         type="number"
                         />
                         </Grid>
@@ -254,14 +258,14 @@ const EditProduct = () => {
                         type="number"
                         onChange={handleInputChange}
                         name="quantity"
-                        value={totalAmount/productObject.unitSize}
+                        value={productObject.totalAmount/productObject.unitSize}
                         helperText="Total number of units"
                         />
                         </Grid>
                         </Grid>
                 </CardContent>
                 <CardActionArea>
-                    <Button onClick={handleFormSubmit}>Add Product</Button>
+                    <Button onClick={handleFormSubmit}>Save Edit</Button>
                 </CardActionArea>
             </Card>
         </Grid>
