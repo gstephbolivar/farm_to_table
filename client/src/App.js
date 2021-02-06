@@ -1,6 +1,4 @@
-import { useEffect } from "react";
-import { BrowserRouter, Route, Switch} from "react-router-dom";
-import axios from "axios";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./containers/Home/Home.jsx";
 import AllProducts from "./containers/AllProducts/AllProducts.jsx";
 import Cart from "./containers/Cart/Cart.jsx";
@@ -12,32 +10,28 @@ import Products from "./containers/Admin/Products/Products";
 import AddProduct from "./containers/Admin/AddProduct/AddProduct";
 import EditProduct from "./containers/Admin/EditProduct/EditProduct";
 import CssBaseLine from "@material-ui/core/CssBaseline";
-
-
-
-
-
+import NavBar from "./components/NavBar/NavBar.jsx";
 
 function App() {
-  
   return (
     <>
-    <CssBaseLine/>
-    <BrowserRouter>
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/home" component={Home} />
-      <Route exact path="/allproducts" component={AllProducts} />
-      <Route exact path="/cart" component={Cart} />
-      <Route exact path="/confirmation" component={Confirmation} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/signup" component={SignUp} />
-      <Route exact path="/oneproduct" component={OneProduct} />
-      <Route exact path="/admin" component={Products} />
-      <Route exact path="/admin/add" component={AddProduct} />
-      <Route exact path="/admin/edit" component={EditProduct} />
-      </Switch>
-    </BrowserRouter>
+      <CssBaseLine />
+      <BrowserRouter>
+        <NavBar />
+        <Switch>
+          <Route path="/home" component={Home} />
+          <Route path="/allproducts" component={AllProducts} />
+          <Route path="/cart" component={Cart} />
+          <Route path="/confirmation" component={Confirmation} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={SignUp} />
+          <Route path="/oneproduct" component={OneProduct} />
+          <Route exact path="/admin" component={Products} />
+          <Route exact path="/admin/add" component={AddProduct} />
+          <Route path="/admin/edit" component={EditProduct} />
+          <Route exact path="/" component={Home} />
+        </Switch>
+      </BrowserRouter>
     </>
   );
 }
