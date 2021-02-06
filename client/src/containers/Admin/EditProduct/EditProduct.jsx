@@ -43,6 +43,13 @@ const units = [
 
 const AddProduct = () => {
 
+    const history = useHistory();
+
+  const routeChange = () =>{ 
+    let path = `/admin`; 
+    history.push(path);
+  }
+
     const [unitType, setUnitType] = useState("pounds");
     const [category, setCategory] = useState("fruit");
     const [totalAmount, setTotalAmount] = useState(0);
@@ -57,7 +64,18 @@ const AddProduct = () => {
     })
 
     useEffect(() => {
-
+        API.getProduct()
+        .then((res) => {
+            setProductObject({
+                name: res.data.name,
+                unitSize: res.data.unitSize,
+                price: res.data.price,
+                quantity: res.data.quantity,
+                category: res.data.category, 
+                unitType: res.data.unitType,
+                description: res.data.description,
+            })
+        })
     },[])
 
     const handleUnitChange = (event) => {
@@ -80,7 +98,7 @@ const AddProduct = () => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        API.addProduct({
+        API.updateProduct({
             name: productObject.name,
             unitSize: productObject.unitSize,
             price: productObject.price,
@@ -98,7 +116,9 @@ const AddProduct = () => {
             category: "", 
             unitType: "",
             description: "", 
-        })}).catch(err => console.log(err));
+        });
+        routeChange();
+    }).catch(err => console.log(err));
     };
 
 

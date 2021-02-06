@@ -56,6 +56,15 @@ app.post("/api/products", ({body}, res) => {
     })
 });
 
+//PUT route to update a product
+app.put("/api/products", ({body}, res) => {
+  db.Products.replaceOne(body).then(result => {
+    res.json(result);
+  }).catch(err => {
+    res.json(err);
+  })
+  });
+
 //POST api route to create a user
 app.post("/api/users", ({body}, res) => {
   db.User.create(body).then(result => {
