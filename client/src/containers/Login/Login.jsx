@@ -15,10 +15,11 @@ import API from "../../utils/API";
 const Login = () => {
   const history = useHistory();
 
-  const routeChange = () => {
-    let path = `/allproducts`;
+  const routeChange = (path) => {
     history.push(path);
   };
+
+  const getUserAccount = () => {};
 
   const [loginObject, setLoginObject] = useState({
     username: "",
@@ -32,25 +33,23 @@ const Login = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    // If (user information is correct) {then...
-    // routeChange();
-    //} else {
-    // alert(Login Information is incorrect);
-    // }
-    // if (!loginObject.username || !loginObject.password){
-    //     alert("Username or password did not match")
-    // } else {
-    //     routeChange();
-    // };
+
+    // checks if username and password match in database
     API.checkUser(loginObject)
       .then((user) => {
-        // console.log(user.data);
-        // console.log(loginObject);
-        if (
+        console.log(loginObject);
+        console.log(user);
+
+        if (!loginObject.username || !loginObject.password) {
+          alert("Username or password did not match");
+        } else if (
           user.data.username === loginObject.username &&
           user.data.password === loginObject.password
-        )
-          alert("user found!");
+        ) {
+          routeChange("/allproducts");
+        } else {
+          routeChange("/signup");
+        }
       })
       .catch((err) => console.log(err));
   };

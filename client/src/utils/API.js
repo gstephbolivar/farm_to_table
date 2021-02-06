@@ -11,7 +11,14 @@ export default {
     return axios.post("/api/users", user);
   },
 
+  // used for checking users in database
   checkUser: (user) => {
-    return axios.get("/api/users", user);
+    console.log(user);
+    return axios.get("/api/users", {
+      params: {
+        username: user.username,
+        password: user.password,
+      },
+    });
   },
 };
