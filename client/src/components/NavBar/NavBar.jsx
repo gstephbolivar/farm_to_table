@@ -1,7 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {IconButton, Toolbar, Typography, Button, AppBar, Menu, MenuItem} from '@material-ui/core';
+import {IconButton, Toolbar, Typography, Button, AppBar} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import MenuDropdown from "../../components/MenuDropdown/MenuDropdown";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,9 +23,7 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
+          <MenuDropdown/>
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
