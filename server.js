@@ -47,6 +47,17 @@ app.get("/api/products", (req, res) => {
     });  
 });
 
+//GET api route to return a products
+app.get("/api/products/:id", (req, res) => {
+  db.Products.findById({_id:req.params.id}).then(product => {
+      res.json(product);
+  }).catch(err => {
+      res.json(err);
+  });  
+});
+
+
+
 //POST api route to create a product
 app.post("/api/products", ({body}, res) => {
     db.Products.create(body).then(result => {

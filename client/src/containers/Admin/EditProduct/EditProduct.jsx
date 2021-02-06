@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import API from "../../../utils/API";
+import { useHistory } from 'react-router-dom';
 import {Grid, Card, CardMedia, CardContent, Typography, CardActionArea, Button, TextField, InputAdornment, MenuItem} from '@material-ui/core';
 
 const units = [
@@ -41,7 +42,7 @@ const units = [
   ];
   
 
-const AddProduct = () => {
+const EditProduct = () => {
 
     const history = useHistory();
 
@@ -64,7 +65,7 @@ const AddProduct = () => {
     })
 
     useEffect(() => {
-        API.getProduct()
+        API.getOneProduct("601c974c802177dc37d798a9")
         .then((res) => {
             setProductObject({
                 name: res.data.name,
@@ -268,4 +269,4 @@ const AddProduct = () => {
     );
 };
 
-export default AddProduct;
+export default EditProduct;
