@@ -13,7 +13,7 @@ export default {
 
   // used for checking users in database
   checkUser: (user) => {
-    console.log(user);
+    //console.log(user);
     return axios.get("/api/users", {
       params: {
         username: user.username,

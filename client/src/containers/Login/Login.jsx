@@ -19,8 +19,6 @@ const Login = () => {
     history.push(path);
   };
 
-  const getUserAccount = () => {};
-
   const [loginObject, setLoginObject] = useState({
     username: "",
     password: "",
@@ -37,21 +35,28 @@ const Login = () => {
     // checks if username and password match in database
     API.checkUser(loginObject)
       .then((user) => {
-        console.log(loginObject);
-        console.log(user);
+        //console.log(loginObject);
+        //console.log(user);
 
+        // checks if user has entered login information
         if (!loginObject.username || !loginObject.password) {
-          alert("Username or password did not match");
-        } else if (
+          alert("Please enter a username and password");
+        } // checks that login matches database user
+        else if (
           user.data.username === loginObject.username &&
           user.data.password === loginObject.password
         ) {
-          routeChange("/allproducts");
-        } else {
-          routeChange("/signup");
+          alert("Successfully Logged in!");
+
+          // changes route to the admin products page
+          routeChange("/amin");
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        // potentially change this to a modal where user can click to sign up or just re-enter login info
+        console.log(err);
+        alert("Incorrect password or username entered!");
+      });
   };
 
   return (
