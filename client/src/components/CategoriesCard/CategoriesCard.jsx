@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {makeStyles} from "@material-ui/core/styles";
 import {
   Box,
   Card,
@@ -10,6 +11,14 @@ import {
   ListItemText,
   Typography,
 } from "@material-ui/core";
+
+// CSS styling
+const useStyles = makeStyles({
+  categoriesContainer: {
+    maxWidth: 200,
+    // margin: "2rem auto"
+  },
+})
 
 // List of items that user can choose from to filter food options
 const menuItems = [
@@ -36,11 +45,12 @@ const menuItems = [
 
 const CategoriesCard = () => {
   const [dense, setDense] = useState(false);
+  const classes = useStyles();
   return (
     <Box component="div">
-      <Grid container justify="left">
-        <Grid item xs={12} sm={8} md={6}>
-          <Card>
+      <Grid container >
+        <Grid item xs>
+          <Card className= {classes.categoriesContainer}>
             <CardContent>
               <Typography>Choose a Category</Typography>
             </CardContent>
