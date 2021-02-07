@@ -1,20 +1,35 @@
 import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import CategoriesCard from "../../components/CategoriesCard/CategoriesCard";
-import Box from "@material-ui/core/Box";
+import { Box, Grid } from "@material-ui/core";
 
+// CSS styling
+
+const useStyles = makeStyles({
+  productContainer: {
+    margin: "3rem auto",
+    marginLeft: "3rem auto",
+  },
+});
 
 const AllProducts = () => {
-    
+  const classes = useStyles();
+  const [card, setCard] = useState([]);
   return (
-    <Box component="div">
-      <h1>This is the page to view all products.</h1>
-    <CategoriesCard/>
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-    </Box>
+    <>
+     
+      <Grid container className= {classes.productContainer}>
+        <Grid item xs>
+          <CategoriesCard />
+        </Grid>
+        
+        <Grid item xs>
+          <ProductCard />
+        </Grid>
+      </Grid>
+      
+    </>
   );
 };
 
