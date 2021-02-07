@@ -11,6 +11,7 @@ import AddProduct from "./containers/Admin/AddProduct/AddProduct";
 import EditProduct from "./containers/Admin/EditProduct/EditProduct";
 import CssBaseLine from "@material-ui/core/CssBaseline";
 import NavBar from "./components/NavBar/NavBar.jsx";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/admin/edit" component={EditProduct} />
           <Route exact path="/" component={Home} />
         </Switch>
+        <Footer />
       </BrowserRouter>
     </>
   );
