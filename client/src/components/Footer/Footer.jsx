@@ -5,7 +5,7 @@ import "./index.css";
 
 const Footer = () => (
     <footer className="footer">
-      <p>Some footer nonsense!</p>
+      <p>Copyright © Farm to Table 2021. All Rights Reserved</p>
     </footer>
   );
 
