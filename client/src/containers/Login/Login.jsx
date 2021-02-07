@@ -49,7 +49,7 @@ const Login = () => {
           alert("Successfully Logged in!");
 
           // changes route to the admin products page
-          routeChange("/amin");
+          routeChange("/admin");
         }
       })
       .catch((err) => {
