@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 
 const AllProducts = () => {
   const classes = useStyles();
-  const [card, setCard] = useState([]);
+  // const [card, setCard] = useState([]);
   return (
     <>
      
@@ -25,6 +25,9 @@ const AllProducts = () => {
         </Grid>
         
         <Grid item xs>
+          <ProductCard />
+        </Grid>
+          <Grid item xs>
           <ProductCard />
         </Grid>
       </Grid>
