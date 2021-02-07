@@ -1,28 +1,15 @@
-html,
-body {
-  height: 100%;
-  font-family: sans-serif;
-}
 
-body {
-  margin: 0;
-  padding: 0;
-}
-
-#root {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.content {
-  flex: 1 0 auto;
-  padding: 10px;
-}
 
 .footer {
-  flex-shrink: 0;
-  text-align: center;
+  padding: 10px 0;
   background-color: tomato;
   color: white;
+  position: fixed;
+  margin-top: auto;
+  left: 0;
+  bottom: 0;
+  clear: both;
+  width: 100%;
+  text-align: center;
+  line-height: 1em;
 }
