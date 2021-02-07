@@ -1,6 +1,11 @@
 import axios from "axios";
 
 export default {
+
+        // product routes
+getAllProducts: () => {
+    return axios.get("/api/products")
+},
     
     // product routes
 addProduct: (product) => {
