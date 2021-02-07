@@ -52,6 +52,12 @@ const ProductCard = () => {
             Delete
           </Button>
           </>}
+          {window.location.pathname === "/allproducts" &&
+          <>
+          <Button size="small" color="primary">
+            Add
+          </Button>
+          </>}
         </CardActions>
       </Card>
     );
