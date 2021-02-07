@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import API from "../../../utils/API";
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import {Grid, Card, CardMedia, CardContent, Typography, CardActionArea, Button, TextField, InputAdornment, MenuItem} from '@material-ui/core';
 
 const units = [
@@ -44,6 +44,8 @@ const units = [
 
 const EditProduct = () => {
 
+    const {id} = useParams()
+
     const history = useHistory();
 
   const routeChange = () =>{ 
@@ -65,7 +67,7 @@ const EditProduct = () => {
     })
 
     useEffect(() => {
-        API.getOneProduct("601ed96979e8ee15033e2fbc")
+        API.getOneProduct(id)
         .then((res) => {
             setProductObject({
                 name: res.data.name,
@@ -97,7 +99,7 @@ const EditProduct = () => {
     const handleFormSubmit = (event) => {
         event.preventDefault();
         console.log(productObject);
-        API.updateProduct("601ed96979e8ee15033e2fbc",{
+        API.updateProduct(id,{
             name: productObject.name,
             unitSize: productObject.unitSize,
             price: productObject.price,

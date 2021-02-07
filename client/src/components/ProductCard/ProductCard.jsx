@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -19,6 +20,12 @@ const useStyles = makeStyles({
 
 const ProductCard = () => {
     const classes = useStyles();
+    const history = useHistory();
+
+  const routeChange = () =>{ 
+    let path = `/admin/edit/601ed96979e8ee15033e2fbc`; 
+    history.push(path);
+  }
 
 
     return (
@@ -45,7 +52,7 @@ const ProductCard = () => {
           {/* only displays the buttons if the path is /admin */}
           {window.location.pathname === "/admin" &&
           <>
-          <Button size="small" color="primary">
+          <Button size="small" color="primary" onClick={routeChange}>
             Edit
           </Button>
           <Button size="small" color="primary">
