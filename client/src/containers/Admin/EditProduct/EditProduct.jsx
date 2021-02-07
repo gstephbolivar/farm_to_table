@@ -53,7 +53,6 @@ const EditProduct = () => {
 
     const [unitType, setUnitType] = useState("pounds");
     const [category, setCategory] = useState("fruit");
-    // const [totalAmount, setTotalAmount] = useState(0);
     const [productObject, setProductObject] = useState({
        name: "",
        unitSize: 0,
@@ -88,10 +87,6 @@ const EditProduct = () => {
       const handleCategoryChange = (event) => {
         setCategory(event.target.value);
       };
-
-    //   const handleTotalAmountChange = (event) => {
-    //     setTotalAmount(event.target.value);
-    //   };
 
       const handleInputChange = (event) => {
           const {name, value} = event.target;
