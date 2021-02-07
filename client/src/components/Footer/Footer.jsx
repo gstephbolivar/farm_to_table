@@ -1,11 +1,14 @@
-import React from 'react';
+import React from "react";
+import { render } from "react-dom";
+import "./index.css";
 
-const Footer = () => {
-    return (
-        <div>
-            <h1>This will be a footer.</h1>
-        </div>
-    );
-};
 
-export default Footer;
+const Footer = () => (
+    <footer className="footer">
+      <p>Some footer nonsense!</p>
+    </footer>
+  );
+
+  render([<Footer key="2" />], document.getElementById("root"));
+
+  export default Footer;
