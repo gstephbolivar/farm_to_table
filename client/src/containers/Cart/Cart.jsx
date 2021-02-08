@@ -30,55 +30,53 @@ const Cart = () => {
           </div>
         ) : (
           <>
-           
-
-            
-
- {/* EMPLOYEE TABLE */}
- <section className="hero has-text-centered" id="employee">
-        <div className="table-container">
-          <table class="table is-fullwidth">
-            <thead>
-              <tr>
-                <th>
-                <div
-                    className="vertical-center"
-                    style={{ height: 95, justifyContent: "left", padding: 10 }}
-                  >
-                    <h1 className="sub-title">Item</h1>
-                  </div>
-                </th>
-                <th><div
-                    className="vertical-center"
-                    style={{ height: 95, justifyContent: "center" }}
-                  >
-                    <h1 className="sub-title">Quantity</h1>
-                  </div></th>
-                <th>
-                <div
-                    className="vertical-center"
-                    style={{ height: 95, justifyContent: "center" }}
-                  >
-                    <h1 className="sub-title">Price</h1>
-                  </div>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-            {cartItems.map((item, index) => (
-              <CartItem {...item} />
-            ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-
-
-
+            {/* SHOPPING CART TABLE */}
+            <section className="hero has-text-centered" id="employee">
+              <div className="table-container">
+                <table class="table is-fullwidth">
+                  <thead>
+                    <tr>
+                      <th>
+                        <div
+                          className="vertical-center"
+                          style={{
+                            height: 95,
+                            justifyContent: "left",
+                            padding: 10,
+                          }}
+                        >
+                          <h1 className="sub-title">Item</h1>
+                        </div>
+                      </th>
+                      <th>
+                        <div
+                          className="vertical-center"
+                          style={{ height: 95, justifyContent: "center" }}
+                        >
+                          <h1 className="sub-title">Quantity</h1>
+                        </div>
+                      </th>
+                      <th>
+                        <div
+                          className="vertical-center"
+                          style={{ height: 95, justifyContent: "center" }}
+                        >
+                          <h1 className="sub-title">Price</h1>
+                        </div>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cartItems.map((item, index) => (
+                      <CartItem {...item} />
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </section>
 
             <Grid container item xs={12}>
-              <Grid item xs={9} align="right">
+              <Grid item xs={10} align="right">
                 <div
                   className="vertical-center"
                   style={{ width: 50, marginTop: 30 }}
@@ -86,7 +84,7 @@ const Cart = () => {
                   Subtotal:
                 </div>
               </Grid>
-              <Grid item xs={3}>
+              <Grid item xs={2}>
                 <div
                   className="vertical-center"
                   style={{ justifyContent: "center", marginTop: 30 }}
