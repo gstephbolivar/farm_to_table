@@ -18,88 +18,83 @@ const Cart = () => {
   }
 
   return (
-
-  //   <div>
-  //   <section class="section">
-  //     <div class="container has-text-centered">
-  //       <h1 id="portfolioHeadline">Shopping Cart</h1>
-  //       <div class="columns is-centered is-multiline">
-
-  //       </div>
-  //     </div>
-  //   </section>
-  // </div>
-
-
-
-
-
-
-
-
-
+    <section class="section">
       <div className="container cart-container">
+        <h1 className="title">Shopping Cart</h1>
 
-      <Grid item xs={12}>
-        <Typography variant="h3">Shopping Cart</Typography>
-      </Grid>
-
-      {cartItems.length === 0 ? (
-        <Grid item align="center" xs={12}>
+        {cartItems.length === 0 ? (
+          <div className="container">
             <div className="empty">
-                <h2>Cart is empty.</h2>
-            </div>         
-        </Grid>
-   
-      ) : (
-        <>
-          <Grid container item className="cart-headers">
-            <Grid item xs={6} style={{ paddingLeft: 10 }}>
-              Item
-            </Grid>
-            <Grid item xs={3} align="center">
-              Quantity
-            </Grid>
-            <Grid item xs={3} align="center">
-              Price
-            </Grid>
-          </Grid>
-
-          {cartItems.map((item, index) => (
-            <CartItem {...item}/>
-          ))}
-
-          <Grid container item xs={12}>
-            <Grid item xs={9} align="right">
-              <div
-                className="vertical-center"
-                style={{ width: 50, marginTop: 30}}
-              >
-                Subtotal:
+              <h2 className="title">Cart is empty.</h2>
+            </div>
+          </div>
+        ) : (
+          <>
+            <div className="container cart-headers">
+              <div className="columns is-centered is-multiline">
+                <div className="column is-6">
+                <div
+                    className="vertical-center"
+                    style={{ height: 95, justifyContent: "left", padding: 10 }}
+                  >
+                    <h1 className="sub-title">Item</h1>
+                  </div>
+                </div>
+                <div className="column is-3">
+                  <div
+                    className="vertical-center"
+                    style={{ height: 95, justifyContent: "center" }}
+                  >
+                    <h1 className="sub-title">Quantity</h1>
+                  </div>
+                </div>
+                <div className="column is-3">
+                  <div
+                    className="vertical-center"
+                    style={{ height: 95, justifyContent: "center" }}
+                  >
+                    <h1 className="sub-title">Price</h1>
+                  </div>
+                </div>
               </div>
+            </div>
+
+            {cartItems.map((item, index) => (
+              <CartItem {...item} />
+            ))}
+
+            <Grid container item xs={12}>
+              <Grid item xs={9} align="right">
+                <div
+                  className="vertical-center"
+                  style={{ width: 50, marginTop: 30 }}
+                >
+                  Subtotal:
+                </div>
+              </Grid>
+              <Grid item xs={3}>
+                <div
+                  className="vertical-center"
+                  style={{ justifyContent: "center", marginTop: 30 }}
+                >
+                  $10.99
+                </div>
+              </Grid>
             </Grid>
-            <Grid item xs={3}>
-              <div
-                className="vertical-center"
-                style={{ justifyContent: "center", marginTop: 30 }}
+            <Grid container item xs={12}>
+              <Grid
+                item
+                xs={3}
+                style={{ marginLeft: "auto", marginTop: 40 }}
+                align="center"
               >
-                $10.99
-              </div>
+                <Button className="cart-submit">Reserve</Button>
+              </Grid>
             </Grid>
-          </Grid>
-          <Grid container item xs={12}>
-            <Grid
-              item
-              xs={3}
-              style={{ marginLeft: "auto", marginTop: 40 }}
-              align="center"
-            >
-              <Button className="cart-submit">Reserve</Button>
-            </Grid>
-          </Grid>
-        </>
-      )}
-    </div>
+          </>
+        )}
+      </div>
+    </section>
   );
 };
 
