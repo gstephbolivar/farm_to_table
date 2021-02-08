@@ -300,11 +300,11 @@ const AddProduct = () => {
                   />
                 </div>
               </div>
-            <div class="field is-grouped is-grouped-centered">
-              <p class="control">
+            <div className="field is-grouped is-grouped-centered">
+              <p className="control">
                 <button
                   type="submit"
-                  class="button is-info is-medium"
+                  className="button is-info is-medium"
                   id="submitBtn"
                   onClick={handleFormSubmit}
                 >
