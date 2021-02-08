@@ -24,6 +24,10 @@ const ProductsSchema = new Schema({
   category: {
     type: String,
   },
+  photo: {
+    type: String,
+    default: "https://placedog.net/300/300",
+  },
 });
 
 const Products = mongoose.model("Products", ProductsSchema);
