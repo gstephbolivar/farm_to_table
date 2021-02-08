@@ -30,38 +30,52 @@ const Cart = () => {
           </div>
         ) : (
           <>
-            <div className="container cart-headers">
-              <div className="columns is-centered is-multiline">
-                <div className="column is-6">
+           
+
+            
+
+ {/* EMPLOYEE TABLE */}
+ <section className="hero has-text-centered" id="employee">
+        <div className="table-container">
+          <table class="table is-fullwidth">
+            <thead>
+              <tr>
+                <th>
                 <div
                     className="vertical-center"
                     style={{ height: 95, justifyContent: "left", padding: 10 }}
                   >
                     <h1 className="sub-title">Item</h1>
                   </div>
-                </div>
-                <div className="column is-3">
-                  <div
+                </th>
+                <th><div
                     className="vertical-center"
                     style={{ height: 95, justifyContent: "center" }}
                   >
                     <h1 className="sub-title">Quantity</h1>
-                  </div>
-                </div>
-                <div className="column is-3">
-                  <div
+                  </div></th>
+                <th>
+                <div
                     className="vertical-center"
                     style={{ height: 95, justifyContent: "center" }}
                   >
                     <h1 className="sub-title">Price</h1>
                   </div>
-                </div>
-              </div>
-            </div>
-
+                </th>
+              </tr>
+            </thead>
+            <tbody>
             {cartItems.map((item, index) => (
               <CartItem {...item} />
             ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+
+
+
 
             <Grid container item xs={12}>
               <Grid item xs={9} align="right">
@@ -88,7 +102,7 @@ const Cart = () => {
                 style={{ marginLeft: "auto", marginTop: 40 }}
                 align="center"
               >
-                <Button className="cart-submit">Reserve</Button>
+                <button className="cart-submit">Reserve</button>
               </Grid>
             </Grid>
           </>
