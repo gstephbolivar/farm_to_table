@@ -18,7 +18,7 @@ const Cart = () => {
   }
 
   return (
-    <section class="section">
+    <section className="section">
       <div className="container cart-container">
         <h1 className="title">Shopping Cart</h1>
 
@@ -33,7 +33,7 @@ const Cart = () => {
             {/* SHOPPING CART TABLE */}
             <section className="hero has-text-centered" id="employee">
               <div className="table-container">
-                <table class="table is-fullwidth">
+                <table className="table is-fullwidth">
                   <thead>
                     <tr>
                       <th>
