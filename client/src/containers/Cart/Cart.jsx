@@ -18,7 +18,28 @@ const Cart = () => {
   }
 
   return (
-    <Grid container className="cart-container" xs={12} md={9} lg={7}>
+
+  //   <div>
+  //   <section class="section">
+  //     <div class="container has-text-centered">
+  //       <h1 id="portfolioHeadline">Shopping Cart</h1>
+  //       <div class="columns is-centered is-multiline">
+
+  //       </div>
+  //     </div>
+  //   </section>
+  // </div>
+
+
+
+
+
+
+
+
+
+      <div className="container cart-container">
+
       <Grid item xs={12}>
         <Typography variant="h3">Shopping Cart</Typography>
       </Grid>
@@ -78,7 +99,7 @@ const Cart = () => {
           </Grid>
         </>
       )}
-    </Grid>
+    </div>
   );
 };
 

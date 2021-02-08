@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography } from "@material-ui/core";
+import "./home.css";
 
 const Home = () => {
   return (
