@@ -132,6 +132,7 @@ const AddProduct = () => {
               alt="stock"
               height="auto"
             />
+            <br />
 
             <div className="dropdown">
               {/* What kind of product it is */}
