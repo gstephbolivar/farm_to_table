@@ -1,14 +1,16 @@
-import React from 'react';
+import React from "react";
+import {Grid, Typography} from '@material-ui/core';
+
+
 
 const Home = () => {
-    return (
-        <>
-            <h1>Farm To Table </h1> 
-            <p> Where we make eating fresh and local a way of life.</p>
-            <p> Could use a TextBlockAndHeader here.</p>
-        </>
-        
-    );
+  return (
+    <Grid container alignItems="center" justify="center">
+      <Grid item xs={1} md={1} lg={1} xl={6} align="center">
+        <Typography variant="h1" align="center">Farm to Table</Typography>
+      </Grid>
+    </Grid>
+  );
 };
 
 export default Home;
