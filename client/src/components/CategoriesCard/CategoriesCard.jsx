@@ -1,24 +1,4 @@
-import React, { useState } from "react";
-import {makeStyles} from "@material-ui/core/styles";
-import {
-  Box,
-  Card,
-  CardContent,
-  Divider,
-  Grid,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-} from "@material-ui/core";
-
-// CSS styling
-const useStyles = makeStyles({
-  categoriesContainer: {
-    maxWidth: 200,
-    // margin: "2rem auto"
-  },
-})
+import React from "react";
 
 // List of items that user can choose from to filter food options
 const menuItems = [
@@ -26,46 +6,36 @@ const menuItems = [
     listText: "All",
   },
   {
-    listText: "Dairy & Eggs",
+    listText: "Fruit",
   },
   {
-    listText: "Fruits",
+    listText: "Vegetable",
   },
   {
     listText: "Meat",
-    listPath: "",
   },
   {
-    listText: "Poultry",
-  },
-  {
-    listText: "Vegetables",
+    listText: "Dairy",
   },
 ];
 
-const CategoriesCard = () => {
-  const [dense, setDense] = useState(false);
-  const classes = useStyles();
+const CategoriesCard = ({ onClick }) => {
   return (
-    <Box component="div">
-      <Grid container >
-        <Grid item xs>
-          <Card className= {classes.categoriesContainer}>
-            <CardContent>
-              <Typography>Choose a Category</Typography>
-            </CardContent>
-            <Divider />
-            <List dense={dense}>
-              {menuItems.map((lsItem, key) => (
-                <ListItem button key={key}>
-                  <ListItemText primary={lsItem.listText} />
-                </ListItem>
-              ))}
-            </List>
-          </Card>
-        </Grid>
-      </Grid>
-    </Box>
+    <div className="panel">
+      <p className="panel-heading">Categories</p>
+      {menuItems.map((item, key) => (
+        <a
+          className="panel-block"
+          key={key}
+          value={item.listText}
+          name={item.listText}
+          onClick={onClick}
+        >
+          {/* <span className="panel-icon">insert icon here</span> */}
+          {item.listText}
+        </a>
+      ))}
+    </div>
   );
 };
 
