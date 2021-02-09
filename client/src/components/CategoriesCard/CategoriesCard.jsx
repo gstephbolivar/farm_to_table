@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 // List of items that user can choose from to filter food options
 const menuItems = [
@@ -19,18 +19,22 @@ const menuItems = [
   },
 ];
 
-const CategoriesCard = ({ onChange }) => {
+const CategoriesCard = ({ onClick }) => {
   return (
-    // Bulma categories card
-
-    <div className="select">
-      <select onChange={onChange}>
-        {menuItems.map((item, key) => (
-          <option key={key} value={item.listText} name={item.listText}>
-            {item.listText}
-          </option>
-        ))}
-      </select>
+    <div className="panel">
+      <p className="panel-heading">Categories</p>
+      {menuItems.map((item, key) => (
+        <a
+          className="panel-block"
+          key={key}
+          value={item.listText}
+          name={item.listText}
+          onClick={onClick}
+        >
+          {/* <span className="panel-icon">insert icon here</span> */}
+          {item.listText}
+        </a>
+      ))}
     </div>
   );
 };
