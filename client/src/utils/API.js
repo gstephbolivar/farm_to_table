@@ -17,6 +17,13 @@ addProduct: (product) => {
     return axios.post("/api/users", user);
   },
 
+  getProduct: (prodId) => {
+    return axios.get("/api/product", {
+      params: {
+        id: prodId
+      }
+    })
+  },
   // used for checking users in database
   checkUser: (user) => {
     //console.log(user);
