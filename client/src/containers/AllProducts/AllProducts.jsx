@@ -31,10 +31,17 @@ const AllProducts = () => {
       });
   }, []);
 
+  // sets the category filter to state
   const filterProducts = (e) => {
     const category = e.target.value;
-    console.log(category);
-    //setCategoryFilter();
+    // console.log(category);
+    setCategoryFilter(category);
+  };
+
+  const displayFilteredProducts = () => {
+    API.then((response) => {
+      setProducts(response.data);
+    }).catch((err) => console.log(err));
   };
 
   return (

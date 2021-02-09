@@ -1,16 +1,15 @@
 import axios from "axios";
 
 export default {
+  // Get All Products
+  getAllProducts: () => {
+    return axios.get("/api/products");
+  },
 
-// Get All Products
-getAllProducts: () => {
-    return axios.get("/api/products")
-},
-    
-    // product routes
-addProduct: (product) => {
-    return axios.post("/api/products", product)
-},
+  // product routes
+  addProduct: (product) => {
+    return axios.post("/api/products", product);
+  },
 
   // User routes
   addUser: (user) => {
@@ -24,6 +23,14 @@ addProduct: (product) => {
       params: {
         username: user.username,
         password: user.password,
+      },
+    });
+  },
+
+  getFilteredProducts: (category) => {
+    return axios.get("/api/products", {
+      params: {
+        category: category.category,
       },
     });
   },
