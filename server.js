@@ -60,6 +60,17 @@ app.post("/api/products", ({ body }, res) => {
     });
 });
 
+//GET api route to get a product by id
+app.get("/api/product/:id", (req, res) => {
+  db.Products.findOne({_id: req.params.id})
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.json(err);
+    })
+})
+
 //POST api route to create a user
 app.post("/api/users", ({ body }, res) => {
   db.User.create(body)
