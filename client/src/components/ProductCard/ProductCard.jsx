@@ -18,7 +18,7 @@ const ProductCard = ({ name, quantity, price, _id, deleteProduct}) => {
 
 
   return (
-    <div className="column is-third" id="column">
+    <div className="column is-4 has-text-centered" id="column">
       <div className="card">
         <div className="card-image">
           <figure className="image is-1by1">
