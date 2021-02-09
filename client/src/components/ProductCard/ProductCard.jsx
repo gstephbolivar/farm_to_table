@@ -1,7 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {useHistory} from "react-router-dom"
 
-const ProductCard = ({ name, quantity, price }) => {
+const ProductCard = ({ name, quantity, price, _id }) => {
+
+  const history = useHistory();
+
+  const routeChange = () =>{ 
+    let path = `/admin`; 
+    history.push(path);
+  }
+
+  const handleEditButton = (id) => {
+    let path = `/admin/edit/${id}`;
+    history.push(path);
+  }
+
+
   return (
     <div className="column is-4" id="column">
       <div className="card">
@@ -36,7 +51,7 @@ const ProductCard = ({ name, quantity, price }) => {
             {/* only displays the buttons if the path is /admin */}
             {window.location.pathname === "/admin" && (
               <>
-                <a href="#" className="card-footer-item">
+                <a onClick={() => handleEditButton(_id)} className="card-footer-item">
                   Edit
                 </a>
                 <a href="#" className="card-footer-item">
