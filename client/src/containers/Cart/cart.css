@@ -1,0 +1,36 @@
+.cart-container{
+    flex-grow: 1;
+    margin: 50px auto 0;
+    padding: 0 10px 40px 10px;
+    position: relative;
+    
+}
+
+.cart-headers{
+    margin-top: 50px !important;
+    margin-bottom: 20px !important;
+}
+
+.cart-item{
+    margin-bottom: 10px !important;
+}
+
+.vertical-center{
+    display: flex;
+    align-items: center;
+}
+
+.cart-submit{
+    width: 100%;
+    background: #3f51b5 !important;
+    color: #ffffff !important;
+}
+
+.empty{
+    display: flex;
+    height: 200px;
+    border: 1px solid black;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}

@@ -1,0 +1,15 @@
+
+
+.footer {
+  padding: 10px 0;
+  background-color: tomato;
+  color: white;
+  position: fixed;
+  margin-top: auto;
+  left: 0;
+  bottom: 0;
+  clear: both;
+  width: 100%;
+  text-align: center;
+  line-height: 1em;
+}

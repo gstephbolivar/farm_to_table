@@ -1,0 +1,9 @@
+.cart-item{
+    margin-bottom: 10px !important;
+}
+
+.vertical-center{
+    display: flex;
+    align-items: center;
+}
+

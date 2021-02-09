@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 
 const app = express();
-const db = require('./models');
+const db = require("./models");
 
 const PORT = process.env.PORT || 3001;
 
@@ -40,11 +40,13 @@ app.get("/api/config", (req, res) => {
 
 //GET api route to return all products
 app.get("/api/products", (req, res) => {
-    db.Products.find({}).then(products => {
-        res.json(products);
-    }).catch(err => {
-        res.json(err);
-    });  
+  db.Products.find({})
+    .then((products) => {
+      res.json(products);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
 });
 
 //GET api route to return a products
@@ -59,12 +61,14 @@ app.get("/api/products/:id", (req, res) => {
 
 
 //POST api route to create a product
-app.post("/api/products", ({body}, res) => {
-    db.Products.create(body).then(result => {
+app.post("/api/products", ({ body }, res) => {
+  db.Products.create(body)
+    .then((result) => {
       res.json(result);
-    }).catch(err => {
-      res.json(err);
     })
+    .catch((err) => {
+      res.json(err);
+    });
 });
 
 //PUT route to update a product
@@ -78,15 +82,28 @@ app.put("/api/products/:id", (req, res) => {
   
 
 //POST api route to create a user
-app.post("/api/users", ({body}, res) => {
-  db.User.create(body).then(result => {
-    res.json(result);
-  }).catch(err => {
-    res.json(err);
-  })
+app.post("/api/users", ({ body }, res) => {
+  db.User.create(body)
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
 });
 
-
+// GET api route to return selected user
+app.get("/api/users", (req, res) => {
+  db.User.findOne({
+    username: req.query.username,
+    password: req.query.password,
+  })
+    .then((result) => {
+      console.log(req.query);
+      res.json(result);
+    })
+    .catch((err) => res.json(err));
+});
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"));

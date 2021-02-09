@@ -1,6 +1,11 @@
 import axios from "axios";
 
 export default {
+
+// Get All Products
+getAllProducts: () => {
+    return axios.get("/api/products")
+},
     
     // product routes
 addProduct: (product) => {
@@ -17,8 +22,19 @@ updateProduct: (id,product) => {
 },
 
 
-// User routes
-addUser: (user) => {
-    return axios.post("/api/users", user)
-},
-}
+  // User routes
+  addUser: (user) => {
+    return axios.post("/api/users", user);
+  },
+
+  // used for checking users in database
+  checkUser: (user) => {
+    //console.log(user);
+    return axios.get("/api/users", {
+      params: {
+        username: user.username,
+        password: user.password,
+      },
+    });
+  },
+};
