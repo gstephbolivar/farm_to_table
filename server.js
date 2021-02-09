@@ -49,6 +49,17 @@ app.get("/api/products", (req, res) => {
     });
 });
 
+//GET api route to return a product
+app.get("/api/products/:id", (req, res) => {
+  db.Products.findById({_id:req.params.id}).then(product => {
+      res.json(product);
+  }).catch(err => {
+      res.json(err);
+  });  
+});
+
+
+
 //POST api route to create a product
 app.post("/api/products", ({ body }, res) => {
   db.Products.create(body)
@@ -59,6 +70,27 @@ app.post("/api/products", ({ body }, res) => {
       res.json(err);
     });
 });
+
+//PUT route to update a product
+app.put("/api/products/:id", (req, res) => {
+  db.Products.findByIdAndUpdate(req.params.id, req.body, { new: true }).then(result => {
+    res.json(result);
+  }).catch(err => {
+    res.json(err);
+  })
+  });
+
+  // DELETE route for a product
+  app.delete("/api/products/:id", (req, res) => {
+    db.Products.findByIdAndDelete(req.params.id)
+      .then((result) => {
+        res.json(result);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  });
+  
 
 //POST api route to create a user
 app.post("/api/users", ({ body }, res) => {

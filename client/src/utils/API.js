@@ -11,6 +11,20 @@ getAllProducts: () => {
 addProduct: (product) => {
     return axios.post("/api/products", product)
 },
+getProduct: () => {
+    return axios.get("/api/products")
+},
+getOneProduct: (id) => {
+    return axios.get("/api/products/"+id)
+},
+updateProduct: (id,product) => {
+    return axios.put("/api/products/"+id, product)
+},
+deleteProduct: (id) => {
+    return axios.delete("/api/products/"+id)
+},
+
+
 
   // User routes
   addUser: (user) => {
