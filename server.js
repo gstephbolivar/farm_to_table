@@ -49,7 +49,7 @@ app.get("/api/products", (req, res) => {
     });
 });
 
-//GET api route to return a products
+//GET api route to return a product
 app.get("/api/products/:id", (req, res) => {
   db.Products.findById({_id:req.params.id}).then(product => {
       res.json(product);
@@ -78,6 +78,17 @@ app.put("/api/products/:id", (req, res) => {
   }).catch(err => {
     res.json(err);
   })
+  });
+
+  // DELETE route for a product
+  app.delete("/api/products/:id", (req, res) => {
+    db.Products.findByIdAndDelete(req.params.id)
+      .then((result) => {
+        res.json(result);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
   });
   
 

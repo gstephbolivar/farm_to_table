@@ -20,6 +20,10 @@ getOneProduct: (id) => {
 updateProduct: (id,product) => {
     return axios.put("/api/products/"+id, product)
 },
+deleteProduct: (id) => {
+    return axios.delete("/api/products/"+id)
+},
+
 
 
   // User routes

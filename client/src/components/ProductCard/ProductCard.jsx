@@ -1,20 +1,20 @@
-import React from "react";
+import {useState} from "react";
 import PropTypes from "prop-types";
 import {useHistory} from "react-router-dom"
+import API from "../../utils/API";
 
-const ProductCard = ({ name, quantity, price, _id }) => {
+const ProductCard = ({ name, quantity, price, _id, deleteProduct}) => {
 
   const history = useHistory();
 
-  const routeChange = () =>{ 
-    let path = `/admin`; 
-    history.push(path);
-  }
+  
 
   const handleEditButton = (id) => {
     let path = `/admin/edit/${id}`;
     history.push(path);
-  }
+  };
+
+  
 
 
   return (
@@ -54,7 +54,7 @@ const ProductCard = ({ name, quantity, price, _id }) => {
                 <a onClick={() => handleEditButton(_id)} className="card-footer-item">
                   Edit
                 </a>
-                <a href="#" className="card-footer-item">
+                <a onClick={() => deleteProduct(_id)} className="card-footer-item">
                   Delete
                 </a>
               </>
