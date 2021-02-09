@@ -24,6 +24,9 @@ const ProductsSchema = new Schema({
   category: {
     type: String,
   },
+  totalAmount: {
+    type: Number
+  },
 });
 
 const Products = mongoose.model("Products", ProductsSchema);
