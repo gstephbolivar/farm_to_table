@@ -17,6 +17,7 @@ const useStyles = makeStyles({
 const AllProducts = () => {
   const classes = useStyles();
   const [products, setProducts] = useState([]);
+  const [categoryFilter, setCategoryFilter] = useState([]);
 
   // load all cards and store them with setCard
   useEffect(() => {
@@ -30,11 +31,17 @@ const AllProducts = () => {
       });
   }, []);
 
+  const filterProducts = (e) => {
+    const category = e.target.value;
+    console.log(category);
+    //setCategoryFilter();
+  };
+
   return (
     <>
       <Grid container className={classes.productContainer}>
         <Grid item xs>
-          <CategoriesCard />
+          <CategoriesCard onChange={filterProducts} />
         </Grid>
         {/* {card.map((products) => (
           <Grid key={card._id }item xs>
