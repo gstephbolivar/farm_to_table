@@ -115,7 +115,13 @@ app.post("/api/orders", (req, res) => {
     })
 })
 
-
+app.get("/api/orders", (req, res) => {
+  db.Order.find({}).populate("customer")
+  .populate({path:"LineItem", populate: {path: "product", select: "_id name"}})
+    .then(result => {
+      res.json(result);
+    })
+})
 
 //POST api route to create a user
 app.post("/api/users", ({ body }, res) => {
