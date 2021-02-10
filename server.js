@@ -104,8 +104,29 @@ app.post("/api/lineitems", (req, res) => {
   })
 }
 
+app.post("/api/orders", (req, res) => {
+  db.Order.create(req.body)
+    .then(order => {
+      db.Products.findOneAndUpdate
+      res.json(order);
+    })
+    .catch(err => {
+      res.json(err);
+    })
+})
 
 
+
+//POST api route to create a user
+app.post("/api/users", ({ body }, res) => {
+  db.User.create(body)
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
 
 
 // GET api route to return selected user
