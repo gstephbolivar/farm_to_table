@@ -81,6 +81,32 @@ app.put("/api/product/:id", (req, res) => {
     })
 })
 
+app.post("/api/lineitems", (req, res) => {
+  db.LineItem.insertMany(req.body)
+  .then(result => {
+      updateProductQuantity(result)
+      res.json(result);
+  })
+  .catch(err => {
+    res.json(err);
+  })
+})
+
+ function updateProductQuantity(result){
+   db.Products.find({}).then(async products => {
+    const ids = result.map(r => r.product.toString());
+    const lineItemProducts = products.filter(prod => {return ids.includes(prod._id.toString())});
+
+     await Promise.all(result.map(async (x) => {
+       let currentProduct = lineItemProducts.find(p => p._id.toString() === x.product.toString());
+        await db.Products.findOneAndUpdate({_id: x.product}, {quantity: currentProduct.quantity - x.quantity}, {new: true});
+    }))
+  })
+}
+
+
+
+
 
 // GET api route to return selected user
 app.get("/api/users", (req, res) => {
