@@ -71,16 +71,16 @@ app.get("/api/product/:id", (req, res) => {
     })
 })
 
-//POST api route to create a user
-app.post("/api/users", ({ body }, res) => {
-  db.User.create(body)
-    .then((result) => {
+app.put("/api/product/:id", (req, res) => {
+  db.Products.findOneAndUpdate({_id: req.params.id}, {quantity: req.body})
+    .then(result => {
       res.json(result);
     })
-    .catch((err) => {
-      res.json(err);
-    });
-});
+    .catch(err => {
+      re.json(err);
+    })
+})
+
 
 // GET api route to return selected user
 app.get("/api/users", (req, res) => {
