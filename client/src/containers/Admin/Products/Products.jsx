@@ -21,15 +21,13 @@ const Products = () => {
 //   };
 
   const handleModalState = (id) => {
-      console.log("above modal"+id);
     if(modal === "modal") { 
-        console.log(id);
-        setProductID(id);
         setModal("modal is-active");
-        API.getOneProduct(id).then((res) => {
-            console.log(res);
-            setProductToEdit(res.data);
-          });
+        setProductID(id);
+        // API.getOneProduct(id).then((res) => {
+        //     console.log(res);
+        //     setProductToEdit(res.data);
+        //   });
   } else {
     setModal("modal")
   }
@@ -122,22 +120,9 @@ const Products = () => {
       </section>
       <div>
           <div className={modal}>
-  <div className="modal-background"></div>
-  <div className="modal-card">
-    <header className="modal-card-head">
-      <p className="modal-card-title">Edit Product</p>
-      <button className="delete" aria-label="close"></button>
-    </header>
-    <section className="modal-card-body">
-    <EditProductModal {...productToEdit}   editProduct={handleModalState}/>
-    </section>
-    <footer className="modal-card-foot">
-      <button className="button is-success" onClick={handleModalState}>Save changes</button>
-      <button className="button" onClick={handleModalState}>Cancel</button>
-    </footer>
-  </div>
-</div>
-</div>
+    <EditProductModal handleModalState={handleModalState} loadProducts={loadProducts} id={productID}/>
+          </div>
+      </div>
 </div>
 
     );

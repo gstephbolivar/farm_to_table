@@ -97,6 +97,17 @@ app.post("/api/products", ({ body }, res) => {
 //       res.json(err);
 //     });
 // });
+//PUT route to update a product
+app.put("/api/products/:id", (req, res) => {
+  db.Products.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
 
 app.put("/api/products/:id", (req, res) => {
   db.Products.findOneAndUpdate({ _id: req.params.id }, { quantity: req.body })
@@ -161,16 +172,6 @@ app.get("/api/orders", (req, res) => {
     })
     .then((result) => {
       res.json(result);
-    });
-});
-//PUT route to update a product
-app.put("/api/products/:id", (req, res) => {
-  db.Products.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    .then((result) => {
-      res.json(result);
-    })
-    .catch((err) => {
-      res.json(err);
     });
 });
 
