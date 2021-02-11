@@ -42,7 +42,6 @@ const productType = [
 const AddProduct = () => {
   const [unitType, setUnitType] = useState("pounds");
   const [category, setCategory] = useState("fruit");
-  const [totalAmount, setTotalAmount] = useState(0);
   const [productObject, setProductObject] = useState({
     name: "",
     unitSize: 0,
@@ -51,6 +50,7 @@ const AddProduct = () => {
     category: "",
     unitType: "",
     description: "",
+    totalAmount: "",
   });
 
   const handleUnitChange = (event) => {
@@ -61,9 +61,6 @@ const AddProduct = () => {
     setCategory(event.target.value);
   };
 
-  const handleTotalAmountChange = (event) => {
-    setTotalAmount(event.target.value);
-  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -76,13 +73,13 @@ const AddProduct = () => {
       name: productObject.name,
       unitSize: productObject.unitSize,
       price: productObject.price,
-      quantity: totalAmount / productObject.unitSize,
+      quantity: productObject.totalAmount / productObject.unitSize,
       category: category,
       unitType: unitType,
       description: productObject.description,
+      totalAmount: productObject.totalAmount,
     })
       .then(() => {
-        setTotalAmount(0);
         setProductObject({
           name: "",
           unitSize: 0,
@@ -101,7 +98,7 @@ const AddProduct = () => {
       <form className="create-form">
         <div className="container has-text-centered">
           <div className="column is-half is-offset-one-quarter">
-            <label className="label">Upload Photo</label>
+            {/* <label className="label">Upload Photo</label>
             <label>Square, 1:1 format recommended.</label>
             <br />
             <div className="file has-name is-centered">
@@ -124,7 +121,7 @@ const AddProduct = () => {
                 </span>
                 <span className="file-name">No file chosen</span>
               </label>
-            </div>
+            </div> */}
             <br />
             <img
               title="Stock Image"
@@ -180,7 +177,7 @@ const AddProduct = () => {
 
             <div className="field">
               <label className="label">Description</label>
-              <div class="control">
+              <div className="control">
                 <textarea
                   className="textarea"
                   type="text"
@@ -200,16 +197,16 @@ const AddProduct = () => {
               {/* The total amount of the product */}
 
               <div className="field">
-                <label className="label">Total amount of units</label>
+                <label className="label">Total amount</label>
                 <div className="control">
                   <input
                     className="input"
                     required
                     id="totalAmount"
                     min="1"
-                    onChange={handleTotalAmountChange}
+                    onChange={handleInputChange}
                     name="totalAmount"
-                    value={totalAmount}
+                    value={productObject.totalAmount}
                     required
                     type="number"
                   />
@@ -245,7 +242,7 @@ const AddProduct = () => {
             {/* The size of which each unit will be sold (Example: you buy strawberries by the pound in most places, but costco sells them in 3 pound boxes. So a "unit" is either 1 pound or 3 pounds respectively.) */}
 
             <div className="field">
-              <label className="label">Units to Sell</label>
+              <label className="label">Unit Size to Sell</label>
               <div className="control">
                 <input
                   className="input"
@@ -265,7 +262,7 @@ const AddProduct = () => {
             <div className="field">
               <label className="label">Price</label>
               <div className="control has-icons-left">
-                <span class="icon is-small is-left">
+                <span className="icon is-small is-left">
                   $
                 </span>
                 <input
@@ -293,11 +290,11 @@ const AddProduct = () => {
                     required
                     className="input"
                     type="number"
-                    placeholder="Quantity*"
+                    placeholder="Total units (inventory)"
                     id="productName"
                     onChange={handleInputChange}
                     name="quantity"
-                    value={totalAmount / productObject.unitSize}
+                    value={productObject.totalAmount / productObject.unitSize}
                   />
                 </div>
               </div>

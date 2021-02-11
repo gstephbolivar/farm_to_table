@@ -1,10 +1,14 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
+import {useHistory} from "react-router-dom";
 import PropTypes from "prop-types";
 import QuantityDropdown from '../QuantityDropdown/QuantityDropdown';
 
-const ProductCard = ({ _id, name, price, quantity, handleAddToCart }) => {
+const ProductCard = ({_id, name, price, quantity, handleAddToCart, deleteProduct}) => {
+
+  const history = useHistory();
 
   const [lineItemState, setLineItemState] = useState({
+    name: name,
     product: _id,
     quantity: 0,
     price: price,
@@ -24,8 +28,18 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart }) => {
     return totalCost;
   }
 
+  const handleEditButton = (id) => {
+    let path = `/admin/edit/${id}`;
+    history.push(path);
+  };
+
   const handleAddClick = (e) => {
     e.preventDefault(); 
+
+
+    if(tempItem.quantity === 0){
+      return;
+    }
 
     let newQuantity = tempItem.quantity;
     let newCost = tempItem.totalCost;
@@ -48,7 +62,7 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart }) => {
   }
 
   return (
-    <div className="column is-4" id="column">
+    <div className="column is-4 has-text-centered" id="column">
       <div className="card">
         <div className="card-image">
           <figure className="image is-1by1">
@@ -67,10 +81,10 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart }) => {
             {/* only displays the buttons if the path is /admin */}
             {window.location.pathname === "/admin" && (
               <>
-                <a href="#" className="card-footer-item">
+                <a onClick={() => handleEditButton(_id)} className="card-footer-item">
                   Edit
                 </a>
-                <a href="#" className="card-footer-item">
+                <a onClick={() => deleteProduct(_id)} className="card-footer-item">
                   Delete
                 </a>
               </>

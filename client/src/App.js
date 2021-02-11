@@ -67,7 +67,7 @@ function App() {
           <Route path="/oneproduct" component={OneProduct} />
           <Route exact path="/admin" component={Products} />
           <Route exact path="/admin/add" component={AddProduct} />
-          <Route path="/admin/edit" component={EditProduct} />
+          <Route path="/admin/edit/:id" component={EditProduct} />
           <Route exact path="/" component={Home} />
         </Switch>
         <Footer />

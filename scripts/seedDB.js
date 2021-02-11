@@ -44,6 +44,27 @@ const productsSeed = [
     quantity: 10,
     category: "poultry",
   },
+  {
+    name: "Chicken",
+    unitSize: "pounds",
+    price: 4.99,
+    quantity: 10,
+    category: "poultry",
+  },
+  {
+    name: "Chicken",
+    unitSize: "pounds",
+    price: 4.99,
+    quantity: 10,
+    category: "poultry",
+  },
+  {
+    name: "Chicken",
+    unitSize: "pounds",
+    price: 4.99,
+    quantity: 10,
+    category: "poultry",
+  },
 ];
 
 // seed initial user data
