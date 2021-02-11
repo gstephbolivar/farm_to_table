@@ -13,32 +13,16 @@ const Products = () => {
     const [products, setProducts] = useState([]);
     const [categoryFilter, setCategoryFilter] = useState("");
     const [productToEdit, setProductToEdit] = useState({});
-    // const history = useHistory();
-
-//   const handleEditButton = (id) => {
-//     let path = `/admin/edit/${id}`;
-//     history.push(path);
-//   };
+    
 
   const handleModalState = (id) => {
+    setProductID(id);
     if(modal === "modal") { 
         setModal("modal is-active");
-        setProductID(id);
-        // API.getOneProduct(id).then((res) => {
-        //     console.log(res);
-        //     setProductToEdit(res.data);
-        //   });
   } else {
     setModal("modal")
   }
 };
-
-// const getEditProduct = (id) => {
-//     API.getOneProduct(id).then((res) => {
-//         console.log(res);
-//         setProductToEdit(res.data);
-//       });
-// }
 
 
       // load all cards and store them with setCard
