@@ -1,18 +1,11 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import QuantityDropdown from "../QuantityDropdown/QuantityDropdown";
 import API from "../../utils/API.js";
 
-const ProductCard = ({
-  _id,
-  name,
-  price,
-  quantity,
-  handleAddToCart,
-  deleteProduct,
-}) => {
-  const history = useHistory();
+const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts }) => {
+  // const history = useHistory();
 
   const [lineItemState, setLineItemState] = useState({
     name: name,
@@ -40,8 +33,8 @@ const ProductCard = ({
     // TODO: Open the modal
   };
 
-  const handleDeleteButton = (id) => {
-    API.deleteProduct(id)
+  const handleDeleteButton = () => {
+    API.deleteProduct(_id)
       .then((res) => loadProducts())
       .catch((err) => console.log(err));
   };
@@ -138,7 +131,7 @@ ProductCard.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   _id: PropTypes.string.isRequired,
-  loadProducts: PropTypes.func.isRequired,
+  // loadProducts: PropTypes.func.isRequired,
 };
 
 export default ProductCard;

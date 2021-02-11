@@ -14,7 +14,7 @@ const QuantityDropdown = (props) => {
       }
 
     return(
-        <div class="select is-rounded">
+        <div className="select is-rounded">
         <select name="quantity" onChange={handleQuantityChange} id="qtySelect" value={props.tempItem.quantity}>
           <option>Quantity</option>        
           <option>1</option>
