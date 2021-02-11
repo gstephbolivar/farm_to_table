@@ -2,12 +2,29 @@ import {useState, useEffect} from 'react';
 import ProductCard from "../../../components/ProductCard/ProductCard";
 import CategoriesCard from "../../../components/CategoriesCard/CategoriesCard";
 import API from "../../../utils/API";
+import {useHistory} from "react-router-dom"
+
 
 const Products = () => {
     
+    const [modal, setModal] = useState("modal");
     const [products, setProducts] = useState([]);
     const [categoryFilter, setCategoryFilter] = useState("");
 
+    const history = useHistory();
+
+  const handleEditButton = (id) => {
+    let path = `/admin/edit/${id}`;
+    history.push(path);
+  };
+
+  const handleModalState = () => {
+    if(modal === "modal") { 
+    setModal("modal is-active");
+  } else {
+    setModal("modal")
+  }
+};
 
 
       // load all cards and store them with setCard
@@ -85,16 +102,34 @@ const displayFilteredProducts = (category) => {
             <div className="column is-9">
               <div className="columns is-centered is-multiline">
                 {products.map((product) => (
-                  <ProductCard {...product} deleteProduct={handleDeleteButton} key={product._id}/>
+                  <ProductCard {...product} editProduct={handleModalState} deleteProduct={handleDeleteButton} key={product._id}/>
                 ))}
               </div>
             </div>
           </div>
         </div>
       </section>
-    </div>
+      <div>
+          <div className={modal}>
+  <div className="modal-background"></div>
+  <div className="modal-card">
+    <header className="modal-card-head">
+      <p className="modal-card-title">Modal title</p>
+      <button className="delete" aria-label="close"></button>
+    </header>
+    <section className="modal-card-body">
+    </section>
+    <footer className="modal-card-foot">
+      <button className="button is-success" onClick={handleModalState}>Save changes</button>
+      <button className="button" onClick={handleModalState}>Cancel</button>
+    </footer>
+  </div>
+</div>
+</div>
+</div>
 
     );
 };
+
 
 export default Products;

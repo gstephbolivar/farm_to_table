@@ -1,18 +1,18 @@
 import {useState} from "react";
 import PropTypes from "prop-types";
-import {useHistory} from "react-router-dom"
+// import {useHistory} from "react-router-dom"
 import API from "../../utils/API";
 
-const ProductCard = ({ name, quantity, price, _id, deleteProduct}) => {
+const ProductCard = ({ name, quantity, price, _id, deleteProduct, editProduct}) => {
 
-  const history = useHistory();
+  // const history = useHistory();
 
   
 
-  const handleEditButton = (id) => {
-    let path = `/admin/edit/${id}`;
-    history.push(path);
-  };
+  // const handleEditButton = (id) => {
+  //   let path = `/admin/edit/${id}`;
+  //   history.push(path);
+  // };
 
   
 
@@ -51,7 +51,7 @@ const ProductCard = ({ name, quantity, price, _id, deleteProduct}) => {
             {/* only displays the buttons if the path is /admin */}
             {window.location.pathname === "/admin" && (
               <>
-                <a onClick={() => handleEditButton(_id)} className="card-footer-item">
+                <a onClick={editProduct} className="card-footer-item">
                   Edit
                 </a>
                 <a onClick={() => deleteProduct(_id)} className="card-footer-item">
