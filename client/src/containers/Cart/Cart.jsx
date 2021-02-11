@@ -1,30 +1,37 @@
-import {useContext} from "react";
+import { useContext } from "react";
 import CartItem from "../../components/CartItem/CartItem";
-import Typography from "@material-ui/core/Typography";
+
 import Grid from "@material-ui/core/Grid";
-import { Button } from "@material-ui/core";
+
 import "./cart.css";
-import CartContext from '../../utils/CartContext';
-import API from '../../utils/API';
-import axios from 'axios';
+import CartContext from "../../utils/CartContext";
+import API from "../../utils/API";
 
 const Cart = () => {
-
-  const {userId, lineItems} = useContext(CartContext);
+  const { userId, lineItems } = useContext(CartContext);
 
   const handleCartSubmit = () => {
-      API.addLineItems(lineItems)
-      .then(res => {
-          API.placeOrder({customer: userId, LineItem: res.data.map(x => x._id)})
-            .then(() => {
-                alert("Order successfully placed");
-                localStorage.removeItem("lineItems");
-            })
-      })
-  }
+    API.addLineItems(lineItems).then((res) => {
+      API.placeOrder({
+        customer: userId,
+        LineItem: res.data.map((x) => x._id),
+      }).then(() => {
+        alert("Order successfully placed");
+        localStorage.removeItem("lineItems");
+      });
+    });
+  };
 
-  const itemSum = lineItems.length > 0 ? lineItems.reduce((accumulator, current) => accumulator + current.totalCost, 0, lineItems, 0) : 0;
-  const subTotal = Number(Math.round(itemSum +'e2') +'e-2');
+  const itemSum =
+    lineItems.length > 0
+      ? lineItems.reduce(
+          (accumulator, current) => accumulator + current.totalCost,
+          0,
+          lineItems,
+          0
+        )
+      : 0;
+  const subTotal = Number(Math.round(itemSum + "e2") + "e-2");
 
   return (
     <section className="section">
@@ -109,7 +116,9 @@ const Cart = () => {
                 style={{ marginLeft: "auto", marginTop: 40 }}
                 align="center"
               >
-                <button className="cart-submit" onClick={handleCartSubmit}>Reserve</button>
+                <button className="cart-submit" onClick={handleCartSubmit}>
+                  Reserve
+                </button>
               </Grid>
             </Grid>
           </>

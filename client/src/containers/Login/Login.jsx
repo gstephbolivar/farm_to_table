@@ -8,7 +8,6 @@ import {
   CardActionArea,
   Button,
   TextField,
-  InputAdornment,
 } from "@material-ui/core";
 import API from "../../utils/API";
 

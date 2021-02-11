@@ -1,7 +1,7 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import {IconButton, Toolbar, Typography, Button, AppBar} from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { Toolbar, Typography, Button, AppBar } from "@material-ui/core";
+
 import MenuDropdown from "../../components/MenuDropdown/MenuDropdown";
 
 const useStyles = makeStyles((theme) => ({
@@ -23,7 +23,7 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <MenuDropdown/>
+          <MenuDropdown />
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
