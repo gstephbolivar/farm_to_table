@@ -87,7 +87,7 @@ const EditProduct = () => {
         totalAmount: res.data.totalAmount,
       });
     });
-  }, []);
+  }, [id]);
 
   const handleUnitChange = (event) => {
     setUnitType(event.target.value);

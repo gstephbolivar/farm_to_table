@@ -6,7 +6,6 @@ import API from "../../utils/API";
 
 const AllProducts = (props) => {
   const [products, setProducts] = useState([]);
-  const [categoryFilter, setCategoryFilter] = useState("");
 
   // load all cards and store them with setCard
   useEffect(() => {
@@ -25,28 +24,23 @@ const AllProducts = (props) => {
   };
 
   // sets the category filter to state
-  const filterProducts = (e) => {
-    const category = e.target.name;
+  const filterProducts = (e, item) => {
+    const category = item;
+    // console.log(e);
+    console.log(item);
     if (category !== "All") {
       // filters the products displayed based on the category
       displayFilteredProducts(category);
-      console.log(category);
-      setCategoryFilter(category);
     }
     // if All category is chosen, resets the filter
     else loadProducts();
   };
 
   const displayFilteredProducts = (category) => {
-    API.getAllProducts()
+    // pass category to a route on the backend
+    API.getFilteredProducts(category.toLowerCase())
       .then((response) => {
-        const filteredProducts = response.data.filter(
-          (p) => p.category.toLowerCase() === category.toLowerCase()
-        );
-        console.log(categoryFilter);
-        console.log(response.data);
-        console.log(filteredProducts);
-        setProducts(filteredProducts);
+        setProducts(response.data);
       })
       .catch((err) => console.log(err));
   };
@@ -64,7 +58,12 @@ const AllProducts = (props) => {
             <div className="column is-9">
               <div className="columns is-centered is-multiline">
                 {products.map((product) => (
-                  <ProductCard {...product} key={product._id} handleAddToCart={props.handleAddToCart} totalQuantity={product.quantity}/>
+                  <ProductCard
+                    {...product}
+                    key={product._id}
+                    handleAddToCart={props.handleAddToCart}
+                    totalQuantity={product.quantity}
+                  />
                 ))}
               </div>
             </div>
