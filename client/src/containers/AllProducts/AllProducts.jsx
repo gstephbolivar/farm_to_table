@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-const AllProducts = () => {
+const AllProducts = (props) => {
   const classes = useStyles();
   const [products, setProducts] = useState([]);
 
@@ -43,7 +43,7 @@ const AllProducts = () => {
         ))} */}
         {products.map((product) => (
           <Grid item xs={3}>
-            <ProductCard {...product} key={product._id} />
+            <ProductCard {...product} key={product._id} handleAddToCart={props.handleAddToCart} totalQuantity={product.quantity}/>
           </Grid>
         ))}
       </Grid>
