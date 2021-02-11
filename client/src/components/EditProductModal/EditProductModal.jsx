@@ -152,7 +152,7 @@ const EditProductModal = (props) => {
                       id="selectCategory"
                       label="Select Type"
                       name="category"
-                      onChange={handleCategoryChange}
+                      onChange={handleInputChange}
                       value={productObject.category}
                     >
                       {productType.map((option) => (
@@ -233,7 +233,7 @@ const EditProductModal = (props) => {
                       name="unitType"
                       label="Select Unit Type"
                       value={productObject.unitType}
-                      onChange={handleUnitChange}
+                      onChange={handleInputChange}
                     >
                       {units.map((option) => (
                         <option key={option.value} value={option.value}>
