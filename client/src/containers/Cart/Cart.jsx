@@ -7,7 +7,7 @@ import "./cart.css";
 import CartContext from "../../utils/CartContext";
 import API from "../../utils/API";
 
-const Cart = () => {
+const Cart = (props) => {
   const { userId, lineItems } = useContext(CartContext);
 
   const handleCartSubmit = () => {
@@ -18,6 +18,7 @@ const Cart = () => {
       }).then(() => {
         alert("Order successfully placed");
         localStorage.removeItem("lineItems");
+        props.clearCart();
       });
     });
   };
