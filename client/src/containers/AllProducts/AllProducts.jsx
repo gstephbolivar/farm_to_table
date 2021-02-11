@@ -4,7 +4,7 @@ import CategoriesCard from "../../components/CategoriesCard/CategoriesCard";
 import axios from "axios";
 import API from "../../utils/API";
 
-const AllProducts = () => {
+const AllProducts = (props) => {
   const [products, setProducts] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState("");
 
@@ -64,7 +64,7 @@ const AllProducts = () => {
             <div className="column is-9">
               <div className="columns is-centered is-multiline">
                 {products.map((product) => (
-                  <ProductCard {...product} key={product._id} />
+                  <ProductCard {...product} key={product._id} handleAddToCart={props.handleAddToCart} totalQuantity={product.quantity}/>
                 ))}
               </div>
             </div>
