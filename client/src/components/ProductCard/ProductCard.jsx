@@ -110,13 +110,13 @@ const ProductCard = ({
                 {quantity === 0 ? (
                   <div className="card-footer-item">Out of Stock</div>
                 ) : (
-                  <a
+                  <button
                     href="#"
                     className="card-footer-item"
                     onClick={handleAddClick}
                   >
                     Add
-                  </a>
+                  </button>
                 )}
               </>
             )}
