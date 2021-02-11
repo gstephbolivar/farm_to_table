@@ -32,10 +32,10 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
   //   let path = `/admin/edit/${id}`;
   //   history.push(path);
   // };
-  const handleEditButton = (id) => {
-    console.log(id);
-    // TODO: Open the modal
-  };
+  // const handleEditButton = (id) => {
+  //   console.log(id);
+  //   // TODO: Open the modal
+  // };
 
   const handleDeleteButton = () => {
     API.deleteProduct(_id)
@@ -96,7 +96,7 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
             {window.location.pathname === "/admin" && (
               <>
                 <button
-                  onClick={editProduct}
+                  onClick={() => editProduct(_id)}
                   className="card-footer-item"
                 >
                   Edit

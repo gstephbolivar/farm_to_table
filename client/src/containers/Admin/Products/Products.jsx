@@ -2,29 +2,45 @@ import { useState, useEffect } from "react";
 import ProductCard from "../../../components/ProductCard/ProductCard";
 import CategoriesCard from "../../../components/CategoriesCard/CategoriesCard";
 import API from "../../../utils/API";
-import {useHistory} from "react-router-dom"
+// import {useHistory} from "react-router-dom";
+import EditProductModal from "../../../components/EditProductModal/EditProductModal";
 
 
 const Products = () => {
     
+    const [productID, setProductID] = useState("");
     const [modal, setModal] = useState("modal");
     const [products, setProducts] = useState([]);
     const [categoryFilter, setCategoryFilter] = useState("");
+    const [productToEdit, setProductToEdit] = useState({});
+    // const history = useHistory();
 
-    const history = useHistory();
+//   const handleEditButton = (id) => {
+//     let path = `/admin/edit/${id}`;
+//     history.push(path);
+//   };
 
-  const handleEditButton = (id) => {
-    let path = `/admin/edit/${id}`;
-    history.push(path);
-  };
-
-  const handleModalState = () => {
+  const handleModalState = (id) => {
+      console.log("above modal"+id);
     if(modal === "modal") { 
-    setModal("modal is-active");
+        console.log(id);
+        setProductID(id);
+        setModal("modal is-active");
+        API.getOneProduct(id).then((res) => {
+            console.log(res);
+            setProductToEdit(res.data);
+          });
   } else {
     setModal("modal")
   }
 };
+
+// const getEditProduct = (id) => {
+//     API.getOneProduct(id).then((res) => {
+//         console.log(res);
+//         setProductToEdit(res.data);
+//       });
+// }
 
 
       // load all cards and store them with setCard
@@ -36,6 +52,7 @@ const Products = () => {
   const loadProducts = () => {
     API.getProduct()
       .then((response) => {
+          console.log(response.data);
         setProducts(response.data);
       })
       .catch((err) => {
@@ -108,10 +125,11 @@ const Products = () => {
   <div className="modal-background"></div>
   <div className="modal-card">
     <header className="modal-card-head">
-      <p className="modal-card-title">Modal title</p>
+      <p className="modal-card-title">Edit Product</p>
       <button className="delete" aria-label="close"></button>
     </header>
     <section className="modal-card-body">
+    <EditProductModal {...productToEdit}   editProduct={handleModalState}/>
     </section>
     <footer className="modal-card-foot">
       <button className="button is-success" onClick={handleModalState}>Save changes</button>
