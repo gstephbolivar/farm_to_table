@@ -1,7 +1,52 @@
-import React from "react";
+import {useEffect, useState} from "react";
 import PropTypes from "prop-types";
+import QuantityDropdown from '../QuantityDropdown/QuantityDropdown';
 
-const ProductCard = ({ name, quantity, price }) => {
+const ProductCard = ({ _id, name, price, quantity, handleAddToCart }) => {
+
+  const [lineItemState, setLineItemState] = useState({
+    product: _id,
+    quantity: 0,
+    price: price,
+    totalCost: 0,
+  })
+
+  const [tempItem, setTempItem] = useState({
+    quantity: 0,
+    price: price,
+    totalCost: 0
+  });
+
+  const calculateCost = (qty) => {
+    const price = tempItem.price;
+    const cost = price * qty;
+    const totalCost = Number(Math.round(cost +'e2') +'e-2')
+    return totalCost;
+  }
+
+  const handleAddClick = (e) => {
+    e.preventDefault(); 
+
+    let newQuantity = tempItem.quantity;
+    let newCost = tempItem.totalCost;
+  
+  
+    if(quantity < tempItem.quantity)
+    {
+      newQuantity = quantity;
+      newCost = calculateCost(newQuantity);
+      alert(`We are sorry but there are only ${quantity} left in stock.`)
+      setTempItem({...tempItem, quantity: newQuantity, totalCost: newCost})
+      return;
+    
+    }
+
+    const lineItem = {...lineItemState, quantity: newQuantity, totalCost: newCost}
+
+    setLineItemState(lineItem);
+    handleAddToCart(lineItem);
+  }
+
   return (
     <div className="column is-4" id="column">
       <div className="card">
@@ -14,21 +59,7 @@ const ProductCard = ({ name, quantity, price }) => {
           <div className="media">
             <div className="media-content">
               <p className="title is-4">{name}</p>
-              <div class="select is-rounded">
-                <select>
-                  <option>Quantity</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                  <option>9</option>
-                  <option>10</option>
-                </select>
-              </div>
+              <QuantityDropdown setTempItem = {setTempItem} tempItem={tempItem} calculateCost={calculateCost}/>
               <p className="subtitle is-6">Price: {price}/unit</p>
             </div>
           </div>
@@ -43,12 +74,18 @@ const ProductCard = ({ name, quantity, price }) => {
                   Delete
                 </a>
               </>
-            )}
+            )} 
             {window.location.pathname === "/allproducts" && (
               <>
-                <a href="#" className="card-footer-item">
-                  Add
+              {quantity === 0 ? 
+                <div  className="card-footer-item">
+                Out of Stock
+                </div>:  
+                <a href="#" className="card-footer-item" onClick={handleAddClick}>
+                    Add
                 </a>
+              }
+               
               </>
             )}
           </footer>
