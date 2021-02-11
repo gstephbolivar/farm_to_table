@@ -6,11 +6,6 @@ export default {
     return axios.get("/api/products");
   },
 
-  // Get All Products
-  getAllProducts: () => {
-    return axios.get("/api/products");
-  },
-
   // product routes
   addProduct: (product) => {
     return axios.post("/api/products", product);
@@ -31,14 +26,6 @@ export default {
   // User routes
   addUser: (user) => {
     return axios.post("/api/users", user);
-  },
-
-  getProduct: (prodId) => {
-    return axios.get("/api/product", {
-      params: {
-        id: prodId
-      }
-    })
   },
 
   addLineItems: (lineItems) => {
