@@ -29,7 +29,9 @@ const CategoriesCard = ({ onClick }) => {
           key={key}
           value={item.listText}
           name={item.listText}
-          onClick={onClick}
+          onClick={(e) => {
+            onClick = (e, item.listText);
+          }}
         >
           {/* <span className="panel-icon">insert icon here</span> */}
           {item.listText}
