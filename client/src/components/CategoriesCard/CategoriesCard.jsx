@@ -30,7 +30,7 @@ const CategoriesCard = ({ onClick }) => {
           value={item.listText}
           name={item.listText}
           onClick={(e) => {
-            onClick = (e, item.listText);
+            onClick(e, item.listText);
           }}
         >
           {/* <span className="panel-icon">insert icon here</span> */}

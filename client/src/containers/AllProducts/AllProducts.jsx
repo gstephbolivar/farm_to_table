@@ -24,8 +24,10 @@ const AllProducts = (props) => {
   };
 
   // sets the category filter to state
-  const filterProducts = (e) => {
-    const category = e.target.name;
+  const filterProducts = (e, item) => {
+    const category = item;
+    // console.log(e);
+    console.log(item);
     if (category !== "All") {
       // filters the products displayed based on the category
       displayFilteredProducts(category);
