@@ -12,19 +12,57 @@ import EditProduct from "./containers/Admin/EditProduct/EditProduct";
 import CssBaseLine from "@material-ui/core/CssBaseline";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import Footer from "./components/Footer/Footer";
+import {useState} from 'react';
+import CartContext from './utils/CartContext';
+
 
 function App() {
+
+  const [cartState, setCartState] = useState({
+    userId: localStorage.getItem("userId") ? localStorage.getItem("userId") : "",
+    lineItems: localStorage.getItem("lineItems") ? JSON.parse(localStorage.getItem("lineItems")) : []
+  })
+
+  const setUserId = (id) => {
+    const localId = localStorage.getItem("userId");
+
+    if(localId && localId !== cartState.userId)
+    {
+      localStorage.setItem("userId", id);
+      setCartState({...cartState, userId: id});
+    }else{
+      localStorage.setItem("userId", id);
+      setCartState({...cartState, userId: id})
+      
+    }
+  
+  }
+
+  const handleAddToCart = (item) => {
+    let tempItems = cartState.lineItems;
+    
+    if(tempItems.map(x => x.product.toString()).includes(item.product.toString())){
+      const existingLineItem = tempItems.find(x => x.product.toString() === item.product.toString());
+      existingLineItem.quantity += item.quantity;
+    }else{
+      tempItems.push(item);
+    }
+    localStorage.setItem("lineItems", JSON.stringify(tempItems));
+    setCartState({...cartState, lineItems: tempItems});
+  }
+
   return (
     <>
       <CssBaseLine />
       <BrowserRouter>
-        <NavBar />
+      <CartContext.Provider value={cartState}>
+      <NavBar />
         <Switch>
           <Route path="/home" component={Home} />
-          <Route path="/allproducts" component={AllProducts} />
+          <Route path="/allproducts" render={(props) => <AllProducts {...props} handleAddToCart={handleAddToCart}/>} />
           <Route path="/cart" component={Cart} />
           <Route path="/confirmation" component={Confirmation} />
-          <Route path="/login" component={Login} />
+          <Route path="/login" render={(props) => <Login {...props} setUserId={setUserId}/>} />
           <Route path="/signup" component={SignUp} />
           <Route path="/oneproduct" component={OneProduct} />
           <Route exact path="/admin" component={Products} />
@@ -33,6 +71,7 @@ function App() {
           <Route exact path="/" component={Home} />
         </Switch>
         <Footer />
+      </CartContext.Provider>     
       </BrowserRouter>
     </>
   );

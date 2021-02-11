@@ -1,49 +1,93 @@
-import {useState} from "react";
+import { useState } from "react";
+// import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
-// import {useHistory} from "react-router-dom"
-import API from "../../utils/API";
+import QuantityDropdown from "../QuantityDropdown/QuantityDropdown";
+import API from "../../utils/API.js";
 
-const ProductCard = ({ name, quantity, price, _id, deleteProduct, editProduct}) => {
-
+const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct }) => {
   // const history = useHistory();
 
-  
+  const [lineItemState, setLineItemState] = useState({
+    name: name,
+    product: _id,
+    quantity: 0,
+    price: price,
+    totalCost: 0,
+  });
+
+  const [tempItem, setTempItem] = useState({
+    quantity: 0,
+    price: price,
+    totalCost: 0,
+  });
+
+  const calculateCost = (qty) => {
+    const price = tempItem.price;
+    const cost = price * qty;
+    const totalCost = Number(Math.round(cost + "e2") + "e-2");
+    return totalCost;
+  };
 
   // const handleEditButton = (id) => {
   //   let path = `/admin/edit/${id}`;
   //   history.push(path);
   // };
+  const handleEditButton = (id) => {
+    console.log(id);
+    // TODO: Open the modal
+  };
 
-  
+  const handleDeleteButton = () => {
+    API.deleteProduct(_id)
+      .then((res) => loadProducts())
+      .catch((err) => console.log(err));
+  };
 
+  const handleAddClick = (e) => {
+    e.preventDefault();
+
+    if (tempItem.quantity === 0) {
+      return;
+    }
+
+    let newQuantity = tempItem.quantity;
+    let newCost = tempItem.totalCost;
+
+    if (quantity < tempItem.quantity) {
+      newQuantity = quantity;
+      newCost = calculateCost(newQuantity);
+      alert(`We are sorry but there are only ${quantity} left in stock.`);
+      setTempItem({ ...tempItem, quantity: newQuantity, totalCost: newCost });
+      return;
+    }
+
+    const lineItem = {
+      ...lineItemState,
+      quantity: newQuantity,
+      totalCost: newCost,
+    };
+
+    setLineItemState(lineItem);
+    handleAddToCart(lineItem);
+  };
 
   return (
     <div className="column is-4 has-text-centered" id="column">
       <div className="card">
         <div className="card-image">
           <figure className="image is-1by1">
-            <img src="https://placedog.net/300/300" alt="Placeholder image" />
+            <img src="https://placedog.net/300/300" alt="Placeholder" />
           </figure>
         </div>
         <div className="card-content">
           <div className="media">
             <div className="media-content">
               <p className="title is-4">{name}</p>
-              <div class="select is-rounded">
-                <select>
-                  <option>Quantity</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                  <option>9</option>
-                  <option>10</option>
-                </select>
-              </div>
+              <QuantityDropdown
+                setTempItem={setTempItem}
+                tempItem={tempItem}
+                calculateCost={calculateCost}
+              />
               <p className="subtitle is-6">Price: {price}/unit</p>
             </div>
           </div>
@@ -51,19 +95,33 @@ const ProductCard = ({ name, quantity, price, _id, deleteProduct, editProduct}) 
             {/* only displays the buttons if the path is /admin */}
             {window.location.pathname === "/admin" && (
               <>
-                <a onClick={editProduct} className="card-footer-item">
+                <button
+                  onClick={editProduct}
+                  className="card-footer-item"
+                >
                   Edit
-                </a>
-                <a onClick={() => deleteProduct(_id)} className="card-footer-item">
+                </button>
+                <button
+                  onClick={handleDeleteButton}
+                  className="card-footer-item"
+                >
                   Delete
-                </a>
+                </button>
               </>
             )}
             {window.location.pathname === "/allproducts" && (
               <>
-                <a href="#" className="card-footer-item">
-                  Add
-                </a>
+                {quantity === 0 ? (
+                  <div className="card-footer-item">Out of Stock</div>
+                ) : (
+                  <button
+                    href="#"
+                    className="card-footer-item"
+                    onClick={handleAddClick}
+                  >
+                    Add
+                  </button>
+                )}
               </>
             )}
           </footer>
@@ -77,6 +135,7 @@ ProductCard.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   _id: PropTypes.string.isRequired,
+  // loadProducts: PropTypes.func.isRequired,
 };
 
 export default ProductCard;

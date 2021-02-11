@@ -61,7 +61,6 @@ const AddProduct = () => {
     setCategory(event.target.value);
   };
 
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setProductObject({ ...productObject, [name]: value });
@@ -207,7 +206,6 @@ const AddProduct = () => {
                     onChange={handleInputChange}
                     name="totalAmount"
                     value={productObject.totalAmount}
-                    required
                     type="number"
                   />
                 </div>
@@ -238,66 +236,61 @@ const AddProduct = () => {
             </div>
 
             <div className="dropdown">
+              {/* The size of which each unit will be sold (Example: you buy strawberries by the pound in most places, but costco sells them in 3 pound boxes. So a "unit" is either 1 pound or 3 pounds respectively.) */}
 
-            {/* The size of which each unit will be sold (Example: you buy strawberries by the pound in most places, but costco sells them in 3 pound boxes. So a "unit" is either 1 pound or 3 pounds respectively.) */}
-
-            <div className="field">
-              <label className="label">Unit Size to Sell</label>
-              <div className="control">
-                <input
-                  className="input"
-                  required
-                  id="unitSize"
-                  min="1"
-                  onChange={handleInputChange}
-                  name="unitSize"
-                  value={productObject.unitSize}
-                  required
-                  type="number"
-                />
-              </div>
-            </div>
-
-            {/* the price at which each unit is sold per unit */}
-            <div className="field">
-              <label className="label">Price</label>
-              <div className="control has-icons-left">
-                <span className="icon is-small is-left">
-                  $
-                </span>
-                <input
-                  className="input"
-                  required
-                  id="productPrice"
-                  onChange={handleInputChange}
-                  name="price"
-                  value={productObject.price}
-                  data-type="currency"
-                  required
-                  type="number"
-                  step="0.01"
-                />
-              </div>
-            </div>
-            </div>
-    
-            {/* This is the total number of "units" that are available to be sold. It is calculated for you as you enter the total amount of each product and the unit size to sell by. */}
- 
-            <div className="field">
+              <div className="field">
+                <label className="label">Unit Size to Sell</label>
                 <div className="control">
                   <input
-                    disabled
-                    required
                     className="input"
-                    type="number"
-                    placeholder="Total units (inventory)"
-                    id="productName"
+                    id="unitSize"
+                    min="1"
                     onChange={handleInputChange}
-                    name="quantity"
-                    value={productObject.totalAmount / productObject.unitSize}
+                    name="unitSize"
+                    value={productObject.unitSize}
+                    required
+                    type="number"
                   />
                 </div>
               </div>
+
+              {/* the price at which each unit is sold per unit */}
+              <div className="field">
+                <label className="label">Price</label>
+                <div className="control has-icons-left">
+                  <span className="icon is-small is-left">$</span>
+                  <input
+                    className="input"
+                    id="productPrice"
+                    onChange={handleInputChange}
+                    name="price"
+                    value={productObject.price}
+                    data-type="currency"
+                    required
+                    type="number"
+                    step="0.01"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* This is the total number of "units" that are available to be sold. It is calculated for you as you enter the total amount of each product and the unit size to sell by. */}
+
+            <div className="field">
+              <div className="control">
+                <input
+                  disabled
+                  required
+                  className="input"
+                  type="number"
+                  placeholder="Total units (inventory)"
+                  id="productName"
+                  onChange={handleInputChange}
+                  name="quantity"
+                  value={productObject.totalAmount / productObject.unitSize}
+                />
+              </div>
+            </div>
             <div className="field is-grouped is-grouped-centered">
               <p className="control">
                 <button
