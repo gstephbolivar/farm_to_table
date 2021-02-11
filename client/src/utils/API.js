@@ -28,6 +28,13 @@ export default {
     return axios.post("/api/users", user);
   },
 
+  addLineItems: (lineItems) => {
+    return axios.post("/api/lineItems", lineItems)
+  },
+
+  placeOrder: (order) => {
+     return axios.post("/api/orders", order)
+  },
   // used for checking users in database
   checkUser: (user) => {
     //console.log(user);

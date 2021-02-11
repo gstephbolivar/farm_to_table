@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import API from "../../utils/API";
 
-const Login = () => {
+const Login = (props) => {
   const history = useHistory();
 
   const routeChange = (path) => {
@@ -45,8 +45,9 @@ const Login = () => {
           user.data.username === loginObject.username &&
           user.data.password === loginObject.password
         ) {
+          props.setUserId(user.data._id);
           alert("Successfully Logged in!");
-
+          
           // changes route to the admin products page
           routeChange("/admin");
         }

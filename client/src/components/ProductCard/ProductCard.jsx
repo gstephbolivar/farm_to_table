@@ -1,12 +1,70 @@
-import PropTypes from "prop-types";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import PropTypes from "prop-types";
+import QuantityDropdown from "../QuantityDropdown/QuantityDropdown";
 
-const ProductCard = ({ name, quantity, price, _id, deleteProduct }) => {
+const ProductCard = ({
+  _id,
+  name,
+  price,
+  quantity,
+  handleAddToCart,
+  deleteProduct,
+}) => {
   const history = useHistory();
+
+  const [lineItemState, setLineItemState] = useState({
+    name: name,
+    product: _id,
+    quantity: 0,
+    price: price,
+    totalCost: 0,
+  });
+
+  const [tempItem, setTempItem] = useState({
+    quantity: 0,
+    price: price,
+    totalCost: 0,
+  });
+
+  const calculateCost = (qty) => {
+    const price = tempItem.price;
+    const cost = price * qty;
+    const totalCost = Number(Math.round(cost + "e2") + "e-2");
+    return totalCost;
+  };
 
   const handleEditButton = (id) => {
     let path = `/admin/edit/${id}`;
     history.push(path);
+  };
+
+  const handleAddClick = (e) => {
+    e.preventDefault();
+
+    if (tempItem.quantity === 0) {
+      return;
+    }
+
+    let newQuantity = tempItem.quantity;
+    let newCost = tempItem.totalCost;
+
+    if (quantity < tempItem.quantity) {
+      newQuantity = quantity;
+      newCost = calculateCost(newQuantity);
+      alert(`We are sorry but there are only ${quantity} left in stock.`);
+      setTempItem({ ...tempItem, quantity: newQuantity, totalCost: newCost });
+      return;
+    }
+
+    const lineItem = {
+      ...lineItemState,
+      quantity: newQuantity,
+      totalCost: newCost,
+    };
+
+    setLineItemState(lineItem);
+    handleAddToCart(lineItem);
   };
 
   return (
@@ -21,21 +79,11 @@ const ProductCard = ({ name, quantity, price, _id, deleteProduct }) => {
           <div className="media">
             <div className="media-content">
               <p className="title is-4">{name}</p>
-              <div class="select is-rounded">
-                <select>
-                  <option>Quantity</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                  <option>9</option>
-                  <option>10</option>
-                </select>
-              </div>
+              <QuantityDropdown
+                setTempItem={setTempItem}
+                tempItem={tempItem}
+                calculateCost={calculateCost}
+              />
               <p className="subtitle is-6">Price: {price}/unit</p>
             </div>
           </div>
@@ -59,9 +107,17 @@ const ProductCard = ({ name, quantity, price, _id, deleteProduct }) => {
             )}
             {window.location.pathname === "/allproducts" && (
               <>
-                <button href="#" className="card-footer-item">
-                  Add
-                </button>
+                {quantity === 0 ? (
+                  <div className="card-footer-item">Out of Stock</div>
+                ) : (
+                  <a
+                    href="#"
+                    className="card-footer-item"
+                    onClick={handleAddClick}
+                  >
+                    Add
+                  </a>
+                )}
               </>
             )}
           </footer>
