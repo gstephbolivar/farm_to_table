@@ -8,11 +8,10 @@ import {
   CardActionArea,
   Button,
   TextField,
-  InputAdornment,
 } from "@material-ui/core";
 import API from "../../utils/API";
 
-const Login = () => {
+const Login = ({ setToken }) => {
   const history = useHistory();
 
   const routeChange = (path) => {
@@ -33,30 +32,30 @@ const Login = () => {
     event.preventDefault();
 
     // checks if username and password match in database
-    API.checkUser(loginObject)
-      .then((user) => {
-        //console.log(loginObject);
-        //console.log(user);
+    // API.checkUser(loginObject)
+    //   .then((user) => {
+    //     //console.log(loginObject);
+    //     //console.log(user);
 
-        // checks if user has entered login information
-        if (!loginObject.username || !loginObject.password) {
-          alert("Please enter a username and password");
-        } // checks that login matches database user
-        else if (
-          user.data.username === loginObject.username &&
-          user.data.password === loginObject.password
-        ) {
-          alert("Successfully Logged in!");
+    //     // checks if user has entered login information
+    //     if (!loginObject.username || !loginObject.password) {
+    //       alert("Please enter a username and password");
+    //     } // checks that login matches database user
+    //     else if (
+    //       user.data.username === loginObject.username &&
+    //       user.data.password === loginObject.password
+    //     ) {
+    //       alert("Successfully Logged in!");
 
-          // changes route to the admin products page
-          routeChange("/admin");
-        }
-      })
-      .catch((err) => {
-        // potentially change this to a modal where user can click to sign up or just re-enter login info
-        console.log(err);
-        alert("Incorrect password or username entered!");
-      });
+    //       // changes route to the admin products page
+    //       routeChange("/admin");
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     // potentially change this to a modal where user can click to sign up or just re-enter login info
+    //     console.log(err);
+    //     alert("Incorrect password or username entered!");
+    //   });
   };
 
   return (

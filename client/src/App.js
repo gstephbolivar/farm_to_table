@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React, { useState } from "react";
 import Home from "./containers/Home/Home.jsx";
 import AllProducts from "./containers/AllProducts/AllProducts.jsx";
 import Cart from "./containers/Cart/Cart.jsx";
@@ -14,6 +15,8 @@ import NavBar from "./components/NavBar/NavBar.jsx";
 import Footer from "./components/Footer/Footer";
 
 function App() {
+  const [token, setToken] = useState("");
+
   return (
     <>
       <CssBaseLine />
@@ -24,7 +27,10 @@ function App() {
           <Route path="/allproducts" component={AllProducts} />
           <Route path="/cart" component={Cart} />
           <Route path="/confirmation" component={Confirmation} />
-          <Route path="/login" component={Login} />
+          <Route
+            path="/login"
+            component={(props) => <Login {...props} setToken={setToken} />}
+          />
           <Route path="/signup" component={SignUp} />
           <Route path="/oneproduct" component={OneProduct} />
           <Route exact path="/admin" component={Products} />
