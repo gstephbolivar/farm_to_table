@@ -23,7 +23,8 @@ const Cart = () => {
       })
   }
 
-  const subTotal = lineItems.length > 0 ? lineItems.reduce((accumulator, current) => accumulator + current.totalCost, 0, lineItems, 0) : 0;
+  const itemSum = lineItems.length > 0 ? lineItems.reduce((accumulator, current) => accumulator + current.totalCost, 0, lineItems, 0) : 0;
+  const subTotal = Number(Math.round(itemSum +'e2') +'e-2');
 
   return (
     <section className="section">
@@ -76,7 +77,7 @@ const Cart = () => {
                   </thead>
                   <tbody>
                     {lineItems.map((item, index) => (
-                      <CartItem {...item} />
+                      <CartItem {...item} img="https://placedog.net/75/75" />
                     ))}
                   </tbody>
                 </table>
