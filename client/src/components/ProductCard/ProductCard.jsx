@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import QuantityDropdown from "../QuantityDropdown/QuantityDropdown";
+import API from "../../utils/API.js";
 
 const ProductCard = ({
   _id,
@@ -35,8 +36,14 @@ const ProductCard = ({
   };
 
   const handleEditButton = (id) => {
-    let path = `/admin/edit/${id}`;
-    history.push(path);
+    console.log(id);
+    // TODO: Open the modal
+  };
+
+  const handleDeleteButton = (id) => {
+    API.deleteProduct(id)
+      .then((res) => loadProducts())
+      .catch((err) => console.log(err));
   };
 
   const handleAddClick = (e) => {
@@ -98,7 +105,7 @@ const ProductCard = ({
                   Edit
                 </button>
                 <button
-                  onClick={() => deleteProduct(_id)}
+                  onClick={handleDeleteButton}
                   className="card-footer-item"
                 >
                   Delete
@@ -131,6 +138,7 @@ ProductCard.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   _id: PropTypes.string.isRequired,
+  loadProducts: PropTypes.func.isRequired,
 };
 
 export default ProductCard;
