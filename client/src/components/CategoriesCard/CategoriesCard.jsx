@@ -24,7 +24,7 @@ const CategoriesCard = ({ onClick }) => {
     <div className="panel">
       <p className="panel-heading">Categories</p>
       {menuItems.map((item, key) => (
-        <a
+        <button
           className="panel-block"
           key={key}
           value={item.listText}
@@ -33,7 +33,7 @@ const CategoriesCard = ({ onClick }) => {
         >
           {/* <span className="panel-icon">insert icon here</span> */}
           {item.listText}
-        </a>
+        </button>
       ))}
     </div>
   );

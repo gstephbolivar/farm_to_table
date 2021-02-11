@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import CategoriesCard from "../../components/CategoriesCard/CategoriesCard";
-import axios from "axios";
+
 import API from "../../utils/API";
 
 const AllProducts = () => {
@@ -54,12 +54,12 @@ const AllProducts = () => {
   return (
     <div>
       <section className="section">
-      <h3 className="title has-text-centered">Headline Text (if needed)</h3>
+        <h3 className="title has-text-centered">Headline Text (if needed)</h3>
 
         <div className="container">
           <div className="columns">
             <div className="column">
-                <CategoriesCard onClick={filterProducts} />
+              <CategoriesCard onClick={filterProducts} />
             </div>
             <div className="column is-9">
               <div className="columns is-centered is-multiline">

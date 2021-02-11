@@ -1,8 +1,8 @@
 import React from "react";
 import CartItem from "../../components/CartItem/CartItem";
-import Typography from "@material-ui/core/Typography";
+
 import Grid from "@material-ui/core/Grid";
-import { Button } from "@material-ui/core";
+
 import "./cart.css";
 
 const Cart = () => {

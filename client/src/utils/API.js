@@ -6,11 +6,6 @@ export default {
     return axios.get("/api/products");
   },
 
-  // Get All Products
-  getAllProducts: () => {
-    return axios.get("/api/products");
-  },
-
   // product routes
   addProduct: (product) => {
     return axios.post("/api/products", product);

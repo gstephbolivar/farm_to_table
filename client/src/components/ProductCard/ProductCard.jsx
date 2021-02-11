@@ -1,28 +1,20 @@
-import {useState} from "react";
 import PropTypes from "prop-types";
-import {useHistory} from "react-router-dom"
-import API from "../../utils/API";
+import { useHistory } from "react-router-dom";
 
-const ProductCard = ({ name, quantity, price, _id, deleteProduct}) => {
-
+const ProductCard = ({ name, quantity, price, _id, deleteProduct }) => {
   const history = useHistory();
-
-  
 
   const handleEditButton = (id) => {
     let path = `/admin/edit/${id}`;
     history.push(path);
   };
 
-  
-
-
   return (
     <div className="column is-4 has-text-centered" id="column">
       <div className="card">
         <div className="card-image">
           <figure className="image is-1by1">
-            <img src="https://placedog.net/300/300" alt="Placeholder image" />
+            <img src="https://placedog.net/300/300" alt="Placeholder" />
           </figure>
         </div>
         <div className="card-content">
@@ -51,19 +43,25 @@ const ProductCard = ({ name, quantity, price, _id, deleteProduct}) => {
             {/* only displays the buttons if the path is /admin */}
             {window.location.pathname === "/admin" && (
               <>
-                <a onClick={() => handleEditButton(_id)} className="card-footer-item">
+                <button
+                  onClick={() => handleEditButton(_id)}
+                  className="card-footer-item"
+                >
                   Edit
-                </a>
-                <a onClick={() => deleteProduct(_id)} className="card-footer-item">
+                </button>
+                <button
+                  onClick={() => deleteProduct(_id)}
+                  className="card-footer-item"
+                >
                   Delete
-                </a>
+                </button>
               </>
             )}
             {window.location.pathname === "/allproducts" && (
               <>
-                <a href="#" className="card-footer-item">
+                <button href="#" className="card-footer-item">
                   Add
-                </a>
+                </button>
               </>
             )}
           </footer>
