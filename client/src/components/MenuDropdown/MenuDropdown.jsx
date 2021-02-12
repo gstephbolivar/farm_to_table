@@ -90,22 +90,6 @@ export default function DropDownMenu() {
             Admin-Products
           </NavLink>
         </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <NavLink
-            to="/admin/add"
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            Admin-Add-Products
-          </NavLink>
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <NavLink
-            to="/admin/edit"
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            Admin-Edit-Products
-          </NavLink>
-        </MenuItem>
 
         {/* Uncomment and set path and menu name as needed */}
         {/* <MenuItem onClick={handleClose}><NavLink to="/allproducts" style={{ textDecoration: 'none', color: "black" }}>Products</NavLink></MenuItem>
