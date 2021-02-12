@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import QuantityDropdown from "../QuantityDropdown/QuantityDropdown";
 import API from "../../utils/API.js";
 
-const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct }) => {
+const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct, unitSize, unitType }) => {
   // const history = useHistory();
 
   const [lineItemState, setLineItemState] = useState({
@@ -88,7 +88,7 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
                 tempItem={tempItem}
                 calculateCost={calculateCost}
               />
-              <p className="subtitle is-6">Price: {price}/unit</p>
+              <p className="subtitle is-6">${price} per {unitSize}-{unitType}</p>
             </div>
           </div>
           <footer className="card-footer">
