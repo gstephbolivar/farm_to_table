@@ -38,6 +38,17 @@ app.get("/api/config", (req, res) => {
   });
 });
 
+//GET api route to return a product
+app.get("/api/products/:id", (req, res) => {
+  db.Products.findById(req.params.id)
+    .then((product) => {
+      res.json(product);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
 //GET api route to return all products
 app.get("/api/products", (req, res) => {
   db.Products.find({})
@@ -61,16 +72,7 @@ app.get("/api/products/:category", (req, res) => {
     });
 });
 
-//GET api route to return a product
-app.get("/api/products/:id", (req, res) => {
-  db.Products.findById({ _id: req.params.id })
-    .then((product) => {
-      res.json(product);
-    })
-    .catch((err) => {
-      res.json(err);
-    });
-});
+
 
 //POST api route to create a product
 app.post("/api/products", ({ body }, res) => {
@@ -83,9 +85,21 @@ app.post("/api/products", ({ body }, res) => {
     });
 });
 
-//GET api route to get a product by id
-app.get("/api/product/:id", (req, res) => {
-  db.Products.findOne({ _id: req.params.id })
+// GET api route to get a product by id
+// app.get("/api/products/:id", (req, res) => {
+//   console.log(req.params.id);
+//   db.Products.findOne({ _id: req.params.id })
+//     .then((result) => {
+//       console.log(result);
+//       res.json(result);
+//     })
+//     .catch((err) => {
+//       res.json(err);
+//     });
+// });
+//PUT route to update a product
+app.put("/api/products/:id", (req, res) => {
+  db.Products.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then((result) => {
       res.json(result);
     })
@@ -94,7 +108,8 @@ app.get("/api/product/:id", (req, res) => {
     });
 });
 
-app.put("/api/product/:id", (req, res) => {
+
+app.put("/api/products/:id", (req, res) => {
   db.Products.findOneAndUpdate({ _id: req.params.id }, { quantity: req.body })
     .then((result) => {
       res.json(result);
@@ -157,16 +172,6 @@ app.get("/api/orders", (req, res) => {
     })
     .then((result) => {
       res.json(result);
-    });
-});
-//PUT route to update a product
-app.put("/api/products/:id", (req, res) => {
-  db.Products.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    .then((result) => {
-      res.json(result);
-    })
-    .catch((err) => {
-      res.json(err);
     });
 });
 

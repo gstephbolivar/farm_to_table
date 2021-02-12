@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import QuantityDropdown from "../QuantityDropdown/QuantityDropdown";
 import API from "../../utils/API.js";
 
-const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts }) => {
+const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct }) => {
   // const history = useHistory();
 
   const [lineItemState, setLineItemState] = useState({
@@ -28,10 +28,14 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
     return totalCost;
   };
 
-  const handleEditButton = (id) => {
-    console.log(id);
-    // TODO: Open the modal
-  };
+  // const handleEditButton = (id) => {
+  //   let path = `/admin/edit/${id}`;
+  //   history.push(path);
+  // };
+  // const handleEditButton = (id) => {
+  //   console.log(id);
+  //   // TODO: Open the modal
+  // };
 
   const handleDeleteButton = () => {
     API.deleteProduct(_id)
@@ -92,7 +96,7 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
             {window.location.pathname === "/admin" && (
               <>
                 <button
-                  onClick={() => handleEditButton(_id)}
+                  onClick={() => editProduct(_id)}
                   className="card-footer-item"
                 >
                   Edit

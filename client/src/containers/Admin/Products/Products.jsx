@@ -2,12 +2,30 @@ import { useState, useEffect } from "react";
 import ProductCard from "../../../components/ProductCard/ProductCard";
 import CategoriesCard from "../../../components/CategoriesCard/CategoriesCard";
 import API from "../../../utils/API";
+// import {useHistory} from "react-router-dom";
+import EditProductModal from "../../../components/EditProductModal/EditProductModal";
+
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
-  const [categoryFilter, setCategoryFilter] = useState("");
+    
+    const [productID, setProductID] = useState("");
+    const [modal, setModal] = useState("modal");
+    const [products, setProducts] = useState([]);
+    const [categoryFilter, setCategoryFilter] = useState("");
+    const [productToEdit, setProductToEdit] = useState({});
+    
 
-  // load all cards and store them with setCard
+  const handleModalState = (id) => {
+    setProductID(id);
+    if(modal === "modal") { 
+        setModal("modal is-active");
+  } else {
+    setModal("modal")
+  }
+};
+
+
+      // load all cards and store them with setCard
   useEffect(() => {
     loadProducts();
   }, []);
@@ -16,6 +34,7 @@ const Products = () => {
   const loadProducts = () => {
     API.getProduct()
       .then((response) => {
+          console.log(response.data);
         setProducts(response.data);
       })
       .catch((err) => {
@@ -76,19 +95,22 @@ const Products = () => {
             <div className="column is-9">
               <div className="columns is-centered is-multiline">
                 {products.map((product) => (
-                  <ProductCard
-                    {...product}
-                    loadProducts={loadProducts}
-                    key={product._id}
-                  />
+                  <ProductCard {...product} editProduct={handleModalState} loadProducts={loadProducts} key={product._id}/>
                 ))}
               </div>
             </div>
           </div>
         </div>
       </section>
-    </div>
-  );
+      <div>
+          <div className={modal}>
+    <EditProductModal handleModalState={handleModalState} loadProducts={loadProducts} id={productID}/>
+          </div>
+      </div>
+</div>
+
+    );
 };
+
 
 export default Products;
