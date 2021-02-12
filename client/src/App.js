@@ -7,8 +7,6 @@ import Login from "./containers/Login/Login";
 import SignUp from "./containers/SignUp/SignUp";
 import OneProduct from "./containers/OneProduct/OneProduct";
 import Products from "./containers/Admin/Products/Products";
-import AddProduct from "./containers/Admin/AddProduct/AddProduct";
-import EditProduct from "./containers/Admin/EditProduct/EditProduct";
 import CssBaseLine from "@material-ui/core/CssBaseline";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import Footer from "./components/Footer/Footer";
@@ -70,8 +68,6 @@ function App() {
           <Route path="/signup" component={SignUp} />
           <Route path="/oneproduct" component={OneProduct} />
           <Route exact path="/admin" component={Products} />
-          <Route exact path="/admin/add" component={AddProduct} />
-          <Route path="/admin/edit/:id" component={EditProduct} />
           <Route exact path="/" component={Home} />
         </Switch>
         <Footer />
