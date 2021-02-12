@@ -1,24 +1,7 @@
-import { useState } from "react";
-import API from "../../../utils/API";
+import { useState, useEffect } from "react";
+import API from "../../utils/API";
 
-const units = [
-  {
-    value: "pounds",
-    label: "pounds",
-  },
-  {
-    value: "ounces",
-    label: "ounces",
-  },
-  {
-    value: "grams",
-    label: "grams",
-  },
-  {
-    value: "pints",
-    label: "pints",
-  },
-];
+
 
 const productType = [
   {
@@ -39,21 +22,43 @@ const productType = [
   },
 ];
 
-const AddProduct = () => {
+const EditProductModal = (props) => {
+
+
+  const [modalID, setModalID] = useState(props.id);
+  const [unitType, setUnitType] = useState("pounds");
   const [category, setCategory] = useState("fruit");
   const [productObject, setProductObject] = useState({
     name: "",
     unitSize: 0,
     price: 0,
-    quantity: 0,
+    quantity:0,
     category: "",
     unitType: "",
     description: "",
-    totalAmount: "",
-    unitType:"",
+    totalAmount: 0,
   });
 
-  
+
+  useEffect(() => {
+    API.getOneProduct(props.id).then((res) => {
+      console.log(res);
+      setProductObject({
+        name: res.data.name,
+        unitSize: res.data.unitSize,
+        price: res.data.price,
+        quantity: res.data.quantity,
+        category: res.data.category,
+        unitType: res.data.unitType,
+        description: res.data.description,
+        totalAmount: res.data.totalAmount,
+      });
+    });
+  }, [props.id]);
+
+  const handleUnitChange = (event) => {
+    setUnitType(event.target.value);
+  };
 
   const handleCategoryChange = (event) => {
     setCategory(event.target.value);
@@ -66,17 +71,21 @@ const AddProduct = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    API.addProduct({
+    props.handleModalState();
+    console.log(productObject);
+    API.updateProduct(props.id, {
       name: productObject.name,
       unitSize: productObject.unitSize,
       price: productObject.price,
       quantity: productObject.quantity,
-      category: category,
+      category: productObject.category,
       unitType: productObject.unitType,
       description: productObject.description,
       totalAmount: productObject.totalAmount,
     })
       .then(() => {
+        props.handleModalState();
+        props.loadProducts();
         setProductObject({
           name: "",
           unitSize: 0,
@@ -85,41 +94,27 @@ const AddProduct = () => {
           category: "",
           unitType: "",
           description: "",
+          totalAmount: "",
         });
       })
       .catch((err) => console.log(err));
   };
 
-  return (
+    return (
+    
+    <>
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Modal title</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
     <section className="section">
       <form className="create-form">
         <div className="container has-text-centered">
           <div className="column is-half is-offset-one-quarter">
-            {/* <label className="label">Upload Photo</label>
-            <label>Square, 1:1 format recommended.</label>
-            <br />
-            <div className="file has-name is-centered">
-              <label className="file-label">
-                <input
-                  className="file-input"
-                  type="file"
-                  name="img_path"
-                  id="img_path"
-                  accept=".jpeg,.JPEG,.png,.PNG,.jpg,.JPG"
-                />
-                <span className="file-cta">
-                  <span className="file-icon">
-                    <i className="fas fa-upload"></i>
-                  </span>
-                  <span className="file-label" for="img_path">
-                    {" "}
-                    Choose a file…{" "}
-                  </span>
-                </span>
-                <span className="file-name">No file chosen</span>
-              </label>
-            </div> */}
-            <br />
+            
             <img
               title="Stock Image"
               src="https://www.placecage.com/c/250/250"
@@ -139,8 +134,8 @@ const AddProduct = () => {
                       id="selectCategory"
                       label="Select Type"
                       name="category"
-                      onChange={handleCategoryChange}
-                      value={category}
+                      onChange={handleInputChange}
+                      value={productObject.category}
                     >
                       {productType.map((option) => (
                         <option key={option.value} value={option.value}>
@@ -190,7 +185,10 @@ const AddProduct = () => {
               </div>
             </div>
 
-            <div className="field">
+            
+              
+
+              <div className="field">
                 <label className="label">Unit Type</label>
                 <div className="control">
                   <input
@@ -262,23 +260,19 @@ const AddProduct = () => {
                 />
               </div>
             </div>
-            <div className="field is-grouped is-grouped-centered">
-              <p className="control">
-                <button
-                  type="submit"
-                  className="button is-info is-medium"
-                  id="submitBtn"
-                  onClick={handleFormSubmit}
-                >
-                  Add Product
-                </button>
-              </p>
-            </div>
           </div>
         </div>
       </form>
     </section>
-  );
+
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" onClick={handleFormSubmit}>Save changes</button>
+      <button class="button" onClick={props.handleModalState}>Cancel</button>
+    </footer>
+  </div>
+</>
+    );
 };
 
-export default AddProduct;
+export default EditProductModal;

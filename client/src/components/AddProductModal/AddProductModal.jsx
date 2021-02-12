@@ -1,24 +1,6 @@
 import { useState } from "react";
-import API from "../../../utils/API";
+import API from "../../utils/API";
 
-const units = [
-  {
-    value: "pounds",
-    label: "pounds",
-  },
-  {
-    value: "ounces",
-    label: "ounces",
-  },
-  {
-    value: "grams",
-    label: "grams",
-  },
-  {
-    value: "pints",
-    label: "pints",
-  },
-];
 
 const productType = [
   {
@@ -39,25 +21,17 @@ const productType = [
   },
 ];
 
-const AddProduct = () => {
-  const [category, setCategory] = useState("fruit");
+const AddProductModal = (props) => {
   const [productObject, setProductObject] = useState({
     name: "",
     unitSize: 0,
     price: 0,
     quantity: 0,
-    category: "",
+    category: "fruit",
     unitType: "",
     description: "",
     totalAmount: "",
-    unitType:"",
   });
-
-  
-
-  const handleCategoryChange = (event) => {
-    setCategory(event.target.value);
-  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -71,7 +45,7 @@ const AddProduct = () => {
       unitSize: productObject.unitSize,
       price: productObject.price,
       quantity: productObject.quantity,
-      category: category,
+      category: productObject.category,
       unitType: productObject.unitType,
       description: productObject.description,
       totalAmount: productObject.totalAmount,
@@ -86,40 +60,25 @@ const AddProduct = () => {
           unitType: "",
           description: "",
         });
+        props.loadProducts();
+        props.handleAddProductModalState();
       })
       .catch((err) => console.log(err));
   };
 
   return (
+    <>
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Add Product</p>
+      </header>
+      <section class="modal-card-body">
     <section className="section">
       <form className="create-form">
         <div className="container has-text-centered">
           <div className="column is-half is-offset-one-quarter">
-            {/* <label className="label">Upload Photo</label>
-            <label>Square, 1:1 format recommended.</label>
-            <br />
-            <div className="file has-name is-centered">
-              <label className="file-label">
-                <input
-                  className="file-input"
-                  type="file"
-                  name="img_path"
-                  id="img_path"
-                  accept=".jpeg,.JPEG,.png,.PNG,.jpg,.JPG"
-                />
-                <span className="file-cta">
-                  <span className="file-icon">
-                    <i className="fas fa-upload"></i>
-                  </span>
-                  <span className="file-label" for="img_path">
-                    {" "}
-                    Choose a file…{" "}
-                  </span>
-                </span>
-                <span className="file-name">No file chosen</span>
-              </label>
-            </div> */}
-            <br />
+        
             <img
               title="Stock Image"
               src="https://www.placecage.com/c/250/250"
@@ -139,8 +98,8 @@ const AddProduct = () => {
                       id="selectCategory"
                       label="Select Type"
                       name="category"
-                      onChange={handleCategoryChange}
-                      value={category}
+                      onChange={handleInputChange}
+                      value={productObject.category}
                     >
                       {productType.map((option) => (
                         <option key={option.value} value={option.value}>
@@ -151,7 +110,7 @@ const AddProduct = () => {
                   </div>
                 </div>
               </div>
-
+              </div>
               {/* the name of the product */}
 
               <div className="field">
@@ -168,7 +127,7 @@ const AddProduct = () => {
                   />
                 </div>
               </div>
-            </div>
+            
 
             {/* description of the product */}
 
@@ -190,23 +149,27 @@ const AddProduct = () => {
               </div>
             </div>
 
-            <div className="field">
+            <div className="dropdown">
+              
+
+              {/* The unit type the product will be sold by */}
+              <div className="field is-inline-block">
                 <label className="label">Unit Type</label>
                 <div className="control">
-                  <input
-                    className="input"
-                    type="text"
-                    placeholder="pounds"
-                    id="unitType"
-                    onChange={handleInputChange}
-                    name="unitType"
-                    value={productObject.unitType}
-                  />
+                  <input className="input"                 
+                      id="unitType"
+                      required
+                      name="unitType"
+                      value={productObject.unitType}
+                      onChange={handleInputChange}
+                      type="text"
+                    />                  
+                  </div>
                 </div>
               </div>
-            
+            </div>
 
-            <div className="dropdown">
+            
               {/* The size of which each unit will be sold (Example: you buy strawberries by the pound in most places, but costco sells them in 3 pound boxes. So a "unit" is either 1 pound or 3 pounds respectively.) */}
 
               <div className="field">
@@ -243,42 +206,36 @@ const AddProduct = () => {
                   />
                 </div>
               </div>
-            </div>
+            
 
             {/* This is the total number of "units" that are available to be sold. It is calculated for you as you enter the total amount of each product and the unit size to sell by. */}
 
             <div className="field">
-            <label className="label">Quantity</label>
+            <label className="label">Quantity(Total Units)</label>
               <div className="control">
-                <input                 
+                <input
                   required
                   className="input"
                   type="number"
                   placeholder="Total units (inventory)"
-                  id="productName"
+                  id="quantity"
                   onChange={handleInputChange}
                   name="quantity"
                   value={productObject.quantity}
                 />
               </div>
             </div>
-            <div className="field is-grouped is-grouped-centered">
-              <p className="control">
-                <button
-                  type="submit"
-                  className="button is-info is-medium"
-                  id="submitBtn"
-                  onClick={handleFormSubmit}
-                >
-                  Add Product
-                </button>
-              </p>
-            </div>
-          </div>
         </div>
       </form>
     </section>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" onClick={handleFormSubmit}>Save changes</button>
+      <button class="button" onClick={props.handleAddProductModalState}>Cancel</button>
+    </footer>
+  </div>
+</>
   );
 };
 
-export default AddProduct;
+export default AddProductModal;

@@ -6,11 +6,6 @@ export default {
     return axios.get("/api/products");
   },
 
-  // Get All Products
-  getAllProducts: () => {
-    return axios.get("/api/products");
-  },
-
   // product routes
   addProduct: (product) => {
     return axios.post("/api/products", product);
@@ -19,7 +14,8 @@ export default {
     return axios.get("/api/products");
   },
   getOneProduct: (id) => {
-    return axios.get("/api/products/" + id);
+    console.log(id);
+    return axios.get(`/api/products/${id}`);
   },
   updateProduct: (id, product) => {
     return axios.put("/api/products/" + id, product);
@@ -33,6 +29,13 @@ export default {
     return axios.post("/api/users", user);
   },
 
+  addLineItems: (lineItems) => {
+    return axios.post("/api/lineItems", lineItems);
+  },
+
+  placeOrder: (order) => {
+    return axios.post("/api/orders", order);
+  },
   // used for checking users in database
   checkUser: (user) => {
     //console.log(user);
@@ -45,10 +48,6 @@ export default {
   },
 
   getFilteredProducts: (category) => {
-    return axios.get("/api/products", {
-      params: {
-        category: category.category,
-      },
-    });
+    return axios.get(`/api/products/${category}`);
   },
 };
