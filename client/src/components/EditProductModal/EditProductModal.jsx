@@ -322,7 +322,7 @@ const EditProductModal = (props) => {
     </section>
     <footer class="modal-card-foot">
       <button class="button is-success" onClick={handleFormSubmit}>Save changes</button>
-      <button class="button">Cancel</button>
+      <button class="button" onClick={props.handleModalState}>Cancel</button>
     </footer>
   </div>
 </>
