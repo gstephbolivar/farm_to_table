@@ -57,6 +57,8 @@ const Login = (props) => {
         console.log(response.data);
         props.setUserId(response.data._id);
         props.setToken(response.data.token);
+        alert("Successfully Logged in!");
+        routeChange("/admin");
       })
       .catch((err) => {
         // potentially change this to a modal where user can click to sign up or just re-enter login info
