@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 router.post("/", ({ body }, res) => {
   // hash password
@@ -35,10 +36,13 @@ router.post("/login", (req, res) => {
     bcrypt
       .compare(req.body.password, foundUser.password)
       .then((result) => {
+        const token = jwt.sign({ _id: result._id }, "secretpassword");
+        console.log(token);
         //console.log(result);
         if (result) {
           res.json({
             // send login token and userId
+            // jwt token has id in it to send back
             token: "AdminToken",
             _id: foundUser._id,
           });

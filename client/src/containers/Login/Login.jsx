@@ -10,6 +10,7 @@ import {
   TextField,
 } from "@material-ui/core";
 import API from "../../utils/API";
+import jwt from "jsonwebtoken";
 
 const Login = (props) => {
   const history = useHistory();
@@ -31,34 +32,20 @@ const Login = (props) => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    // checks if username and password match in database
-    // API.checkUser(loginObject)
-    //   .then((user) => {
-    //     //console.log(loginObject);
-    //     //console.log(user);
-
-    //     // checks if user has entered login information
-    //     if (!loginObject.username || !loginObject.password) {
-    //       alert("Please enter a username and password");
-    //     } // checks that login matches database user
-    //     else if (
-    //       user.data.username === loginObject.username &&
-    //       user.data.password === loginObject.password
-    //     ) {
-    //       props.setUserId(user.data._id);
-    //       alert("Successfully Logged in!");
-
-    //       // changes route to the admin products page
-    //       routeChange("/admin");
-    //     }
-    //   })
     API.loginUser(loginObject)
       .then((response) => {
         console.log(response.data);
-        props.setUserId(response.data._id);
-        props.setToken(response.data.token);
-        alert("Successfully Logged in!");
-        routeChange("/admin");
+
+        jwt.verify(response.data.token, "secretpassword", (err, decoded) => {
+          if (err) {
+            console.log(err);
+          } else {
+            props.setUserId(response.data._id);
+            props.setToken(response.data.token);
+            alert("Successfully Logged in!");
+            routeChange("/admin");
+          }
+        });
       })
       .catch((err) => {
         // potentially change this to a modal where user can click to sign up or just re-enter login info

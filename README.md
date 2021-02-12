@@ -11,6 +11,10 @@ heroku live link: https://glacial-falls-13622.herokuapp.com/
 
 - added bcrypt npm package for authentication
 
+Json web token (JWT)
+
+- cd into client `npm install jsonwebtoken`
+
 ### CategoriesCard
 
 - need to add styling to panels based on which panel is clicked/chosen
