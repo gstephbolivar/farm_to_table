@@ -14,7 +14,8 @@ export default {
     return axios.get("/api/products");
   },
   getOneProduct: (id) => {
-    return axios.get("/api/products/" + id);
+    console.log(id);
+    return axios.get(`/api/products/${id}`);
   },
   updateProduct: (id, product) => {
     return axios.put("/api/products/" + id, product);
