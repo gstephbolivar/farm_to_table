@@ -8,59 +8,6 @@ import AddProductModal from "../../../components/AddProductModal/AddProductModal
 import AddProductButtonCard from "../../../components/AddProductButtonCard/AddProductButtonCard";
 
 const Products = () => {
-<<<<<<< HEAD
-  const [products, setProducts] = useState([]);
-  const [categoryFilter, setCategoryFilter] = useState("");
-
-  // load all cards and store them with setCard
-  useEffect(() => {
-    loadProducts();
-  }, []);
-
-  const loadProducts = () => {
-    API.getProduct()
-      .then((response) => {
-        setProducts(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  // sets the category filter to state
-  const filterProducts = (e) => {
-    const category = e.target.name;
-    if (category !== "All") {
-      // filters the products displayed based on the category
-      displayFilteredProducts(category);
-      console.log(category);
-      setCategoryFilter(category);
-    }
-    // if All category is chosen, resets the filter
-    else loadProducts();
-  };
-
-  const displayFilteredProducts = (category) => {
-    API.getAllProducts()
-      .then((response) => {
-        const filteredProducts = response.data.filter(
-          (p) => p.category.toLowerCase() === category.toLowerCase()
-        );
-        console.log(categoryFilter);
-        console.log(response.data);
-        console.log(filteredProducts);
-        setProducts(filteredProducts);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const handleDeleteButton = (id) => {
-    API.deleteProduct(id)
-      .then((res) => loadProducts())
-      .catch((err) => console.log(err));
-  };
-
-=======
     
     const [productID, setProductID] = useState("");
     const [modal, setModal] = useState("modal");
@@ -133,7 +80,6 @@ const handleAddProductModalState = () => {
       .catch((err) => console.log(err));
   };
 
->>>>>>> 4acd7800e8dc1ad58eacbd7465d0339f2ea1d7be
   useEffect(() => {
     API.getProduct()
       .then((response) => {
@@ -161,25 +107,13 @@ const handleAddProductModalState = () => {
 
               <div className="columns is-centered is-multiline">
                 {products.map((product) => (
-<<<<<<< HEAD
-                  <ProductCard
-                    {...product}
-                    deleteProduct={handleDeleteButton}
-                    key={product._id}
-                  />
-=======
                   <ProductCard {...product} editProduct={handleModalState} loadProducts={loadProducts} key={product._id}/>
->>>>>>> 4acd7800e8dc1ad58eacbd7465d0339f2ea1d7be
                 ))}
               </div>
             </div>
           </div>
         </div>
       </section>
-<<<<<<< HEAD
-    </div>
-  );
-=======
       <div>
         {/* edit modal */}
           <div className={modal}>
@@ -193,7 +127,6 @@ const handleAddProductModalState = () => {
 </div>
 
     );
->>>>>>> 4acd7800e8dc1ad58eacbd7465d0339f2ea1d7be
 };
 
 
