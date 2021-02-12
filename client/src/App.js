@@ -8,8 +8,6 @@ import Login from "./containers/Login/Login";
 import SignUp from "./containers/SignUp/SignUp";
 import OneProduct from "./containers/OneProduct/OneProduct";
 import Products from "./containers/Admin/Products/Products";
-import AddProduct from "./containers/Admin/AddProduct/AddProduct";
-import EditProduct from "./containers/Admin/EditProduct/EditProduct";
 import CssBaseLine from "@material-ui/core/CssBaseline";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import Footer from "./components/Footer/Footer";
@@ -82,7 +80,6 @@ function App() {
               render={(props) => <Cart {...props} clearCart={clearCart} />}
             />
             <Route path="/confirmation" component={Confirmation} />
-
             <Route
               path="/login"
               render={(props) => (
@@ -95,17 +92,6 @@ function App() {
               exact
               path="/admin"
               component={Products}
-              token={token}
-            />
-            <ProtectedRoute
-              exact
-              path="/admin/add"
-              component={AddProduct}
-              token={token}
-            />
-            <ProtectedRoute
-              path="/admin/edit/:id"
-              component={EditProduct}
               token={token}
             />
             <Route exact path="/" component={Home} />

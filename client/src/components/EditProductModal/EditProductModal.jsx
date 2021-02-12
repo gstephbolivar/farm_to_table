@@ -2,24 +2,6 @@ import { useState, useEffect } from "react";
 import API from "../../utils/API";
 
 
-const units = [
-  {
-    value: "pounds",
-    label: "pounds",
-  },
-  {
-    value: "ounces",
-    label: "ounces",
-  },
-  {
-    value: "grams",
-    label: "grams",
-  },
-  {
-    value: "pints",
-    label: "pints",
-  },
-];
 
 const productType = [
   {
@@ -95,7 +77,7 @@ const EditProductModal = (props) => {
       name: productObject.name,
       unitSize: productObject.unitSize,
       price: productObject.price,
-      quantity: productObject.totalAmount / productObject.unitSize,
+      quantity: productObject.quantity,
       category: productObject.category,
       unitType: productObject.unitType,
       description: productObject.description,
@@ -203,48 +185,24 @@ const EditProductModal = (props) => {
               </div>
             </div>
 
-            <div className="dropdown">
-              {/* The total amount of the product */}
+            
+              
 
               <div className="field">
-                <label className="label">Total amount</label>
+                <label className="label">Unit Type</label>
                 <div className="control">
                   <input
                     className="input"
-                    required
-                    id="totalAmount"
-                    min="1"
+                    type="text"
+                    placeholder="pounds"
+                    id="unitType"
                     onChange={handleInputChange}
-                    name="totalAmount"
-                    value={productObject.totalAmount}
-                    type="number"
+                    name="unitType"
+                    value={productObject.unitType}
                   />
                 </div>
               </div>
-
-              {/* The unit type the product will be sold by */}
-              <div className="field is-inline-block">
-                <label className="label">Unit Type</label>
-                <div className="control">
-                  <div className="select">
-                    <select
-                      id="unitType"
-                      select
-                      name="unitType"
-                      label="Select Unit Type"
-                      value={productObject.unitType}
-                      onChange={handleInputChange}
-                    >
-                      {units.map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
 
             <div className="dropdown">
               {/* The size of which each unit will be sold (Example: you buy strawberries by the pound in most places, but costco sells them in 3 pound boxes. So a "unit" is either 1 pound or 3 pounds respectively.) */}
@@ -288,31 +246,19 @@ const EditProductModal = (props) => {
             {/* This is the total number of "units" that are available to be sold. It is calculated for you as you enter the total amount of each product and the unit size to sell by. */}
 
             <div className="field">
+            <label className="label">Quantity</label>
               <div className="control">
-                <input
-                  disabled
+                <input                 
                   required
                   className="input"
                   type="number"
                   placeholder="Total units (inventory)"
-                  id="totalUnits"
+                  id="productName"
                   onChange={handleInputChange}
                   name="quantity"
-                  value={productObject.totalAmount / productObject.unitSize}
+                  value={productObject.quantity}
                 />
               </div>
-            </div>
-            <div className="field is-grouped is-grouped-centered">
-              <p className="control">
-                <button
-                  type="submit"
-                  className="button is-info is-medium"
-                  id="submitBtn"
-                  onClick={handleFormSubmit}
-                >
-                  Add Product
-                </button>
-              </p>
             </div>
           </div>
         </div>
