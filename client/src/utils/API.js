@@ -47,8 +47,8 @@ export default {
     });
   },
 
-  loginUser: () => {
-    return axios.post("/api/login", { username, password });
+  loginUser: (user) => {
+    return axios.post("/api/login", user);
   },
 
   getFilteredProducts: (category) => {

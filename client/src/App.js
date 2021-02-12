@@ -13,7 +13,7 @@ import EditProduct from "./containers/Admin/EditProduct/EditProduct";
 import CssBaseLine from "@material-ui/core/CssBaseline";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import Footer from "./components/Footer/Footer";
-import { useState } from "react";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import CartContext from "./utils/CartContext";
 
 function App() {
@@ -91,9 +91,23 @@ function App() {
             />
             <Route path="/signup" component={SignUp} />
             <Route path="/oneproduct" component={OneProduct} />
-            <Route exact path="/admin" component={Products} />
-            <Route exact path="/admin/add" component={AddProduct} />
-            <Route path="/admin/edit/:id" component={EditProduct} />
+            <ProtectedRoute
+              exact
+              path="/admin"
+              component={Products}
+              token={token}
+            />
+            <ProtectedRoute
+              exact
+              path="/admin/add"
+              component={AddProduct}
+              token={token}
+            />
+            <ProtectedRoute
+              path="/admin/edit/:id"
+              component={EditProduct}
+              token={token}
+            />
             <Route exact path="/" component={Home} />
           </Switch>
           <Footer />
