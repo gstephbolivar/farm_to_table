@@ -103,13 +103,13 @@ const EditProductModal = (props) => {
     return (
     
     <>
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Modal title</p>
-      <button class="delete" aria-label="close"></button>
+  <div className="modal-background"></div>
+  <div className="modal-card">
+    <header className="modal-card-head">
+      <p className="modal-card-title">Modal title</p>
+      <button className="delete" aria-label="close"></button>
     </header>
-    <section class="modal-card-body">
+    <section className="modal-card-body">
     <section className="section">
       <form className="create-form">
         <div className="container has-text-centered">
@@ -266,9 +266,9 @@ const EditProductModal = (props) => {
     </section>
 
     </section>
-    <footer class="modal-card-foot">
-      <button class="button is-success" onClick={handleFormSubmit}>Save changes</button>
-      <button class="button" onClick={props.handleModalState}>Cancel</button>
+    <footer className="modal-card-foot">
+      <button className="button is-success" onClick={handleFormSubmit}>Save changes</button>
+      <button className="button" onClick={props.handleModalState}>Cancel</button>
     </footer>
   </div>
 </>
