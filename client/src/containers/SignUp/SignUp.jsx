@@ -41,16 +41,16 @@ const SignUp = () => {
     <div>
       <section className="section">
         <div className="columns is-centered is-multiline">
-          <div class="column is-4">
-            <form class="box">
-              <h3 class="title is-3">Sign up for Farm To Table</h3>
+          <div className="column is-4">
+            <form className="box">
+              <h3 className="title is-3">Sign up for Farm To Table</h3>
 
               {/* USERNAME */}
-              <div class="field">
-                <label class="label">Username</label>
-                <div class="control">
+              <div className="field">
+                <label className="label">Username</label>
+                <div className="control">
                   <input
-                    class="input"
+                    className="input"
                     type="email"
                     placeholder="username"
                     fullWidth
@@ -63,11 +63,11 @@ const SignUp = () => {
                 </div>
               </div>
               {/* Full Name */}
-              <div class="field">
-                <label class="label">Full Name</label>
-                <div class="control">
+              <div className="field">
+                <label className="label">Full Name</label>
+                <div className="control">
                   <input
-                    class="input"
+                    className="input"
                     type="text"
                     placeholder="John Smith"
                     fullWidth
@@ -82,11 +82,11 @@ const SignUp = () => {
               </div>
 
               {/* Email */}
-              <div class="field">
-                <label class="label">Email</label>
-                <div class="control">
+              <div className="field">
+                <label className="label">Email</label>
+                <div className="control">
                   <input
-                    class="input"
+                    className="input"
                     type="email"
                     placeholder="e.g. alex@example.com"
                     fullWidth
@@ -101,11 +101,11 @@ const SignUp = () => {
               </div>
 
               {/* Home Address */}
-              <div class="field">
-                <label class="label">Address</label>
-                <div class="control">
+              <div className="field">
+                <label className="label">Address</label>
+                <div className="control">
                   <input
-                    class="input"
+                    className="input"
                     type="text"
                     placeholder="3203 FM 1960 East Humble, Texas, 77338"
                     fullWidth
@@ -119,11 +119,11 @@ const SignUp = () => {
               </div>
 
               {/* Password */}
-              <div class="field">
-                <label class="label">Password</label>
-                <div class="control">
+              <div className="field">
+                <label className="label">Password</label>
+                <div className="control">
                   <input
-                    class="input"
+                    className="input"
                     type="password"
                     placeholder="********"
                     required
@@ -136,13 +136,13 @@ const SignUp = () => {
                 </div>
               </div>
 
-              <button class="button is-primary" onClick={handleFormSubmit}>
+              <button className="button is-primary" onClick={handleFormSubmit}>
                 Create Account
               </button>
              
              {/* Directs to login page */}
 
-             <h5 class="subtitle is-6">Already a member? <a class="title is-6" href="/login">Login here.</a></h5>
+             <h5 className="subtitle is-6">Already a member? <a className="title is-6" href="">Login here.</a></h5>
 
             </form>
           </div>

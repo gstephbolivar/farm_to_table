@@ -63,14 +63,14 @@ const Login = (props) => {
     <div>
       <section className="section">
       <div className="columns is-centered is-multiline">
-      <div class="column is-4">
-        <form class="box">
-          <h3 class="title is-3">Login to Farm to Table</h3>
-          <div class="field">
-            <label class="label">Username</label>
-            <div class="control">
+      <div className="column is-4">
+        <form className="box">
+          <h3 className="title is-3">Login to Farm to Table</h3>
+          <div className="field">
+            <label className="label">Username</label>
+            <div className="control">
               <input
-                class="input"
+                className="input"
                 type="text"
                 placeholder="username"
                 fullWidth
@@ -84,10 +84,10 @@ const Login = (props) => {
             </div>
           </div>
 
-          <div class="field">
-            <label class="label">Password</label>
-            <div class="control">
-              <input class="input" type="password" placeholder="********"
+          <div className="field">
+            <label className="label">Password</label>
+            <div className="control">
+              <input className="input" type="password" placeholder="********"
               fullWidth
               required
               id="password"
@@ -101,13 +101,13 @@ const Login = (props) => {
             </div>
           </div>
 
-          <button class="button is-primary" onClick={handleFormSubmit}>
+          <button className="button is-primary" onClick={handleFormSubmit}>
             Sign in
           </button>
 
            {/* Directs to sign up page */}
 
-           <h5 class="subtitle is-6">Not a member? <a class="title is-6" href="/signup">Sign up here.</a></h5>
+           <h5 className="subtitle is-6">Not a member? <a class="title is-6" href="/signup">Sign up here.</a></h5>
         </form>
         </div>
         </div>
