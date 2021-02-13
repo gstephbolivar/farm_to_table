@@ -2,7 +2,13 @@ const mongoose = require("mongoose");
 const db = require("../models");
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/farm-to-table"
+  process.env.MONGODB_URI || "mongodb://localhost/farm-to-table",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  }
 );
 
 const userSeed = [
@@ -35,35 +41,35 @@ const productsSeed = [
     unitSize: "each",
     price: 3.49,
     quantity: 10,
-    category: "veggie",
+    category: "vegetable",
   },
   {
     name: "Chicken",
     unitSize: "pounds",
     price: 4.99,
     quantity: 10,
-    category: "poultry",
+    category: "meat",
   },
   {
-    name: "Chicken",
+    name: "Cheese",
     unitSize: "pounds",
     price: 4.99,
     quantity: 10,
-    category: "poultry",
+    category: "dairy",
   },
   {
-    name: "Chicken",
+    name: "Tomatoes",
     unitSize: "pounds",
     price: 4.99,
     quantity: 10,
-    category: "poultry",
+    category: "vegetable",
   },
   {
-    name: "Chicken",
+    name: "Apples",
     unitSize: "pounds",
     price: 4.99,
     quantity: 10,
-    category: "poultry",
+    category: "fruit",
   },
 ];
 
