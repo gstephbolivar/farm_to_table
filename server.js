@@ -61,7 +61,7 @@ app.get("/api/products", (req, res) => {
 });
 
 //GET api route to return all products based on category
-app.get("/api/products/:category", (req, res) => {
+app.get("/api/products/filtered/:category", (req, res) => {
   //console.log(req.params.category);
   db.Products.find({ category: req.params.category })
     .then((products) => {
@@ -71,8 +71,6 @@ app.get("/api/products/:category", (req, res) => {
       res.json(err);
     });
 });
-
-
 
 //POST api route to create a product
 app.post("/api/products", ({ body }, res) => {
@@ -107,7 +105,6 @@ app.put("/api/products/:id", (req, res) => {
       res.json(err);
     });
 });
-
 
 app.put("/api/products/:id", (req, res) => {
   db.Products.findOneAndUpdate({ _id: req.params.id }, { quantity: req.body })

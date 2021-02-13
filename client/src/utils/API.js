@@ -48,6 +48,6 @@ export default {
   },
 
   getFilteredProducts: (category) => {
-    return axios.get(`/api/products/${category}`);
+    return axios.get(`/api/products/filtered/${category}`);
   },
 };

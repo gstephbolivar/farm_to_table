@@ -22,52 +22,27 @@ const AllProducts = (props) => {
       });
   };
 
-  // sets the category filter to state
-  const filterProducts = (e) => {
-    const category = e.target.name;
+  // sets the category filter
+  const filterProducts = (e, item) => {
+    const category = item;
+    // console.log(e);
+    console.log(item);
     if (category !== "All") {
       // filters the products displayed based on the category
       displayFilteredProducts(category);
-
     }
     // if All category is chosen, resets the filter
     else loadProducts();
   };
-  // FIXME: Remove dupicate routes
+
   const displayFilteredProducts = (category) => {
-    // FIXME: Pass the category to a route on the back end
-    API.getAllProducts()
+    // pass category to a route on the backend
+    API.getFilteredProducts(category.toLowerCase())
       .then((response) => {
-        const filteredProducts = response.data.filter(
-          (p) => p.category.toLowerCase() === category.toLowerCase()
-        );
-        setProducts(filteredProducts);
+        setProducts(response.data);
       })
       .catch((err) => console.log(err));
   };
-
-
-  // // sets the category filter to state
-  // const filterProducts = (e, item) => {
-  //   const category = item;
-  //   // console.log(e);
-  //   console.log(item);
-  //   if (category !== "All") {
-  //     // filters the products displayed based on the category
-  //     displayFilteredProducts(category);
-  //   }
-  //   // if All category is chosen, resets the filter
-  //   else loadProducts();
-  // };
-
-  // const displayFilteredProducts = (category) => {
-  //   // pass category to a route on the backend
-  //   API.getFilteredProducts(category.toLowerCase())
-  //     .then((response) => {
-  //       setProducts(response.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
 
   return (
     <div>
