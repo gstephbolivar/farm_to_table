@@ -37,14 +37,17 @@ router.post("/login", (req, res) => {
       bcrypt
         .compare(req.body.password, foundUser.password)
         .then((result) => {
-          const token = jwt.sign({ _id: result._id }, "secretpassword");
+          const token = jwt.sign(
+            { _id: result._id },
+            process.env.JWT_SIGNATURE
+          );
           console.log(token);
           console.log(result);
           if (result) {
             res.json({
               // send login token and userId
               // jwt token has id in it to send back
-              token: "AdminToken",
+              token: token,
               _id: foundUser._id,
             });
           } else {

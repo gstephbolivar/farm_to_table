@@ -28,16 +28,20 @@ const Login = (props) => {
       .then((response) => {
         console.log(response.data);
 
-        jwt.verify(response.data.token, "secretpassword", (err, decoded) => {
-          if (err) {
-            console.log(err);
-          } else {
-            props.setUserId(response.data._id);
-            props.setToken(response.data.token);
-            alert("Successfully Logged in!");
-            routeChange("/admin");
+        jwt.verify(
+          response.data.token,
+          process.env.REACT_APP_JWT_SIGNATURE,
+          (err, decoded) => {
+            if (err) {
+              console.log(err);
+            } else {
+              props.setUserId(response.data._id);
+              props.setToken(response.data.token);
+              alert("Successfully Logged in!");
+              routeChange("/admin");
+            }
           }
-        });
+        );
       })
       .catch((err) => {
         // potentially change this to a modal where user can click to sign up or just re-enter login info
