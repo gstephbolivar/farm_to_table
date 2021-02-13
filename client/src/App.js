@@ -71,7 +71,7 @@ function App() {
           <Route path="/login" render={(props) => <Login {...props} setUserId={setUserId}/>} />
           <Route path="/signup" component={SignUp} />
           <Route path="/oneproduct" component={OneProduct} />
-          <Route exact path="/admin" component={Products} />
+          <Route exact path="/admin" component={AdminProducts} />
           <Route exact path="/" component={Home} />
         </Switch>
         <Footer />
