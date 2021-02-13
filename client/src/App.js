@@ -92,7 +92,7 @@ function App() {
             <ProtectedRoute
               exact
               path="/admin"
-              component={Products}
+              component={AdminProducts}
               token={token}
             />
             <Route exact path="/" component={Home} />
