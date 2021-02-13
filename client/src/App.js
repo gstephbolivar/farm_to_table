@@ -35,20 +35,19 @@ function App() {
     }
   };
 
-  const handleAddToCart = (item) => {
+  const handleAddToCart = (item, cartEdit) => {
     let tempItems = cartState.lineItems;
-
-    if (
-      tempItems
-        .map((x) => x.product.toString())
-        .includes(item.product.toString())
-    ) {
-      const existingLineItem = tempItems.find(
-        (x) => x.product.toString() === item.product.toString()
-      );
-      existingLineItem.quantity += item.quantity;
-      existingLineItem.totalCost += item.totalCost;
-    } else {
+    
+    if(tempItems.map(x => x.product.toString()).includes(item.product.toString())){
+      const existingLineItem = tempItems.find(x => x.product.toString() === item.product.toString());
+      if(cartEdit){
+        existingLineItem.quantity = item.quantity;
+        existingLineItem.totalCost = item.totalCost;
+      }else{
+        existingLineItem.quantity += item.quantity;
+        existingLineItem.totalCost += item.totalCost;
+      }
+    }else{
       tempItems.push(item);
     }
     localStorage.setItem("lineItems", JSON.stringify(tempItems));
@@ -62,32 +61,21 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <CartContext.Provider value={cartState}>
-          <BulmaNavBar />
-          <Switch>
-            <Route path="/home" component={Home} />
-            <Route
-              path="/allproducts"
-              render={(props) => (
-                <AllProducts {...props} handleAddToCart={handleAddToCart} />
-              )}
-            />
-            <Route
-              path="/cart"
-              render={(props) => <Cart {...props} clearCart={clearCart} />}
-            />
-            <Route path="/confirmation" component={Confirmation} />
-            <Route
-              path="/login"
-              render={(props) => <Login {...props} setUserId={setUserId} />}
-            />
-            <Route path="/signup" component={SignUp} />
-            <Route path="/oneproduct" component={OneProduct} />
-            <Route exact path="/admin" component={AdminProducts} />
-            <Route exact path="/" component={Home} />
-          </Switch>
-          <Footer />
-        </CartContext.Provider>
+      <CartContext.Provider value={cartState}>
+      <BulmaNavBar />
+        <Switch>
+          <Route path="/home" component={Home} />
+          <Route path="/allproducts" render={(props) => <AllProducts {...props} handleAddToCart={handleAddToCart}/>} />
+          <Route path="/cart" render={(props) => <Cart {...props} clearCart={clearCart} handleAddToCart={handleAddToCart}/>} />
+          <Route path="/confirmation" component={Confirmation} />
+          <Route path="/login" render={(props) => <Login {...props} setUserId={setUserId}/>} />
+          <Route path="/signup" component={SignUp} />
+          <Route path="/oneproduct" component={OneProduct} />
+          <Route exact path="/admin" component={AdminProducts} />
+          <Route exact path="/" component={Home} />
+        </Switch>
+        <Footer />
+      </CartContext.Provider>     
       </BrowserRouter>
     </>
   );
