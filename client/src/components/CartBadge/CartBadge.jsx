@@ -1,4 +1,5 @@
 import { useState, useEffect} from "react";
+import {Link} from "react-router-dom";
 import './cartbadge.css';
 
 const CartBadge = (props) => {
@@ -10,6 +11,8 @@ const CartBadge = (props) => {
    
     return (
       
+      <Link className="navbar-item cartLink is-hoverable" to="/cart">
+        <span className="icon">
        <div id="cartBadge">
         {props.count > 0 ?
           <div className="circle">
@@ -18,8 +21,11 @@ const CartBadge = (props) => {
         }        
         <i className="fas fa-shopping-cart"></i>
       </div> 
-        
+      </span>
+      <span id="nav-products"> <strong style={{marginLeft: 5}}>Cart</strong></span>
+        </Link>
     )
 }
 
 export default CartBadge;
+

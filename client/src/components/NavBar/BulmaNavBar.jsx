@@ -28,12 +28,7 @@ const BulmaNavBar = () => {
         </span>
         <span id="nav-home"> <strong style={{marginLeft: 5}}>Home</strong></span>
         </Link>
-        <Link className="navbar-item is-hoverable" to="/cart">
-            <span className="icon">
-            <CartBadge count={count}/>
-            </span>
-            <span id="nav-products"> <strong style={{marginLeft: 5}}>Cart</strong></span>
-        </Link>
+        <CartBadge count={count}/>
         <label
           htmlFor="toggler"
           role="button"

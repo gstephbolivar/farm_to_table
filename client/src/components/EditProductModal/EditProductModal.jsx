@@ -29,10 +29,10 @@ const EditProductModal = (props) => {
     category: "",
     unitType: "",
     description: "",
-    totalAmount: 0,
   });
 
   useEffect(() => {
+    
     API.getOneProduct(props.id).then((res) => {
       setProductObject({
         name: res.data.name,
@@ -42,7 +42,6 @@ const EditProductModal = (props) => {
         category: res.data.category,
         unitType: res.data.unitType,
         description: res.data.description,
-        totalAmount: res.data.totalAmount,
       });
     });
   }, [props.id]);
@@ -55,7 +54,6 @@ const EditProductModal = (props) => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     props.handleModalState();
-    console.log(productObject);
     API.updateProduct(props.id, {
       name: productObject.name,
       unitSize: productObject.unitSize,
@@ -64,7 +62,6 @@ const EditProductModal = (props) => {
       category: productObject.category,
       unitType: productObject.unitType,
       description: productObject.description,
-      totalAmount: productObject.totalAmount,
     })
       .then(() => {
         props.handleModalState();
@@ -77,7 +74,6 @@ const EditProductModal = (props) => {
           category: "",
           unitType: "",
           description: "",
-          totalAmount: "",
         });
       })
       .catch((err) => console.log(err));
@@ -117,6 +113,7 @@ const EditProductModal = (props) => {
                             name="category"
                             onChange={handleInputChange}
                             value={productObject.category}
+                            
                           >
                             {productType.map((option) => (
                               <option key={option.value} value={option.value}>
