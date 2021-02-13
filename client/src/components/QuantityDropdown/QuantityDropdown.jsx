@@ -4,10 +4,11 @@ const QuantityDropdown = (props) => {
   useEffect(() => {}, [props.quantity]);
 
   const handleQuantityChange = (e) => {
-    const qty = parseInt(e.target.value);
-    const totalCost = props.calculateCost(qty);
+    props.setDropDownState(parseInt(e.target.value));
+    // const qty = parseInt(e.target.value);
+    // const totalCost = props.calculateCost(qty);
 
-    props.setTempItem({ ...props.tempItem, quantity: qty, totalCost });
+    // props.setTempItem({ ...props.tempItem, quantity: qty, totalCost });
   };
 
   return (
@@ -16,7 +17,7 @@ const QuantityDropdown = (props) => {
         name="quantity"
         onChange={handleQuantityChange}
         id="qtySelect"
-        value={props.tempItem.quantity}
+        value={props.dropDownState}
       >
         <option>Quantity</option>
         <option>1</option>
