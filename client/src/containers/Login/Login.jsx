@@ -47,7 +47,7 @@ const Login = (props) => {
         ) {
           props.setUserId(user.data._id);
           alert("Successfully Logged in!");
-          
+
           // changes route to the admin products page
           routeChange("/admin");
         }
@@ -60,66 +60,58 @@ const Login = (props) => {
   };
 
   return (
-    <Grid container alignItems="center" justify="center">
-      <Grid item xs={6} md={3} lg={3} xl={3}>
-        <Card>
-          <CardContent>
-            <Grid container spacing={1}>
-              <Grid item>
-                <Typography variant="h4">Login to Farm to Table</Typography>
-              </Grid>
-              <Grid item xs={12} xl={12}>
-                {/* Username */}
-                <TextField
-                  fullWidth
-                  id="username"
-                  required
-                  label="Username"
-                  name="username"
-                  value={loginObject.username}
-                  onChange={handleInputChange}
-                  // helperText="Please select your currency"
-                  variant="filled"
-                ></TextField>
-              </Grid>
-              {/* Email */}
-              {/* <Grid item>
-                        <TextField
-                        fullWidth
-                        id="email"
-                        required
-                        label="Email"
-                        name="email"
-                        value={userObject.email}
-                        onChange={handleInputChange}
-                        // helperText="Please select your currency"
-                        variant="filled"
-                        type="email"
-                        ></TextField>
-                        </Grid>      */}
-              {/* Password */}
-              <Grid item xs={12} xl={12}>
-                <TextField
-                  fullWidth
-                  required
-                  id="password"
-                  label="Password"
-                  variant="filled"
-                  // autoComplete="current-password"
-                  type="password"
-                  onChange={handleInputChange}
-                  name="password"
-                  value={loginObject.password}
-                ></TextField>
-              </Grid>
-            </Grid>
-          </CardContent>
-          <CardActionArea>
-            <Button onClick={handleFormSubmit}>Login</Button>
-          </CardActionArea>
-        </Card>
-      </Grid>
-    </Grid>
+    <div>
+      <section className="section">
+      <div className="columns is-centered is-multiline">
+      <div class="column is-4">
+        <form class="box">
+          <h3 class="title is-3">Login to Farm to Table</h3>
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input
+                class="input"
+                type="email"
+                placeholder="e.g. alex@example.com"
+                fullWidth
+                id="username"
+                required
+                label="Username"
+                name="username"
+                value={loginObject.username}
+                onChange={handleInputChange}
+                variant="filled"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input class="input" type="password" placeholder="********"
+              fullWidth
+              required
+              id="password"
+              label="Password"
+              variant="filled"
+              type="password"
+              onChange={handleInputChange}
+              name="password"
+              value={loginObject.password}
+              />
+            </div>
+          </div>
+
+          <button class="button is-primary" onClick={handleFormSubmit}>
+            Sign in
+          </button>
+        </form>
+        </div>
+        </div>
+      </section>
+    </div>
+
+
   );
 };
 
