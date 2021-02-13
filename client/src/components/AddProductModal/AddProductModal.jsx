@@ -68,12 +68,12 @@ const AddProductModal = (props) => {
 
   return (
     <>
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Add Product</p>
+    <div className="modal-background"></div>
+    <div className="modal-card">
+      <header className="modal-card-head">
+        <p className="modal-card-title">Add Product</p>
       </header>
-      <section class="modal-card-body">
+      <section className="modal-card-body">
     <section className="section">
       <form className="create-form">
         <div className="container has-text-centered">
@@ -229,9 +229,9 @@ const AddProductModal = (props) => {
       </form>
     </section>
     </section>
-    <footer class="modal-card-foot">
-      <button class="button is-success" onClick={handleFormSubmit}>Save changes</button>
-      <button class="button" onClick={props.handleAddProductModalState}>Cancel</button>
+    <footer className="modal-card-foot">
+      <button className="button is-success" onClick={handleFormSubmit}>Save changes</button>
+      <button className="button" onClick={props.handleAddProductModalState}>Cancel</button>
     </footer>
   </div>
 </>

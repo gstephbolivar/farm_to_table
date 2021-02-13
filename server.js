@@ -64,7 +64,7 @@ app.get("/api/products", (req, res) => {
 });
 
 //GET api route to return all products based on category
-app.get("/api/products/:category", (req, res) => {
+app.get("/api/products/filtered/:category", (req, res) => {
   //console.log(req.params.category);
   db.Products.find({ category: req.params.category })
     .then((products) => {

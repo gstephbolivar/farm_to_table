@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import CategoriesCard from "../../components/CategoriesCard/CategoriesCard";
-
 import API from "../../utils/API";
 
 const AllProducts = (props) => {
@@ -23,11 +22,11 @@ const AllProducts = (props) => {
       });
   };
 
-  // sets the category filter to state
+  // sets the category filter
   const filterProducts = (e, item) => {
     const category = item;
-    // console.log(e);
-    console.log(item);
+
+    //console.log(item);
     if (category !== "All") {
       // filters the products displayed based on the category
       displayFilteredProducts(category);
@@ -48,7 +47,9 @@ const AllProducts = (props) => {
   return (
     <div>
       <section className="section">
-        <h3 className="title has-text-centered">Headline Text (if needed)</h3>
+        <h3 className="title has-text-centered">
+          Featured Products this Season
+        </h3>
 
         <div className="container">
           <div className="columns">

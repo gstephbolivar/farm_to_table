@@ -7,9 +7,9 @@ import Confirmation from "./containers/Confirmation/Confirmation";
 import Login from "./containers/Login/Login";
 import SignUp from "./containers/SignUp/SignUp";
 import OneProduct from "./containers/OneProduct/OneProduct";
-import Products from "./containers/Admin/Products/Products";
+import AdminProducts from "./containers/AdminProducts/AdminProducts";
 import CssBaseLine from "@material-ui/core/CssBaseline";
-import NavBar from "./components/NavBar/NavBar.jsx";
+import BulmaNavBar from "./components/NavBar/BulmaNavBar.jsx";
 import Footer from "./components/Footer/Footer";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import CartContext from "./utils/CartContext";
@@ -50,6 +50,7 @@ function App() {
         (x) => x.product.toString() === item.product.toString()
       );
       existingLineItem.quantity += item.quantity;
+      existingLineItem.totalCost += item.totalCost;
     } else {
       tempItems.push(item);
     }
@@ -66,7 +67,7 @@ function App() {
       <CssBaseLine />
       <BrowserRouter>
         <CartContext.Provider value={cartState}>
-          <NavBar />
+          <BulmaNavBar />
           <Switch>
             <Route path="/home" component={Home} />
             <Route
