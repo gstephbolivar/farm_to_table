@@ -12,6 +12,7 @@ const Products = () => {
   const [modal, setModal] = useState("modal");
   const [addProductModal, setAddProductModal] = useState("modal");
   const [products, setProducts] = useState([]);
+  const [productToEdit, setProductToEdit] = useState({})
 
   const handleModalState = (id) => {
     setProductID(id);
@@ -21,6 +22,13 @@ const Products = () => {
       setModal("modal");
     }
   };
+
+  const editProductInfo = (id) => {
+    API.getOneProduct(id)
+    .then((res) => {
+      
+    })
+  }
 
   const handleAddProductModalState = () => {
     if (addProductModal === "modal") {

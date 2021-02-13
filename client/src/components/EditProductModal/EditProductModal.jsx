@@ -34,7 +34,6 @@ const EditProductModal = (props) => {
 
   useEffect(() => {
     API.getOneProduct(props.id).then((res) => {
-      console.log(res);
       setProductObject({
         name: res.data.name,
         unitSize: res.data.unitSize,
