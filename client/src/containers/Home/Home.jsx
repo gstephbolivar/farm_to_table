@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React from "react";
 import "./home.css";
 
@@ -29,9 +30,9 @@ const Home = () => {
             </p>
             <br />
             <div className="buttons are-medium is-centered">
-              <button className="button" type="button" id="shopNow">
+              <Link to="/allproducts" className="button" type="button" id="shopNow">
                 Shop Now
-              </button>
+              </Link>
             </div>
           </div>
         </div>
