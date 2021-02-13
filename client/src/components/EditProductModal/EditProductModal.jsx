@@ -21,9 +21,6 @@ const productType = [
 ];
 
 const EditProductModal = (props) => {
-  const [modalID, setModalID] = useState(props.id);
-  const [unitType, setUnitType] = useState("pounds");
-  const [category, setCategory] = useState("fruit");
   const [productObject, setProductObject] = useState({
     name: "",
     unitSize: 0,
@@ -50,14 +47,6 @@ const EditProductModal = (props) => {
       });
     });
   }, [props.id]);
-
-  const handleUnitChange = (event) => {
-    setUnitType(event.target.value);
-  };
-
-  const handleCategoryChange = (event) => {
-    setCategory(event.target.value);
-  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -172,7 +161,7 @@ const EditProductModal = (props) => {
                         rows={2}
                         variant="outlined"
                         onChange={handleInputChange}
-                        name="descriptionEdit"
+                        name="description"
                         value={productObject.description}
                       ></textarea>
                     </div>

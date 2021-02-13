@@ -1,5 +1,6 @@
 import React from "react";
 import "./catCard.css";
+import {Link} from "react-router-dom";
 
 // List of items that user can choose from to filter food options
 const menuItems = [
@@ -31,8 +32,9 @@ const CategoriesCard = ({ onClick }) => {
     <div className="panel">
       <p className="panel-heading">Categories</p>
       {menuItems.map((item, key) => (
-        <a
-          id={item.catID}
+        <Link
+          to="#"
+        id={item.catID}
           className="panel-block"
           key={key}
           value={item.listText}
@@ -47,7 +49,7 @@ const CategoriesCard = ({ onClick }) => {
           </svg>
           </span> */}
             <h6 className="subtitle is-6">{item.listText}</h6>
-        </a>
+        </Link>
       ))}
 
 
