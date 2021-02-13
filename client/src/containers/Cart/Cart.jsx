@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import CartItem from "../../components/CartItem/CartItem";
 
 import Grid from "@material-ui/core/Grid";
@@ -9,6 +10,11 @@ import API from "../../utils/API";
 
 const Cart = (props) => {
   const { userId, lineItems } = useContext(CartContext);
+  const history = useHistory();
+
+  const routeChange = (path) => {
+    history.push(path);
+  };
 
   const handleCartSubmit = () => {
     API.addLineItems(lineItems).then((res) => {
@@ -16,7 +22,8 @@ const Cart = (props) => {
         customer: userId,
         LineItem: res.data.map((x) => x._id),
       }).then(() => {
-        alert("Order successfully placed");
+        // alert("Order successfully placed");
+        routeChange("/confirmation");
         localStorage.removeItem("lineItems");
         props.clearCart();
       });
