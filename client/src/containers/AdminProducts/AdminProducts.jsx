@@ -85,7 +85,7 @@ const Products = () => {
     <div>
       <section className="section">
         <h3 className="title has-text-centered">
-          This will be where you can view all products. Admin side.
+          Products Inventory - Add/Remove/Edit
         </h3>
 
         <div className="container">

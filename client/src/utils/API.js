@@ -41,7 +41,7 @@ export default {
     //console.log(user);
     return axios.get("/api/users", {
       params: {
-        username: user.username,
+        email: user.email,
         password: user.password,
       },
     });
