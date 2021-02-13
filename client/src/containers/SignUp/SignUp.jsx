@@ -121,14 +121,9 @@ const SignUp = () => {
                 Create Account
               </button>
 
-              {/* Directs to login page */}
+             <h5 className="subtitle is-6">Already a member? {" "}<a className="title is-6" href="/login">Login here.</a></h5>
 
-              <h5 className="subtitle is-6">
-                Already a member?{" "}
-                <Link className="title is-6" to="/login">
-                  Login here.
-                </Link>
-              </h5>
+
             </form>
           </div>
         </div>
