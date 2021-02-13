@@ -1,7 +1,6 @@
 import { useState } from "react";
 import API from "../../utils/API";
 
-
 const SignUp = () => {
   const [userObject, setUserObject] = useState({
     username: "",
@@ -19,7 +18,6 @@ const SignUp = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     API.addUser({
-      username: userObject.username,
       name: userObject.name,
       address: userObject.address,
       password: userObject.password,
@@ -45,23 +43,25 @@ const SignUp = () => {
             <form className="box">
               <h3 className="title is-3">Sign up for Farm To Table</h3>
 
-              {/* USERNAME */}
+              {/* Email */}
               <div className="field">
-                <label className="label">Username</label>
+                <label className="label">Email</label>
                 <div className="control">
                   <input
                     className="input"
                     type="email"
-                    placeholder="username"
                     fullwidth="true"
-                    id="username"
+                    placeholder="e.g. alex@example.com"
+                    id="email"
                     required
-                    name="username"
-                    value={userObject.username}
+                    label="Email"
+                    name="email"
+                    value={userObject.email}
                     onChange={handleInputChange}
                   />
                 </div>
               </div>
+
               {/* Full Name */}
               <div className="field">
                 <label className="label">Full Name</label>
@@ -76,25 +76,6 @@ const SignUp = () => {
                     label="First and Last Name"
                     name="name"
                     value={userObject.name}
-                    onChange={handleInputChange}
-                  />
-                </div>
-              </div>
-
-              {/* Email */}
-              <div className="field">
-                <label className="label">Email</label>
-                <div className="control">
-                  <input
-                    className="input"
-                    type="email"
-                    placeholder="e.g. alex@example.com"
-                    fullwidth="true"
-                    id="email"
-                    required
-                    label="Email"
-                    name="email"
-                    value={userObject.email}
                     onChange={handleInputChange}
                   />
                 </div>
@@ -139,11 +120,15 @@ const SignUp = () => {
               <button className="button is-primary" onClick={handleFormSubmit}>
                 Create Account
               </button>
-             
-             {/* Directs to login page */}
 
-             <h5 className="subtitle is-6">Already a member? <a className="title is-6" href="">Login here.</a></h5>
+              {/* Directs to login page */}
 
+              <h5 className="subtitle is-6">
+                Already a member?{" "}
+                <a className="title is-6" href="">
+                  Login here.
+                </a>
+              </h5>
             </form>
           </div>
         </div>
