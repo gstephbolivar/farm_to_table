@@ -142,7 +142,7 @@ const SignUp = () => {
              
              {/* Directs to login page */}
 
-             <h5 className="subtitle is-6">Already a member? <a className="title is-6" href="">Login here.</a></h5>
+             <h5 className="subtitle is-6">Already a member? <a className="title is-6" href="/login">Login here.</a></h5>
 
             </form>
           </div>

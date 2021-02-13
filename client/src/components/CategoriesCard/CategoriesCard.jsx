@@ -1,91 +1,79 @@
-import React from "react";
+import React, { useState } from "react";
 import "./catCard.css";
 
 // List of items that user can choose from to filter food options
-const menuItems = [
+const items = [
   {
     listText: "All",
-    catID: "all"
+    catID: "all",
+    selected: true
   },
   {
     listText: "Fruit",
     catID: "fruit",
+    selected: false
   },
   {
     listText: "Vegetable",
     catID: "vegetable",
+    selected: false
   },
   {
     listText: "Meat",
     catID: "meat",
+    selected: false
   },
   {
     listText: "Dairy",
     catID: "dairy",
+    selected: false
   },
 ];
 
 const CategoriesCard = ({ onClick }) => {
-  return (
+  const [menuItems, setMenuItems] = useState(items)
+  const handleClick = (key) => {
+    console.log(key);
+    const mapArray = menuItems.map((item, i) => {
+      if (i === key) {
+        item.selected = true;
+        return item
+      } else {
+        item.selected = false;
+        return item
+      }
+    })
+    setMenuItems(mapArray)
+  }
 
+  return (
     <div className="panel">
       <p className="panel-heading">Categories</p>
       {menuItems.map((item, key) => (
-        <a
-          id={item.catID}
+        <a 
+          id={item.selected ? item.catID + "-selected" : item.catID}
           className="panel-block"
           key={key}
           value={item.listText}
           name={item.listText}
           onClick={(e) => {
             onClick(e, item.listText);
-          }
-        }
+            handleClick(key);
+          }}
         >
-          {/* <span className="icon">
-          <svg width="30" height="30" viewBox="0 0 10 10" id={item.catID} >
-          </svg>
-          </span> */}
-            <h6 class="subtitle is-6">{item.listText}</h6>
+          <a
+            value={item.listText}
+            name={item.listText}
+            class="subtitle is-6"
+            onClick={(e) => {
+              onClick(e, item.listText);
+            }}
+          >
+            {item.listText}
+          </a>
         </a>
       ))}
-
-
-          {/* <a
-          id="fruit"
-          className="panel-block"
-          value="Fruit"
-          name="Fruit"
-          onClick={(e) => {
-            onClick(e, "Fruit");
-          }
-        }
-        >
-          
-          <h2 class="subtitle">Fruit</h2>
-
-
-        </a>
-
-        <a
-          id="vegetable"
-          className="panel-block"
-          value="Vegetable"
-          name="Vegetable"
-          onClick={(e) => {
-            onClick(e, "Vegetable");
-          }
-        }
-        >
-          
-
-
-
-        </a> */}
-
-   
     </div>
-
   );
 };
 

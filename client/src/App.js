@@ -7,7 +7,6 @@ import Login from "./containers/Login/Login";
 import SignUp from "./containers/SignUp/SignUp";
 import OneProduct from "./containers/OneProduct/OneProduct";
 import Products from "./containers/Admin/Products/Products";
-import CssBaseLine from "@material-ui/core/CssBaseline";
 import BulmaNavBar from "./components/NavBar/BulmaNavBar.jsx";
 import Footer from "./components/Footer/Footer";
 import {useState} from 'react';
@@ -56,7 +55,6 @@ function App() {
 
   return (
     <>
-      <CssBaseLine />
       <BrowserRouter>
       <CartContext.Provider value={cartState}>
       <BulmaNavBar />
