@@ -12,7 +12,6 @@ const CartBadge = (props) => {
    
     return (
       
-      <Link to="/cart" className="cartLink">
        <div id="cartBadge">
         {props.count > 0 ?
           <div className="circle">
@@ -21,7 +20,6 @@ const CartBadge = (props) => {
         }        
         <i className="fas fa-shopping-cart"></i>
       </div> 
-      </Link>
         
     )
 }

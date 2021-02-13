@@ -35,7 +35,7 @@ const BulmaNavBar = () => {
             <span id="nav-products"> <strong style={{marginLeft: 5}}>Cart</strong></span>
         </Link>
         <label
-          for="toggler"
+          htmlFor="toggler"
           role="button"
           className="navbar-burger burger"
           aria-label="menu"
