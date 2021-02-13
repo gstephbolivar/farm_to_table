@@ -85,7 +85,7 @@ const Cart = (props) => {
                   </thead>
                   <tbody>
                     {lineItems.map((item, index) => (
-                      <CartItem {...item} img="https://placedog.net/75/75" />
+                      <CartItem lineItem={item} img="https://placedog.net/75/75" handleItemChange={props.handleAddToCart} />
                     ))}
                   </tbody>
                 </table>
