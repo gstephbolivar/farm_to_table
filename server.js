@@ -197,7 +197,7 @@ app.post("/api/users", ({ body }, res) => {
 // GET api route to return selected user
 app.get("/api/users", (req, res) => {
   db.User.findOne({
-    username: req.query.username,
+    email: req.query.email,
     password: req.query.password,
   })
     .then((result) => {
