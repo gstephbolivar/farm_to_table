@@ -53,7 +53,7 @@ const SignUp = () => {
                     className="input"
                     type="email"
                     placeholder="username"
-                    fullWidth
+                    fullwidth="true"
                     id="username"
                     required
                     name="username"
@@ -70,7 +70,7 @@ const SignUp = () => {
                     className="input"
                     type="text"
                     placeholder="John Smith"
-                    fullWidth
+                    fullwidth="true"
                     id="fullName"
                     required
                     label="First and Last Name"
@@ -89,7 +89,7 @@ const SignUp = () => {
                     className="input"
                     type="email"
                     placeholder="e.g. alex@example.com"
-                    fullWidth
+                    fullwidth="true"
                     id="email"
                     required
                     label="Email"
@@ -108,7 +108,7 @@ const SignUp = () => {
                     className="input"
                     type="text"
                     placeholder="3203 FM 1960 East Humble, Texas, 77338"
-                    fullWidth
+                    fullwidth="true"
                     id="homeAddress"
                     label="Home Address"
                     name="address"
