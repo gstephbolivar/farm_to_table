@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, userEffect, useEffect } from "react";
 // import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import QuantityDropdown from "../QuantityDropdown/QuantityDropdown";
@@ -15,17 +15,14 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
     totalCost: 0,
   });
 
-  const [tempItem, setTempItem] = useState({
-    quantity: 0,
-    price: price,
-    totalCost: 0,
-  });
+  const [addedProductState, setAddedProductState] = useState(0);
+  const [dropDownState, setDropDownState] = useState("Quantity");
 
   const calculateCost = (qty) => {
-    const price = tempItem.price;
-    const cost = price * qty;
-    const totalCost = Number(Math.round(cost + "e2") + "e-2");
-    return totalCost;
+    const cost = lineItemState.price * qty;
+    const itemCost = Number(Math.round(cost + "e2") + "e-2");
+    
+    return itemCost;
   };
 
   // const handleEditButton = (id) => {
@@ -45,30 +42,31 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
 
   const handleAddClick = (e) => {
     e.preventDefault();
-
-    if (tempItem.quantity === 0) {
+    if (dropDownState === "Quantity") {
       return;
     }
 
-    let newQuantity = tempItem.quantity;
-    let newCost = tempItem.totalCost;
+    let cost = calculateCost(dropDownState);
 
-    if (quantity < tempItem.quantity) {
-      newQuantity = quantity;
-      newCost = calculateCost(newQuantity);
-      alert(`We are sorry but there are only ${quantity} left in stock.`);
-      setTempItem({ ...tempItem, quantity: newQuantity, totalCost: newCost });
+    if (quantity < addedProductState + dropDownState) {
+      const maxCanOrder = quantity - addedProductState;
+      let warningMessage = "We are sorry but the quantity you are trying to order would exceed the amount that we have in stock.\n"
+      warningMessage += `The maximum amount of units you can order at this time ${maxCanOrder} units.`
+      alert(warningMessage);
+      setDropDownState(maxCanOrder)
       return;
     }
 
     const lineItem = {
       ...lineItemState,
-      quantity: newQuantity,
-      totalCost: newCost,
+      quantity: dropDownState,
+      totalCost: cost
     };
-
-    setLineItemState(lineItem);
+    
+    setLineItemState({...lineItem});
     handleAddToCart(lineItem);
+    setAddedProductState(addedProductState + lineItem.quantity);
+    setDropDownState("Quantity");
   };
 
   return (
@@ -87,9 +85,8 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
               <p className="subtitle is-6">{description}</p>
               <p className="subtitle is-6">How many would you like?</p>
               <QuantityDropdown
-                setTempItem={setTempItem}
-                tempItem={tempItem}
-                calculateCost={calculateCost}
+                dropDownState = {dropDownState}
+                setDropDownState = {setDropDownState}
               />
             </div>
           </div>

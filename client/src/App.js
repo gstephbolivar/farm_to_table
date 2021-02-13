@@ -42,6 +42,7 @@ function App() {
     if(tempItems.map(x => x.product.toString()).includes(item.product.toString())){
       const existingLineItem = tempItems.find(x => x.product.toString() === item.product.toString());
       existingLineItem.quantity += item.quantity;
+      existingLineItem.totalCost += item.totalCost;
     }else{
       tempItems.push(item);
     }
