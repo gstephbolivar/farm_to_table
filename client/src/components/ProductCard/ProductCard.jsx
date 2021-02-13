@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import QuantityDropdown from "../QuantityDropdown/QuantityDropdown";
 import API from "../../utils/API.js";
 
-const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct, unitSize, unitType }) => {
+const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct, unitSize, unitType, description }) => {
   // const history = useHistory();
 
   const [lineItemState, setLineItemState] = useState({
@@ -83,12 +83,14 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
           <div className="media">
             <div className="media-content">
               <p className="title is-4">{name}</p>
+              <p className="subtitle is-6">${price} per {unitSize}-{unitType}</p>
+              <p className="subtitle is-6">{description}</p>
+              <p className="subtitle is-6">How many would you like?</p>
               <QuantityDropdown
                 setTempItem={setTempItem}
                 tempItem={tempItem}
                 calculateCost={calculateCost}
               />
-              <p className="subtitle is-6">${price} per {unitSize}-{unitType}</p>
             </div>
           </div>
           <footer className="card-footer">
