@@ -11,7 +11,7 @@ const CartBadge = (props) => {
    
     return (
       
-      <Link className="navbar-item cartLink is-hoverable" to="/cart">
+      <Link style={{marginTop: 3}} className="navbar-item is-hoverable" to="/cart">
         <span className="icon">
        <div id="cartBadge">
         {props.count > 0 ?

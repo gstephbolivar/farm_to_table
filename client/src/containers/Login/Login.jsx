@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import API from "../../utils/API";
+import { Link } from "react-router-dom";
+
 
 const Login = (props) => {
   const history = useHistory();
@@ -102,9 +104,9 @@ const Login = (props) => {
 
               <h5 className="subtitle is-6">
                 Not a member?{" "}
-                <a className="title is-6" href="/signup">
+                <Link className="title is-6" to="/signup">
                   Sign up here.
-                </a>
+                </Link>
               </h5>
             </form>
           </div>
