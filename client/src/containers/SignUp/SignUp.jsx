@@ -1,14 +1,6 @@
 import { useState } from "react";
 import API from "../../utils/API";
-import {
-  Grid,
-  Card,
-  CardContent,
-  Typography,
-  CardActionArea,
-  Button,
-  TextField,
-} from "@material-ui/core";
+
 
 const SignUp = () => {
   const [userObject, setUserObject] = useState({
@@ -46,92 +38,112 @@ const SignUp = () => {
   };
 
   return (
-    <Grid container alignItems="center" justify="center">
-      <Grid item xs={6} md={3} lg={1} xl={1}>
-        <Card>
-          <CardContent>
-            <Grid container spacing={1}>
-              <Grid item>
-                <Typography variant="h4">Sign up for Farm To Table</Typography>
-              </Grid>
-              <Grid item>
-                {/* Username */}
-                <TextField
-                  fullWidth
-                  id="username"
-                  required
-                  label="Username"
-                  name="username"
-                  value={userObject.username}
-                  onChange={handleInputChange}
-                  // helperText="Please select your currency"
-                  variant="filled"
-                ></TextField>
-              </Grid>
+    <div>
+      <section className="section">
+        <div className="columns is-centered is-multiline">
+          <div class="column is-4">
+            <form class="box">
+              <h3 class="title is-3">Sign up for Farm To Table</h3>
+
+              {/* USERNAME */}
+              <div class="field">
+                <label class="label">Username</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="email"
+                    placeholder="username"
+                    fullWidth
+                    id="username"
+                    required
+                    name="username"
+                    value={userObject.username}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
               {/* Full Name */}
-              <Grid item>
-                <TextField
-                  fullWidth
-                  id="fullName"
-                  required
-                  label="First and Last Name"
-                  name="name"
-                  value={userObject.name}
-                  onChange={handleInputChange}
-                  // helperText="Please select your currency"
-                  variant="filled"
-                ></TextField>
-              </Grid>
+              <div class="field">
+                <label class="label">Full Name</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    placeholder="John Smith"
+                    fullWidth
+                    id="fullName"
+                    required
+                    label="First and Last Name"
+                    name="name"
+                    value={userObject.name}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+
               {/* Email */}
-              <Grid item>
-                <TextField
-                  fullWidth
-                  id="email"
-                  required
-                  label="Email"
-                  name="email"
-                  value={userObject.email}
-                  onChange={handleInputChange}
-                  // helperText="Please select your currency"
-                  variant="filled"
-                  type="email"
-                ></TextField>
-              </Grid>
-              {/* Home address */}
-              <Grid item>
-                <TextField
-                  fullWidth
-                  id="homeAddress"
-                  label="Home Address"
-                  name="address"
-                  value={userObject.address}
-                  onChange={handleInputChange}
-                  // helperText="Please select your currency"
-                  variant="filled"
-                ></TextField>
-              </Grid>
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="email"
+                    placeholder="e.g. alex@example.com"
+                    fullWidth
+                    id="email"
+                    required
+                    label="Email"
+                    name="email"
+                    value={userObject.email}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+
+              {/* Home Address */}
+              <div class="field">
+                <label class="label">Address</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    placeholder="3203 FM 1960 East Humble, Texas, 77338"
+                    fullWidth
+                    id="homeAddress"
+                    label="Home Address"
+                    name="address"
+                    value={userObject.address}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+
               {/* Password */}
-              <Grid item>
-                <TextField
-                  required
-                  id="password"
-                  label="Password"
-                  variant="filled"
-                  // autoComplete="current-password"
-                  type="password"
-                  onChange={handleInputChange}
-                  name="password"
-                  value={userObject.password}
-                ></TextField>
-              </Grid>
-            </Grid>
-          </CardContent>
-          <CardActionArea>
-            <Button onClick={handleFormSubmit}>Create Account</Button>
-          </CardActionArea>
-        </Card>
-      </Grid>
-    </Grid>
+              <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="password"
+                    placeholder="********"
+                    required
+                    id="password"
+                    type="password"
+                    onChange={handleInputChange}
+                    name="password"
+                    value={userObject.password}
+                  />
+                </div>
+              </div>
+
+              <button class="button is-primary" onClick={handleFormSubmit}>
+                Create Account
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 

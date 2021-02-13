@@ -67,16 +67,15 @@ const Login = (props) => {
         <form class="box">
           <h3 class="title is-3">Login to Farm to Table</h3>
           <div class="field">
-            <label class="label">Email</label>
+            <label class="label">Username</label>
             <div class="control">
               <input
                 class="input"
-                type="email"
-                placeholder="e.g. alex@example.com"
+                type="text"
+                placeholder="username"
                 fullWidth
                 id="username"
                 required
-                label="Username"
                 name="username"
                 value={loginObject.username}
                 onChange={handleInputChange}
