@@ -104,6 +104,10 @@ const Login = (props) => {
           <button class="button is-primary" onClick={handleFormSubmit}>
             Sign in
           </button>
+
+           {/* Directs to sign up page */}
+
+           <h5 class="subtitle is-6">Not a member? <a class="title is-6" href="/signup">Sign up here.</a></h5>
         </form>
         </div>
         </div>
