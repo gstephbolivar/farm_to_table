@@ -87,7 +87,6 @@ const Login = (props) => {
                     id="password"
                     label="Password"
                     variant="filled"
-                    type="password"
                     onChange={handleInputChange}
                     name="password"
                     value={loginObject.password}
