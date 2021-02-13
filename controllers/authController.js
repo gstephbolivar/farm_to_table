@@ -36,8 +36,8 @@ router.post("/login", (req, res) => {
       bcrypt
         .compare(req.body.password, foundUser.password)
         .then((result) => {
-          //const token = jwt.sign({ _id: result._id }, "secretpassword");
-          //console.log(token);
+          const token = jwt.sign({ _id: result._id }, "secretpassword");
+          console.log(token);
           console.log(result);
           if (result) {
             res.json({
