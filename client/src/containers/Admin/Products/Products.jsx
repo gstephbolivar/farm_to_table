@@ -100,10 +100,12 @@ const handleAddProductModalState = () => {
         <div className="container">
           <div className="columns">
             <div className="column">
+            <AddProductButtonCard handleAddProductModalState={handleAddProductModalState}/>
+            <br />
               <CategoriesCard onClick={filterProducts} />
+              
             </div>
             <div className="column is-9">
-            <AddProductButtonCard handleAddProductModalState={handleAddProductModalState}/>
 
               <div className="columns is-centered is-multiline">
                 {products.map((product) => (

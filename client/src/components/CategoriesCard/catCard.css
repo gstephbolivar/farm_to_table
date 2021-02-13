@@ -1,0 +1,58 @@
+.panel-block {
+  height: 60px;
+}
+
+.subtitle {
+    margin-left: 50px;
+}
+
+#fruit {
+  background-image: url(icons/fruits.svg);
+  background-repeat: no-repeat;
+}
+
+#fruit:hover, #fruit:active{
+  background-image: url(icons/fruits_hover.svg);
+  background-repeat: no-repeat;
+}
+
+#vegetable {
+    background-image: url(icons/vegetable.svg);
+    background-repeat: no-repeat;
+  }
+  
+  #vegetable:hover, #vegetable:active {
+    background-image: url(icons/vegetable_hover.svg);
+    background-repeat: no-repeat;
+  }
+
+  #meat {
+    background-image: url(icons/meat.svg);
+    background-repeat: no-repeat;
+  }
+  
+  #meat:hover, #meat:active {
+    background-image: url(icons/meat_hover.svg);
+    background-repeat: no-repeat;
+  }
+
+  #dairy {
+    background-image: url(icons/dairy.svg);
+    background-repeat: no-repeat;
+  }
+  
+  #dairy:hover, #dairy:active {
+    background-image: url(icons/dairy_hover.svg);
+    background-repeat: no-repeat;
+  }
+
+
+  #all {
+    background-image: url(icons/all.svg);
+    background-repeat: no-repeat;
+  }
+  
+  #all:hover, #all:active {
+    background-image: url(icons/all_hover.svg);
+    background-repeat: no-repeat;
+  }
