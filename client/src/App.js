@@ -8,7 +8,7 @@ import SignUp from "./containers/SignUp/SignUp";
 import OneProduct from "./containers/OneProduct/OneProduct";
 import Products from "./containers/Admin/Products/Products";
 import CssBaseLine from "@material-ui/core/CssBaseline";
-import NavBar from "./components/NavBar/NavBar.jsx";
+import BulmaNavBar from "./components/NavBar/BulmaNavBar.jsx";
 import Footer from "./components/Footer/Footer";
 import {useState} from 'react';
 import CartContext from './utils/CartContext';
@@ -42,6 +42,7 @@ function App() {
     if(tempItems.map(x => x.product.toString()).includes(item.product.toString())){
       const existingLineItem = tempItems.find(x => x.product.toString() === item.product.toString());
       existingLineItem.quantity += item.quantity;
+      existingLineItem.totalCost += item.totalCost;
     }else{
       tempItems.push(item);
     }
@@ -58,7 +59,7 @@ function App() {
       <CssBaseLine />
       <BrowserRouter>
       <CartContext.Provider value={cartState}>
-      <NavBar />
+      <BulmaNavBar />
         <Switch>
           <Route path="/home" component={Home} />
           <Route path="/allproducts" render={(props) => <AllProducts {...props} handleAddToCart={handleAddToCart}/>} />
