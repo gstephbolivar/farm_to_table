@@ -106,7 +106,7 @@ const Cart = (props) => {
                   className="vertical-center"
                   style={{ justifyContent: "center", marginTop: 30 }}
                 >
-                  ${subTotal}
+                  ${subTotal.toFixed(2)}
                 </div>
               </Grid>
             </Grid>
