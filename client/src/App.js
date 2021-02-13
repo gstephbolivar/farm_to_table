@@ -38,7 +38,7 @@ function App() {
     }
   };
 
-  const handleAddToCart = (item) => {
+  const handleAddToCart = (item, cartEdit) => {
     let tempItems = cartState.lineItems;
 
     if (
@@ -49,8 +49,13 @@ function App() {
       const existingLineItem = tempItems.find(
         (x) => x.product.toString() === item.product.toString()
       );
-      existingLineItem.quantity += item.quantity;
-      existingLineItem.totalCost += item.totalCost;
+      if (cartEdit) {
+        existingLineItem.quantity = item.quantity;
+        existingLineItem.totalCost = item.totalCost;
+      } else {
+        existingLineItem.quantity += item.quantity;
+        existingLineItem.totalCost += item.totalCost;
+      }
     } else {
       tempItems.push(item);
     }

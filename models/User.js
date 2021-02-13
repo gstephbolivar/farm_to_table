@@ -23,6 +23,10 @@ const UserSchema = new Schema({
     required: ["Please enter a valid password!"],
   },
 });
+UserSchema.pre("save", function (next) {
+  this.email = this.email.toLowerCase();
+  next();
+});
 
 const User = mongoose.model("User", UserSchema);
 
