@@ -139,6 +139,11 @@ const SignUp = () => {
               <button class="button is-primary" onClick={handleFormSubmit}>
                 Create Account
               </button>
+             
+             {/* Directs to login page */}
+
+             <h5 class="subtitle is-6">Already a member? <a class="title is-6" href="/login">Login here.</a></h5>
+
             </form>
           </div>
         </div>
