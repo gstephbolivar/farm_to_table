@@ -1,14 +1,5 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import {
-  Grid,
-  Card,
-  CardContent,
-  Typography,
-  CardActionArea,
-  Button,
-  TextField,
-} from "@material-ui/core";
 import API from "../../utils/API";
 
 const Login = (props) => {
