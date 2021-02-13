@@ -10,7 +10,7 @@ const Login = (props) => {
   };
 
   const [loginObject, setLoginObject] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -25,15 +25,15 @@ const Login = (props) => {
     // checks if username and password match in database
     API.checkUser(loginObject)
       .then((user) => {
-        //console.log(loginObject);
-        //console.log(user);
+        console.log(loginObject);
+        console.log(user);
 
         // checks if user has entered login information
-        if (!loginObject.username || !loginObject.password) {
+        if (!loginObject.email || !loginObject.password) {
           alert("Please enter a username and password");
         } // checks that login matches database user
         else if (
-          user.data.username === loginObject.username &&
+          user.data.email === loginObject.email &&
           user.data.password === loginObject.password
         ) {
           props.setUserId(user.data._id);
@@ -53,59 +53,65 @@ const Login = (props) => {
   return (
     <div>
       <section className="section">
-      <div className="columns is-centered is-multiline">
-      <div className="column is-4">
-        <form className="box">
-          <h3 className="title is-3">Login to Farm to Table</h3>
-          <div className="field">
-            <label className="label">Username</label>
-            <div className="control">
-              <input
-                className="input"
-                type="text"
-                placeholder="username"
-                fullWidth
-                id="username"
-                required
-                name="username"
-                value={loginObject.username}
-                onChange={handleInputChange}
-                variant="filled"
-              />
-            </div>
+        <div className="columns is-centered is-multiline">
+          <div className="column is-4">
+            <form className="box">
+              <h3 className="title is-3">Login to Farm to Table</h3>
+              <div className="field">
+                <label className="label">Email</label>
+                <div className="control">
+                  <input
+                    className="input"
+                    type="text"
+                    placeholder="email"
+                    fullwidth="true"
+                    id="email"
+                    required
+                    name="email"
+                    value={loginObject.email}
+                    onChange={handleInputChange}
+                    variant="filled"
+                  />
+                </div>
+              </div>
+
+              <div className="field">
+                <label className="label">Password</label>
+                <div className="control">
+                  <input
+                    className="input"
+                    type="password"
+                    placeholder="********"
+                    fullwidth="true"
+                    required
+                    id="password"
+                    label="Password"
+                    variant="filled"
+                    type="password"
+                    onChange={handleInputChange}
+                    name="password"
+                    value={loginObject.password}
+                  />
+                </div>
+              </div>
+
+              <button className="button is-primary" onClick={handleFormSubmit}>
+                Sign in
+              </button>
+
+              {/* Directs to sign up page */}
+
+              <h5 className="subtitle is-6">
+                Not a member?{" "}
+                <a className="title is-6" href="/signup">
+                  Sign up here.
+                </a>
+              </h5>
+            </form>
           </div>
-
-          <div className="field">
-            <label className="label">Password</label>
-            <div className="control">
-              <input className="input" type="password" placeholder="********"
-              fullWidth
-              required
-              id="password"
-              label="Password"
-              variant="filled"
-              type="password"
-              onChange={handleInputChange}
-              name="password"
-              value={loginObject.password}
-              />
-            </div>
-          </div>
-
-          <button className="button is-primary" onClick={handleFormSubmit}>
-            Sign in
-          </button>
-
-           {/* Directs to sign up page */}
-
-           <h5 className="subtitle is-6">Not a member? <a class="title is-6" href="/signup">Sign up here.</a></h5>
-        </form>
-        </div>
         </div>
       </section>
     </div>
-
-
   );
 };
 

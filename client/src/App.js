@@ -6,71 +6,88 @@ import Confirmation from "./containers/Confirmation/Confirmation";
 import Login from "./containers/Login/Login";
 import SignUp from "./containers/SignUp/SignUp";
 import OneProduct from "./containers/OneProduct/OneProduct";
-import Products from "./containers/Admin/Products/Products";
+import AdminProducts from "./containers/AdminProducts/AdminProducts";
+import CssBaseLine from "@material-ui/core/CssBaseline";
 import BulmaNavBar from "./components/NavBar/BulmaNavBar.jsx";
 import Footer from "./components/Footer/Footer";
-import {useState} from 'react';
-import CartContext from './utils/CartContext';
-
+import { useState } from "react";
+import CartContext from "./utils/CartContext";
 
 function App() {
-
   const [cartState, setCartState] = useState({
-    userId: localStorage.getItem("userId") ? localStorage.getItem("userId") : "",
-    lineItems: localStorage.getItem("lineItems") ? JSON.parse(localStorage.getItem("lineItems")) : []
-  })
+    userId: localStorage.getItem("userId")
+      ? localStorage.getItem("userId")
+      : "",
+    lineItems: localStorage.getItem("lineItems")
+      ? JSON.parse(localStorage.getItem("lineItems"))
+      : [],
+  });
 
   const setUserId = (id) => {
     const localId = localStorage.getItem("userId");
 
-    if(localId && localId !== cartState.userId)
-    {
+    if (localId && localId !== cartState.userId) {
       localStorage.setItem("userId", id);
-      setCartState({...cartState, userId: id});
-    }else{
+      setCartState({ ...cartState, userId: id });
+    } else {
       localStorage.setItem("userId", id);
-      setCartState({...cartState, userId: id})
-      
+      setCartState({ ...cartState, userId: id });
     }
-  
-  }
+  };
 
   const handleAddToCart = (item) => {
     let tempItems = cartState.lineItems;
-    
-    if(tempItems.map(x => x.product.toString()).includes(item.product.toString())){
-      const existingLineItem = tempItems.find(x => x.product.toString() === item.product.toString());
+
+    if (
+      tempItems
+        .map((x) => x.product.toString())
+        .includes(item.product.toString())
+    ) {
+      const existingLineItem = tempItems.find(
+        (x) => x.product.toString() === item.product.toString()
+      );
       existingLineItem.quantity += item.quantity;
       existingLineItem.totalCost += item.totalCost;
-    }else{
+    } else {
       tempItems.push(item);
     }
     localStorage.setItem("lineItems", JSON.stringify(tempItems));
-    setCartState({...cartState, lineItems: tempItems});
-  }
+    setCartState({ ...cartState, lineItems: tempItems });
+  };
 
   const clearCart = () => {
-    setCartState({...cartState, lineItems: []});
-  }
+    setCartState({ ...cartState, lineItems: [] });
+  };
 
   return (
     <>
       <BrowserRouter>
-      <CartContext.Provider value={cartState}>
-      <BulmaNavBar />
-        <Switch>
-          <Route path="/home" component={Home} />
-          <Route path="/allproducts" render={(props) => <AllProducts {...props} handleAddToCart={handleAddToCart}/>} />
-          <Route path="/cart" render={(props) => <Cart {...props} clearCart={clearCart}/>} />
-          <Route path="/confirmation" component={Confirmation} />
-          <Route path="/login" render={(props) => <Login {...props} setUserId={setUserId}/>} />
-          <Route path="/signup" component={SignUp} />
-          <Route path="/oneproduct" component={OneProduct} />
-          <Route exact path="/admin" component={Products} />
-          <Route exact path="/" component={Home} />
-        </Switch>
-        <Footer />
-      </CartContext.Provider>     
+        <CartContext.Provider value={cartState}>
+          <BulmaNavBar />
+          <Switch>
+            <Route path="/home" component={Home} />
+            <Route
+              path="/allproducts"
+              render={(props) => (
+                <AllProducts {...props} handleAddToCart={handleAddToCart} />
+              )}
+            />
+            <Route
+              path="/cart"
+              render={(props) => <Cart {...props} clearCart={clearCart} />}
+            />
+            <Route path="/confirmation" component={Confirmation} />
+            <Route
+              path="/login"
+              render={(props) => <Login {...props} setUserId={setUserId} />}
+            />
+            <Route path="/signup" component={SignUp} />
+            <Route path="/oneproduct" component={OneProduct} />
+            <Route exact path="/admin" component={AdminProducts} />
+            <Route exact path="/" component={Home} />
+          </Switch>
+          <Footer />
+        </CartContext.Provider>
       </BrowserRouter>
     </>
   );
