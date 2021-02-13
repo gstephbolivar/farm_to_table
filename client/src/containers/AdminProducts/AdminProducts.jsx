@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import ProductCard from "../../../components/ProductCard/ProductCard";
-import CategoriesCard from "../../../components/CategoriesCard/CategoriesCard";
-import API from "../../../utils/API";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import CategoriesCard from "../../components/CategoriesCard/CategoriesCard";
+import API from "../../utils/API";
 // import {useHistory} from "react-router-dom";
-import EditProductModal from "../../../components/EditProductModal/EditProductModal";
-import AddProductModal from "../../../components/AddProductModal/AddProductModal";
-import AddProductButtonCard from "../../../components/AddProductButtonCard/AddProductButtonCard";
+import EditProductModal from "../../components/EditProductModal/EditProductModal";
+import AddProductModal from "../../components/AddProductModal/AddProductModal";
+import AddProductButtonCard from "../../components/AddProductButtonCard/AddProductButtonCard";
 
 const Products = () => {
   const [productID, setProductID] = useState("");
