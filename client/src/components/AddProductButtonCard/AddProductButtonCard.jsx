@@ -2,7 +2,6 @@ import React from 'react';
 
 const AddProductButtonCard = (props) => {
     return (
-        <div className="column is-4 has-text-centered" id="column">
           <div className="card">
             <div className="card-content">
               <div className="media">
@@ -16,7 +15,6 @@ const AddProductButtonCard = (props) => {
               </footer>
             </div>
           </div>
-        </div>
       );
 };
 
