@@ -124,7 +124,7 @@ const EditProductModal = (props) => {
                       <div className="control">
                         <div className="select">
                           <select
-                            id="selectCategory"
+                            id="selectCategoryEdit"
                             label="Select Type"
                             name="category"
                             onChange={handleInputChange}
@@ -149,7 +149,7 @@ const EditProductModal = (props) => {
                           className="input"
                           type="text"
                           placeholder="Strawberries"
-                          id="productName"
+                          id="productNameEdit"
                           onChange={handleInputChange}
                           name="name"
                           value={productObject.name}
@@ -172,7 +172,7 @@ const EditProductModal = (props) => {
                         rows={2}
                         variant="outlined"
                         onChange={handleInputChange}
-                        name="description"
+                        name="descriptionEdit"
                         value={productObject.description}
                       ></textarea>
                     </div>
@@ -185,7 +185,7 @@ const EditProductModal = (props) => {
                         className="input"
                         type="text"
                         placeholder="pounds"
-                        id="unitType"
+                        id="unitTypeEdit"
                         onChange={handleInputChange}
                         name="unitType"
                         value={productObject.unitType}
@@ -201,7 +201,7 @@ const EditProductModal = (props) => {
                       <div className="control">
                         <input
                           className="input"
-                          id="unitSize"
+                          id="unitSizeEdit"
                           min="1"
                           onChange={handleInputChange}
                           name="unitSize"
@@ -219,7 +219,7 @@ const EditProductModal = (props) => {
                         <span className="icon is-small is-left">$</span>
                         <input
                           className="input"
-                          id="productPrice"
+                          id="productPriceEdit"
                           onChange={handleInputChange}
                           name="price"
                           value={productObject.price}
@@ -242,7 +242,7 @@ const EditProductModal = (props) => {
                         className="input"
                         type="number"
                         placeholder="Total units (inventory)"
-                        id="productName"
+                        id="quantityEdit"
                         onChange={handleInputChange}
                         name="quantity"
                         value={productObject.quantity}
