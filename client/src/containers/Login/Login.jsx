@@ -64,7 +64,7 @@ const Login = (props) => {
                     className="input"
                     type="text"
                     placeholder="email"
-                    fullWidth
+                    fullwidth="true"
                     id="email"
                     required
                     name="email"
@@ -82,7 +82,7 @@ const Login = (props) => {
                     className="input"
                     type="password"
                     placeholder="********"
-                    fullWidth
+                    fullwidth="true"
                     required
                     id="password"
                     label="Password"
@@ -103,7 +103,7 @@ const Login = (props) => {
 
               <h5 className="subtitle is-6">
                 Not a member?{" "}
-                <a class="title is-6" href="/signup">
+                <a className="title is-6" href="/signup">
                   Sign up here.
                 </a>
               </h5>

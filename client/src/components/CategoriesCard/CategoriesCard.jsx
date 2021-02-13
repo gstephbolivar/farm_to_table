@@ -46,7 +46,7 @@ const CategoriesCard = ({ onClick }) => {
           <svg width="30" height="30" viewBox="0 0 10 10" id={item.catID} >
           </svg>
           </span> */}
-            <h6 class="subtitle is-6">{item.listText}</h6>
+            <h6 className="subtitle is-6">{item.listText}</h6>
         </a>
       ))}
 
@@ -62,7 +62,7 @@ const CategoriesCard = ({ onClick }) => {
         }
         >
           
-          <h2 class="subtitle">Fruit</h2>
+          <h2 className="subtitle">Fruit</h2>
 
 
         </a>
