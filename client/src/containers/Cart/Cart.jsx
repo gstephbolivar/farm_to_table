@@ -85,7 +85,7 @@ const Cart = (props) => {
                   </thead>
                   <tbody>
                     {lineItems.map((item, index) => (
-                      <CartItem {...item} img="https://placedog.net/75/75" />
+                      <CartItem {...item} img="https://placedog.net/75/75" key={index} />
                     ))}
                   </tbody>
                 </table>

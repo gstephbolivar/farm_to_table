@@ -20,7 +20,7 @@ const Login = (props) => {
   };
 
   const [loginObject, setLoginObject] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -46,6 +46,26 @@ const Login = (props) => {
             routeChange("/admin");
           }
         });
+    // checks if username and password match in database
+    API.checkUser(loginObject)
+      .then((user) => {
+        console.log(loginObject);
+        console.log(user);
+
+        // checks if user has entered login information
+        if (!loginObject.email || !loginObject.password) {
+          alert("Please enter a username and password");
+        } // checks that login matches database user
+        else if (
+          user.data.email === loginObject.email &&
+          user.data.password === loginObject.password
+        ) {
+          props.setUserId(user.data._id);
+          alert("Successfully Logged in!");
+
+          // changes route to the admin products page
+          routeChange("/admin");
+        }
       })
       .catch((err) => {
         // potentially change this to a modal where user can click to sign up or just re-enter login info
@@ -55,66 +75,67 @@ const Login = (props) => {
   };
 
   return (
-    <Grid container alignItems="center" justify="center">
-      <Grid item xs={6} md={3} lg={3} xl={3}>
-        <Card>
-          <CardContent>
-            <Grid container spacing={1}>
-              <Grid item>
-                <Typography variant="h4">Login to Farm to Table</Typography>
-              </Grid>
-              <Grid item xs={12} xl={12}>
-                {/* Username */}
-                <TextField
-                  fullWidth
-                  id="username"
-                  required
-                  label="Username"
-                  name="username"
-                  value={loginObject.username}
-                  onChange={handleInputChange}
-                  // helperText="Please select your currency"
-                  variant="filled"
-                ></TextField>
-              </Grid>
-              {/* Email */}
-              {/* <Grid item>
-                        <TextField
-                        fullWidth
-                        id="email"
-                        required
-                        label="Email"
-                        name="email"
-                        value={userObject.email}
-                        onChange={handleInputChange}
-                        // helperText="Please select your currency"
-                        variant="filled"
-                        type="email"
-                        ></TextField>
-                        </Grid>      */}
-              {/* Password */}
-              <Grid item xs={12} xl={12}>
-                <TextField
-                  fullWidth
-                  required
-                  id="password"
-                  label="Password"
-                  variant="filled"
-                  // autoComplete="current-password"
-                  type="password"
-                  onChange={handleInputChange}
-                  name="password"
-                  value={loginObject.password}
-                ></TextField>
-              </Grid>
-            </Grid>
-          </CardContent>
-          <CardActionArea>
-            <Button onClick={handleFormSubmit}>Login</Button>
-          </CardActionArea>
-        </Card>
-      </Grid>
-    </Grid>
+    <div>
+      <section className="section">
+        <div className="columns is-centered is-multiline">
+          <div className="column is-4">
+            <form className="box">
+              <h3 className="title is-3">Login to Farm to Table</h3>
+              <div className="field">
+                <label className="label">Email</label>
+                <div className="control">
+                  <input
+                    className="input"
+                    type="text"
+                    placeholder="email"
+                    fullwidth="true"
+                    id="email"
+                    required
+                    name="email"
+                    value={loginObject.email}
+                    onChange={handleInputChange}
+                    variant="filled"
+                  />
+                </div>
+              </div>
+
+              <div className="field">
+                <label className="label">Password</label>
+                <div className="control">
+                  <input
+                    className="input"
+                    type="password"
+                    placeholder="********"
+                    fullwidth="true"
+                    required
+                    id="password"
+                    label="Password"
+                    variant="filled"
+                    type="password"
+                    onChange={handleInputChange}
+                    name="password"
+                    value={loginObject.password}
+                  />
+                </div>
+              </div>
+
+              <button className="button is-primary" onClick={handleFormSubmit}>
+                Sign in
+              </button>
+
+              {/* Directs to sign up page */}
+
+              <h5 className="subtitle is-6">
+                Not a member?{" "}
+                <a className="title is-6" href="/signup">
+                  Sign up here.
+                </a>
+              </h5>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 

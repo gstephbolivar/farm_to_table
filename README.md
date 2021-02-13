@@ -19,3 +19,29 @@ Json web token (JWT)
 
 - need to add styling to panels based on which panel is clicked/chosen
 - need to make dropdown box dynamic based on categories in the database
+
+### username -> email change conflicts
+
+#### Login.jsx
+
+```javascript
+API.checkUser(loginObject)
+      .then((user) => {
+        console.log(loginObject);
+        console.log(user);
+
+        // checks if user has entered login information
+        if (!loginObject.email || !loginObject.password) {
+          alert("Please enter a username and password");
+        } // checks that login matches database user
+        else if (
+          user.data.email === loginObject.email &&
+          user.data.password === loginObject.password
+        ) {
+          props.setUserId(user.data._id);
+          alert("Successfully Logged in!");
+
+          // changes route to the admin products page
+          routeChange("/admin");
+        }
+```
