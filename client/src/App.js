@@ -60,7 +60,6 @@ function App() {
 
   return (
     <>
-      <CssBaseLine />
       <BrowserRouter>
       <CartContext.Provider value={cartState}>
       <BulmaNavBar />
