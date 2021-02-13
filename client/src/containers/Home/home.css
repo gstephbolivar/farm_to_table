@@ -7,3 +7,11 @@
     color: white;
     font-weight: bold;
 }
+
+@media only screen and (max-width: 768px) {
+
+    #Logo {
+        width: 100%;
+    }
+  }
+  

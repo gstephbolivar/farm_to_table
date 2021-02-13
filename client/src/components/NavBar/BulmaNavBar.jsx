@@ -26,13 +26,13 @@ const BulmaNavBar = () => {
         <span className="icon">
         <i className="fas fa-home"></i>
         </span>
-        <span id="nav-home"> <strong style={{marginLeft: 5}}>Home</strong></span>
+        <span id="nav-home" style={{marginLeft: 5}}>Home</span>
         </Link>
         <Link className="navbar-item is-hoverable" to="/cart">
             <span className="icon">
-            <CartBadge count={count}/>
+            <img className="cart" src="./assets/icons/cart.svg"/>
             </span>
-            <span id="nav-products"> <strong style={{marginLeft: 5}}>Cart</strong></span>
+            <span id="nav-products">Cart ( <CartBadge count={count}/> )</span>
         </Link>
         <label
           htmlFor="toggler"
@@ -56,32 +56,33 @@ const BulmaNavBar = () => {
           <Link className="navbar-item is-hoverable" to="/allproducts">
             {/* <!-- begin dropdown box --> */}
             <span className="icon">
-            <i className="fas fa-carrot"></i>
+            <img className="cart" src="./assets/icons/cart.svg"/>
             </span>
-            <span id="nav-products"> <strong style={{marginLeft: 5}}>Products</strong></span>
+            <span id="nav-products" style={{marginLeft: 5}}> Products</span>
           </Link>
 
           <Link className="navbar-item" to="/login">
             <span className="icon">
             <i className="fas fa-house-user"></i>
             </span>
-            <strong style={{marginLeft: 5}} id="nav-login">Login</strong>
+            <span style={{marginLeft: 5}} id="nav-login">Login</span>
           </Link>
 
           <Link className="navbar-item" to="/signup">
             <span className="icon">
             <i className="fas fa-user-plus"></i>
             </span>
-            <strong style={{marginLeft: 5}} id="nav-signUp">Sign Up</strong>
+            <span style={{marginLeft: 5}} id="nav-signUp">Sign Up</span>
           </Link>
 
           <Link className="navbar-item" to="/admin">
             <span className="icon">
             <i className="fas fa-tractor"></i>
             </span>
-            <strong style={{marginLeft: 5}} id="nav-dashboard">Farm Dashboard</strong>
+            <span style={{marginLeft: 5}} id="nav-dashboard">Farm Dashboard</span>
           </Link>
           </div>
+
 
           {/* <div className="navbar-item">
             <strong id="nav-text"

@@ -1,7 +1,7 @@
 import {useContext, useState, useEffect} from "react";
-import CartContext from '../../utils/CartContext';
+// import CartContext from '../../utils/CartContext';
 import './cartbadge.css';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 
 const CartBadge = (props) => {
     const [cartCount, setCartCount] = useState(0);
@@ -12,14 +12,12 @@ const CartBadge = (props) => {
    
     return (
       
-       <div id="cartBadge">
+       <span id="cartBadge">
         {props.count > 0 ?
-          <div className="circle">
             <span id="cartCount">{cartCount}</span>
-          </div> : null
+           : null
         }        
-        <i className="fas fa-shopping-cart"></i>
-      </div> 
+      </span> 
         
     )
 }
