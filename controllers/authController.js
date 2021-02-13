@@ -11,11 +11,10 @@ router.post("/", ({ body }, res) => {
     console.log(hashPassword);
     // create database user object
     const newUser = {
-      username: body.username,
+      email: body.email,
       name: body.name,
       address: body.address,
       password: hashPassword,
-      email: body.email,
     };
     // create user in database
     User.create(newUser)
@@ -30,30 +29,34 @@ router.post("/", ({ body }, res) => {
 });
 
 router.post("/login", (req, res) => {
-  User.findOne({ username: req.body.username }).then((foundUser) => {
-    //console.log(foundUser.password);
-    //console.log(req.body.password);
-    bcrypt
-      .compare(req.body.password, foundUser.password)
-      .then((result) => {
-        const token = jwt.sign({ _id: result._id }, "secretpassword");
-        console.log(token);
-        //console.log(result);
-        if (result) {
-          res.json({
-            // send login token and userId
-            // jwt token has id in it to send back
-            token: "AdminToken",
-            _id: foundUser._id,
-          });
-        } else {
-          res.status(401).end();
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
+  User.findOne({ email: req.body.email })
+    .then((foundUser) => {
+      console.log(foundUser.password);
+      console.log(req.body.password);
+      bcrypt
+        .compare(req.body.password, foundUser.password)
+        .then((result) => {
+          //const token = jwt.sign({ _id: result._id }, "secretpassword");
+          //console.log(token);
+          console.log(result);
+          if (result) {
+            res.json({
+              // send login token and userId
+              // jwt token has id in it to send back
+              token: "AdminToken",
+              _id: foundUser._id,
+            });
+          } else {
+            res.status(401).end();
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 module.exports = router;

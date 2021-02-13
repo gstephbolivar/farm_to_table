@@ -49,7 +49,7 @@ export default {
 
   loginUser: (user) => {
     return axios.post("/api/users/login", {
-      username: user.username,
+      email: user.email,
       password: user.password,
     });
   },
