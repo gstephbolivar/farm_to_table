@@ -6,35 +6,34 @@ import Confirmation from "./containers/Confirmation/Confirmation";
 import Login from "./containers/Login/Login";
 import SignUp from "./containers/SignUp/SignUp";
 import OneProduct from "./containers/OneProduct/OneProduct";
-import Products from "./containers/Admin/Products/Products";
+import AdminProducts from "./containers/AdminProducts/AdminProducts";
 import CssBaseLine from "@material-ui/core/CssBaseline";
 import BulmaNavBar from "./components/NavBar/BulmaNavBar.jsx";
 import Footer from "./components/Footer/Footer";
-import {useState} from 'react';
-import CartContext from './utils/CartContext';
-
+import { useState } from "react";
+import CartContext from "./utils/CartContext";
 
 function App() {
-
   const [cartState, setCartState] = useState({
-    userId: localStorage.getItem("userId") ? localStorage.getItem("userId") : "",
-    lineItems: localStorage.getItem("lineItems") ? JSON.parse(localStorage.getItem("lineItems")) : []
-  })
+    userId: localStorage.getItem("userId")
+      ? localStorage.getItem("userId")
+      : "",
+    lineItems: localStorage.getItem("lineItems")
+      ? JSON.parse(localStorage.getItem("lineItems"))
+      : [],
+  });
 
   const setUserId = (id) => {
     const localId = localStorage.getItem("userId");
 
-    if(localId && localId !== cartState.userId)
-    {
+    if (localId && localId !== cartState.userId) {
       localStorage.setItem("userId", id);
-      setCartState({...cartState, userId: id});
-    }else{
+      setCartState({ ...cartState, userId: id });
+    } else {
       localStorage.setItem("userId", id);
-      setCartState({...cartState, userId: id})
-      
+      setCartState({ ...cartState, userId: id });
     }
-  
-  }
+  };
 
   const handleAddToCart = (item, cartEdit) => {
     let tempItems = cartState.lineItems;
@@ -52,12 +51,12 @@ function App() {
       tempItems.push(item);
     }
     localStorage.setItem("lineItems", JSON.stringify(tempItems));
-    setCartState({...cartState, lineItems: tempItems});
-  }
+    setCartState({ ...cartState, lineItems: tempItems });
+  };
 
   const clearCart = () => {
-    setCartState({...cartState, lineItems: []});
-  }
+    setCartState({ ...cartState, lineItems: [] });
+  };
 
   return (
     <>

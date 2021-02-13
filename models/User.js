@@ -3,10 +3,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  username: {
+  email: {
     type: String,
     unique: true,
-    required: ["Please enter a valid username!"],
+    match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
   },
   // both first and last name - can create nested object if needed
   name: {
@@ -21,11 +21,6 @@ const UserSchema = new Schema({
   password: {
     type: String,
     required: ["Please enter a valid password!"],
-  },
-  email: {
-    type: String,
-    unique: true,
-    match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
   },
 });
 
