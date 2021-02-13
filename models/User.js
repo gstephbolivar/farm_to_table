@@ -3,11 +3,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  username: {
-    type: String,
-    unique: true,
-    required: ["Please enter a valid username!"],
-  },
   // both first and last name - can create nested object if needed
   name: {
     type: String,
