@@ -47,7 +47,9 @@ const AllProducts = (props) => {
   return (
     <div>
       <section className="section">
-        <h3 className="title has-text-centered">Headline Text (if needed)</h3>
+        <h3 className="title has-text-centered">
+          Featured Products this Season
+        </h3>
 
         <div className="container">
           <div className="columns">
