@@ -28,12 +28,12 @@ const BulmaNavBar = () => {
         </span>
         <span id="nav-home"> <strong style={{marginLeft: 5}}>Home</strong></span>
         </Link>
-        {/* <div >
-        <div  style={{marginTop: 15}}> 
-        <CartBadge count={count}/>
-        <span id="nav-cart"> <strong style={{marginLeft: 5}}>Cart</strong></span>
-        </div>
-        </div> */}
+        <Link className="navbar-item is-hoverable">
+            <span className="icon">
+            <CartBadge count={count}/>
+            </span>
+            <span id="nav-products"> <strong style={{marginLeft: 5}}>Cart</strong></span>
+        </Link>
         <label
           for="toggler"
           role="button"
@@ -50,7 +50,7 @@ const BulmaNavBar = () => {
       {/* <!-- end of left side of bulma navbar --> */}
       <div id="navbarBasicExample" className="navbar-menu">
         {/* <!-- dont shown on mobile --> */}
-        <div className="navbar-start">
+        <div className="navbar-end">
           {/* <!-- left on big screen -->
           <!-- a dropdown menu --> */}
           <Link className="navbar-item is-hoverable" to="/allproducts">
@@ -83,15 +83,6 @@ const BulmaNavBar = () => {
           </Link>
           </div>
 
-          <div className="navbar-end is-active">
-          <Link className="navbar-item is-hoverable is-active">
-            {/* <!-- begin dropdown box --> */}
-            <span className="icon">
-            <CartBadge count={count}/>
-            </span>
-            <span id="nav-products"> <strong style={{marginLeft: 5}}>Cart</strong></span>
-          </Link>
-          </div>
           {/* <div className="navbar-item">
             <strong id="nav-text"
               ><span style="display: none">
