@@ -15,11 +15,11 @@ const CartBadge = (props) => {
       <Link to="/cart" className="cartLink">
        <div id="cartBadge">
         {props.count > 0 ?
-          <div class="circle">
+          <div className="circle">
             <span id="cartCount">{cartCount}</span>
           </div> : null
         }        
-        <i class="fas fa-shopping-cart"></i>
+        <i className="fas fa-shopping-cart"></i>
       </div> 
       </Link>
         

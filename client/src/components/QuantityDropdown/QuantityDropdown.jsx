@@ -1,14 +1,6 @@
-import { useEffect } from "react";
-
 const QuantityDropdown = (props) => {
-  useEffect(() => {}, [props.quantity]);
-
   const handleQuantityChange = (e) => {
     props.setDropDownState(parseInt(e.target.value));
-    // const qty = parseInt(e.target.value);
-    // const totalCost = props.calculateCost(qty);
-
-    // props.setTempItem({ ...props.tempItem, quantity: qty, totalCost });
   };
 
   return (
