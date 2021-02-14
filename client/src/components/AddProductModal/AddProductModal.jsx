@@ -139,7 +139,7 @@ const AddProductModal = (props) => {
                   type="text"
                   placeholder="Organic Strawberries"
                   label="Product Description"
-                  multiline
+                  multiline="true"
                   rows={2}
                   variant="outlined"
                   onChange={handleInputChange}

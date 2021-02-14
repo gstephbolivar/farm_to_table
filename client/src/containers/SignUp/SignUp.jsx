@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import API from "../../utils/API";
 
 const SignUp = () => {
@@ -114,7 +115,6 @@ const SignUp = () => {
                     placeholder="********"
                     required
                     id="password"
-                    type="password"
                     onChange={handleInputChange}
                     name="password"
                     value={userObject.password}
@@ -128,9 +128,9 @@ const SignUp = () => {
 
               <h5 className="subtitle is-6">
                 Already a member?{" "}
-                <a className="title is-6" href="/login">
+                <Link className="title is-6" to="/login">
                   Login here.
-                </a>
+                </Link>
               </h5>
             </form>
           </div>

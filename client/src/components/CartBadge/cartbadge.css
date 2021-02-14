@@ -4,27 +4,25 @@
 
 #cartCount{
     font-size: 15px;
-    color: white;
+    color: black;
     text-align: center;
 }
 
-.fas{
-    font-size: 25px;
-}
 
+/* 
 .circle{
     position: absolute;
     top: 3px;
     left: 7px;
     border-radius: 50%;
-    background: red;
+    background: transparent;
     height: 20px;
     width: 20px;
     text-align: center;
-}
+} */
 
 .cartLink{
-    color: white;
+    color: black;
 }
 
 .cartLink:hover{

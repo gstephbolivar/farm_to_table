@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./catCard.css";
 import {Link} from "react-router-dom";
 
+
 // List of items that user can choose from to filter food options
 const items = [
   {
@@ -67,7 +68,7 @@ const CategoriesCard = ({ onClick }) => {
             to="#"
             value={item.listText}
             name={item.listText}
-            class="subtitle is-6"
+            className="subtitle is-6"
             onClick={(e) => {
               onClick(e, item.listText);
             }}
