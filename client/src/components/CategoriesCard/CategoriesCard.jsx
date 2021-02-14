@@ -68,7 +68,7 @@ const CategoriesCard = ({ onClick }) => {
             to="#"
             value={item.listText}
             name={item.listText}
-            class="subtitle is-6"
+            className="subtitle is-6"
             onClick={(e) => {
               onClick(e, item.listText);
             }}
