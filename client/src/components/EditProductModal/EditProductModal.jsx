@@ -21,9 +21,6 @@ const productType = [
 ];
 
 const EditProductModal = (props) => {
-  const [modalID, setModalID] = useState(props.id);
-  const [unitType, setUnitType] = useState("pounds");
-  const [category, setCategory] = useState("fruit");
   const [productObject, setProductObject] = useState({
     name: "",
     unitSize: 0,
@@ -32,12 +29,11 @@ const EditProductModal = (props) => {
     category: "",
     unitType: "",
     description: "",
-    totalAmount: 0,
   });
 
   useEffect(() => {
+    
     API.getOneProduct(props.id).then((res) => {
-      console.log(res);
       setProductObject({
         name: res.data.name,
         unitSize: res.data.unitSize,
@@ -46,18 +42,9 @@ const EditProductModal = (props) => {
         category: res.data.category,
         unitType: res.data.unitType,
         description: res.data.description,
-        totalAmount: res.data.totalAmount,
       });
     });
   }, [props.id]);
-
-  const handleUnitChange = (event) => {
-    setUnitType(event.target.value);
-  };
-
-  const handleCategoryChange = (event) => {
-    setCategory(event.target.value);
-  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -67,7 +54,6 @@ const EditProductModal = (props) => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     props.handleModalState();
-    console.log(productObject);
     API.updateProduct(props.id, {
       name: productObject.name,
       unitSize: productObject.unitSize,
@@ -76,7 +62,6 @@ const EditProductModal = (props) => {
       category: productObject.category,
       unitType: productObject.unitType,
       description: productObject.description,
-      totalAmount: productObject.totalAmount,
     })
       .then(() => {
         props.handleModalState();
@@ -89,7 +74,6 @@ const EditProductModal = (props) => {
           category: "",
           unitType: "",
           description: "",
-          totalAmount: "",
         });
       })
       .catch((err) => console.log(err));
@@ -124,11 +108,12 @@ const EditProductModal = (props) => {
                       <div className="control">
                         <div className="select">
                           <select
-                            id="selectCategory"
+                            id="selectCategoryEdit"
                             label="Select Type"
                             name="category"
                             onChange={handleInputChange}
                             value={productObject.category}
+                            
                           >
                             {productType.map((option) => (
                               <option key={option.value} value={option.value}>
@@ -149,7 +134,7 @@ const EditProductModal = (props) => {
                           className="input"
                           type="text"
                           placeholder="Strawberries"
-                          id="productName"
+                          id="productNameEdit"
                           onChange={handleInputChange}
                           name="name"
                           value={productObject.name}
@@ -168,7 +153,7 @@ const EditProductModal = (props) => {
                         type="text"
                         placeholder="Organic Strawberries"
                         label="Product Description"
-                        multiline
+                        multiline="true"
                         rows={2}
                         variant="outlined"
                         onChange={handleInputChange}
@@ -185,7 +170,7 @@ const EditProductModal = (props) => {
                         className="input"
                         type="text"
                         placeholder="pounds"
-                        id="unitType"
+                        id="unitTypeEdit"
                         onChange={handleInputChange}
                         name="unitType"
                         value={productObject.unitType}
@@ -201,7 +186,7 @@ const EditProductModal = (props) => {
                       <div className="control">
                         <input
                           className="input"
-                          id="unitSize"
+                          id="unitSizeEdit"
                           min="1"
                           onChange={handleInputChange}
                           name="unitSize"
@@ -219,7 +204,7 @@ const EditProductModal = (props) => {
                         <span className="icon is-small is-left">$</span>
                         <input
                           className="input"
-                          id="productPrice"
+                          id="productPriceEdit"
                           onChange={handleInputChange}
                           name="price"
                           value={productObject.price}
@@ -242,7 +227,7 @@ const EditProductModal = (props) => {
                         className="input"
                         type="number"
                         placeholder="Total units (inventory)"
-                        id="productName"
+                        id="quantityEdit"
                         onChange={handleInputChange}
                         name="quantity"
                         value={productObject.quantity}
