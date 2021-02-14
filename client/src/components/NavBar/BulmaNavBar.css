@@ -4,9 +4,15 @@
   background-color: transparent;
 }
 
+#nav-icons {
+  margin-right: 2px;
+  flex-grow: 1
+}
+
+
+
 .icon {
-  width: 50px;
-  margin-left: -10px;
+  margin-right: 8px;
 }
 
 .navbar-item {
