@@ -1,9 +1,10 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import QuantityDropdown from "../QuantityDropdown/QuantityDropdown";
 import API from "../../utils/API.js";
+import UserCardContent from "../../components/UserCardContent/UserCardContent";
+import AdminCardContent from "../../components/AdminCardContent/AdminCardContent";
 
-const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct, unitSize, unitType, description }) => {
+const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct, unitSize, unitType, description, category }) => {
 
   const [lineItemState, setLineItemState] = useState({
     name: name,
@@ -67,54 +68,16 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
             <img src="https://placedog.net/300/300" alt="Placeholder" />
           </figure>
         </div>
-        <div className="card-content">
-          <div className="media">
-            <div className="media-content">
-              <p className="title is-4">{name}</p>
-              <p className="subtitle is-6">${price} per {unitSize}-{unitType}</p>
-              <p className="subtitle is-6">{description}</p>
-              <p className="subtitle is-6">How many would you like?</p>
-              <QuantityDropdown
-                dropDownState = {dropDownState}
-                setDropDownState = {setDropDownState}
-              />
-            </div>
-          </div>
-          <footer className="card-footer">
-            {/* only displays the buttons if the path is /admin */}
-            {window.location.pathname === "/admin" && (
-              <>
-                <button
-                  onClick={() => editProduct(_id)}
-                  className="card-footer-item"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={handleDeleteButton}
-                  className="card-footer-item"
-                >
-                  Delete
-                </button>
-              </>
-            )}
-            {window.location.pathname === "/allproducts" && (
-              <>
-                {quantity === 0 ? (
-                  <div className="card-footer-item">Out of Stock</div>
-                ) : (
-                  <button
-                    href="#"
-                    className="card-footer-item"
-                    onClick={handleAddClick}
-                  >
-                    Add
-                  </button>
-                )}
-              </>
-            )}
-          </footer>
-        </div>
+        {/* content to be displayed to users */}
+        {window.location.pathname === "/allproducts" && (
+          <UserCardContent handleAddClick={handleAddClick} setDropDownState={setDropDownState} dropDownState={dropDownState} name={name} price={price} unitSize={unitSize} unitType={unitType} description={description} quantity={quantity}/>
+        )}
+
+        {/* content to be displayed to admin */}
+        {window.location.pathname === "/admin" && (
+          <AdminCardContent handleDeleteButton={handleDeleteButton} editProduct={editProduct} name={name} price={price} unitSize={unitSize} unitType={unitType} description={description} category={category} _id={_id} quantity={quantity}/>
+        )}
+
       </div>
     </div>
   );
