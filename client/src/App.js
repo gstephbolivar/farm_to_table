@@ -10,6 +10,7 @@ import BulmaNavBar from "./components/NavBar/BulmaNavBar.jsx";
 import Footer from "./components/Footer/Footer";
 import { useState } from "react";
 import CartContext from "./utils/CartContext";
+import "./App.css";
 
 function App() {
   const [cartState, setCartState] = useState({
