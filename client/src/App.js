@@ -15,6 +15,7 @@ import "./App.css";
 
 function App() {
   const [token, setToken] = useState("");
+  const [role, setRole] = useState("");
 
   const [cartState, setCartState] = useState({
     userId: localStorage.getItem("userId")
@@ -87,7 +88,12 @@ function App() {
             <Route
               path="/login"
               render={(props) => (
-                <Login {...props} setUserId={setUserId} setToken={setToken} />
+                <Login
+                  {...props}
+                  setUserId={setUserId}
+                  setToken={setToken}
+                  setRole={setRole}
+                />
               )}
             />
             <Route path="/signup" component={SignUp} />
@@ -97,6 +103,7 @@ function App() {
               path="/admin"
               component={AdminProducts}
               token={token}
+              role={role}
             />
             <Route exact path="/" component={Home} />
           </Switch>

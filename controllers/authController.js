@@ -31,11 +31,11 @@ router.post("/", ({ body }, res) => {
 
 router.post("/login", (req, res) => {
   User.findOne({ email: req.body.email.toLowerCase() })
-    .then((foundUser) => {
-      //console.log(foundUser.password);
+    .then((user) => {
+      //console.log(user.password);
       //console.log(req.body.password);
       bcrypt
-        .compare(req.body.password, foundUser.password)
+        .compare(req.body.password, user.password)
         .then((result) => {
           const token = jwt.sign(
             { _id: result._id },
@@ -48,7 +48,8 @@ router.post("/login", (req, res) => {
               // send login token and userId
               // jwt token has id in it to send back
               token: token,
-              _id: foundUser._id,
+              _id: user._id,
+              role: user.role,
             });
           } else {
             res.status(401).end();

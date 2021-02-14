@@ -34,8 +34,12 @@ const Login = (props) => {
             } else {
               props.setUserId(response.data._id);
               props.setToken(response.data.token);
+              props.setRole(response.data.role);
               alert("Successfully Logged in!");
-              history.push("/admin");
+              // if user is an admin, redirect user to admin page otherwise redirect to all products page
+              response.data.role === "admin"
+                ? history.push("/admin")
+                : history.push("/allproducts");
             }
           }
         );

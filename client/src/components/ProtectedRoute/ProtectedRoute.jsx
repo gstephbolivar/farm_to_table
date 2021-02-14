@@ -1,12 +1,12 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-const ProtectedRoute = ({ component: Component, token, ...rest }) => {
+const ProtectedRoute = ({ component: Component, role, token, ...rest }) => {
   return (
     <Route
       {...rest}
       render={(props) => {
-        if (token) {
+        if (token && role === "admin") {
           return <Component {...rest} {...props} />;
         } else {
           return (
