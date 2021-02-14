@@ -10,6 +10,7 @@ const SignUp = () => {
     address: "",
     password: "",
     email: "",
+    role: "customer",
   });
 
   const history = useHistory();
@@ -26,6 +27,7 @@ const SignUp = () => {
       address: userObject.address,
       password: userObject.password,
       email: userObject.email,
+      role: userObject.role,
     })
       .then(() => {
         setUserObject({
@@ -33,6 +35,7 @@ const SignUp = () => {
           address: "",
           password: "",
           email: "",
+          role: "customer",
         });
         alert("Successfully created account! Please login to continue!");
         // redirects page to login after account is created
