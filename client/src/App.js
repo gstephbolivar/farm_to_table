@@ -91,7 +91,7 @@ function App() {
               )}
             />
             <Route path="/signup" component={SignUp} />
-            <Route path="/oneproduct" component={OneProduct} />
+
             <ProtectedRoute
               exact
               path="/admin"

@@ -8,10 +8,6 @@ import { Link } from "react-router-dom";
 const Login = (props) => {
   const history = useHistory();
 
-  const routeChange = (path) => {
-    history.push(path);
-  };
-
   const [loginObject, setLoginObject] = useState({
     email: "",
     password: "",
@@ -39,7 +35,7 @@ const Login = (props) => {
               props.setUserId(response.data._id);
               props.setToken(response.data.token);
               alert("Successfully Logged in!");
-              routeChange("/admin");
+              history.push("/admin");
             }
           }
         );

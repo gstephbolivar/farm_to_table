@@ -32,8 +32,8 @@ router.post("/", ({ body }, res) => {
 router.post("/login", (req, res) => {
   User.findOne({ email: req.body.email.toLowerCase() })
     .then((foundUser) => {
-      console.log(foundUser.password);
-      console.log(req.body.password);
+      //console.log(foundUser.password);
+      //console.log(req.body.password);
       bcrypt
         .compare(req.body.password, foundUser.password)
         .then((result) => {
@@ -41,8 +41,8 @@ router.post("/login", (req, res) => {
             { _id: result._id },
             process.env.JWT_SIGNATURE
           );
-          console.log(token);
-          console.log(result);
+          //console.log(token);
+          //console.log(result);
           if (result) {
             res.json({
               // send login token and userId
