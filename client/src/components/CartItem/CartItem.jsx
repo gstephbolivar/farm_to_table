@@ -60,6 +60,9 @@ const CartItem = (props) => {
           <div>${props.lineItem.price}</div>
         </div>
       </td>
+      <td>
+        <button className="button delBtn" onClick={(e) => props.deleteItem(props.lineItem.product)}>Remove</button>
+      </td>
     </tr>
   );
 };
