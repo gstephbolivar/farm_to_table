@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import ReservedProducts from "../../components/ReservedProducts/ReservedProducts";
+import {useHistory} from "react-router-dom";
 
-const Confirmation = () => {
+const Confirmation = (props) => {
+    const history= useHistory();
   return (
     <section>
       <div className="container has-text-centered">
@@ -29,7 +31,7 @@ const Confirmation = () => {
               </tr>
             </thead>
             <tbody>
-              <ReservedProducts/>
+              <ReservedProducts items= {props.history.location.state.line}/>
             </tbody>
            
           </table>

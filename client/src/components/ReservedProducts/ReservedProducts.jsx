@@ -1,10 +1,13 @@
 import React from 'react';
 
-const ReservedProducts = () => {
+const ReservedProducts = (props) => {
     return (
        
             <tbody>
-              <h1>Items reserved go here</h1>
+                {props.items.map((item) => (
+                    <p>{item.name}</p>
+                ))}
+              {/* <h1>Items reserved go here</h1> */}
             </tbody>
     );
 };

@@ -11,9 +11,15 @@ import API from "../../utils/API";
 const Cart = (props) => {
   const { userId, lineItems } = useContext(CartContext);
   const history = useHistory();
+  const items = lineItems;
 
   const routeChange = (path) => {
-    history.push(path);
+    history.push({
+      pathname: path,
+      state: {
+        line: items,
+      },
+    });
   };
 
   const handleCartSubmit = () => {
@@ -93,7 +99,13 @@ const Cart = (props) => {
                   </thead>
                   <tbody>
                     {lineItems.map((item, index) => (
-                      <CartItem lineItem={item} img="https://placedog.net/75/75" key={index} handleItemChange={props.handleAddToCart} deleteItem={props.deleteItemFromCart}/>
+                      <CartItem
+                        lineItem={item}
+                        img="https://placedog.net/75/75"
+                        key={index}
+                        handleItemChange={props.handleAddToCart}
+                        deleteItem={props.deleteItemFromCart}
+                      />
                     ))}
                   </tbody>
                 </table>
