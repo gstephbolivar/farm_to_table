@@ -10,4 +10,30 @@
   
 }
 
+.add-product-headline {
+  font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+}
 
+
+.add-products-fields {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.label {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: #A9A9A9;
+}
+
+#selectCategory, .input, .textarea {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+}
+
+#product-image {
+  padding-bottom: 20px;
+}
