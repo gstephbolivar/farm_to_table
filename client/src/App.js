@@ -5,13 +5,12 @@ import Cart from "./containers/Cart/Cart.jsx";
 import Confirmation from "./containers/Confirmation/Confirmation";
 import Login from "./containers/Login/Login";
 import SignUp from "./containers/SignUp/SignUp";
-import OneProduct from "./containers/OneProduct/OneProduct";
 import AdminProducts from "./containers/AdminProducts/AdminProducts";
-import CssBaseLine from "@material-ui/core/CssBaseline";
 import BulmaNavBar from "./components/NavBar/BulmaNavBar.jsx";
 import Footer from "./components/Footer/Footer";
 import { useState } from "react";
 import CartContext from "./utils/CartContext";
+import "./App.css";
 
 function App() {
   const [cartState, setCartState] = useState({
@@ -76,7 +75,6 @@ function App() {
           <Route path="/confirmation" component={Confirmation} />
           <Route path="/login" render={(props) => <Login {...props} setUserId={setUserId}/>} />
           <Route path="/signup" component={SignUp} />
-          <Route path="/oneproduct" component={OneProduct} />
           <Route exact path="/admin" component={AdminProducts} />
           <Route exact path="/" component={Home} />
         </Switch>

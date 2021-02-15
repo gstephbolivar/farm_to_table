@@ -14,7 +14,7 @@ const BulmaNavBar = () => {
 
     return (
         <nav
-      className="navbar is-primary"
+      className="navbar is-spaced"
       role="navigation"
       aria-label="main navigation"
     >
@@ -24,15 +24,15 @@ const BulmaNavBar = () => {
         {/* <!-- left side of bulma navbar --> */}
         <Link className="navbar-item" to="/">
         <span className="icon">
-        <i className="fas fa-home"></i>
+        <img className="nav-icons" src="./assets/icons/home.svg" alt="home farm icon"/>
         </span>
-        <span id="nav-home"> <strong style={{marginLeft: 5}}>Home</strong></span>
+        <span id="nav-home">Home</span>
         </Link>
-        <Link className="navbar-item is-hoverable" to="/cart">
+        <Link className="navbar-item" to="/cart">
             <span className="icon">
-            <CartBadge count={count}/>
+            <img className="nav-icons" src="./assets/icons/cart.svg" alt="cart icon"/>
             </span>
-            <span id="nav-products"> <strong style={{marginLeft: 5}}>Cart</strong></span>
+            <span id="nav-products"> Cart ( <CartBadge count={count}/> )</span>
         </Link>
         <label
           htmlFor="toggler"
@@ -53,35 +53,36 @@ const BulmaNavBar = () => {
         <div className="navbar-end">
           {/* <!-- left on big screen -->
           <!-- a dropdown menu --> */}
-          <Link className="navbar-item is-hoverable" to="/allproducts">
+          <Link className="navbar-item" to="/allproducts">
             {/* <!-- begin dropdown box --> */}
             <span className="icon">
-            <i className="fas fa-carrot"></i>
+            <img className="nav-icons" src="./assets/icons/products.svg" alt="products icon"/>
             </span>
-            <span id="nav-products"> <strong style={{marginLeft: 5}}>Products</strong></span>
+            <span id="nav-products"> Products</span>
           </Link>
 
           <Link className="navbar-item" to="/login">
             <span className="icon">
-            <i className="fas fa-house-user"></i>
+            <img className="nav-icons" src="./assets/icons/login.svg" alt="chicken icon"/>
             </span>
-            <strong style={{marginLeft: 5}} id="nav-login">Login</strong>
+            <span id="nav-login">Login</span>
           </Link>
 
           <Link className="navbar-item" to="/signup">
             <span className="icon">
-            <i className="fas fa-user-plus"></i>
+            <img className="nav-icons" src="./assets/icons/signUp.svg" alt="cow icon"/>
             </span>
-            <strong style={{marginLeft: 5}} id="nav-signUp">Sign Up</strong>
+            <span id="nav-signUp">Sign Up</span>
           </Link>
 
           <Link className="navbar-item" to="/admin">
             <span className="icon">
-            <i className="fas fa-tractor"></i>
+            <img className="nav-icons" src="./assets/icons/farmDash.svg" alt="tractor icon"/>
             </span>
-            <strong style={{marginLeft: 5}} id="nav-dashboard">Farm Dashboard</strong>
+            <span id="nav-dashboard">Farm Dashboard</span>
           </Link>
           </div>
+
 
           {/* <div className="navbar-item">
             <strong id="nav-text"

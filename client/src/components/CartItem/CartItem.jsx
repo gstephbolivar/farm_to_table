@@ -1,4 +1,4 @@
-import { PromiseProvider } from "mongoose";
+// import { PromiseProvider } from "mongoose";
 import {useState} from "react";
 import "./cartitem.css";
 
