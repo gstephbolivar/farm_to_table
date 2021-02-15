@@ -38,13 +38,13 @@ const CartItem = (props) => {
 
   return (
     <tr>
-      <td>
+      <td className="is-vcentered">
         <div className="vertical-center" style={{ padding: 10 }}>
           <img src={props.img} alt="item description" style={{ marginRight: 15 }} />
           <span>{props.lineItem.name}</span>
         </div>
       </td>
-      <td>
+      <td className="is-vcentered">
         <div
           className="vertical-center"
           style={{ height: 95, justifyContent: "center" }}
@@ -52,7 +52,7 @@ const CartItem = (props) => {
           <div><input type="number" value={valueState} onChange={handleChange} onBlur={handleOnBlur} name="quantity" style={{width: "50px", textAlign: "center"}} className="qtyInput"/></div>
         </div>
       </td>
-      <td>
+      <td className="is-vcentered">
         <div
           className="vertical-center"
           style={{ height: 95, justifyContent: "center" }}
@@ -60,7 +60,7 @@ const CartItem = (props) => {
           <div>${props.lineItem.price}</div>
         </div>
       </td>
-      <td>
+      <td className="is-vcentered">
         <button className="button delBtn" onClick={(e) => props.deleteItem(props.lineItem.product)}>Remove</button>
       </td>
     </tr>

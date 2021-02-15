@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import QuantityDropdown from "../QuantityDropdown/QuantityDropdown";
 import API from "../../utils/API.js";
 import {Link} from "react-router-dom";
+import "./productCard.css";
 
 const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct, unitSize, unitType, description }) => {
 
@@ -71,9 +72,9 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
         <div className="card-content">
           <div className="media">
             <div className="media-content">
-              <p className="title is-4">{name}</p>
-              <p className="subtitle is-6">${price} per {unitSize}-{unitType}</p>
-              <p className="subtitle is-6">{description}</p>
+              <p className="title is-multiline" id="productTitle">{name}</p>
+              <p className="subtitle is-multiline" id="productDetails">${price} per {unitSize}-{unitType}</p>
+              <p className="subtitle is-multiline" id="productDesc">{description}</p>
               <QuantityDropdown
                 dropDownState = {dropDownState}
                 setDropDownState = {setDropDownState}
