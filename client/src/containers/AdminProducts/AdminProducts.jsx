@@ -6,6 +6,7 @@ import API from "../../utils/API";
 import EditProductModal from "../../components/EditProductModal/EditProductModal";
 import AddProductModal from "../../components/AddProductModal/AddProductModal";
 import AddProductButtonCard from "../../components/AddProductButtonCard/AddProductButtonCard";
+import "./adminProducts.css";
 
 const Products = () => {
   const [productID, setProductID] = useState("");
@@ -82,9 +83,18 @@ const Products = () => {
   return (
     <div>
       <section className="section">
-        <h3 className="title has-text-centered">
-          Products Inventory - Add/Remove/Edit
-        </h3>
+        <div className="container">
+          <div className="columns">
+            <div className="column"></div>
+            <div className="column is-9">
+              <div className="columns is-centered is-multiline">
+                <h3 className="title has-text-centered inventory-headline">
+                  Current Inventory
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div className="container">
           <div className="columns">

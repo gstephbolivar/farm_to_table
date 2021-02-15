@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import CategoriesCard from "../../components/CategoriesCard/CategoriesCard";
 import API from "../../utils/API";
+import "./products.css";
+
 
 const AllProducts = (props) => {
   const [products, setProducts] = useState([]);
@@ -47,9 +49,20 @@ const AllProducts = (props) => {
   return (
     <div>
       <section className="section">
-        <h3 className="title has-text-centered">
-          Featured Products this Season
-        </h3>
+
+
+      <div className="container">
+          <div className="columns">
+            <div className="column"></div>
+            <div className="column is-9">
+              <div className="columns is-centered is-multiline">
+                <h3 className="title has-text-centered products-headline">
+                  Shop Our Seasonal Products
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div className="container">
           <div className="columns">
