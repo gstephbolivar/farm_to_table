@@ -1,18 +1,20 @@
+.add-icon {
+  height: 75px;
+}
 
 #card-container {
   position: relative;
   margin: 10px;
 }
 
-.add-icon {
-  height: 75px;
-  margin: 0;
+
+.vertical-center-add {
+  margin: 0px;
   position: absolute;
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-
 
 #addProductBtn {
   margin-left: 130px;

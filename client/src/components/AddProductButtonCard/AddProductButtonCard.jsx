@@ -5,10 +5,10 @@ const AddProductButtonCard = (props) => {
   return (
     <div className="card">
       <div className="card-content">
-        <div className="media">
-          <div className="media-content is-grouped" id="card-container ">
+        <div className="media" id="card-container">
+          <div className="media-content is-grouped">
             <img
-              className="add-icon"
+              className="add-icon vertical-center-add"
               src="./assets/icons/addproducts.svg"
               alt="multiple produce products"
             />
