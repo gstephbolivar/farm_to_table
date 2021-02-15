@@ -13,18 +13,18 @@ mongoose.connect(
 
 const userSeed = [
   {
-    username: "user1",
-    name: "Neil Gandhi",
-    address: "123 Test Drive, New york, NY, 12345",
-    password: "password123",
-    email: "test@farm.com",
+    email: "admin@mail.com",
+    name: "Admin Admin",
+    address: "123 Admin Rd",
+    password: "$2b$10$SBkLhziZQyGqPmMTlG0HROkNXh2LjpPJ7GovrCEco/3nR8wPgILVm", //admin1234
+    role: "admin",
   },
   {
-    username: "user2",
-    name: "Robert Anderson",
-    address: "321 DataBase Rd, Atlanta, GA 98765",
-    password: "password758",
-    email: "rob@mongoose.com",
+    email: "ngtych4@gmail.com",
+    name: "Neil Gandhi",
+    address: "7506 SCUPPER DR",
+    password: "$2b$10$kH9V0nnPPRc1fwaNzSCBxOgCO4QAFC0AoWAOejO8Ses.TuyVDXF22", //password1234
+    role: "customer",
   },
 ];
 
@@ -86,13 +86,13 @@ db.User.remove({})
   });
 
 // seed initial products data
-db.Products.remove({})
-  .then(() => db.Products.collection.insertMany(productsSeed))
-  .then((data) => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
-  })
-  .catch((err) => {
-    console.error(err);
-    process.exit(1);
-  });
+// db.Products.remove({})
+//   .then(() => db.Products.collection.insertMany(productsSeed))
+//   .then((data) => {
+//     console.log(data.result.n + " records inserted!");
+//     process.exit(0);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//     process.exit(1);
+//   });

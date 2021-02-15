@@ -1,6 +1,11 @@
 .panel-block {
   height: 60px;
   margin-left: 12px;
+  
+}
+
+.panel {
+  background-color: white;
 }
 
 #cat-items-subtitle {
