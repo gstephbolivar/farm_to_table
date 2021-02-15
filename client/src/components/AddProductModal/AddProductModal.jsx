@@ -91,7 +91,7 @@ const AddProductModal = (props) => {
             <div className="dropdown">
               {/* What kind of product it is */}
 
-              <div class="field is-grouped is-grouped-centered">
+              <div className="field is-grouped is-grouped-centered">
 
               <div className="field is-inline-block">
                 <label className="label">Category</label>

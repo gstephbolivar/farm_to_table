@@ -1,21 +1,29 @@
-import React from 'react';
+import React from "react";
+import "./addProductsButtonCard.css";
 
 const AddProductButtonCard = (props) => {
-    return (
-          <div className="card">
-            <div className="card-content">
-              <div className="media">
-                <div className="media-content">
-                  <p className="title is-4">Add Product</p>
-                  
-                </div>
-              </div>
-              <footer className="card-footer">
-                <button onClick={props.handleAddProductModalState}>Add Product</button>
-              </footer>
-            </div>
+  return (
+    <div className="card">
+      <div className="card-content">
+        <div className="media">
+          <div className="media-content is-grouped" id="card-container ">
+            <img
+              className="add-icon"
+              src="./assets/icons/addproducts.svg"
+              alt="multiple produce products"
+            />
+            <button
+              className="button"
+              id="addProductBtn"
+              onClick={props.handleAddProductModalState}
+            >
+              Add Product
+            </button>
           </div>
-      );
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default AddProductButtonCard;

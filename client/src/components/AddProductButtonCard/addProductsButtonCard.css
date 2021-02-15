@@ -1,0 +1,21 @@
+
+#card-container {
+  position: relative;
+  margin: 10px;
+}
+
+.add-icon {
+  height: 75px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+
+#addProductBtn {
+  margin-left: 130px;
+  background-color: #873e97;
+  color: white;
+}
