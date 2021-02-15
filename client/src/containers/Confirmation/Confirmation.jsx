@@ -31,7 +31,9 @@ const Confirmation = (props) => {
               </tr>
             </thead>
             <tbody>
-              <ReservedProducts items= {props.history.location.state.line}/>
+              <ReservedProducts 
+              items= {props.history.location.state.line}
+              total={props.history.location.state.subTotal}/>
             </tbody>
            
           </table>

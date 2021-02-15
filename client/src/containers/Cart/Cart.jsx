@@ -18,6 +18,7 @@ const Cart = (props) => {
       pathname: path,
       state: {
         line: items,
+        subTotal: subTotal,
       },
     });
   };
