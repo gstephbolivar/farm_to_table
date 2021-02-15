@@ -46,6 +46,13 @@ const API = {
     });
   },
 
+  loginUser: (user) => {
+    return axios.post("/api/users/login", {
+      email: user.email,
+      password: user.password,
+    });
+  },
+
   getFilteredProducts: (category) => {
     return axios.get(`/api/products/filtered/${category}`);
   },

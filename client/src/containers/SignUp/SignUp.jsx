@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
 
@@ -9,7 +10,10 @@ const SignUp = () => {
     address: "",
     password: "",
     email: "",
+    role: "customer",
   });
+
+  const history = useHistory();
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -23,15 +27,19 @@ const SignUp = () => {
       address: userObject.address,
       password: userObject.password,
       email: userObject.email,
+      role: userObject.role,
     })
       .then(() => {
         setUserObject({
-          username: "",
           name: "",
           address: "",
           password: "",
           email: "",
+          role: "customer",
         });
+        alert("Successfully created account! Please login to continue!");
+        // redirects page to login after account is created
+        history.push("/login");
       })
       .catch((err) => console.log(err));
   };
@@ -121,10 +129,12 @@ const SignUp = () => {
                 Create Account
               </button>
 
-            
-             <h5 className="subtitle is-6">Already a member? {" "}<Link className="title is-6" to="/login">Login here.</Link></h5>
-             
-
+              <h5 className="subtitle is-6">
+                Already a member?{" "}
+                <Link className="title is-6" to="/login">
+                  Login here.
+                </Link>
+              </h5>
             </form>
           </div>
         </div>
@@ -134,5 +144,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-
-
