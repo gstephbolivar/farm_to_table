@@ -82,7 +82,13 @@ function App() {
             />
             <Route
               path="/cart"
-              render={(props) => <Cart {...props} clearCart={clearCart} />}
+              render={(props) => (
+                <Cart
+                  {...props}
+                  clearCart={clearCart}
+                  handleAddToCart={handleAddToCart}
+                />
+              )}
             />
             <Route path="/confirmation" component={Confirmation} />
             <Route
