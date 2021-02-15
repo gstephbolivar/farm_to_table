@@ -88,11 +88,12 @@ const Cart = (props) => {
                           <h1 className="sub-title">Price</h1>
                         </div>
                       </th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
                     {lineItems.map((item, index) => (
-                      <CartItem {...item} img="https://placedog.net/75/75" />
+                      <CartItem lineItem={item} img="https://placedog.net/75/75" key={index} handleItemChange={props.handleAddToCart} deleteItem={props.deleteItemFromCart}/>
                     ))}
                   </tbody>
                 </table>

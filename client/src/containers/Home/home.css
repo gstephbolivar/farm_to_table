@@ -1,0 +1,17 @@
+#Logo {
+    width: 70%;
+}
+
+#shopNow {
+    background-color: #873e97;
+    color: white;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 768px) {
+
+    #Logo {
+        width: 100%;
+    }
+  }
+  

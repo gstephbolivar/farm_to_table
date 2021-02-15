@@ -1,19 +1,22 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React, { useState } from "react";
 import Home from "./containers/Home/Home.jsx";
 import AllProducts from "./containers/AllProducts/AllProducts.jsx";
 import Cart from "./containers/Cart/Cart.jsx";
 import Confirmation from "./containers/Confirmation/Confirmation";
 import Login from "./containers/Login/Login";
 import SignUp from "./containers/SignUp/SignUp";
-import OneProduct from "./containers/OneProduct/OneProduct";
 import AdminProducts from "./containers/AdminProducts/AdminProducts";
-import CssBaseLine from "@material-ui/core/CssBaseline";
 import BulmaNavBar from "./components/NavBar/BulmaNavBar.jsx";
 import Footer from "./components/Footer/Footer";
-import { useState } from "react";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import CartContext from "./utils/CartContext";
+import "./App.css";
 
 function App() {
+  const [token, setToken] = useState("");
+  const [role, setRole] = useState("");
+
   const [cartState, setCartState] = useState({
     userId: localStorage.getItem("userId")
       ? localStorage.getItem("userId")
@@ -35,7 +38,7 @@ function App() {
     }
   };
 
-  const handleAddToCart = (item) => {
+  const handleAddToCart = (item, cartEdit) => {
     let tempItems = cartState.lineItems;
 
     if (
@@ -46,8 +49,13 @@ function App() {
       const existingLineItem = tempItems.find(
         (x) => x.product.toString() === item.product.toString()
       );
-      existingLineItem.quantity += item.quantity;
-      existingLineItem.totalCost += item.totalCost;
+      if (cartEdit) {
+        existingLineItem.quantity = item.quantity;
+        existingLineItem.totalCost = item.totalCost;
+      } else {
+        existingLineItem.quantity += item.quantity;
+        existingLineItem.totalCost += item.totalCost;
+      }
     } else {
       tempItems.push(item);
     }
@@ -59,9 +67,14 @@ function App() {
     setCartState({ ...cartState, lineItems: [] });
   };
 
+  const deleteItemFromCart = (id) => {
+    const cartTiems = cartState.lineItems;
+    const newCartItems = cartState.lineItems.filter(item => item.product.toString() !== id.toString());
+    setCartState({...cartState, lineItems: newCartItems});
+  }
+
   return (
     <>
-      <CssBaseLine />
       <BrowserRouter>
         <CartContext.Provider value={cartState}>
           <BulmaNavBar />
@@ -75,16 +88,36 @@ function App() {
             />
             <Route
               path="/cart"
-              render={(props) => <Cart {...props} clearCart={clearCart} />}
+              render={(props) => (
+                <Cart
+                  {...props}
+                  clearCart={clearCart}
+                  handleAddToCart={handleAddToCart}
+                  deleteItemFromCart={deleteItemFromCart}
+                />
+              )}
             />
             <Route path="/confirmation" component={Confirmation} />
             <Route
               path="/login"
-              render={(props) => <Login {...props} setUserId={setUserId} />}
+              render={(props) => (
+                <Login
+                  {...props}
+                  setUserId={setUserId}
+                  setToken={setToken}
+                  setRole={setRole}
+                />
+              )}
             />
             <Route path="/signup" component={SignUp} />
-            <Route path="/oneproduct" component={OneProduct} />
-            <Route exact path="/admin" component={AdminProducts} />
+
+            <ProtectedRoute
+              exact
+              path="/admin"
+              component={AdminProducts}
+              token={token}
+              role={role}
+            />
             <Route exact path="/" component={Home} />
           </Switch>
           <Footer />

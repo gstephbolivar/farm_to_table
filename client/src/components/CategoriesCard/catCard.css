@@ -11,7 +11,7 @@
   background-repeat: no-repeat;
 }
 
-#fruit:hover, #fruit:active{
+#fruit:hover, #fruit-selected {
   background-image: url(icons/fruits_hover.svg);
   background-repeat: no-repeat;
 }
@@ -21,7 +21,7 @@
     background-repeat: no-repeat;
   }
   
-  #vegetable:hover, #vegetable:active {
+  #vegetable:hover, #vegetable-selected {
     background-image: url(icons/vegetable_hover.svg);
     background-repeat: no-repeat;
   }
@@ -31,7 +31,7 @@
     background-repeat: no-repeat;
   }
   
-  #meat:hover, #meat:active {
+  #meat:hover, #meat-selected {
     background-image: url(icons/meat_hover.svg);
     background-repeat: no-repeat;
   }
@@ -41,7 +41,7 @@
     background-repeat: no-repeat;
   }
   
-  #dairy:hover, #dairy:active {
+  #dairy:hover, #dairy-selected {
     background-image: url(icons/dairy_hover.svg);
     background-repeat: no-repeat;
   }
@@ -52,7 +52,7 @@
     background-repeat: no-repeat;
   }
   
-  #all:hover, #all:active {
+  #all:hover, #all-selected {
     background-image: url(icons/all_hover.svg);
     background-repeat: no-repeat;
   }

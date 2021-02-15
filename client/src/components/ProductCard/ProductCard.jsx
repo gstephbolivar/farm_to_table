@@ -1,11 +1,9 @@
-import { useState, userEffect, useEffect } from "react";
-// import { useHistory } from "react-router-dom";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import QuantityDropdown from "../QuantityDropdown/QuantityDropdown";
 import API from "../../utils/API.js";
 
 const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct, unitSize, unitType, description }) => {
-  // const history = useHistory();
 
   const [lineItemState, setLineItemState] = useState({
     name: name,
@@ -13,6 +11,7 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
     quantity: 0,
     price: price,
     totalCost: 0,
+    inStock: quantity
   });
 
   const [addedProductState, setAddedProductState] = useState(0);
@@ -24,15 +23,6 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
     
     return itemCost;
   };
-
-  // const handleEditButton = (id) => {
-  //   let path = `/admin/edit/${id}`;
-  //   history.push(path);
-  // };
-  // const handleEditButton = (id) => {
-  //   console.log(id);
-  //   // TODO: Open the modal
-  // };
 
   const handleDeleteButton = () => {
     API.deleteProduct(_id)

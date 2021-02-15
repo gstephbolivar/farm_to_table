@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+
 import API from "../../utils/API";
+import jwt from "jsonwebtoken";
+import { Link } from "react-router-dom";
 
 const Login = (props) => {
   const history = useHistory();
-
-  const routeChange = (path) => {
-    history.push(path);
-  };
 
   const [loginObject, setLoginObject] = useState({
     email: "",
@@ -21,27 +20,29 @@ const Login = (props) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    console.log(loginObject);
+    API.loginUser(loginObject)
+      .then((response) => {
+        console.log(response.data);
 
-    // checks if username and password match in database
-    API.checkUser(loginObject)
-      .then((user) => {
-        console.log(loginObject);
-        console.log(user);
-
-        // checks if user has entered login information
-        if (!loginObject.email || !loginObject.password) {
-          alert("Please enter a username and password");
-        } // checks that login matches database user
-        else if (
-          user.data.email === loginObject.email &&
-          user.data.password === loginObject.password
-        ) {
-          props.setUserId(user.data._id);
-          alert("Successfully Logged in!");
-
-          // changes route to the admin products page
-          routeChange("/admin");
-        }
+        jwt.verify(
+          response.data.token,
+          process.env.REACT_APP_JWT_SIGNATURE,
+          (err, decoded) => {
+            if (err) {
+              console.log(err);
+            } else {
+              props.setUserId(response.data._id);
+              props.setToken(response.data.token);
+              props.setRole(response.data.role);
+              alert("Successfully Logged in!");
+              // if user is an admin, redirect user to admin page otherwise redirect to all products page
+              response.data.role === "admin"
+                ? history.push("/admin")
+                : history.push("/allproducts");
+            }
+          }
+        );
       })
       .catch((err) => {
         // potentially change this to a modal where user can click to sign up or just re-enter login info
@@ -49,6 +50,27 @@ const Login = (props) => {
         alert("Incorrect password or username entered!");
       });
   };
+  // checks if username and password match in database
+  // API.checkUser(loginObject)
+  //   .then((user) => {
+  //     console.log(loginObject);
+  //     console.log(user);
+
+  //     // checks if user has entered login information
+  //     if (!loginObject.email || !loginObject.password) {
+  //       alert("Please enter a username and password");
+  //     } // checks that login matches database user
+  //     else if (
+  //       user.data.email === loginObject.email &&
+  //       user.data.password === loginObject.password
+  //     ) {
+  //       props.setUserId(user.data._id);
+  //       alert("Successfully Logged in!");
+
+  //       // changes route to the admin products page
+  //       routeChange("/admin");
+  //     }
+  //   })
 
   return (
     <div>
@@ -64,7 +86,7 @@ const Login = (props) => {
                     className="input"
                     type="text"
                     placeholder="email"
-                    fullWidth
+                    fullwidth="true"
                     id="email"
                     required
                     name="email"
@@ -82,12 +104,11 @@ const Login = (props) => {
                     className="input"
                     type="password"
                     placeholder="********"
-                    fullWidth
+                    fullwidth="true"
                     required
                     id="password"
                     label="Password"
                     variant="filled"
-                    type="password"
                     onChange={handleInputChange}
                     name="password"
                     value={loginObject.password}
@@ -103,9 +124,9 @@ const Login = (props) => {
 
               <h5 className="subtitle is-6">
                 Not a member?{" "}
-                <a class="title is-6" href="/signup">
+                <Link className="title is-6" to="/signup">
                   Sign up here.
-                </a>
+                </Link>
               </h5>
             </form>
           </div>

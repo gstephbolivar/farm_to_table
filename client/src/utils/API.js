@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default {
+const API = {
   // Get All Products
   getAllProducts: () => {
     return axios.get("/api/products");
@@ -14,7 +14,6 @@ export default {
     return axios.get("/api/products");
   },
   getOneProduct: (id) => {
-    console.log(id);
     return axios.get(`/api/products/${id}`);
   },
   updateProduct: (id, product) => {
@@ -47,7 +46,16 @@ export default {
     });
   },
 
+  loginUser: (user) => {
+    return axios.post("/api/users/login", {
+      email: user.email,
+      password: user.password,
+    });
+  },
+
   getFilteredProducts: (category) => {
     return axios.get(`/api/products/filtered/${category}`);
   },
 };
+
+export default API;

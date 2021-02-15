@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import API from "../../utils/API";
 
 const SignUp = () => {
@@ -8,7 +10,10 @@ const SignUp = () => {
     address: "",
     password: "",
     email: "",
+    role: "customer",
   });
+
+  const history = useHistory();
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -22,15 +27,19 @@ const SignUp = () => {
       address: userObject.address,
       password: userObject.password,
       email: userObject.email,
+      role: userObject.role,
     })
       .then(() => {
         setUserObject({
-          username: "",
           name: "",
           address: "",
           password: "",
           email: "",
+          role: "customer",
         });
+        alert("Successfully created account! Please login to continue!");
+        // redirects page to login after account is created
+        history.push("/login");
       })
       .catch((err) => console.log(err));
   };
@@ -50,8 +59,8 @@ const SignUp = () => {
                   <input
                     className="input"
                     type="email"
+                    fullwidth="true"
                     placeholder="e.g. alex@example.com"
-                    fullWidth
                     id="email"
                     required
                     label="Email"
@@ -70,7 +79,7 @@ const SignUp = () => {
                     className="input"
                     type="text"
                     placeholder="John Smith"
-                    fullWidth
+                    fullwidth="true"
                     id="fullName"
                     required
                     label="First and Last Name"
@@ -89,7 +98,7 @@ const SignUp = () => {
                     className="input"
                     type="text"
                     placeholder="3203 FM 1960 East Humble, Texas, 77338"
-                    fullWidth
+                    fullwidth="true"
                     id="homeAddress"
                     label="Home Address"
                     name="address"
@@ -109,7 +118,6 @@ const SignUp = () => {
                     placeholder="********"
                     required
                     id="password"
-                    type="password"
                     onChange={handleInputChange}
                     name="password"
                     value={userObject.password}
@@ -121,13 +129,11 @@ const SignUp = () => {
                 Create Account
               </button>
 
-              {/* Directs to login page */}
-
               <h5 className="subtitle is-6">
                 Already a member?{" "}
-                <a className="title is-6" href="">
+                <Link className="title is-6" to="/login">
                   Login here.
-                </a>
+                </Link>
               </h5>
             </form>
           </div>
