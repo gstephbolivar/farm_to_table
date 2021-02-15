@@ -8,16 +8,33 @@ const Confirmation = () => {
       <div className="container has-text-centered">
         <div className="columns is-centered is-mulitline">
           <div className="column is-8">
-            <h1>Ordered Confirmed</h1>
+            <h1>Ordered Confirmed.</h1>
             <h3> Thank you for your order!</h3>
             <p>
               {" "}
               We look forward to seeing you and handing you only the freshest
-              ingredients available this season! We accept debit and credit card
-              as well as cash currently.{" "}
+              ingredients available this season! We accept debit and credit card & cash.{" "}
             </p>
             <br />
-            <ReservedProducts />
+            <section className="hero has-text-centered">
+        <div className="table-container">
+          <table className="table is-fullwidth">
+            <thead>
+              <tr>
+                <th>
+                  <div className="center">
+                    <h1 className="sub-title">Item(s) Reserved</h1>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <ReservedProducts/>
+            </tbody>
+           
+          </table>
+        </div>
+      </section>
             <br />
             <div className="buttons are-medium is-centered">
               <Link to="/" className="button" type="button" id="shopNow">
