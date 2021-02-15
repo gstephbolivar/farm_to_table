@@ -67,6 +67,12 @@ function App() {
     setCartState({ ...cartState, lineItems: [] });
   };
 
+  const deleteItemFromCart = (id) => {
+    const cartTiems = cartState.lineItems;
+    const newCartItems = cartState.lineItems.filter(item => item.product.toString() !== id.toString());
+    setCartState({...cartState, lineItems: newCartItems});
+  }
+
   return (
     <>
       <BrowserRouter>
@@ -87,6 +93,7 @@ function App() {
                   {...props}
                   clearCart={clearCart}
                   handleAddToCart={handleAddToCart}
+                  deleteItemFromCart={deleteItemFromCart}
                 />
               )}
             />
