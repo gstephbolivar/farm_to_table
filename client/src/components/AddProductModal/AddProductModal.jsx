@@ -1,5 +1,6 @@
 import { useState } from "react";
 import API from "../../utils/API";
+import "./add.css";
 
 
 const productType = [
@@ -90,6 +91,8 @@ const AddProductModal = (props) => {
             <div className="dropdown">
               {/* What kind of product it is */}
 
+              <div class="field is-grouped is-grouped-centered">
+
               <div className="field is-inline-block">
                 <label className="label">Category</label>
                 <div className="control">
@@ -128,7 +131,7 @@ const AddProductModal = (props) => {
                 </div>
               </div>
             
-
+              </div>
             {/* description of the product */}
 
             <div className="field">
@@ -229,9 +232,9 @@ const AddProductModal = (props) => {
       </form>
     </section>
     </section>
-    <footer className="modal-card-foot">
-      <button className="button is-success" onClick={handleFormSubmit}>Save changes</button>
-      <button className="button" onClick={props.handleAddProductModalState}>Cancel</button>
+    <footer className="modal-card-foot field is-grouped is-grouped-centered">
+      <button className="button" id="add-save"onClick={handleFormSubmit}>Save</button>
+      <button className="button" id="add-cancel" onClick={props.handleAddProductModalState}>Cancel</button>
     </footer>
   </div>
 </>

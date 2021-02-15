@@ -2,6 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import QuantityDropdown from "../QuantityDropdown/QuantityDropdown";
 import API from "../../utils/API.js";
+import {Link} from "react-router-dom";
 
 const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct, unitSize, unitType, description }) => {
 
@@ -86,13 +87,13 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
               <>
                 <button
                   onClick={() => editProduct(_id)}
-                  className="card-footer-item"
+                  className="button card-footer-item"
                 >
                   Edit
                 </button>
                 <button
                   onClick={handleDeleteButton}
-                  className="card-footer-item"
+                  className="button card-footer-item"
                 >
                   Delete
                 </button>
