@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -10,7 +11,10 @@ const PORT = process.env.PORT || 3001;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+const AuthController = require("./controllers/authController");
+
 app.use(express.static("client/build"));
+app.use("/api/users", AuthController);
 
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/farm-to-table",
@@ -184,28 +188,36 @@ app.delete("/api/products/:id", (req, res) => {
 });
 
 //POST api route to create a user
-app.post("/api/users", ({ body }, res) => {
-  db.User.create(body)
-    .then((result) => {
-      res.json(result);
-    })
-    .catch((err) => {
-      res.json(err);
-    });
-});
+// app.post("/api/users", ({ body }, res) => {
+//   db.User.create(body)
+//     .then((result) => {
+//       res.json(result);
+//     })
+//     .catch((err) => {
+//       res.json(err);
+//     });
+// });
+
+// need to check the database
+// app.post("/api/login", (req, res) => {
+//   res.json({
+//     message: "Successfully logged in!",
+//     token: "AdminToken",
+//   });
+// });
 
 // GET api route to return selected user
-app.get("/api/users", (req, res) => {
-  db.User.findOne({
-    email: req.query.email,
-    password: req.query.password,
-  })
-    .then((result) => {
-      console.log(req.query);
-      res.json(result);
-    })
-    .catch((err) => res.json(err));
-});
+// app.get("/api/users", (req, res) => {
+//   db.User.findOne({
+//     email: req.query.email,
+//     password: req.query.password,
+//   })
+//     .then((result) => {
+//       console.log(req.query);
+//       res.json(result);
+//     })
+//     .catch((err) => res.json(err));
+// });
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"));
