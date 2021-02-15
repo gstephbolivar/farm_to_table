@@ -61,7 +61,7 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
   };
 
   return (
-    <div className="column is-4 has-text-centered" id="column">
+    <div className="column is-4" id="column">
       <div className="card">
         <div className="card-image">
           <figure className="image is-1by1">

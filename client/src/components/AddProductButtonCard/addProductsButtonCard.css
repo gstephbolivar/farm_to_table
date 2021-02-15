@@ -1,23 +1,26 @@
 .add-icon {
-  height: 75px;
+  margin: auto;
+  padding: 4px;
+  width: 130px;
+  overflow: hidden;
+
 }
 
-#card-container {
-  position: relative;
-  margin: 10px;
-}
 
-
-.vertical-center-add {
-  margin: 0px;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
 
 #addProductBtn {
-  margin-left: 130px;
   background-color: #873e97;
-  color: white;
+  color: white;  
+}
+
+@media only screen and (max-width: 1240px) {
+
+
+ 
+}
+
+@media only screen and (max-width: 768px) {
+
+
+ 
 }

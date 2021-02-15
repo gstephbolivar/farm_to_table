@@ -106,7 +106,7 @@ const Products = () => {
               <CategoriesCard onClick={filterProducts} />
             </div>
             <div className="column is-9">
-              <div className="columns is-centered is-multiline">
+              <div className="columns is-centered is-multiline is-mobile is-tablet is-desktop is-fullhd">
                 {products.map((product) => (
                   <ProductCard
                     {...product}
