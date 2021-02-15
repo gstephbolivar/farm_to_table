@@ -1,19 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import "./BulmaNavBar.css";
-import {useContext} from "react";
-import CartContext from '../../utils/CartContext';
-import CartBadge from '../CartBadge/CartBadge';
+import { useContext } from "react";
+import CartContext from "../../utils/CartContext";
+import CartBadge from "../CartBadge/CartBadge";
 
+const BulmaNavBar = ({ role }) => {
+  const { lineItems } = useContext(CartContext);
+  const count = lineItems.reduce(
+    (total, current) => total + current.quantity,
+    0,
+    lineItems,
+    0
+  );
 
-
-const BulmaNavBar = () => {
-    const {lineItems} = useContext(CartContext);
-    const count = lineItems.reduce((total, current) => total + current.quantity, 0, lineItems, 0);
-  
-
-    return (
-        <nav
+  return (
+    <nav
       className="navbar is-spaced"
       role="navigation"
       aria-label="main navigation"
@@ -23,17 +25,31 @@ const BulmaNavBar = () => {
       <div className="navbar-brand">
         {/* <!-- left side of bulma navbar --> */}
         <Link className="navbar-item" to="/">
-        <span className="icon">
-        <img className="nav-icons" src="./assets/icons/home.svg" alt="home farm icon"/>
-        </span>
-        <span id="nav-home">Home</span>
+          <span className="icon">
+            <img
+              className="nav-icons"
+              src="./assets/icons/home.svg"
+              alt="home farm icon"
+            />
+          </span>
+          <span id="nav-home">Home</span>
         </Link>
-        <Link className="navbar-item" to="/cart">
+
+        {role ? (
+          <Link className="navbar-item" to="/cart">
             <span className="icon">
-            <img className="nav-icons" src="./assets/icons/cart.svg" alt="cart icon"/>
+              <img
+                className="nav-icons"
+                src="./assets/icons/cart.svg"
+                alt="cart icon"
+              />
             </span>
-            <span id="nav-products"> Cart ( <CartBadge count={count}/> )</span>
-        </Link>
+            <span id="nav-products">
+              {" "}
+              Cart ( <CartBadge count={count} /> )
+            </span>
+          </Link>
+        ) : null}
         <label
           htmlFor="toggler"
           role="button"
@@ -53,38 +69,61 @@ const BulmaNavBar = () => {
         <div className="navbar-end">
           {/* <!-- left on big screen -->
           <!-- a dropdown menu --> */}
-          <Link className="navbar-item" to="/allproducts">
-            {/* <!-- begin dropdown box --> */}
-            <span className="icon">
-            <img className="nav-icons" src="./assets/icons/products.svg" alt="products icon"/>
-            </span>
-            <span id="nav-products"> Products</span>
-          </Link>
 
-          <Link className="navbar-item" to="/login">
-            <span className="icon">
-            <img className="nav-icons" src="./assets/icons/login.svg" alt="chicken icon"/>
-            </span>
-            <span id="nav-login">Login</span>
-          </Link>
+          {role ? (
+            <Link className="navbar-item" to="/allproducts">
+              {/* <!-- begin dropdown box --> */}
+              <span className="icon">
+                <img
+                  className="nav-icons"
+                  src="./assets/icons/products.svg"
+                  alt="products icon"
+                />
+              </span>
+              <span id="nav-products"> Products</span>
+            </Link>
+          ) : null}
+          {!role ? (
+            <>
+              <Link className="navbar-item" to="/login">
+                <span className="icon">
+                  <img
+                    className="nav-icons"
+                    src="./assets/icons/login.svg"
+                    alt="chicken icon"
+                  />
+                </span>
+                <span id="nav-login">Login</span>
+              </Link>
+              <Link className="navbar-item" to="/signup">
+                <span className="icon">
+                  <img
+                    className="nav-icons"
+                    src="./assets/icons/signUp.svg"
+                    alt="cow icon"
+                  />
+                </span>
+                <span id="nav-signUp">Sign Up</span>
+              </Link>{" "}
+            </>
+          ) : // TODO: Add signout button/link here
+          null}
 
-          <Link className="navbar-item" to="/signup">
-            <span className="icon">
-            <img className="nav-icons" src="./assets/icons/signUp.svg" alt="cow icon"/>
-            </span>
-            <span id="nav-signUp">Sign Up</span>
-          </Link>
+          {role === "admin" ? (
+            <Link className="navbar-item" to="/admin">
+              <span className="icon">
+                <img
+                  className="nav-icons"
+                  src="./assets/icons/farmDash.svg"
+                  alt="tractor icon"
+                />
+              </span>
+              <span id="nav-dashboard">Farm Dashboard</span>
+            </Link>
+          ) : null}
+        </div>
 
-          <Link className="navbar-item" to="/admin">
-            <span className="icon">
-            <img className="nav-icons" src="./assets/icons/farmDash.svg" alt="tractor icon"/>
-            </span>
-            <span id="nav-dashboard">Farm Dashboard</span>
-          </Link>
-          </div>
-
-
-          {/* <div className="navbar-item">
+        {/* <div className="navbar-item">
             <strong id="nav-text"
               ><span style="display: none">
                 <span className="icon">
@@ -94,7 +133,7 @@ const BulmaNavBar = () => {
             ></strong>
           </div> */}
 
-          {/* <Link
+        {/* <Link
             className="navbar-item"
             href="/logout"
             id="logout"
@@ -107,7 +146,7 @@ const BulmaNavBar = () => {
           </Link> */}
       </div>
     </nav>
-    );
+  );
 };
 
 export default BulmaNavBar;

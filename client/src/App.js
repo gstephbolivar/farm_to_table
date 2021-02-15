@@ -68,16 +68,18 @@ function App() {
   };
 
   const deleteItemFromCart = (id) => {
-    const cartTiems = cartState.lineItems;
-    const newCartItems = cartState.lineItems.filter(item => item.product.toString() !== id.toString());
-    setCartState({...cartState, lineItems: newCartItems});
-  }
+    const cartItems = cartState.lineItems;
+    const newCartItems = cartState.lineItems.filter(
+      (item) => item.product.toString() !== id.toString()
+    );
+    setCartState({ ...cartState, lineItems: newCartItems });
+  };
 
   return (
     <>
       <BrowserRouter>
         <CartContext.Provider value={cartState}>
-          <BulmaNavBar />
+          <BulmaNavBar role={role} />
           <Switch>
             <Route path="/home" component={Home} />
             <Route
