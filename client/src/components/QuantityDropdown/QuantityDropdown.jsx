@@ -4,14 +4,14 @@ const QuantityDropdown = (props) => {
   };
 
   return (
-    <div className="select is-rounded">
+    <div className="select" id="quantityContainer">
       <select
         name="quantity"
         onChange={handleQuantityChange}
         id="qtySelect"
         value={props.dropDownState}
       >
-        <option>Quantity</option>
+        <option id="quantityDropdown">Quantity</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>

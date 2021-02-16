@@ -6,9 +6,9 @@ const UserCardContent = (props) => {
         <div className="card-content">
           <div className="media">
             <div className="media-content">
-              <p className="title is-4">{props.name}</p>
-              <p className="subtitle is-6">${props.price} per {props.unitSize}-{props.unitType}</p>
-              <p className="subtitle is-6">{props.description}</p>
+              <p className="title productTitle">{props.name}</p>
+              <p className="subtitle productDetails">${props.price} per {props.unitSize}-{props.unitType}</p>
+              <p className="subtitle productDesc">{props.description}</p>
               <QuantityDropdown
                 dropDownState = {props.dropDownState}
                 setDropDownState = {props.setDropDownState}
@@ -21,7 +21,7 @@ const UserCardContent = (props) => {
                 ) : (
                   <button
                     href="#"
-                    className="card-footer-item"
+                    className="button card-footer-item"
                     onClick={props.handleAddClick}
                   >
                     Add

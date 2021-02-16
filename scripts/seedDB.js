@@ -28,50 +28,50 @@ const userSeed = [
   },
 ];
 
-// const productsSeed = [
-//   {
-//     name: "Apples",
-//     unitSize: "pounds",
-//     price: 2.99,
-//     quantity: 10,
-//     category: "fruit",
-//   },
-//   {
-//     name: "Lettuce",
-//     unitSize: "each",
-//     price: 3.49,
-//     quantity: 10,
-//     category: "vegetable",
-//   },
-//   {
-//     name: "Chicken",
-//     unitSize: "pounds",
-//     price: 4.99,
-//     quantity: 10,
-//     category: "meat",
-//   },
-//   {
-//     name: "Cheese",
-//     unitSize: "pounds",
-//     price: 4.99,
-//     quantity: 10,
-//     category: "dairy",
-//   },
-//   {
-//     name: "Tomatoes",
-//     unitSize: "pounds",
-//     price: 4.99,
-//     quantity: 10,
-//     category: "vegetable",
-//   },
-//   {
-//     name: "Apples",
-//     unitSize: "pounds",
-//     price: 4.99,
-//     quantity: 10,
-//     category: "fruit",
-//   },
-// ];
+const productsSeed = [
+  {
+    name: "Apples",
+    unitSize: "pounds",
+    price: 2.99,
+    quantity: 10,
+    category: "fruit",
+  },
+  {
+    name: "Lettuce",
+    unitSize: "each",
+    price: 3.49,
+    quantity: 10,
+    category: "vegetable",
+  },
+  {
+    name: "Chicken",
+    unitSize: "pounds",
+    price: 4.99,
+    quantity: 10,
+    category: "meat",
+  },
+  {
+    name: "Cheese",
+    unitSize: "pounds",
+    price: 4.99,
+    quantity: 10,
+    category: "dairy",
+  },
+  {
+    name: "Tomatoes",
+    unitSize: "pounds",
+    price: 4.99,
+    quantity: 10,
+    category: "vegetable",
+  },
+  {
+    name: "Apples",
+    unitSize: "pounds",
+    price: 4.99,
+    quantity: 10,
+    category: "fruit",
+  },
+];
 
 // seed initial user data
 db.User.remove({})
