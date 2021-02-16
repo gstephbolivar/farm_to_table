@@ -114,7 +114,8 @@ const Cart = (props) => {
                         key={index}
                         handleItemChange={props.handleAddToCart}
                         deleteItem={props.deleteItemFromCart}
-                        unitSize={props.unitSize}
+                        unitSize={item.unitSize}
+                        unitType={item.unitType}
                       />
                     ))}
                   </tbody>

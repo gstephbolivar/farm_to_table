@@ -5,6 +5,7 @@ import "./cartitem.css";
 const CartItem = (props) => {
 
   const [valueState, setValueState] = useState(props.lineItem.quantity);
+  // const [weightState, setWeightState] = useState(props.lineItem.unitSize);
 
   const handleChange = (e) => {
     let value = e.target.value;
@@ -19,15 +20,16 @@ const CartItem = (props) => {
   };
 
   const calculateTotalWeight = (size) => {
-
-  //   console.log(totalWeight);
-  //   return totalWeight;
+    const weight = props.unitSize * props.lineItem.quantity;
+    console.log(weight);
+    return weight;
   };
 
   const handleOnBlur = (e) => {
 
     let newQuantity = valueState === "" ? 0 : parseInt(valueState);
     let newCost = calculateCost(newQuantity);
+    // let newWeight = calculateTotalWeight(newQuantity)
 
     if (props.lineItem.inStock < newQuantity) {
       let warningMessage = "We are sorry but the quantity you are trying to order would exceed the amount that we have in stock.\n"
@@ -55,7 +57,7 @@ const CartItem = (props) => {
           className="vertical-center"
           style={{ height: 95, justifyContent: "center" }}
         >
-          <div><h1>{props.unitSize}</h1></div>
+          <div><h1>{props.unitType}</h1></div>
         </div>
       </td>
       <td className="is-vcentered">

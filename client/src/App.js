@@ -58,9 +58,11 @@ function App() {
       if (cartEdit) {
         existingLineItem.quantity = item.quantity;
         existingLineItem.totalCost = item.totalCost;
+        // existingLineItem.unitSize = item.unitSize;
       } else {
         existingLineItem.quantity += item.quantity;
         existingLineItem.totalCost += item.totalCost;
+        // existingLineItem.unitSize += item.unitSize;
       }
     } else {
       tempItems.push(item);
@@ -74,7 +76,7 @@ function App() {
   };
 
   const deleteItemFromCart = (id) => {
-    // const cartTiems = cartState.lineItems;
+    // const cartItems = cartState.lineItems;
     const newCartItems = cartState.lineItems.filter(
       (item) => item.product.toString() !== id.toString()
     );
