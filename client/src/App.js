@@ -68,7 +68,7 @@ function App() {
   };
 
   const deleteItemFromCart = (id) => {
-    const cartItems = cartState.lineItems;
+    // const cartTiems = cartState.lineItems;
     const newCartItems = cartState.lineItems.filter(
       (item) => item.product.toString() !== id.toString()
     );
