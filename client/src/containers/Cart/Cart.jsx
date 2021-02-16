@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import CartItem from "../../components/CartItem/CartItem";
 
 import Grid from "@material-ui/core/Grid";
@@ -9,6 +10,18 @@ import API from "../../utils/API";
 
 const Cart = (props) => {
   const { userId, lineItems } = useContext(CartContext);
+  const history = useHistory();
+  const items = lineItems;
+
+  const routeChange = (path) => {
+    history.push({
+      pathname: path,
+      state: {
+        line: items,
+        subTotal: subTotal,
+      },
+    });
+  };
 
   const handleCartSubmit = () => {
     API.addLineItems(lineItems).then((res) => {
@@ -16,7 +29,8 @@ const Cart = (props) => {
         customer: userId,
         LineItem: res.data.map((x) => x._id),
       }).then(() => {
-        alert("Order successfully placed");
+        // alert("Order successfully placed");
+        routeChange("/confirmation");
         localStorage.removeItem("lineItems");
         props.clearCart();
       });
@@ -86,7 +100,13 @@ const Cart = (props) => {
                   </thead>
                   <tbody>
                     {lineItems.map((item, index) => (
-                      <CartItem lineItem={item} img="https://placedog.net/75/75" key={index} handleItemChange={props.handleAddToCart} deleteItem={props.deleteItemFromCart}/>
+                      <CartItem
+                        lineItem={item}
+                        img="https://placedog.net/75/75"
+                        key={index}
+                        handleItemChange={props.handleAddToCart}
+                        deleteItem={props.deleteItemFromCart}
+                      />
                     ))}
                   </tbody>
                 </table>
