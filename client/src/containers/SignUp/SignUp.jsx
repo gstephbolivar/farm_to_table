@@ -6,7 +6,6 @@ import "./signUp.css";
 
 const SignUp = () => {
   const [userObject, setUserObject] = useState({
-    username: "",
     name: "",
     address: "",
     password: "",
@@ -18,6 +17,14 @@ const SignUp = () => {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
+
+    const regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+    console.log(value);
+    // validation for inputting account data
+    if (!regName.test(value)) {
+      console.log("Invalid name");
+    }
+
     setUserObject({ ...userObject, [name]: value });
   };
 
@@ -51,21 +58,23 @@ const SignUp = () => {
         <div className="columns is-centered is-multiline">
           <div className="column is-two-thirds-tablet is-half-desktop is-one-third-widescreen">
             <form className="box">
-            <div class="columns is-grouped is-centered is-mobile">
-            <img
-              src="./assets/icons/signUp_1.svg"
-              className="figure-img img-fluid rounded"
-              id="signUp-icon-1"
-              alt="strawberry and bluberries"
-            />
-              <h3 className="title is-3" id="login-headline">Sign Up</h3>
-              <img
-              src="./assets/icons/signUp_2.svg"
-              className="figure-img img-fluid rounded"
-              id="signUp-icon-2"
-              alt="tomato and pear icon"
-            />
-            </div>
+              <div class="columns is-grouped is-centered is-mobile">
+                <img
+                  src="./assets/icons/signUp_1.svg"
+                  className="figure-img img-fluid rounded"
+                  id="signUp-icon-1"
+                  alt="strawberry and bluberries"
+                />
+                <h3 className="title is-3" id="login-headline">
+                  Sign Up
+                </h3>
+                <img
+                  src="./assets/icons/signUp_2.svg"
+                  className="figure-img img-fluid rounded"
+                  id="signUp-icon-2"
+                  alt="tomato and pear icon"
+                />
+              </div>
 
               {/* Email */}
               <div className="field">
@@ -140,9 +149,13 @@ const SignUp = () => {
                 </div>
               </div>
               <div className="field has-text-centered">
-              <button className="button" id="signUp-btn" onClick={handleFormSubmit}>
-                Create account
-              </button>
+                <button
+                  className="button"
+                  id="signUp-btn"
+                  onClick={handleFormSubmit}
+                >
+                  Create account
+                </button>
               </div>
               <h5 className="subtitle is-6 has-text-centered">
                 Already a member?{" "}
