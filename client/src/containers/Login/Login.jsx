@@ -20,10 +20,10 @@ const Login = (props) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log(loginObject);
+    //console.log(loginObject);
     API.loginUser(loginObject)
       .then((response) => {
-        console.log(response.data);
+        //console.log(response.data);
 
         jwt.verify(
           response.data.token,
