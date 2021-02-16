@@ -45,3 +45,5 @@ API.checkUser(loginObject)
           routeChange("/admin");
         }
 ```
+
+Pushing to heroku to fix .env errors
