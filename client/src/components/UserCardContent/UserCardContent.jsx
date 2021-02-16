@@ -13,6 +13,9 @@ const UserCardContent = (props) => {
                 dropDownState = {props.dropDownState}
                 setDropDownState = {props.setDropDownState}
               />
+              {props.quantity < 5 && (
+                <p className="subtitle productQuantity">{props.quantity} left in stock</p>
+              )}
             </div>
           </div>
           <footer className="card-footer">
