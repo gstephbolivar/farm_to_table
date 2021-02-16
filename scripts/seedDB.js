@@ -31,50 +31,62 @@ const userSeed = [
 const productsSeed = [
   {
     name: "Apples",
-    unitSize: "pounds",
+    description: "Red and Delicious",
+    unitType: "pounds",
+    unitSize: 1,
     price: 2.99,
     quantity: 10,
     category: "fruit",
   },
   {
-    name: "Lettuce",
-    unitSize: "each",
+    name: "Bananas",
+    description: "Bananas, Monkeys love em!",
+    unitType: "pounds",
+    unitSize: 1,
+    price: 1.99,
+    quantity: 20,
+    category: "fruit",
+  },
+  {
+    name: "Oranges",
+    description: "Get your vitamin C",
+    unitType: "pounds",
+    unitSize: 1,
     price: 3.49,
+    quantity: 25,
+    category: "fruit",
+  },
+  {
+    name: "Kale",
+    description: "Ugh, I hate Kale",
+    unitType: "pounds",
+    unitSize: 1,
+    price: 2.29,
     quantity: 10,
     category: "vegetable",
   },
   {
     name: "Chicken",
-    unitSize: "pounds",
-    price: 4.99,
-    quantity: 10,
+    description: "Cluck Cluck...",
+    unitType: "pounds",
+    unitSize: 1,
+    price: 1.79,
+    quantity: 30,
     category: "meat",
   },
   {
-    name: "Cheese",
-    unitSize: "pounds",
-    price: 4.99,
-    quantity: 10,
+    name: "Milk",
+    description: "Does the body good!",
+    unitType: "pints",
+    unitSize: 4,
+    price: 2.99,
+    quantity: 40,
     category: "dairy",
-  },
-  {
-    name: "Tomatoes",
-    unitSize: "pounds",
-    price: 4.99,
-    quantity: 10,
-    category: "vegetable",
-  },
-  {
-    name: "Apples",
-    unitSize: "pounds",
-    price: 4.99,
-    quantity: 10,
-    category: "fruit",
   },
 ];
 
 // seed initial user data
-db.User.remove({})
+db.User.deleteMany({})
   .then(() => db.User.collection.insertMany(userSeed))
   .then((data) => {
     console.log(data.result.n + " records inserted!");
@@ -86,13 +98,13 @@ db.User.remove({})
   });
 
 // seed initial products data
-// db.Products.remove({})
-//   .then(() => db.Products.collection.insertMany(productsSeed))
-//   .then((data) => {
-//     console.log(data.result.n + " records inserted!");
-//     process.exit(0);
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//     process.exit(1);
-//   });
+db.Products.deleteMany({})
+  .then(() => db.Products.collection.insertMany(productsSeed))
+  .then((data) => {
+    console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });

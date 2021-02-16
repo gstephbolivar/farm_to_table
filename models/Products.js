@@ -32,10 +32,6 @@ const ProductsSchema = new Schema({
     type: String,
     default: "https://placedog.net/300/300",
   },
-
-  totalAmount: {
-    type: Number,
-  },
 });
 
 const Products = mongoose.model("Products", ProductsSchema);
