@@ -124,8 +124,8 @@ const BulmaNavBar = ({ role, token, setRole, setToken, setCartState }) => {
                 <span className="icon">
                   <img
                     className="nav-icons"
-                    src="./assets/icons/signUp.svg"
-                    alt="chicken icon"
+                    src="./assets/icons/logOut.svg"
+                    alt="pig icon"
                   />
                 </span>
                 <span id="nav-signUp">Logout</span>

@@ -94,14 +94,14 @@ const Login = (props) => {
               src="./assets/icons/login_2.svg"
               className="figure-img img-fluid rounded"
               id="login-icon-2"
-              alt="farm to table logo"
+              alt="carrot cabbage icon"
             />
               <h3 className="title is-3" id="login-headline">Log in</h3>
               <img
               src="./assets/icons/login_1.svg"
               className="figure-img img-fluid rounded"
               id="login-icon-1"
-              alt="farm to table logo"
+              alt="apple avocado icon"
             />
             </div>
               <div className="field">
