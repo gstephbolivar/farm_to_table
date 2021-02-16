@@ -4,11 +4,6 @@ import "./cartitem.css";
 
 const CartItem = (props) => {
   const [valueState, setValueState] = useState(props.lineItem.quantity);
-<<<<<<< HEAD
-=======
-  // const [weightState, setWeightState] = useState(props.lineItem.unitSize);
-
->>>>>>> 9a92a52d18ecbd13a0825097df54c14be3f3c321
   const handleChange = (e) => {
     let value = e.target.value;
     setValueState(value);
