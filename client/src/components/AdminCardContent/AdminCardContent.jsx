@@ -1,4 +1,5 @@
 import React from 'react';
+import "./AdminCardContent.css";
 
 const AdminCardContent = (props) => {
     return (
@@ -15,13 +16,13 @@ const AdminCardContent = (props) => {
           <footer className="card-footer">
                 <button
                   onClick={() => props.editProduct(props._id)}
-                  className="button card-footer-item"
+                  className="button card-footer-item editButton"
                 >
                   Edit
                 </button>
                 <button
                   onClick={props.handleDeleteButton}
-                  className="button card-footer-item"
+                  className="button card-footer-item deleteButton"
                 >
                   Delete
                 </button>

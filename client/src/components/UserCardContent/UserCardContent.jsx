@@ -1,5 +1,6 @@
 import React from 'react';
 import QuantityDropdown from "../QuantityDropdown/QuantityDropdown";
+import "./UserCardContent.css";
 
 const UserCardContent = (props) => {
     return (
@@ -24,7 +25,7 @@ const UserCardContent = (props) => {
                 ) : (
                   <button
                     href="#"
-                    className="button card-footer-item"
+                    className="button card-footer-item addButton"
                     onClick={props.handleAddClick}
                   >
                     Add
