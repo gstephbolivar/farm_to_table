@@ -38,7 +38,7 @@ const buttonsToShow = () => {
                 dropDownState = {props.dropDownState}
                 setDropDownState = {props.setDropDownState}
               />
-              {(props.quantity > 1 && props.quantity < 5) && (
+              {(props.quantity > 0 && props.quantity < 6) && (
                 <p className="subtitle productQuantity">{props.quantity} left in stock</p>
               )}
             </div>
