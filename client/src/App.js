@@ -79,7 +79,13 @@ function App() {
     <>
       <BrowserRouter>
         <CartContext.Provider value={cartState}>
-          <BulmaNavBar role={role} />
+          <BulmaNavBar
+            role={role}
+            token={token}
+            setRole={setRole}
+            setToken={setToken}
+            setCartState={setCartState}
+          />
           <Switch>
             <Route path="/home" component={Home} />
             <Route

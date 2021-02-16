@@ -5,7 +5,7 @@ import { useContext } from "react";
 import CartContext from "../../utils/CartContext";
 import CartBadge from "../CartBadge/CartBadge";
 
-const BulmaNavBar = ({ role }) => {
+const BulmaNavBar = ({ role, token, setRole, setToken, setCartState }) => {
   const { lineItems } = useContext(CartContext);
   const count = lineItems.reduce(
     (total, current) => total + current.quantity,
@@ -13,6 +13,16 @@ const BulmaNavBar = ({ role }) => {
     lineItems,
     0
   );
+
+  const handleLogout = () => {
+    localStorage.clear();
+    setRole("");
+    setToken("");
+    setCartState({
+      userId: "",
+      lineItems: [],
+    });
+  };
 
   return (
     <nav
@@ -106,8 +116,21 @@ const BulmaNavBar = ({ role }) => {
                 <span id="nav-signUp">Sign Up</span>
               </Link>{" "}
             </>
-          ) : // TODO: Add signout button/link here
-          null}
+          ) : (
+            // TODO: Add signout button/link here
+            <>
+              <Link className="navbar-item" to="/" onClick={handleLogout}>
+                <span className="icon">
+                  <img
+                    className="nav-icons"
+                    src="./assets/icons/signUp.svg"
+                    alt="cow icon"
+                  />
+                </span>
+                <span id="nav-signUp">Logout</span>
+              </Link>{" "}
+            </>
+          )}
 
           {role === "admin" ? (
             <Link className="navbar-item" to="/admin">
