@@ -20,30 +20,10 @@ Json web token (JWT)
 - need to add styling to panels based on which panel is clicked/chosen
 - need to make dropdown box dynamic based on categories in the database
 
-### username -> email change conflicts
+### Conditionally Render Navbar
 
-#### Login.jsx
+- IF NO ROLE (customer/admin) -> Only render signup/login. Shop button on main page still goes to allproducts page
 
-```javascript
-API.checkUser(loginObject)
-      .then((user) => {
-        console.log(loginObject);
-        console.log(user);
+- IF ADMIN -> renders all links including dashboard (no signup/login link). Need to add logout link
 
-        // checks if user has entered login information
-        if (!loginObject.email || !loginObject.password) {
-          alert("Please enter a username and password");
-        } // checks that login matches database user
-        else if (
-          user.data.email === loginObject.email &&
-          user.data.password === loginObject.password
-        ) {
-          props.setUserId(user.data._id);
-          alert("Successfully Logged in!");
-
-          // changes route to the admin products page
-          routeChange("/admin");
-        }
-```
-
-Pushing to heroku to fix .env errors
+- IF CUSTOMER -> renders products and car link (no dashboard). Need to add logout link
