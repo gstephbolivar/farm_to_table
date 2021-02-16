@@ -43,6 +43,7 @@ const buttonsToShow = () => {
               )}
             </div>
           </div>
+          <br/>
           <footer className="card-footer" id="product-card-footer">
                 {buttonsToShow()}
           </footer>
