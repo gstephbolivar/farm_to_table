@@ -62,7 +62,7 @@ const Cart = (props) => {
         ) : (
           <>
             {/* SHOPPING CART TABLE */}
-            <section className="hero has-text-centered" id="employee">
+            <section className="hero has-text-centered">
               <div className="table-container">
                 <table className="table is-fullwidth">
                   <thead>
@@ -71,7 +71,7 @@ const Cart = (props) => {
                         <div
                           className="vertical-center"
                           style={{
-                            height: 95,
+                            height: 55,
                             justifyContent: "left",
                             padding: 10,
                           }}
@@ -79,18 +79,18 @@ const Cart = (props) => {
                           <h1 className="sub-title">Item</h1>
                         </div>
                       </th>
-                      <th>
+                      <th className="is-vcentered">
                         <div
                           className="vertical-center"
-                          style={{ height: 95, justifyContent: "center" }}
+                          style={{ height: 55, justifyContent: "center" }}
                         >
                           <h1 className="sub-title">Quantity</h1>
                         </div>
                       </th>
-                      <th>
+                      <th className="is-vcentered">
                         <div
                           className="vertical-center"
-                          style={{ height: 95, justifyContent: "center" }}
+                          style={{ height: 55, justifyContent: "center" }}
                         >
                           <h1 className="sub-title">Price</h1>
                         </div>
@@ -138,7 +138,7 @@ const Cart = (props) => {
                 style={{ marginLeft: "auto", marginTop: 40 }}
                 align="center"
               >
-                <button className="cart-submit" onClick={handleCartSubmit}>
+                <button className="button cart-submit" onClick={handleCartSubmit}>
                   Reserve
                 </button>
               </Grid>

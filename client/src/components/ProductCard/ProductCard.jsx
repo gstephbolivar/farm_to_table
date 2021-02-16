@@ -2,6 +2,8 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import QuantityDropdown from "../QuantityDropdown/QuantityDropdown";
 import API from "../../utils/API.js";
+import {Link} from "react-router-dom";
+import "./productCard.css";
 
 const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct, unitSize, unitType, description }) => {
 
@@ -60,7 +62,7 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
   };
 
   return (
-    <div className="column is-4 has-text-centered" id="column">
+    <div className="column is-half-mobile is-third-tablet is-one-third-desktop is-one-quarter-widescreen is-one-fifth-fullhd has-text-centered" id="column">
       <div className="card">
         <div className="card-image">
           <figure className="image is-1by1">
@@ -70,10 +72,9 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
         <div className="card-content">
           <div className="media">
             <div className="media-content">
-              <p className="title is-4">{name}</p>
-              <p className="subtitle is-6">${price} per {unitSize}-{unitType}</p>
-              <p className="subtitle is-6">{description}</p>
-              <p className="subtitle is-6">How many would you like?</p>
+              <p className="title is-multiline" id="productTitle">{name}</p>
+              <p className="subtitle is-multiline" id="productDetails">${price} per {unitSize}-{unitType}</p>
+              <p className="subtitle is-multiline" id="productDesc">{description}</p>
               <QuantityDropdown
                 dropDownState = {dropDownState}
                 setDropDownState = {setDropDownState}
@@ -86,13 +87,13 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
               <>
                 <button
                   onClick={() => editProduct(_id)}
-                  className="card-footer-item"
+                  className="button card-footer-item"
                 >
                   Edit
                 </button>
                 <button
                   onClick={handleDeleteButton}
-                  className="card-footer-item"
+                  className="button card-footer-item"
                 >
                   Delete
                 </button>
@@ -105,7 +106,7 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
                 ) : (
                   <button
                     href="#"
-                    className="card-footer-item"
+                    className="button card-footer-item"
                     onClick={handleAddClick}
                   >
                     Add
