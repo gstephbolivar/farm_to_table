@@ -1,13 +1,12 @@
 import React from 'react';
 import QuantityDropdown from "../QuantityDropdown/QuantityDropdown";
-
 const UserCardContent = (props) => {
     return (
         <div className="card-content">
           <div className="media">
             <div className="media-content">
               <p className="title productTitle">{props.name}</p>
-              <p className="subtitle productDetails">${props.price} per {props.unitSize}-{props.unitType}</p>
+              <p className="subtitle productDetails">${props.price} per {props.unitSize} {props.unitType}</p>
               <p className="subtitle productDesc">{props.description}</p>
               <QuantityDropdown
                 dropDownState = {props.dropDownState}
@@ -18,13 +17,14 @@ const UserCardContent = (props) => {
               )}
             </div>
           </div>
-          <footer className="card-footer">
+          <br/>
+          <footer className="card-footer is-grouped" id="product-card-footer">
                 {props.quantity === 0 ? (
                   <div className="card-footer-item">Out of Stock</div>
                 ) : (
                   <button
                     href="#"
-                    className="button card-footer-item"
+                    className="button card-footer-item add-btn"
                     onClick={props.handleAddClick}
                   >
                     Add

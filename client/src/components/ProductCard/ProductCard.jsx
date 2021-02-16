@@ -7,6 +7,8 @@ import "./productCard.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
+
 const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct, unitSize, unitType, description, category }) => {
 
   const [lineItemState, setLineItemState] = useState({
@@ -66,12 +68,12 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
   };
 
   return (
-    <div className="column is-half-mobile is-third-tablet is-one-third-desktop is-one-quarter-widescreen is-one-quarter-fullhd has-text-centered" id="column">
+    <div className="column is-half-mobile is-half-tablet is-one-third-desktop is-one-quarter-widescreen is-one-quarter-fullhd has-text-centered" id="column">
       <ToastContainer/>
-      <div className="card">
+      <div className="card" id="product-card">
         <div className="card-image">
           <figure className="image is-1by1">
-            <img src="https://placedog.net/300/300" alt="Placeholder" />
+            <img src="./assets/product_images/fruits/strawberries.png" alt="Placeholder" />
           </figure>
         </div>
         {/* content to be displayed to users */}
