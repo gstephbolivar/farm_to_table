@@ -18,6 +18,12 @@ const CartItem = (props) => {
     return itemCost;
   };
 
+  const calculateTotalWeight = (size) => {
+
+  //   console.log(totalWeight);
+  //   return totalWeight;
+  };
+
   const handleOnBlur = (e) => {
 
     let newQuantity = valueState === "" ? 0 : parseInt(valueState);
@@ -49,7 +55,7 @@ const CartItem = (props) => {
           className="vertical-center"
           style={{ height: 95, justifyContent: "center" }}
         >
-          <div><h1>hello</h1></div>
+          <div><h1>{props.unitSize}</h1></div>
         </div>
       </td>
       <td className="is-vcentered">
