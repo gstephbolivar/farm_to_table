@@ -49,6 +49,14 @@ const CartItem = (props) => {
           className="vertical-center"
           style={{ height: 95, justifyContent: "center" }}
         >
+          <div><h1>hello</h1></div>
+        </div>
+      </td>
+      <td className="is-vcentered">
+        <div
+          className="vertical-center"
+          style={{ height: 95, justifyContent: "center" }}
+        >
           <div><input type="number" value={valueState} onChange={handleChange} onBlur={handleOnBlur} name="quantity" style={{width: "50px", textAlign: "center"}} className="qtyInput"/></div>
         </div>
       </td>
