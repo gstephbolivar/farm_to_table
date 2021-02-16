@@ -2,6 +2,9 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+const sendMail = require('./utils/mailer.js')
+
+
 
 const app = express();
 const db = require("./models");
@@ -131,7 +134,11 @@ app.post("/api/lineitems", (req, res) => {
     });
 });
 
-function updateProductQuantity(result) {
+app.post("/api/sendconfirmation", (req, res) => {
+      sendMail(req, res);
+  })
+
+async function updateProductQuantity(result) {
   db.Products.find({}).then(async (products) => {
     const ids = result.map((r) => r.product.toString());
     const lineItemProducts = products.filter((prod) => {
@@ -145,7 +152,7 @@ function updateProductQuantity(result) {
         );
         await db.Products.findOneAndUpdate(
           { _id: x.product },
-          { quantity: currentProduct.quantity - x.quantity },
+          { quantity: Math.max(currentProduct.quantity - x.quantity, 0) },
           { new: true }
         );
       })
