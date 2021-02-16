@@ -64,4 +64,15 @@ router.post("/login", (req, res) => {
     });
 });
 
+router.get("/email", (req, res) => {
+  User.findById(req.query.id, "email name")
+    .then((user) => {
+      res.json(user);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).end();
+    });
+});
+
 module.exports = router;
