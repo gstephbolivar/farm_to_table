@@ -1,5 +1,6 @@
 import React from 'react';
 import QuantityDropdown from "../QuantityDropdown/QuantityDropdown";
+import {Link} from "react-router-dom";
 
 const UserCardContent = (props) => {
     return (
@@ -19,16 +20,24 @@ const UserCardContent = (props) => {
             </div>
           </div>
           <footer className="card-footer">
-                {props.quantity === 0 ? (
+                {props.quantity === 0 && (
                   <div className="card-footer-item">Out of Stock</div>
-                ) : (
+                )}
+                {props.token !== "" ? (
                   <button
-                    href="#"
+                  href="#"
+                  className="button card-footer-item"
+                  onClick={props.handleAddClick}
+                >
+                  Add
+                </button>
+                ) : (
+                  <Link
+                    to="/login"
                     className="button card-footer-item"
-                    onClick={props.handleAddClick}
                   >
-                    Add
-                  </button>
+                    Login to Add
+                  </Link>
                 )}
           </footer>
         </div>
