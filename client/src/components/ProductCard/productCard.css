@@ -1,18 +1,30 @@
 
 
 
-#productTitle {
+.productTitle {
     font-size: 20px;
     font-weight: 700;
 }
 
-#productDetails {
+.productDetails {
     font-size: 14px;
     font-weight: 600;
 
 }
 
-#productDesc {
+.productDesc {
+    font-size: 14px;
+    font-weight: 600;
+
+}
+
+.productCategory {
+    font-size: 14px;
+    font-weight: 600;
+
+}
+
+.productQuantity {
     font-size: 14px;
     font-weight: 600;
 
