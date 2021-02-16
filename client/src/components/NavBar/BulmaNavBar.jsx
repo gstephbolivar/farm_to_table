@@ -14,7 +14,7 @@ const BulmaNavBar = ({ role, token, setRole, setToken, setCartState }) => {
     0
   );
 
-  // handles the logout of the user, clearing all state objects
+  // handles the logout of the user, clearing all state objects and localstorage
   const handleLogout = () => {
     localStorage.clear();
     setRole("");
@@ -81,20 +81,18 @@ const BulmaNavBar = ({ role, token, setRole, setToken, setCartState }) => {
           {/* <!-- left on big screen -->
           <!-- a dropdown menu --> */}
 
-          {/* if a user is logged in (has a role) renders cart all products */}
-          {role ? (
-            <Link className="navbar-item" to="/allproducts">
-              {/* <!-- begin dropdown box --> */}
-              <span className="icon">
-                <img
-                  className="nav-icons"
-                  src="./assets/icons/products.svg"
-                  alt="products icon"
-                />
-              </span>
-              <span id="nav-products"> Products</span>
-            </Link>
-          ) : null}
+          <Link className="navbar-item" to="/allproducts">
+            {/* <!-- begin dropdown box --> */}
+            <span className="icon">
+              <img
+                className="nav-icons"
+                src="./assets/icons/products.svg"
+                alt="products icon"
+              />
+            </span>
+            <span id="nav-products"> Products</span>
+          </Link>
+
           {/* if a user is not logged in (does not have a role) renders login and sign up links */}
           {!role ? (
             <>
@@ -126,8 +124,8 @@ const BulmaNavBar = ({ role, token, setRole, setToken, setCartState }) => {
                 <span className="icon">
                   <img
                     className="nav-icons"
-                    src="./assets/icons/signUp.svg"
-                    alt="cow icon"
+                    src="./assets/icons/logOut.svg"
+                    alt="pig icon"
                   />
                 </span>
                 <span id="nav-signUp">Logout</span>

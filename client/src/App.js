@@ -14,8 +14,14 @@ import CartContext from "./utils/CartContext";
 import "./App.css";
 
 function App() {
-  const [token, setToken] = useState("");
-  const [role, setRole] = useState("");
+  const [token, setToken] = useState(
+    // checks to see if there is a token in localStorage and uses that or else sets state to ""
+    localStorage.getItem("token") ? localStorage.getItem("token") : ""
+  );
+  const [role, setRole] = useState(
+    // checks to see if there is a role in localStorage and uses that or else sets state to ""
+    localStorage.getItem("role") ? localStorage.getItem("role") : ""
+  );
 
   const [cartState, setCartState] = useState({
     userId: localStorage.getItem("userId")
@@ -91,7 +97,7 @@ function App() {
             <Route
               path="/allproducts"
               render={(props) => (
-                <AllProducts {...props} handleAddToCart={handleAddToCart} />
+                <AllProducts {...props} handleAddToCart={handleAddToCart} token={token}/>
               )}
             />
             <Route
