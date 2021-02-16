@@ -15,7 +15,10 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
     quantity: 0,
     price: price,
     totalCost: 0,
-    inStock: quantity
+    totalWeight: 0,
+    unitSize: unitSize,
+    unitType: unitType,
+    inStock: quantity,
   });
 
   const [addedProductState, setAddedProductState] = useState(0);
@@ -26,6 +29,14 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
     const itemCost = Number(Math.round(cost + "e2") + "e-2");
     
     return itemCost;
+  };
+
+  const calculateTotalWeight = (quantity) => {
+    const weight = lineItemState.unitSize * quantity;
+    console.log(weight);
+    console.log(lineItemState.unitSize);
+    console.log(quantity);
+    return weight;
   };
 
   const handleDeleteButton = () => {
@@ -41,6 +52,7 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
     }
 
     let cost = calculateCost(dropDownState);
+    let weight = calculateTotalWeight(dropDownState);
 
     if (quantity < addedProductState + dropDownState) {
       const maxCanOrder = quantity - addedProductState;
@@ -54,7 +66,8 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
     const lineItem = {
       ...lineItemState,
       quantity: dropDownState,
-      totalCost: cost
+      totalCost: cost,
+      totalWeight: weight,
     };
     
     setLineItemState({...lineItem});
