@@ -5,6 +5,8 @@ import API from "../../utils/API";
 import jwt from "jsonwebtoken";
 import { Link } from "react-router-dom";
 
+import "./login.css";
+
 const Login = (props) => {
   const history = useHistory();
 
@@ -20,10 +22,10 @@ const Login = (props) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log(loginObject);
+    //console.log(loginObject);
     API.loginUser(loginObject)
       .then((response) => {
-        console.log(response.data);
+        //console.log(response.data);
 
         jwt.verify(
           response.data.token,
@@ -33,8 +35,17 @@ const Login = (props) => {
               console.log(err);
             } else {
               props.setUserId(response.data._id);
+              // sets token to state
               props.setToken(response.data.token);
+
+              // set the token to localStorage
+              localStorage.setItem("token", response.data.token);
+
+              // set role to state
               props.setRole(response.data.role);
+
+              //set role to local storage
+              localStorage.setItem("role", response.data.role);
               alert("Successfully Logged in!");
               // if user is an admin, redirect user to admin page otherwise redirect to all products page
               response.data.role === "admin"
@@ -76,16 +87,30 @@ const Login = (props) => {
     <div>
       <section className="section">
         <div className="columns is-centered is-multiline">
-          <div className="column is-4">
+          <div className="column is-two-thirds-tablet is-half-desktop is-one-third-widescreen">
             <form className="box">
-              <h3 className="title is-3">Login to Farm to Table</h3>
+            <div class="columns is-grouped is-centered is-mobile">
+            <img
+              src="./assets/icons/login_2.svg"
+              className="figure-img img-fluid rounded"
+              id="login-icon-2"
+              alt="carrot cabbage icon"
+            />
+              <h3 className="title is-3" id="login-headline">Log in</h3>
+              <img
+              src="./assets/icons/login_1.svg"
+              className="figure-img img-fluid rounded"
+              id="login-icon-1"
+              alt="apple avocado icon"
+            />
+            </div>
               <div className="field">
                 <label className="label">Email</label>
                 <div className="control">
                   <input
                     className="input"
                     type="text"
-                    placeholder="email"
+                    placeholder="oldmacdonald@domain.com"
                     fullwidth="true"
                     id="email"
                     required
@@ -115,14 +140,14 @@ const Login = (props) => {
                   />
                 </div>
               </div>
-
-              <button className="button is-primary" onClick={handleFormSubmit}>
-                Sign in
+              <div className="field has-text-centered">
+              <button className="button" id="login-btn" onClick={handleFormSubmit}>
+                Login
               </button>
-
+                </div>
               {/* Directs to sign up page */}
 
-              <h5 className="subtitle is-6">
+              <h5 className="subtitle is-6 has-text-centered">
                 Not a member?{" "}
                 <Link className="title is-6" to="/signup">
                   Sign up here.
