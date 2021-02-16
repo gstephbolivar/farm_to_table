@@ -1,11 +1,11 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import QuantityDropdown from "../QuantityDropdown/QuantityDropdown";
 import API from "../../utils/API.js";
-import {Link} from "react-router-dom";
+import UserCardContent from "../../components/UserCardContent/UserCardContent";
+import AdminCardContent from "../../components/AdminCardContent/AdminCardContent";
 import "./productCard.css";
 
-const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct, unitSize, unitType, description }) => {
+const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct, unitSize, unitType, description, category }) => {
 
   const [lineItemState, setLineItemState] = useState({
     name: name,
@@ -69,53 +69,16 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
             <img src="https://placedog.net/300/300" alt="Placeholder" />
           </figure>
         </div>
-        <div className="card-content">
-          <div className="media">
-            <div className="media-content">
-              <p className="title is-multiline" id="productTitle">{name}</p>
-              <p className="subtitle is-multiline" id="productDetails">${price} per {unitSize}-{unitType}</p>
-              <p className="subtitle is-multiline" id="productDesc">{description}</p>
-              <QuantityDropdown
-                dropDownState = {dropDownState}
-                setDropDownState = {setDropDownState}
-              />
-            </div>
-          </div>
-          <footer className="card-footer">
-            {/* only displays the buttons if the path is /admin */}
-            {window.location.pathname === "/admin" && (
-              <>
-                <button
-                  onClick={() => editProduct(_id)}
-                  className="button card-footer-item"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={handleDeleteButton}
-                  className="button card-footer-item"
-                >
-                  Delete
-                </button>
-              </>
-            )}
-            {window.location.pathname === "/allproducts" && (
-              <>
-                {quantity === 0 ? (
-                  <div className="card-footer-item">Out of Stock</div>
-                ) : (
-                  <button
-                    href="#"
-                    className="button card-footer-item"
-                    onClick={handleAddClick}
-                  >
-                    Add
-                  </button>
-                )}
-              </>
-            )}
-          </footer>
-        </div>
+        {/* content to be displayed to users */}
+        {window.location.pathname === "/allproducts" && (
+          <UserCardContent handleAddClick={handleAddClick} setDropDownState={setDropDownState} dropDownState={dropDownState} name={name} price={price} unitSize={unitSize} unitType={unitType} description={description} quantity={quantity}/>
+        )}
+
+        {/* content to be displayed to admin */}
+        {window.location.pathname === "/admin" && (
+          <AdminCardContent handleDeleteButton={handleDeleteButton} editProduct={editProduct} name={name} price={price} unitSize={unitSize} unitType={unitType} description={description} category={category} _id={_id} quantity={quantity}/>
+        )}
+
       </div>
     </div>
   );
