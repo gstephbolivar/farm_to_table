@@ -7,7 +7,7 @@ import "./productCard.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct, unitSize, unitType, description, category }) => {
+const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct, unitSize, unitType, description, category, pathway }) => {
 
   const [lineItemState, setLineItemState] = useState({
     name: name,
@@ -71,7 +71,7 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
       <div className="card">
         <div className="card-image">
           <figure className="image is-1by1">
-            <img src="https://placedog.net/300/300" alt="Placeholder" />
+            <img src={process.env.PUBLIC_URL+pathway} alt={name} />
           </figure>
         </div>
         {/* content to be displayed to users */}
