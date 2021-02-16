@@ -97,7 +97,7 @@ function App() {
             <Route
               path="/allproducts"
               render={(props) => (
-                <AllProducts {...props} handleAddToCart={handleAddToCart} />
+                <AllProducts {...props} handleAddToCart={handleAddToCart} token={token}/>
               )}
             />
             <Route

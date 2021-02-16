@@ -7,7 +7,7 @@ import "./productCard.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct, unitSize, unitType, description, category }) => {
+const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct, unitSize, unitType, description, category, token }) => {
 
   const [lineItemState, setLineItemState] = useState({
     name: name,
@@ -76,7 +76,7 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
         </div>
         {/* content to be displayed to users */}
         {window.location.pathname === "/allproducts" && (
-          <UserCardContent handleAddClick={handleAddClick} setDropDownState={setDropDownState} dropDownState={dropDownState} name={name} price={price} unitSize={unitSize} unitType={unitType} description={description} quantity={quantity}/>
+          <UserCardContent token={token} handleAddClick={handleAddClick} setDropDownState={setDropDownState} dropDownState={dropDownState} name={name} price={price} unitSize={unitSize} unitType={unitType} description={description} quantity={quantity}/>
         )}
 
         {/* content to be displayed to admin */}
