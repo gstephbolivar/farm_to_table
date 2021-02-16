@@ -62,7 +62,7 @@ let newPathway;
     event.preventDefault();
     props.handleModalState();
     for (let i = 0; i < productImages.length; i++){
-      if(productObject.name.toLowerCase() === productImages[i].productName){
+      if(productImages[i].productName.includes(productObject.name.toLowerCase())){
         newPathway = productImages[i].imagePathway;
       }
     }

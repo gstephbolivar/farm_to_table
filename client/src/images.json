@@ -11,7 +11,7 @@
 },
 {
 "id":3,
-"productName":"peaches",
+"productName":["peaches", "peach"],
 "imagePathway": "/assets/product_images/fruits/peaches.png"
 },
 {
