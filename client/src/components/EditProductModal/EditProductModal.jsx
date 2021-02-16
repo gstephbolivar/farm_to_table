@@ -38,7 +38,7 @@ let newPathway;
   });
 
   useEffect(() => {
-    
+    if(props.id){
     API.getOneProduct(props.id).then((res) => {
       setProductObject({
         name: res.data.name,
@@ -51,6 +51,7 @@ let newPathway;
         pathway: res.data.pathway
       });
     });
+  }
   }, [props.id]);
 
   const handleInputChange = (event) => {
