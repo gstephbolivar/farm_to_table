@@ -28,13 +28,14 @@ const Cart = (props) => {
       API.placeOrder({
         customer: userId,
         LineItem: res.data.map((x) => x._id),
-      }).then(() => {
+      }).then((order) => {
         localStorage.removeItem("lineItems");
         props.clearCart();
         API.getEmail(userId).then((result) => {
           API.sendConfirmationEmail({
             name: result.data.name,
             email: result.data.email,
+            orderId: order.data._id
           })
         })
       });
