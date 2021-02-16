@@ -7,7 +7,7 @@ import "./productCard.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct, unitSize, unitType, description, category, pathway }) => {
+const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct, unitSize, unitType, description, category, token, pathway }) => {
 
   const [lineItemState, setLineItemState] = useState({
     name: name,
@@ -17,6 +17,9 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
     totalCost: 0,
     inStock: quantity,
     pathway: pathway,
+    totalWeight: 0,
+    unitSize: unitSize,
+    unitType: unitType,
   });
 
   const [addedProductState, setAddedProductState] = useState(0);
@@ -27,6 +30,14 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
     const itemCost = Number(Math.round(cost + "e2") + "e-2");
     
     return itemCost;
+  };
+
+  const calculateTotalWeight = (quantity) => {
+    const weight = lineItemState.unitSize * quantity;
+    console.log(weight);
+    console.log(lineItemState.unitSize);
+    console.log(quantity);
+    return weight;
   };
 
   const handleDeleteButton = () => {
@@ -42,6 +53,7 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
     }
 
     let cost = calculateCost(dropDownState);
+    let weight = calculateTotalWeight(dropDownState);
 
     if (quantity < addedProductState + dropDownState) {
       const maxCanOrder = quantity - addedProductState;
@@ -55,7 +67,8 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
     const lineItem = {
       ...lineItemState,
       quantity: dropDownState,
-      totalCost: cost
+      totalCost: cost,
+      totalWeight: weight,
     };
     
     setLineItemState({...lineItem});
@@ -67,9 +80,9 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
   };
 
   return (
-    <div className="column is-half-mobile is-third-tablet is-one-third-desktop is-one-quarter-widescreen is-one-quarter-fullhd has-text-centered" id="column">
+    <div className="column is-half-mobile is-half-tablet is-one-third-desktop is-one-quarter-widescreen is-one-quarter-fullhd has-text-centered" id="column">
       <ToastContainer/>
-      <div className="card">
+      <div className="card" id="product-card">
         <div className="card-image">
           <figure className="image is-1by1">
             <img src={process.env.PUBLIC_URL+pathway} alt={name} />
@@ -77,7 +90,7 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
         </div>
         {/* content to be displayed to users */}
         {window.location.pathname === "/allproducts" && (
-          <UserCardContent handleAddClick={handleAddClick} setDropDownState={setDropDownState} dropDownState={dropDownState} name={name} price={price} unitSize={unitSize} unitType={unitType} description={description} quantity={quantity}/>
+          <UserCardContent token={token} handleAddClick={handleAddClick} setDropDownState={setDropDownState} dropDownState={dropDownState} name={name} price={price} unitSize={unitSize} unitType={unitType} description={description} quantity={quantity}/>
         )}
 
         {/* content to be displayed to admin */}

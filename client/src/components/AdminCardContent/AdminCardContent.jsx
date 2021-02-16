@@ -13,7 +13,8 @@ const AdminCardContent = (props) => {
               <p className="subtitle productQuantity">Current Inventory: {props.quantity}</p>
             </div>
           </div>
-          <footer className="card-footer">
+          <br />
+          <footer className="card-footer" id="product-card-footer">
                 <button
                   onClick={() => props.editProduct(props._id)}
                   className="button card-footer-item editButton"

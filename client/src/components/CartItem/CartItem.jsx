@@ -1,39 +1,55 @@
 // import { PromiseProvider } from "mongoose";
-import {useState} from "react";
+import { useState } from "react";
 import "./cartitem.css";
 
 const CartItem = (props) => {
-
   const [valueState, setValueState] = useState(props.lineItem.quantity);
+<<<<<<< HEAD
+=======
+  // const [weightState, setWeightState] = useState(props.lineItem.unitSize);
+
+>>>>>>> 9a92a52d18ecbd13a0825097df54c14be3f3c321
   const handleChange = (e) => {
     let value = e.target.value;
-    setValueState(value); 
-  }
+    setValueState(value);
+  };
 
   const calculateCost = (qty) => {
     const cost = props.lineItem.price * qty;
     const itemCost = Number(Math.round(cost + "e2") + "e-2");
-    
+
     return itemCost;
   };
 
-  const handleOnBlur = (e) => {
+  const calculateTotalWeight = (quantity) => {
+    const weight = props.unitSize * quantity;
+    console.log(weight);
+    console.log(props.unitSize);
+    console.log(quantity);
+    return weight;
+  };
 
+  const handleOnBlur = (e) => {
     let newQuantity = valueState === "" ? 0 : parseInt(valueState);
     let newCost = calculateCost(newQuantity);
+    let newWeight = calculateTotalWeight(newQuantity);
 
     if (props.lineItem.inStock < newQuantity) {
-      let warningMessage = "We are sorry but the quantity you are trying to order would exceed the amount that we have in stock.\n"
-      warningMessage += `The maximum amount of units you can order at this time ${props.lineItem.inStock} units.`
+      let warningMessage =
+        "We are sorry but the quantity you are trying to order would exceed the amount that we have in stock.\n";
+      warningMessage += `The maximum amount of units you can order at this time ${props.lineItem.inStock} units.`;
       alert(warningMessage);
       newQuantity = props.lineItem.inStock;
-      setValueState(newQuantity)
+      setValueState(newQuantity);
       newCost = calculateCost(newQuantity);
+      newWeight = calculateCost(newQuantity);
     }
 
-    
-    props.handleItemChange({...props.lineItem, quantity: newQuantity, totalCost: newCost}, true)
-  }
+    props.handleItemChange(
+      { ...props.lineItem, quantity: newQuantity, totalCost: newCost , totalWeight: newWeight},
+      true
+    );
+  };
 
   return (
     <tr>
@@ -48,7 +64,27 @@ const CartItem = (props) => {
           className="vertical-center"
           style={{ height: 95, justifyContent: "center" }}
         >
-          <div><input type="number" value={valueState} onChange={handleChange} onBlur={handleOnBlur} name="quantity" style={{width: "50px", textAlign: "center"}} className="qtyInput"/></div>
+          <div>
+            <h1>{props.lineItem.totalWeight}{props.unitType}</h1>
+          </div>
+        </div>
+      </td>
+      <td className="is-vcentered">
+        <div
+          className="vertical-center"
+          style={{ height: 95, justifyContent: "center" }}
+        >
+          <div>
+            <input
+              type="number"
+              value={valueState}
+              onChange={handleChange}
+              onBlur={handleOnBlur}
+              name="quantity"
+              style={{ width: "50px", textAlign: "center" }}
+              className="qtyInput"
+            />
+          </div>
         </div>
       </td>
       <td className="is-vcentered">
