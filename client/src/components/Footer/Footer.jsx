@@ -4,7 +4,7 @@ import "./index.css";
 
 
 const Footer = () => (
-    <footer className="footer">
+    <footer className="footer" id="main-footer">
       <p>Copyright © Farm to Table 2021. All Rights Reserved</p>
     </footer>
   );

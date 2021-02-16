@@ -1,9 +1,24 @@
 .panel-block {
   height: 60px;
+  margin-left: 12px;
+  
 }
 
-.subtitle {
-    margin-left: 50px;
+.panel {
+  background-color: white;
+}
+
+#cat-items-subtitle {
+    margin-left: 55px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.panel-heading {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
 }
 
 #fruit {
