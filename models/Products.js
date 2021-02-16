@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const ProductsSchema = new Schema({
   name: {
     type: String,
+    required: ["Enter a product name."],
   },
   description: {
     type: String,
@@ -17,12 +18,15 @@ const ProductsSchema = new Schema({
   },
   price: {
     type: Number,
+    required: ["Enter a product price."],
   },
   quantity: {
     type: Number,
+    required: ["Enter a product quantity."],
   },
   category: {
     type: String,
+    required: ["Select a product category."],
   },
   photo: {
     type: String,
