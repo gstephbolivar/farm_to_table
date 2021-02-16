@@ -1,28 +1,59 @@
-import React from "react";
+import { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import CartItem from "../../components/CartItem/CartItem";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import { Button } from "@material-ui/core";
-import "./cart.css";
 
-const Cart = () => {
-  const cartItems = [];
-  for (var i = 0; i < 5; i++) {
-    let item = {
-      img: "https://via.placeholder.com/75",
-      name: "Juicy, red large strawberries",
-      quantity: 5,
-      price: 10.99,
-    };
-    cartItems.push(item);
-  }
+import Grid from "@material-ui/core/Grid";
+
+import "./cart.css";
+import CartContext from "../../utils/CartContext";
+import API from "../../utils/API";
+
+const Cart = (props) => {
+  const { userId, lineItems } = useContext(CartContext);
+  const history = useHistory();
+  const items = lineItems;
+
+  const routeChange = (path) => {
+    history.push({
+      pathname: path,
+      state: {
+        line: items,
+        subTotal: subTotal,
+      },
+    });
+  };
+
+  const handleCartSubmit = () => {
+    API.addLineItems(lineItems).then((res) => {
+      API.placeOrder({
+        customer: userId,
+        LineItem: res.data.map((x) => x._id),
+      }).then(() => {
+        // alert("Order successfully placed");
+        routeChange("/confirmation");
+        localStorage.removeItem("lineItems");
+        props.clearCart();
+      });
+    });
+  };
+
+  const itemSum =
+    lineItems.length > 0
+      ? lineItems.reduce(
+          (accumulator, current) => accumulator + current.totalCost,
+          0,
+          lineItems,
+          0
+        )
+      : 0;
+  const subTotal = Number(Math.round(itemSum + "e2") + "e-2");
 
   return (
     <section className="section">
       <div className="container cart-container">
         <h1 className="title">Shopping Cart</h1>
 
-        {cartItems.length === 0 ? (
+        {lineItems.length === 0 ? (
           <div className="container">
             <div className="empty">
               <h2 className="title">Cart is empty.</h2>
@@ -31,7 +62,7 @@ const Cart = () => {
         ) : (
           <>
             {/* SHOPPING CART TABLE */}
-            <section className="hero has-text-centered" id="employee">
+            <section className="hero has-text-centered">
               <div className="table-container">
                 <table className="table is-fullwidth">
                   <thead>
@@ -40,7 +71,7 @@ const Cart = () => {
                         <div
                           className="vertical-center"
                           style={{
-                            height: 95,
+                            height: 55,
                             justifyContent: "left",
                             padding: 10,
                           }}
@@ -48,27 +79,34 @@ const Cart = () => {
                           <h1 className="sub-title">Item</h1>
                         </div>
                       </th>
-                      <th>
+                      <th className="is-vcentered">
                         <div
                           className="vertical-center"
-                          style={{ height: 95, justifyContent: "center" }}
+                          style={{ height: 55, justifyContent: "center" }}
                         >
                           <h1 className="sub-title">Quantity</h1>
                         </div>
                       </th>
-                      <th>
+                      <th className="is-vcentered">
                         <div
                           className="vertical-center"
-                          style={{ height: 95, justifyContent: "center" }}
+                          style={{ height: 55, justifyContent: "center" }}
                         >
                           <h1 className="sub-title">Price</h1>
                         </div>
                       </th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
-                    {cartItems.map((item, index) => (
-                      <CartItem {...item} />
+                    {lineItems.map((item, index) => (
+                      <CartItem
+                        lineItem={item}
+                        img="https://placedog.net/75/75"
+                        key={index}
+                        handleItemChange={props.handleAddToCart}
+                        deleteItem={props.deleteItemFromCart}
+                      />
                     ))}
                   </tbody>
                 </table>
@@ -89,7 +127,7 @@ const Cart = () => {
                   className="vertical-center"
                   style={{ justifyContent: "center", marginTop: 30 }}
                 >
-                  $10.99
+                  ${subTotal.toFixed(2)}
                 </div>
               </Grid>
             </Grid>
@@ -100,7 +138,9 @@ const Cart = () => {
                 style={{ marginLeft: "auto", marginTop: 40 }}
                 align="center"
               >
-                <button className="cart-submit">Reserve</button>
+                <button className="button cart-submit" onClick={handleCartSubmit}>
+                  Reserve
+                </button>
               </Grid>
             </Grid>
           </>

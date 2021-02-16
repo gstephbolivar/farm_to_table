@@ -26,12 +26,14 @@
   },
   "homepage": "https://github.com/gstephbolivar/farm_to_table#readme",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "concurrently": "^5.3.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
-    "material-ui": "^0.20.2",
-    "mongoose": "^5.11.14",
-    "nodemon": "^2.0.7",
-    "react-router-dom": "^5.2.0"
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.16",
+    "mongoose-update-if-current": "^1.4.0",
+    "nodemon": "^2.0.7"
   }
 }

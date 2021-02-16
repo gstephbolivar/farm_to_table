@@ -1,71 +1,84 @@
 import React, { useState } from "react";
-import {makeStyles} from "@material-ui/core/styles";
-import {
-  Box,
-  Card,
-  CardContent,
-  Divider,
-  Grid,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-} from "@material-ui/core";
+import "./catCard.css";
+import {Link} from "react-router-dom";
 
-// CSS styling
-const useStyles = makeStyles({
-  categoriesContainer: {
-    maxWidth: 200,
-    // margin: "2rem auto"
-  },
-})
 
 // List of items that user can choose from to filter food options
-const menuItems = [
+const items = [
   {
     listText: "All",
+    catID: "all",
+    selected: true
   },
   {
-    listText: "Dairy & Eggs",
+    listText: "Fruit",
+    catID: "fruit",
+    selected: false
   },
   {
-    listText: "Fruits",
+    listText: "Vegetable",
+    catID: "vegetable",
+    selected: false
   },
   {
     listText: "Meat",
-    listPath: "",
+    catID: "meat",
+    selected: false
   },
   {
-    listText: "Poultry",
-  },
-  {
-    listText: "Vegetables",
+    listText: "Dairy",
+    catID: "dairy",
+    selected: false
   },
 ];
 
-const CategoriesCard = () => {
-  const [dense, setDense] = useState(false);
-  const classes = useStyles();
+const CategoriesCard = ({ onClick }) => {
+  const [menuItems, setMenuItems] = useState(items)
+  const handleClick = (key) => {
+    console.log(key);
+    const mapArray = menuItems.map((item, i) => {
+      if (i === key) {
+        item.selected = true;
+        return item
+      } else {
+        item.selected = false;
+        return item
+      }
+    })
+    setMenuItems(mapArray)
+  }
+
   return (
-    <Box component="div">
-      <Grid container >
-        <Grid item xs>
-          <Card className= {classes.categoriesContainer}>
-            <CardContent>
-              <Typography>Choose a Category</Typography>
-            </CardContent>
-            <Divider />
-            <List dense={dense}>
-              {menuItems.map((lsItem, key) => (
-                <ListItem button key={key}>
-                  <ListItemText primary={lsItem.listText} />
-                </ListItem>
-              ))}
-            </List>
-          </Card>
-        </Grid>
-      </Grid>
-    </Box>
+    <div className="panel">
+      <p className="panel-heading">Categories</p>
+      {menuItems.map((item, key) => (
+        <Link 
+          to="#"
+          id={item.selected ? item.catID + "-selected" : item.catID}
+          className="panel-block"
+          key={key}
+          value={item.listText}
+          name={item.listText}
+          onClick={(e) => {
+            onClick(e, item.listText);
+            handleClick(key);
+          }}
+        >
+          <Link
+            to="#"
+            value={item.listText}
+            name={item.listText}
+            className="subtitle"
+            id="cat-items-subtitle"
+            onClick={(e) => {
+              onClick(e, item.listText);
+            }}
+          >
+            {item.listText}
+          </Link>
+        </Link>
+      ))}
+    </div>
   );
 };
 
