@@ -4,6 +4,8 @@ import API from "../../utils/API.js";
 import UserCardContent from "../../components/UserCardContent/UserCardContent";
 import AdminCardContent from "../../components/AdminCardContent/AdminCardContent";
 import "./productCard.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct, unitSize, unitType, description, category }) => {
 
@@ -59,10 +61,13 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
     handleAddToCart(lineItem);
     setAddedProductState(addedProductState + lineItem.quantity);
     setDropDownState("Quantity");
+
+    toast.success("Item Added", {hideProgressBar: true, autoClose: 1000});
   };
 
   return (
     <div className="column is-half-mobile is-third-tablet is-one-third-desktop is-one-quarter-widescreen is-one-fifth-fullhd has-text-centered" id="column">
+      <ToastContainer/>
       <div className="card">
         <div className="card-image">
           <figure className="image is-1by1">
