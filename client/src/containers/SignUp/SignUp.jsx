@@ -93,7 +93,7 @@ const SignUp = () => {
                   <input
                     className="input"
                     type="text"
-                    placeholder="John Smith"
+                    placeholder="Old Macdougal"
                     fullwidth="true"
                     id="fullName"
                     required
