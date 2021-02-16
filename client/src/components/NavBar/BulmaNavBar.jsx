@@ -14,6 +14,7 @@ const BulmaNavBar = ({ role, token, setRole, setToken, setCartState }) => {
     0
   );
 
+  // handles the logout of the user, clearing all state objects
   const handleLogout = () => {
     localStorage.clear();
     setRole("");
@@ -44,7 +45,7 @@ const BulmaNavBar = ({ role, token, setRole, setToken, setCartState }) => {
           </span>
           <span id="nav-home">Home</span>
         </Link>
-
+        {/* if a user is logged in (has a role) renders cart link */}
         {role ? (
           <Link className="navbar-item" to="/cart">
             <span className="icon">
@@ -80,6 +81,7 @@ const BulmaNavBar = ({ role, token, setRole, setToken, setCartState }) => {
           {/* <!-- left on big screen -->
           <!-- a dropdown menu --> */}
 
+          {/* if a user is logged in (has a role) renders cart all products */}
           {role ? (
             <Link className="navbar-item" to="/allproducts">
               {/* <!-- begin dropdown box --> */}
@@ -93,6 +95,7 @@ const BulmaNavBar = ({ role, token, setRole, setToken, setCartState }) => {
               <span id="nav-products"> Products</span>
             </Link>
           ) : null}
+          {/* if a user is not logged in (does not have a role) renders login and sign up links */}
           {!role ? (
             <>
               <Link className="navbar-item" to="/login">
@@ -117,7 +120,7 @@ const BulmaNavBar = ({ role, token, setRole, setToken, setCartState }) => {
               </Link>{" "}
             </>
           ) : (
-            // TODO: Add signout button/link here
+            // renders a logout button if user is logged in (has a role)
             <>
               <Link className="navbar-item" to="/" onClick={handleLogout}>
                 <span className="icon">
@@ -131,7 +134,7 @@ const BulmaNavBar = ({ role, token, setRole, setToken, setCartState }) => {
               </Link>{" "}
             </>
           )}
-
+          {/* if a user is logged in as an admin renders dashboard link */}
           {role === "admin" ? (
             <Link className="navbar-item" to="/admin">
               <span className="icon">
