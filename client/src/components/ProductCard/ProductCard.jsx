@@ -66,7 +66,7 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
   };
 
   return (
-    <div className="column is-half-mobile is-third-tablet is-one-third-desktop is-one-quarter-widescreen is-one-fifth-fullhd has-text-centered" id="column">
+    <div className="column is-half-mobile is-third-tablet is-one-third-desktop is-one-quarter-widescreen is-one-quarter-fullhd has-text-centered" id="column">
       <ToastContainer/>
       <div className="card">
         <div className="card-image">
