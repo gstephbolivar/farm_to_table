@@ -84,6 +84,14 @@ const Cart = (props) => {
                           className="vertical-center"
                           style={{ height: 55, justifyContent: "center" }}
                         >
+                          <h1 className="sub-title">Total Weight</h1>
+                        </div>
+                      </th>
+                      <th className="is-vcentered">
+                        <div
+                          className="vertical-center"
+                          style={{ height: 55, justifyContent: "center" }}
+                        >
                           <h1 className="sub-title">Quantity</h1>
                         </div>
                       </th>
