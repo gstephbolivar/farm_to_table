@@ -4,7 +4,7 @@ module.exports = function(req, res){
 
     const body = req.body;
 
-    const template = `Thank you for your order, ${body.name}! Your confirmation number is 123456789. You may come pick up your order whenever you decide. We will hold your order for 3 days.`
+    const template = `Thank you for your order, ${body.name}! Your confirmation number is ${body.orderId}. You may come pick up your order whenever you decide. We will hold your order for 3 days.`
 
     let transporter = nodemailer.createTransport({
         service: 'yahoo',
