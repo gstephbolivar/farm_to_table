@@ -1,54 +1,62 @@
 // import { PromiseProvider } from "mongoose";
-import {useState} from "react";
+import { useState } from "react";
 import "./cartitem.css";
 
 const CartItem = (props) => {
-
   const [valueState, setValueState] = useState(props.lineItem.quantity);
   // const [weightState, setWeightState] = useState(props.lineItem.unitSize);
 
   const handleChange = (e) => {
     let value = e.target.value;
-    setValueState(value); 
-  }
+    setValueState(value);
+  };
 
   const calculateCost = (qty) => {
     const cost = props.lineItem.price * qty;
     const itemCost = Number(Math.round(cost + "e2") + "e-2");
-    
+
     return itemCost;
   };
 
-  const calculateTotalWeight = (size) => {
-    const weight = props.unitSize * props.lineItem.quantity;
+  const calculateTotalWeight = (quantity) => {
+    const weight = props.unitSize * quantity;
     console.log(weight);
+    console.log(props.unitSize);
+    console.log(quantity);
     return weight;
   };
 
   const handleOnBlur = (e) => {
-
     let newQuantity = valueState === "" ? 0 : parseInt(valueState);
     let newCost = calculateCost(newQuantity);
-    // let newWeight = calculateTotalWeight(newQuantity)
+    let newWeight = calculateTotalWeight(newQuantity);
 
     if (props.lineItem.inStock < newQuantity) {
-      let warningMessage = "We are sorry but the quantity you are trying to order would exceed the amount that we have in stock.\n"
-      warningMessage += `The maximum amount of units you can order at this time ${props.lineItem.inStock} units.`
+      let warningMessage =
+        "We are sorry but the quantity you are trying to order would exceed the amount that we have in stock.\n";
+      warningMessage += `The maximum amount of units you can order at this time ${props.lineItem.inStock} units.`;
       alert(warningMessage);
       newQuantity = props.lineItem.inStock;
-      setValueState(newQuantity)
+      setValueState(newQuantity);
       newCost = calculateCost(newQuantity);
+      newWeight = calculateCost(newQuantity);
     }
 
-    
-    props.handleItemChange({...props.lineItem, quantity: newQuantity, totalCost: newCost}, true)
-  }
+    props.handleItemChange(
+      { ...props.lineItem, quantity: newQuantity, totalCost: newCost , totalWeight: newWeight},
+      true
+    );
+  };
 
   return (
     <tr>
       <td className="is-vcentered">
         <div className="vertical-center" style={{ padding: 10 }}>
-          <img src={props.img} alt="item description" style={{ marginRight: 15 }} />
+          <img
+            src={props.img}
+            alt="item description"
+            style={{ marginRight: 15 }}
+          />
           <span>{props.lineItem.name}</span>
         </div>
       </td>
@@ -57,7 +65,9 @@ const CartItem = (props) => {
           className="vertical-center"
           style={{ height: 95, justifyContent: "center" }}
         >
-          <div><h1>{props.unitType}</h1></div>
+          <div>
+            <h1>{props.lineItem.totalWeight}{props.unitType}</h1>
+          </div>
         </div>
       </td>
       <td className="is-vcentered">
@@ -65,7 +75,17 @@ const CartItem = (props) => {
           className="vertical-center"
           style={{ height: 95, justifyContent: "center" }}
         >
-          <div><input type="number" value={valueState} onChange={handleChange} onBlur={handleOnBlur} name="quantity" style={{width: "50px", textAlign: "center"}} className="qtyInput"/></div>
+          <div>
+            <input
+              type="number"
+              value={valueState}
+              onChange={handleChange}
+              onBlur={handleOnBlur}
+              name="quantity"
+              style={{ width: "50px", textAlign: "center" }}
+              className="qtyInput"
+            />
+          </div>
         </div>
       </td>
       <td className="is-vcentered">
@@ -77,7 +97,12 @@ const CartItem = (props) => {
         </div>
       </td>
       <td className="is-vcentered">
-        <button className="button delBtn" onClick={(e) => props.deleteItem(props.lineItem.product)}>Remove</button>
+        <button
+          className="button delBtn"
+          onClick={(e) => props.deleteItem(props.lineItem.product)}
+        >
+          Remove
+        </button>
       </td>
     </tr>
   );
