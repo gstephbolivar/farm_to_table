@@ -7,7 +7,7 @@ import "./productCard.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct, unitSize, unitType, description, category, token }) => {
+const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts, editProduct, unitSize, unitType, description, category, token, pathway }) => {
 
   const [lineItemState, setLineItemState] = useState({
     name: name,
@@ -15,10 +15,11 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
     quantity: 0,
     price: price,
     totalCost: 0,
+    inStock: quantity,
+    pathway: pathway,
     totalWeight: 0,
     unitSize: unitSize,
     unitType: unitType,
-    inStock: quantity,
   });
 
   const [addedProductState, setAddedProductState] = useState(0);
@@ -84,7 +85,7 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
       <div className="card" id="product-card">
         <div className="card-image">
           <figure className="image is-1by1">
-            <img src="./assets/product_images/fruits/strawberries.png" alt="Placeholder" />
+            <img src={process.env.PUBLIC_URL+pathway} alt={name} />
           </figure>
         </div>
         {/* content to be displayed to users */}

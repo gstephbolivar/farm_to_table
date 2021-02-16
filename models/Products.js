@@ -27,6 +27,9 @@ const ProductsSchema = new Schema({
   totalAmount: {
     type: Number
   },
+  pathway: {
+    type: String
+  },
 });
 
 const Products = mongoose.model("Products", ProductsSchema);

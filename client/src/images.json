@@ -1,0 +1,107 @@
+[
+{
+"id":1,
+"productName":"apples",
+"imagePathway": "/assets/product_images/fruits/apples.png"
+},
+{
+"id":2,
+"productName":"blueberries",
+"imagePathway": "/assets/product_images/fruits/blueberries.png"
+},
+{
+"id":3,
+"productName":["peaches", "peach"],
+"imagePathway": "/assets/product_images/fruits/peaches.png"
+},
+{
+"id":4,
+"productName":"strawberries",
+"imagePathway": "/assets/product_images/fruits/strawberries.png"
+},
+{
+"id":5,
+"productName":"watermelon",
+"imagePathway": "/assets/product_images/fruits/watermelon.png"
+},
+{
+"id":6,
+"productName":"eggs",
+"imagePathway": "/assets/product_images/dairy/eggs.png"
+},
+{
+"id":7,
+"productName":"blueCheese",
+"imagePathway": "/assets/product_images/dairy/blueCheese.png"
+},
+{
+"id":8,
+"productName":"milk",
+"imagePathway": "/assets/product_images/dairy/milk.png"
+},
+{
+"id":9,
+"productName":"parmesanCheese",
+"imagePathway": "/assets/product_images/dairy/parmesanCheese.png"
+},
+{
+"id":10,
+"productName":"swissCheese",
+"imagePathway": "/assets/product_images/dairy/swissCheese.png"
+},
+{
+"id":11,
+"productName":"chicken breast",
+"imagePathway": "/assets/product_images/meat/chicken.png"
+},
+{
+"id":12,
+"productName":"filet mignon",
+"imagePathway": "/assets/product_images/meat/filet.png"
+},
+{
+"id":13,
+"productName":"pork chops",
+"imagePathway": "/assets/product_images/meat/porkChops.png"
+},
+{
+"id":14,
+"productName":"new york strip",
+"imagePathway": "/assets/product_images/meat/strips.png"
+},
+{
+"id":15,
+"productName":"chicken wings",
+"imagePathway": "/assets/product_images/meat/wings.png"
+},
+{
+"id":16,
+"productName":"broccoli",
+"imagePathway": "/assets/product_images/vegetables/broccoli.png"
+},
+{
+"id":17,
+"productName":"cabbage",
+"imagePathway": "/assets/product_images/vegetables/cabbage.png"
+},
+{
+"id":18,
+"productName":"carrots",
+"imagePathway": "/assets/product_images/vegetables/carrots.png"
+},
+{
+"id":19,
+"productName":"corn",
+"imagePathway": "/assets/product_images/vegetables/corn.png"
+},
+{
+"id":20,
+"productName":"eggplant",
+"imagePathway": "/assets/product_images/vegetables/eggplant.png"
+},
+{
+"id":21,
+"productName":"tomatoes",
+"imagePathway": "/assets/product_images/vegetables/tomatoes.png"
+}
+]
