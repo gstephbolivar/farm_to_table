@@ -22,10 +22,10 @@ const Login = (props) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log(loginObject);
+    //console.log(loginObject);
     API.loginUser(loginObject)
       .then((response) => {
-        console.log(response.data);
+        //console.log(response.data);
 
         jwt.verify(
           response.data.token,
@@ -35,8 +35,17 @@ const Login = (props) => {
               console.log(err);
             } else {
               props.setUserId(response.data._id);
+              // sets token to state
               props.setToken(response.data.token);
+
+              // set the token to localStorage
+              localStorage.setItem("token", response.data.token);
+
+              // set role to state
               props.setRole(response.data.role);
+
+              //set role to local storage
+              localStorage.setItem("role", response.data.role);
               alert("Successfully Logged in!");
               // if user is an admin, redirect user to admin page otherwise redirect to all products page
               response.data.role === "admin"
