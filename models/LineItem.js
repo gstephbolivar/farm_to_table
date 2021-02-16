@@ -9,7 +9,7 @@ const LineItemSchema = new Schema({
   },
   totalWeight: {
     type: Number,
-  }
+  },
   quantity: {
     type: Number,
   },
