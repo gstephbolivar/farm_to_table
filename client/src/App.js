@@ -58,11 +58,11 @@ function App() {
       if (cartEdit) {
         existingLineItem.quantity = item.quantity;
         existingLineItem.totalCost = item.totalCost;
-        // existingLineItem.unitSize = item.unitSize;
+        existingLineItem.totalWeight = item.totalWeight;
       } else {
         existingLineItem.quantity += item.quantity;
         existingLineItem.totalCost += item.totalCost;
-        // existingLineItem.unitSize += item.unitSize;
+        existingLineItem.totalWeight += item.totalWeight;
       }
     } else {
       tempItems.push(item);
