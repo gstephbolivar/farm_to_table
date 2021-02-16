@@ -92,8 +92,8 @@ for (let i = 0; i < productImages.length; i++){
                   <img
                     title="Stock Image"
                     id="product-image"
-                    src="https://www.placecage.com/c/250/250"
-                    alt="stock"
+                    src="./assets/icons/addproducts.svg" 
+                    alt="fresh produce"
                     height="auto"
                   />
                   <br />

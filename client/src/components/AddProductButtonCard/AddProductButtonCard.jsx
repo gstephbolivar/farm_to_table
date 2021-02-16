@@ -10,7 +10,7 @@ const AddProductButtonCard = (props) => {
           <div class="field is-multiline has-text-centered is-vcentered" >
 
           <figure class="image add-icon">
-          <img src="./assets/icons/addproducts.svg" alt="Placeholder image" />
+          <img src="./assets/icons/addproducts.svg" alt="fresh produce" />
         </figure>
              <button
               className="button"

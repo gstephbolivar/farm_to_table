@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import API from "../../utils/API";
+import productImages from "../../images.json";
+
 
 const productType = [
   {
@@ -21,6 +23,9 @@ const productType = [
 ];
 
 const EditProductModal = (props) => {
+
+let newPathway;
+
   const [productObject, setProductObject] = useState({
     name: "",
     unitSize: 0,
@@ -29,6 +34,7 @@ const EditProductModal = (props) => {
     category: "",
     unitType: "",
     description: "",
+    pathway: ""
   });
 
   useEffect(() => {
@@ -42,6 +48,7 @@ const EditProductModal = (props) => {
         category: res.data.category,
         unitType: res.data.unitType,
         description: res.data.description,
+        pathway: res.data.pathway
       });
     });
   }, [props.id]);
@@ -54,6 +61,11 @@ const EditProductModal = (props) => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     props.handleModalState();
+    for (let i = 0; i < productImages.length; i++){
+      if(productObject.name.toLowerCase() === productImages[i].productName){
+        newPathway = productImages[i].imagePathway;
+      }
+    }
     API.updateProduct(props.id, {
       name: productObject.name,
       unitSize: productObject.unitSize,
@@ -62,6 +74,7 @@ const EditProductModal = (props) => {
       category: productObject.category,
       unitType: productObject.unitType,
       description: productObject.description,
+      pathway: newPathway,
     })
       .then(() => {
         props.handleModalState();
@@ -74,6 +87,7 @@ const EditProductModal = (props) => {
           category: "",
           unitType: "",
           description: "",
+          pathway: "",
         });
       })
       .catch((err) => console.log(err));
@@ -94,8 +108,8 @@ const EditProductModal = (props) => {
                 <div className="column is-half is-offset-one-quarter">
                   <img
                     title="Stock Image"
-                    src="https://www.placecage.com/c/250/250"
-                    alt="stock"
+                    src="./assets/icons/addproducts.svg" 
+                    alt="fresh produce"
                     height="auto"
                   />
                   <br />
