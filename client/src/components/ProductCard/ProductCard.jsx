@@ -15,7 +15,8 @@ const ProductCard = ({ _id, name, price, quantity, handleAddToCart, loadProducts
     quantity: 0,
     price: price,
     totalCost: 0,
-    inStock: quantity
+    inStock: quantity,
+    pathway: pathway,
   });
 
   const [addedProductState, setAddedProductState] = useState(0);

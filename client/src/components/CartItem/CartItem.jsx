@@ -5,7 +5,6 @@ import "./cartitem.css";
 const CartItem = (props) => {
 
   const [valueState, setValueState] = useState(props.lineItem.quantity);
-
   const handleChange = (e) => {
     let value = e.target.value;
     setValueState(value); 
@@ -40,7 +39,7 @@ const CartItem = (props) => {
     <tr>
       <td className="is-vcentered">
         <div className="vertical-center" style={{ padding: 10 }}>
-          <img src={props.img} alt="item description" style={{ marginRight: 15 }} />
+          <img src={props.lineItem.pathway} alt="item description" style={{ marginRight: 15, width:75, height:75, border: "1px solid black" }} />
           <span>{props.lineItem.name}</span>
         </div>
       </td>
@@ -61,7 +60,7 @@ const CartItem = (props) => {
         </div>
       </td>
       <td className="is-vcentered">
-        <button className="button delBtn" onClick={(e) => props.deleteItem(props.lineItem.product)}>Remove</button>
+        <button className="button delBtn deleteButton" onClick={(e) => props.deleteItem(props.lineItem.product)}>Remove</button>
       </td>
     </tr>
   );
