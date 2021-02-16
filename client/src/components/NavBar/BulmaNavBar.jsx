@@ -14,7 +14,7 @@ const BulmaNavBar = ({ role, token, setRole, setToken, setCartState }) => {
     0
   );
 
-  // handles the logout of the user, clearing all state objects
+  // handles the logout of the user, clearing all state objects and localstorage
   const handleLogout = () => {
     localStorage.clear();
     setRole("");
