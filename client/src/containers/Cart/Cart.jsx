@@ -28,13 +28,20 @@ const Cart = (props) => {
       API.placeOrder({
         customer: userId,
         LineItem: res.data.map((x) => x._id),
-      }).then(() => {
-        // alert("Order successfully placed");
-        routeChange("/confirmation");
+      }).then((order) => {
         localStorage.removeItem("lineItems");
         props.clearCart();
+        API.getEmail(userId).then((result) => {
+          API.sendConfirmationEmail({
+            name: result.data.name,
+            email: result.data.email,
+            orderId: order.data._id
+          })
+        })
       });
     });
+
+    routeChange("/confirmation");
   };
 
   const itemSum =
@@ -148,7 +155,10 @@ const Cart = (props) => {
                 style={{ marginLeft: "auto", marginTop: 40 }}
                 align="center"
               >
-                <button className="button cart-submit" onClick={handleCartSubmit}>
+                <button
+                  className="button cart-submit"
+                  onClick={handleCartSubmit}
+                >
                   Reserve
                 </button>
               </Grid>
