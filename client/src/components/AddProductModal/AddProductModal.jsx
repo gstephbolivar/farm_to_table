@@ -45,7 +45,7 @@ const AddProductModal = (props) => {
 
 // loop through image array by productObject.name to get pathway and then set below
 for (let i = 0; i < productImages.length; i++){
-  if(productObject.name === productImages[i].productName){
+  if(productObject.name.toLowerCase() === productImages[i].productName){
     pathway = productImages[i].imagePathway;
     console.log(pathway);
   }
