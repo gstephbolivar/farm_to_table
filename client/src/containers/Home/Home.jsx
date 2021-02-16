@@ -15,13 +15,6 @@ const Home = () => {
               alt="farm to table logo"
             />
             <p id="home-text">
-              We work with small family organic farms. Our local farmers crop
-              plan from year to year with our customers in mind. They grow
-              highly diverse crops for the healthiest ecosystem, while also
-              cover cropping and resting their land.
-            </p>
-            <br />
-            <p id="home-text">
               We are an online farmers market allowing customizable orders to
               either be picked up or delivered to your doorstep. We offer
               produce, meat, and dairy products. Together, we're creating a

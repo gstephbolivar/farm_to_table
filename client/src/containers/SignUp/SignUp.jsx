@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
+import "./signUp.css";
 
 const SignUp = () => {
   const [userObject, setUserObject] = useState({
@@ -48,9 +49,23 @@ const SignUp = () => {
     <div>
       <section className="section">
         <div className="columns is-centered is-multiline">
-          <div className="column is-4">
+          <div className="column is-two-thirds-tablet is-half-desktop is-one-third-widescreen">
             <form className="box">
-              <h3 className="title is-3">Sign up for Farm To Table</h3>
+            <div class="columns is-grouped is-centered is-mobile">
+            <img
+              src="./assets/icons/signUp_1.svg"
+              className="figure-img img-fluid rounded"
+              id="signUp-icon-1"
+              alt="strawberry and bluberries"
+            />
+              <h3 className="title is-3" id="login-headline">Sign Up</h3>
+              <img
+              src="./assets/icons/signUp_2.svg"
+              className="figure-img img-fluid rounded"
+              id="signUp-icon-2"
+              alt="tomato and pear icon"
+            />
+            </div>
 
               {/* Email */}
               <div className="field">
@@ -60,7 +75,7 @@ const SignUp = () => {
                     className="input"
                     type="email"
                     fullwidth="true"
-                    placeholder="e.g. alex@example.com"
+                    placeholder="oldmacdonald@domain.com"
                     id="email"
                     required
                     label="Email"
@@ -124,12 +139,12 @@ const SignUp = () => {
                   />
                 </div>
               </div>
-
-              <button className="button is-primary" onClick={handleFormSubmit}>
-                Create Account
+              <div className="field has-text-centered">
+              <button className="button" id="signUp-btn" onClick={handleFormSubmit}>
+                Create account
               </button>
-
-              <h5 className="subtitle is-6">
+              </div>
+              <h5 className="subtitle is-6 has-text-centered">
                 Already a member?{" "}
                 <Link className="title is-6" to="/login">
                   Login here.
