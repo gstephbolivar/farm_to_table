@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap");
 
 .navbar {
   background-color: transparent;
@@ -6,7 +6,7 @@
 
 #nav-icons {
   margin-right: 2px;
-  flex-grow: 1
+  flex-grow: 1;
 }
 
 .icon {
@@ -14,62 +14,66 @@
 }
 
 .navbar-item {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 600;
   font-size: 14px;
 }
 
-.navbar-item:hover, .navbar-item:focus, .navbar-item:link, .navbar-item:active, .navbar-item:visited {
+.navbar-item:hover,
+.navbar-item:focus,
+.navbar-item:link,
+.navbar-item:active,
+.navbar-item:visited {
   text-decoration: none;
- background-color: transparent !important;
- color: black !important;
+  background-color: transparent !important;
+  color: black !important;
 }
 
 /* CRAZY NAV BAR CODE */
 /* We don't need checkbox to be displayed in order for it to work */
 .toggler {
-    display: none;
-  }
-  
-  /* Below are all the functionalities */
-  
-  /* Hamburger changes to X when toggler is checked */
-  .navbar .toggler:checked + .navbar-brand .burger span:nth-child(1) {
-    -webkit-transform: translateY(5px) rotate(45deg);
-    transform: translateY(5px) rotate(45deg);
-  }
-  .navbar .toggler:checked + .navbar-brand .burger span:nth-child(2) {
-    opacity: 0;
-  }
-  .navbar .toggler:checked + .navbar-brand .burger span:nth-child(3) {
-    -webkit-transform: translateY(-5px) rotate(-45deg);
-    transform: translateY(-5px) rotate(-45deg);
-  }
-  
-  /*  Displays menu when toggler is checked only on mobile/tablet */
-  @media screen and (max-width: 1024px) {
-    .navbar .toggler:checked ~ .navbar-menu {
-      display: block;
-    }
-    /* We don't want menu to be displayed on mobile by default */
-    .navbar-menu {
-      display: none;
-    }
-  }
-  
-  /* For dropdown functionality */
-  
-  /* Same reason as for checkbox */
-  .has-dropdown input[type="checkbox"] {
-    display: none;
-  }
-  /* Hide by default */
-  .navbar-dropdown {
-    display: none;
-  }
-  /* The functionality */
-  #dropdown1:checked ~ #dropdown-content1,
-  #dropdown2:checked ~ #dropdown-content2,
-  #dropdown3:checked ~ #dropdown-content3 {
+  display: none;
+}
+
+/* Below are all the functionalities */
+
+/* Hamburger changes to X when toggler is checked */
+.navbar .toggler:checked + .navbar-brand .burger span:nth-child(1) {
+  -webkit-transform: translateY(5px) rotate(45deg);
+  transform: translateY(5px) rotate(45deg);
+}
+.navbar .toggler:checked + .navbar-brand .burger span:nth-child(2) {
+  opacity: 0;
+}
+.navbar .toggler:checked + .navbar-brand .burger span:nth-child(3) {
+  -webkit-transform: translateY(-5px) rotate(-45deg);
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+/*  Displays menu when toggler is checked only on mobile/tablet */
+@media screen and (max-width: 1024px) {
+  .navbar .toggler:checked ~ .navbar-menu {
     display: block;
   }
+  /* We don't want menu to be displayed on mobile by default */
+  .navbar-menu {
+    display: none;
+  }
+}
+
+/* For dropdown functionality */
+
+/* Same reason as for checkbox */
+.has-dropdown input[type="checkbox"] {
+  display: none;
+}
+/* Hide by default */
+.navbar-dropdown {
+  display: none;
+}
+/* The functionality */
+#dropdown1:checked ~ #dropdown-content1,
+#dropdown2:checked ~ #dropdown-content2,
+#dropdown3:checked ~ #dropdown-content3 {
+  display: block;
+}

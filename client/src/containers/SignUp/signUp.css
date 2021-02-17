@@ -1,40 +1,41 @@
-#signUp-icon-1, #signUp-icon-2 {
-    width:50px;
+#signUp-icon-1,
+#signUp-icon-2 {
+  width: 50px;
 }
 
 #signUp-headline {
-    margin-top: 25px;
-    margin-left: 10px;
-    margin-right: 11px;
-    font-weight: 700;
-    font-size: 35px;
+  margin-top: 25px;
+  margin-left: 10px;
+  margin-right: 11px;
+  font-weight: 700;
+  font-size: 35px;
 }
 
-
 #signUp-btn {
-    background-color: #873e97;
-    color: white;
-     font-size: 14px;
-     margin-top: 15px;
-    margin-bottom: 15px;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    overflow: hidden;
-    -webkit-transition-duration: 0.5s;
-    transition-duration: 0.5s;
-    -webkit-transition-property: color, background-color;
-    transition-property: color, background-color;
-  }
-  #signUp-btn:hover, #signUp-btn:focus {
-    
-    background-color: #672f73;
-    color: white;
-    box-shadow: none;
-  }
+  background-color: #873e97;
+  color: white;
+  font-size: 14px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+#signUp-btn:hover,
+#signUp-btn:focus {
+  background-color: #672f73;
+  color: white;
+  box-shadow: none;
+}
 
-  .input:hover, .input:active, .input:focus, .input:visited {
-      box-shadow: none !important;
-  }
-
- 
+.input:hover,
+.input:active,
+.input:focus,
+.input:visited {
+  box-shadow: none !important;
+}

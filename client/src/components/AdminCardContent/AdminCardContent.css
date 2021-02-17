@@ -1,48 +1,44 @@
-
-
 /* #FFC810 yellow */
 /* #F78F20 orange */
 /* #58A245 green */
 
-
-
 .editButton {
   background-color: #bdd376;
 
-    color: white;
-     font-size: 14px;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    overflow: hidden;
-    -webkit-transition-duration: 0.5s;
-    transition-duration: 0.5s;
-    -webkit-transition-property: color, background-color;
-    transition-property: color, background-color;
-  }
-  .editButton:hover, .editButton:focus{
-    
-    background-color: #a3c144;
-    color: white;
-    box-shadow: none;
-  }
+  color: white;
+  font-size: 14px;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+.editButton:hover,
+.editButton:focus {
+  background-color: #a3c144;
+  color: white;
+  box-shadow: none;
+}
 
-  .deleteButton {
-    background-color:#f9b24b;
-    color: white;
-     font-size: 14px;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    overflow: hidden;
-    -webkit-transition-duration: 0.5s;
-    transition-duration: 0.5s;
-    -webkit-transition-property: color, background-color;
-    transition-property: color, background-color;
-  }
-  .deleteButton:hover, .deleteButton:focus {
-    
-    background-color: #f09300;
-    color: white;
-    box-shadow: none;
-  }
+.deleteButton {
+  background-color: #f9b24b;
+  color: white;
+  font-size: 14px;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+.deleteButton:hover,
+.deleteButton:focus {
+  background-color: #f09300;
+  color: white;
+  box-shadow: none;
+}
