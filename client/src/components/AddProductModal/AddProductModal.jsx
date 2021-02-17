@@ -28,7 +28,7 @@ const AddProductModal = (props) => {
     unitSize: 0,
     price: 0,
     quantity: 0,
-    category: "",
+    category: "fruit",
     unitType: "",
     description: "",
     pathway: "",
