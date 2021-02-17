@@ -61,17 +61,6 @@ const BulmaNavBar = ({ role, token, setRole, setToken, setCartState }) => {
             </span>
           </Link>
         ) : null}
-         <Link className="navbar-item" to="/contact">
-          <span className="icon">
-            {/* TODO: set a navbar image here */}
-            {/* <img
-              className="nav-icons"
-              src="./assets/icons/home.svg"
-              alt="home farm icon"
-            /> */}
-          </span>
-          <span id="nav-home">Contact</span>
-        </Link>
         <label
           htmlFor="toggler"
           role="button"
@@ -143,6 +132,17 @@ const BulmaNavBar = ({ role, token, setRole, setToken, setCartState }) => {
               </Link>{" "}
             </>
           )}
+          <Link className="navbar-item" to="/contact">
+          <span className="icon">
+            {/* TODO: set a navbar image here */}
+            <img
+              className="nav-icons"
+              src="./assets/icons/home.svg"
+              alt="home farm icon"
+            />
+          </span>
+          <span id="nav-home">Contact</span>
+        </Link>
           {/* if a user is logged in as an admin renders dashboard link */}
           {role === "admin" ? (
             <Link className="navbar-item" to="/admin">
