@@ -24,7 +24,7 @@ const Home = () => {
             <br />
             <div className="buttons are-medium is-centered">
               <Link to="/allproducts" className="button" type="button" id="shopNow">
-                Shop Now
+                Browse Products
               </Link>
             </div>
           </div>

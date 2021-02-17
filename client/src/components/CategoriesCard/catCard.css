@@ -1,7 +1,6 @@
 .panel-block {
   height: 60px;
   margin-left: 12px;
-  
 }
 
 .panel {
@@ -9,14 +8,14 @@
 }
 
 #cat-items-subtitle {
-    margin-left: 55px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    font-size: 15px;
+  margin-left: 55px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
 }
 
 .panel-heading {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-size: 20px;
 }
@@ -26,48 +25,52 @@
   background-repeat: no-repeat;
 }
 
-#fruit:hover, #fruit-selected {
+#fruit:hover,
+#fruit-selected {
   background-image: url(icons/fruits_hover.svg);
   background-repeat: no-repeat;
 }
 
 #vegetable {
-    background-image: url(icons/vegetable.svg);
-    background-repeat: no-repeat;
-  }
-  
-  #vegetable:hover, #vegetable-selected {
-    background-image: url(icons/vegetable_hover.svg);
-    background-repeat: no-repeat;
-  }
+  background-image: url(icons/vegetable.svg);
+  background-repeat: no-repeat;
+}
 
-  #meat {
-    background-image: url(icons/meat.svg);
-    background-repeat: no-repeat;
-  }
-  
-  #meat:hover, #meat-selected {
-    background-image: url(icons/meat_hover.svg);
-    background-repeat: no-repeat;
-  }
+#vegetable:hover,
+#vegetable-selected {
+  background-image: url(icons/vegetable_hover.svg);
+  background-repeat: no-repeat;
+}
 
-  #dairy {
-    background-image: url(icons/dairy.svg);
-    background-repeat: no-repeat;
-  }
-  
-  #dairy:hover, #dairy-selected {
-    background-image: url(icons/dairy_hover.svg);
-    background-repeat: no-repeat;
-  }
+#meat {
+  background-image: url(icons/meat.svg);
+  background-repeat: no-repeat;
+}
 
+#meat:hover,
+#meat-selected {
+  background-image: url(icons/meat_hover.svg);
+  background-repeat: no-repeat;
+}
 
-  #all {
-    background-image: url(icons/all.svg);
-    background-repeat: no-repeat;
-  }
-  
-  #all:hover, #all-selected {
-    background-image: url(icons/all_hover.svg);
-    background-repeat: no-repeat;
-  }
+#dairy {
+  background-image: url(icons/dairy.svg);
+  background-repeat: no-repeat;
+}
+
+#dairy:hover,
+#dairy-selected {
+  background-image: url(icons/dairy_hover.svg);
+  background-repeat: no-repeat;
+}
+
+#all {
+  background-image: url(icons/all.svg);
+  background-repeat: no-repeat;
+}
+
+#all:hover,
+#all-selected {
+  background-image: url(icons/all_hover.svg);
+  background-repeat: no-repeat;
+}

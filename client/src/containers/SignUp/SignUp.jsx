@@ -92,7 +92,7 @@ const SignUp = () => {
                 <div className="control">
                   <input
                     className="input"
-                    type="text"
+                    type="name"
                     placeholder="Old Macdougal"
                     fullwidth="true"
                     id="fullName"
@@ -111,7 +111,7 @@ const SignUp = () => {
                 <div className="control">
                   <input
                     className="input"
-                    type="text"
+                    type="address"
                     placeholder="3203 FM 1960 East Humble, Texas, 77338"
                     fullwidth="true"
                     id="homeAddress"
