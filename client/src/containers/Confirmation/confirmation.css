@@ -1,0 +1,75 @@
+/* Order Panel */
+
+.previous-orders {
+  background-color: white !important;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.order-head {
+  background-color: #e0ebd9;
+}
+
+#view-previous-orders {
+  background-color: #ef4343;
+  color: white;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+#view-previous-orders:hover,
+#view-previous-orders:focus {
+  background-color: #d61e1e;
+  color: white;
+  box-shadow: none;
+}
+
+/* Confirmation side */
+
+#IconConfirm {
+  width: 75px;
+  margin-bottom: 10px;
+}
+
+.confirm-head-one {
+  font-weight: 700;
+  font-size: 50px;
+}
+
+.confirm-head-two {
+  font-weight: 600;
+  font-size: 22px;
+  margin-top: -10px;
+}
+
+.confirm-text {
+  font-weight: 400;
+  font-size: 18px;
+  padding-top: 10px;
+  margin: 100px;
+}
+
+#continueBtn {
+  background-color: #873e97;
+  color: white;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+
+#continueBtn:hover,
+#continueBtn:focus {
+  background-color: #672f73;
+  color: white;
+  box-shadow: none;
+}
