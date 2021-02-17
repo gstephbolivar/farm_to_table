@@ -18,4 +18,6 @@
     box-shadow: none;
   }
 
-  
+  .productQuantity {
+    padding-top: 20px;
+  }
