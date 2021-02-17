@@ -2,12 +2,15 @@
 .productTitle {
     font-size: 20px;
     font-weight: 700;
+    padding-bottom: 10px;
+    margin-top: -10px;
 }
 
 .productDetails, .productDesc, .productCategory, .productQuantity {
     font-size: 14px;
     font-weight: 600;
-    margin: auto;
+    margin: -8px;
+
 
 }
 
