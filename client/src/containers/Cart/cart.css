@@ -1,61 +1,50 @@
-/* .cart-container{
-    flex-grow: 1;
-    margin: 50px auto 0;
-    padding: 0 10px 10px 10px;
-    position: relative;
-    
-} */
-
-
-
-.cart-headers{
-    margin-top: 50px !important;
-    margin-bottom: 20px !important;
+.cart-headers {
+  margin-top: 50px !important;
+  margin-bottom: 20px !important;
 }
 
-.cart-item{
-    margin-bottom: 10px !important;
+.cart-item {
+  margin-bottom: 10px !important;
 }
 
-.vertical-center{
-    display: flex;
-    align-items: center;
+.vertical-center {
+  display: flex;
+  align-items: center;
 }
 
-
-
-.empty{
-    display: flex;
-    height: 200px;
-    border: 1px solid black;
-    align-items: center;
-    justify-content: center;
-    margin-top: 40px;
+.empty {
+  display: flex;
+  height: 200px;
+  border: 1px solid black;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
 }
 
 table {
-    border: 1px solid #DCDCDC;
-  }
+  border: 1px solid #dcdcdc;
+}
 
-   /* Remove button animation fade */
- .hvr-fade-reserve {
-    background-color: #873e97;
-    color: white;
-     font-size: 14px;
-     width: 95%;
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    overflow: hidden;
-    -webkit-transition-duration: 0.5s;
-    transition-duration: 0.5s;
-    -webkit-transition-property: color, background-color;
-    transition-property: color, background-color;
-  }
-  .hvr-fade-reserve:hover, .hvr-fade:focus, .hvr-fade:active {
-    
-    background-color: #672f73;
-    color: white;
-  }
+/* Remove button animation fade */
+.hvr-fade-reserve {
+  background-color: #873e97;
+  color: white;
+  font-size: 14px;
+  width: 95%;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+.hvr-fade-reserve:hover,
+.hvr-fade-reserve:focus {
+  background-color: #672f73;
+  color: white;
+  box-shadow: none;
+}

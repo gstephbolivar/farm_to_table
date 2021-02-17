@@ -3,24 +3,29 @@
   padding: 4px;
   width: 130px;
   overflow: hidden;
-
 }
-
-
 
 #addProductBtn {
-  background-color: #873e97;
-  color: white;  
+  background-color: #ef4343;
+  margin-top: 10px;
+  color: white;
+  font-size: 14px;
+  width: 150px;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
 }
-
-@media only screen and (max-width: 1240px) {
-
-
- 
+#addProductBtn:hover,
+#addProductBtn:focus {
+  background-color: #d61e1e;
+  color: white;
+  box-shadow: none;
 }
 
 @media only screen and (max-width: 768px) {
-
-
- 
 }

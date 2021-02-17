@@ -80,7 +80,7 @@ const AddProductModal = (props) => {
   return (
     <>
       <div className="modal-background"></div>
-      <div className="modal-card">
+      <div className="modal-card is-mobile">
         <header className="modal-card-head">
           <p className="modal-card-title has-text-centered add-product-headline">
             Add Product

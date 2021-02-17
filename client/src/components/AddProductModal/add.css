@@ -1,21 +1,8 @@
-#add-save {
-  background-color: #873e97;
-  color: white;
-
-}
-
-#add-cancel {
-  background-color: #58a245;
-  color: white;
-  
-}
-
 .add-product-headline {
   font-family: "Open Sans", sans-serif;
-    font-weight: 600;
-    font-size: 20px;
+  font-weight: 700;
+  font-size: 25px;
 }
-
 
 .add-products-fields {
   padding-left: 5px;
@@ -23,19 +10,61 @@
 }
 
 .label {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 600;
-    font-size: 13px;
-    color: #A9A9A9;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #a9a9a9;
 }
 
-#selectCategory, .input, .textarea {
+#selectCategory,
+.input,
+.textarea {
   font-family: "Open Sans", sans-serif;
   font-weight: 500;
 }
 
 #product-image {
   padding-bottom: 20px;
+  width: 40%;
 }
 
+#add-save {
+  background-color: #873e97;
+  color: white;
+  width: 20%;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+#add-save:hover,
+#add-save:focus {
+  background-color: #672f73;
+  color: white;
+  box-shadow: none;
+}
 
+/* Remove button animation fade */
+#add-cancel {
+  background-color: #58a245;
+  color: white;
+  width: 20%;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+#add-cancel:hover,
+#add-cancel:focus {
+  background-color: #457e36;
+  color: white;
+  box-shadow: none;
+}
