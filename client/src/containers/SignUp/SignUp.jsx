@@ -13,6 +13,8 @@ const SignUp = () => {
     role: "customer",
   });
 
+  const [errors, setErrors] = useState({});
+
   const history = useHistory();
 
   const handleInputChange = (event) => {
