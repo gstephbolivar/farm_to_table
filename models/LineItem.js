@@ -7,6 +7,9 @@ const LineItemSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Products",
   },
+  unitSize: {
+    type: Number,
+  },
   quantity: {
     type: Number,
   },

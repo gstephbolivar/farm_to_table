@@ -32,6 +32,9 @@ const ProductsSchema = new Schema({
     type: String,
     default: "https://placedog.net/300/300",
   },
+  pathway: {
+    type: String
+  },
 });
 
 const Products = mongoose.model("Products", ProductsSchema);
