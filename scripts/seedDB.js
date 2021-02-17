@@ -31,50 +31,68 @@ const userSeed = [
 const productsSeed = [
   {
     name: "Apples",
-    unitSize: "pounds",
+    description: "Red and Delicious",
+    unitType: "pounds",
+    unitSize: 1,
     price: 2.99,
     quantity: 10,
     category: "fruit",
+    pathway: "/assets/product_images/fruits/apples.png",
   },
   {
-    name: "Lettuce",
-    unitSize: "each",
+    name: "Watermelon",
+    description: "Sweet and Delicious!",
+    unitType: "pounds",
+    unitSize: 1,
+    price: 1.99,
+    quantity: 20,
+    category: "fruit",
+    pathway: "/assets/product_images/fruits/watermelon.png",
+  },
+  {
+    name: "Blueberries",
+    description: "They're blue?",
+    unitType: "pounds",
+    unitSize: 1,
     price: 3.49,
+    quantity: 25,
+    category: "fruit",
+    pathway: "/assets/product_images/fruits/blueberries.png",
+  },
+  {
+    name: "Cabbage",
+    description: "Coleslaw anyone?",
+    unitType: "pounds",
+    unitSize: 1,
+    price: 2.29,
     quantity: 10,
     category: "vegetable",
+    pathway: "/assets/product_images/vegetables/cabbage.png",
   },
   {
     name: "Chicken",
-    unitSize: "pounds",
-    price: 4.99,
-    quantity: 10,
+    description: "Cluck Cluck...",
+    unitType: "pounds",
+    unitSize: 1,
+    price: 1.79,
+    quantity: 30,
     category: "meat",
+    pathway: "/assets/product_images/meat/chicken.png",
   },
   {
-    name: "Cheese",
-    unitSize: "pounds",
-    price: 4.99,
-    quantity: 10,
+    name: "Milk",
+    description: "Does the body good!",
+    unitType: "pints",
+    unitSize: 4,
+    price: 2.99,
+    quantity: 40,
     category: "dairy",
-  },
-  {
-    name: "Tomatoes",
-    unitSize: "pounds",
-    price: 4.99,
-    quantity: 10,
-    category: "vegetable",
-  },
-  {
-    name: "Apples",
-    unitSize: "pounds",
-    price: 4.99,
-    quantity: 10,
-    category: "fruit",
+    pathway: "/assets/product_images/dairy/milk.png",
   },
 ];
 
 // seed initial user data
-db.User.remove({})
+db.User.deleteMany({})
   .then(() => db.User.collection.insertMany(userSeed))
   .then((data) => {
     console.log(data.result.n + " records inserted!");
@@ -86,13 +104,13 @@ db.User.remove({})
   });
 
 // seed initial products data
-// db.Products.remove({})
-//   .then(() => db.Products.collection.insertMany(productsSeed))
-//   .then((data) => {
-//     console.log(data.result.n + " records inserted!");
-//     process.exit(0);
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//     process.exit(1);
-//   });
+db.Products.deleteMany({})
+  .then(() => db.Products.collection.insertMany(productsSeed))
+  .then((data) => {
+    console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
