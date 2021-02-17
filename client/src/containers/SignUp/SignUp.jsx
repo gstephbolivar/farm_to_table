@@ -20,16 +20,20 @@ const SignUp = () => {
     let isValid = false;
 
     const regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+    const regEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     // email
     if (!value.email) {
       errors.email = "Email is Required";
-      isValid = false;
+    } else if (!regEmail.test(value.email)) {
+      errors.email = "Invalid Email entered (name@email.com)";
     }
 
     // Full Name
     if (!value.name.trim()) {
       errors.name = "Full Name Required";
+    } else if (!regName.test(value.name)) {
+      errors.name = "Invalid Name entered (First Last)";
     }
     if (!value.address) {
       // Address
@@ -39,6 +43,8 @@ const SignUp = () => {
     // password
     if (!value.password) {
       errors.password = "Password is Required";
+    } else if (value.password.length <= 6) {
+      errors.password = "Password must be longer than 6 characters";
     }
 
     if (Object.keys(errors).length === 0) {
@@ -46,7 +52,7 @@ const SignUp = () => {
     }
 
     setErrorMessage(errors);
-    console.log(isValid);
+    //console.log(isValid);
     return isValid;
   };
 
@@ -62,7 +68,7 @@ const SignUp = () => {
     event.preventDefault();
 
     const isValid = validateForm(userObject);
-    console.log(isValid);
+    //console.log(isValid);
 
     if (isValid) {
       API.addUser({
