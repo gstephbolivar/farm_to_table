@@ -11,7 +11,7 @@ const buttonsToShow = () => {
   } else if (props.token !== "" && props.quantity > 0) {
     return <button
     href="#"
-    className="button card-footer-item addButton"
+    className="button card-footer-item hvr-fade-add"
     onClick={props.handleAddClick}
   >
     Add
