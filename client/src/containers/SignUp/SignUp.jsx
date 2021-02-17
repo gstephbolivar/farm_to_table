@@ -51,7 +51,7 @@ const SignUp = () => {
         <div className="columns is-centered is-multiline">
           <div className="column is-two-thirds-tablet is-half-desktop is-one-third-widescreen">
             <form className="box">
-            <div class="columns is-grouped is-centered is-mobile">
+            <div className="columns is-grouped is-centered is-mobile">
             <img
               src="./assets/icons/signUp_1.svg"
               className="figure-img img-fluid rounded"

@@ -1,5 +1,6 @@
 import React from 'react';
 import QuantityDropdown from "../QuantityDropdown/QuantityDropdown";
+import "./UserCardContent.css";
 import {Link} from "react-router-dom";
 
 const UserCardContent = (props) => {
@@ -10,7 +11,7 @@ const buttonsToShow = () => {
   } else if (props.token !== "" && props.quantity > 0) {
     return <button
     href="#"
-    className="button card-footer-item"
+    className="button card-footer-item hvr-fade-add"
     onClick={props.handleAddClick}
   >
     Add
@@ -20,7 +21,7 @@ const buttonsToShow = () => {
   } else if (props.token === ""){
     return <Link
     to="/login"
-    className="button card-footer-item"
+    className="button card-footer-item hvr-fade-add"
   >
     Login to Add
   </Link>; 
@@ -32,7 +33,7 @@ const buttonsToShow = () => {
           <div className="media">
             <div className="media-content">
               <p className="title productTitle">{props.name}</p>
-              <p className="subtitle productDetails">${props.price} per {props.unitSize}-{props.unitType}</p>
+              <p className="subtitle productDetails">${props.price} per {props.unitSize} {props.unitType}</p>
               <p className="subtitle productDesc">{props.description}</p>
               <QuantityDropdown
                 dropDownState = {props.dropDownState}
@@ -43,7 +44,8 @@ const buttonsToShow = () => {
               )}
             </div>
           </div>
-          <footer className="card-footer">
+          <br/>
+          <footer className="card-footer" id="product-card-footer">
                 {buttonsToShow()}
           </footer>
         </div>
