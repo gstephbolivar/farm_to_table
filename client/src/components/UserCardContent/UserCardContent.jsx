@@ -21,7 +21,7 @@ const buttonsToShow = () => {
   } else if (props.token === ""){
     return <Link
     to="/login"
-    className="button card-footer-item"
+    className="button card-footer-item hvr-fade-add"
   >
     Login to Add
   </Link>; 
