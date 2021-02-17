@@ -21,7 +21,7 @@ const Contact = () => {
         <div className="container">
           {/* {window.location.pathname === "/admin/contact" && <AdminContactCard />} */}
           {/* {window.location.pathname === "/user/contact" && <UserContactCard />} */}
-          <AdminContactCard />
+          {/* <AdminContactCard /> */}
           <UserContactCard />
         </div>
       </section>

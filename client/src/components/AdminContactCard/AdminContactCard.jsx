@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const AdminContactCard = () => {
-    return (
-        <div className="card-content">
-            
-            <h1>AdminContactCard</h1>
-        </div>
-    );
-};
+class AdminContactCard extends Component {
+    render() {
+        return (
+            <div>
+                
+            </div>
+        );
+    }
+}
 
 export default AdminContactCard;
