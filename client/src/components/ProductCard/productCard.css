@@ -1,17 +1,34 @@
 
-
-
 .productTitle {
     font-size: 20px;
     font-weight: 700;
 }
 
-.productDetails {
+.productDetails, .productDesc, .productCategory, .productQuantity {
     font-size: 14px;
     font-weight: 600;
+    margin: auto;
 
 }
 
+#product-card {
+    display:relative;
+    flex-direction: column;
+    height: 100%;
+    
+}
+
+#product-card-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 10px;
+  }
+  
+
+
+/* 
 .productDesc {
     font-size: 14px;
     font-weight: 600;
@@ -28,6 +45,11 @@
     font-size: 14px;
     font-weight: 600;
 
-}
+} */
 
-
+.Toastify__toast--success {
+    background:#873e97 !important;
+    font-family: "Open Sans", sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+  }

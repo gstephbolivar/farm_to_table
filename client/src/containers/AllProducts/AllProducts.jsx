@@ -77,6 +77,7 @@ const AllProducts = (props) => {
                     key={product._id}
                     handleAddToCart={props.handleAddToCart}
                     totalQuantity={product.quantity}
+                    token={props.token}
                   />
                 ))}
               </div>

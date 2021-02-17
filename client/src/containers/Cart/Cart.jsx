@@ -28,13 +28,20 @@ const Cart = (props) => {
       API.placeOrder({
         customer: userId,
         LineItem: res.data.map((x) => x._id),
-      }).then(() => {
-        // alert("Order successfully placed");
-        routeChange("/confirmation");
+      }).then((order) => {
         localStorage.removeItem("lineItems");
         props.clearCart();
+        API.getEmail(userId).then((result) => {
+          API.sendConfirmationEmail({
+            name: result.data.name,
+            email: result.data.email,
+            orderId: order.data._id,
+          });
+        });
       });
     });
+
+    routeChange("/confirmation");
   };
 
   const itemSum =
@@ -79,6 +86,14 @@ const Cart = (props) => {
                           <h1 className="sub-title">Item</h1>
                         </div>
                       </th>
+                      <th className="is-vcentered total">
+                        <div
+                          className="vertical-center"
+                          style={{ height: 55, justifyContent: "center" }}
+                        >
+                          <h1 className="sub-title">Total Weight</h1>
+                        </div>
+                      </th>
                       <th className="is-vcentered">
                         <div
                           className="vertical-center"
@@ -106,6 +121,8 @@ const Cart = (props) => {
                         key={index}
                         handleItemChange={props.handleAddToCart}
                         deleteItem={props.deleteItemFromCart}
+                        unitSize={item.unitSize}
+                        unitType={item.unitType}
                       />
                     ))}
                   </tbody>
@@ -113,36 +130,24 @@ const Cart = (props) => {
               </div>
             </section>
 
-            <Grid container item xs={12}>
-              <Grid item xs={10} align="right">
-                <div
-                  className="vertical-center"
-                  style={{ width: 50, marginTop: 30 }}
+            <div class="columns is-mobile has-text-centered">
+              <div class="column is-four-fifths-desktop is-three-quarters-tablet is-two-thirds-mobile"></div>
+              <div class="column is-mobile">
+                      <br/>
+                      <br/>
+                 <h6>Subtotal: ${subTotal.toFixed(2)}</h6> 
+                 <br/>
+
+                 <button
+                  className="button cart-submit hvr-fade-reserve"
+                  onClick={handleCartSubmit}
                 >
-                  Subtotal:
-                </div>
-              </Grid>
-              <Grid item xs={2}>
-                <div
-                  className="vertical-center"
-                  style={{ justifyContent: "center", marginTop: 30 }}
-                >
-                  ${subTotal.toFixed(2)}
-                </div>
-              </Grid>
-            </Grid>
-            <Grid container item xs={12}>
-              <Grid
-                item
-                xs={3}
-                style={{ marginLeft: "auto", marginTop: 40 }}
-                align="center"
-              >
-                <button className="button cart-submit" onClick={handleCartSubmit}>
                   Reserve
                 </button>
-              </Grid>
-            </Grid>
+
+              </div>
+            </div>
+
           </>
         )}
       </div>

@@ -56,6 +56,18 @@ const API = {
   getFilteredProducts: (category) => {
     return axios.get(`/api/products/filtered/${category}`);
   },
+
+  sendConfirmationEmail: (info) => {
+    return axios.post("/api/sendconfirmation", info);
+  },
+
+  getEmail: (id) => {
+    return axios.get("/api/users/email", {
+      params: {
+        id: id
+      }
+    })
+  }
 };
 
 export default API;
