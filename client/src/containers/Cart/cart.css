@@ -1,10 +1,12 @@
-.cart-container{
+/* .cart-container{
     flex-grow: 1;
     margin: 50px auto 0;
     padding: 0 10px 10px 10px;
     position: relative;
     
-}
+} */
+
+
 
 .cart-headers{
     margin-top: 50px !important;
@@ -20,11 +22,7 @@
     align-items: center;
 }
 
-.cart-submit{
-    width: 100%;
-    background: #3f51b5 !important;
-    color: #ffffff !important;
-}
+
 
 .empty{
     display: flex;
@@ -37,4 +35,27 @@
 
 table {
     border: 1px solid #DCDCDC;
+  }
+
+   /* Remove button animation fade */
+ .hvr-fade-reserve {
+    background-color: #873e97;
+    color: white;
+     font-size: 14px;
+     width: 95%;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    overflow: hidden;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    -webkit-transition-property: color, background-color;
+    transition-property: color, background-color;
+  }
+  .hvr-fade-reserve:hover, .hvr-fade:focus, .hvr-fade:active {
+    
+    background-color: #672f73;
+    color: white;
   }

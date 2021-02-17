@@ -35,9 +35,9 @@ const Cart = (props) => {
           API.sendConfirmationEmail({
             name: result.data.name,
             email: result.data.email,
-            orderId: order.data._id
-          })
-        })
+            orderId: order.data._id,
+          });
+        });
       });
     });
 
@@ -86,7 +86,7 @@ const Cart = (props) => {
                           <h1 className="sub-title">Item</h1>
                         </div>
                       </th>
-                      <th className="is-vcentered">
+                      <th className="is-vcentered total">
                         <div
                           className="vertical-center"
                           style={{ height: 55, justifyContent: "center" }}
@@ -130,39 +130,24 @@ const Cart = (props) => {
               </div>
             </section>
 
-            <Grid container item xs={12}>
-              <Grid item xs={10} align="right">
-                <div
-                  className="vertical-center"
-                  style={{ width: 50, marginTop: 30 }}
-                >
-                  Subtotal:
-                </div>
-              </Grid>
-              <Grid item xs={2}>
-                <div
-                  className="vertical-center"
-                  style={{ justifyContent: "center", marginTop: 30 }}
-                >
-                  ${subTotal.toFixed(2)}
-                </div>
-              </Grid>
-            </Grid>
-            <Grid container item xs={12}>
-              <Grid
-                item
-                xs={3}
-                style={{ marginLeft: "auto", marginTop: 40 }}
-                align="center"
-              >
-                <button
-                  className="button cart-submit"
+            <div class="columns is-mobile has-text-centered">
+              <div class="column is-four-fifths-desktop is-three-quarters-tablet is-two-thirds-mobile"></div>
+              <div class="column is-mobile">
+                      <br/>
+                      <br/>
+                 <h6>Subtotal: ${subTotal.toFixed(2)}</h6> 
+                 <br/>
+
+                 <button
+                  className="button cart-submit hvr-fade-reserve"
                   onClick={handleCartSubmit}
                 >
                   Reserve
                 </button>
-              </Grid>
-            </Grid>
+
+              </div>
+            </div>
+
           </>
         )}
       </div>
