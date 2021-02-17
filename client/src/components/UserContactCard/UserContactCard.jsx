@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ContactForm from "../ContactForm/ContactForm";
 
 const UserContactCard = () => {
     const [contactForm, setContactForm] = useState({});
@@ -20,7 +21,8 @@ const UserContactCard = () => {
           </h1>
         </div>
         <div>
-          <div className="field">
+            <ContactForm />
+          {/* <div className="field">
             <label className="label">Name</label>
             <div className="control">
               <input className="input" type="text" placeholder="Jane Doe" />
@@ -60,10 +62,8 @@ const UserContactCard = () => {
             <div className="control">
               <button className="button is-link">Submit</button>
             </div>
-            <div className="control">
-              <button className="button is-link is-light">Cancel</button>
-            </div>
-          </div>
+          
+          </div> */}
         </div>
       </div>
     </>
