@@ -9,7 +9,7 @@ const AdminCardContent = (props) => {
               <p className="title productTitle">{props.name}</p>
               <p className="subtitle productCategory">Category: {props.category}</p>
               <p className="subtitle productDesc">{props.description}</p>
-              <p className="subtitle productDetails">${props.price} per {props.unitSize}-{props.unitType}</p>
+              <p className="subtitle productDetails">${props.price} per {props.unitSize} {props.unitType}</p>
               <p className="subtitle productQuantity">Current Inventory: {props.quantity}</p>
             </div>
           </div>

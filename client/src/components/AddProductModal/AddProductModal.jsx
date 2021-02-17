@@ -28,7 +28,7 @@ const AddProductModal = (props) => {
     unitSize: 0,
     price: 0,
     quantity: 0,
-    category: "",
+    category: "fruit",
     unitType: "",
     description: "",
     pathway: "",
@@ -80,7 +80,7 @@ const AddProductModal = (props) => {
   return (
     <>
       <div className="modal-background"></div>
-      <div className="modal-card">
+      <div className="modal-card is-mobile">
         <header className="modal-card-head">
           <p className="modal-card-title has-text-centered add-product-headline">
             Add Product
