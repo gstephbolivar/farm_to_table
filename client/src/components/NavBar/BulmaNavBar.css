@@ -9,8 +9,6 @@
   flex-grow: 1
 }
 
-
-
 .icon {
   margin-right: 8px;
 }
@@ -21,24 +19,11 @@
   font-size: 14px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.navbar-item:hover, .navbar-item:focus, .navbar-item:link, .navbar-item:active, .navbar-item:visited {
+  text-decoration: none;
+ background-color: transparent !important;
+ color: black !important;
+}
 
 /* CRAZY NAV BAR CODE */
 /* We don't need checkbox to be displayed in order for it to work */

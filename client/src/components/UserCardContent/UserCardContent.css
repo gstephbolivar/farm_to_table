@@ -11,8 +11,11 @@
     -webkit-transition-property: color, background-color;
     transition-property: color, background-color;
   }
-  .hvr-fade-add:hover, .hvr-fade:focus, .hvr-fade:active {
+  .hvr-fade-add:hover, .hvr-fade-add:focus {
     
     background-color: #672f73;
     color: white;
+    box-shadow: none;
   }
+
+  

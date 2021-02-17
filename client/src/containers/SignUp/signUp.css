@@ -10,11 +10,31 @@
     font-size: 35px;
 }
 
+
 #signUp-btn {
-    width: 150px;
-    margin-top: 15px;
-    margin-bottom: 15px;
     background-color: #873e97;
     color: white;
-    font-weight: bold;
-}
+     font-size: 14px;
+     margin-top: 15px;
+    margin-bottom: 15px;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    overflow: hidden;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    -webkit-transition-property: color, background-color;
+    transition-property: color, background-color;
+  }
+  #signUp-btn:hover, #signUp-btn:focus {
+    
+    background-color: #672f73;
+    color: white;
+    box-shadow: none;
+  }
+
+  .input:hover, .input:active, .input:focus, .input:visited {
+      box-shadow: none !important;
+  }
+
+ 

@@ -41,10 +41,11 @@ input[type=number]{
     -webkit-transition-property: color, background-color;
     transition-property: color, background-color;
   }
-  .hvr-fade-remove:hover, .hvr-fade:focus, .hvr-fade:active {
+  .hvr-fade-remove:hover, .hvr-fade-remove:focus {
     
     background-color: #457e36;
     color: white;
+    box-shadow: none;
   }
   
 
