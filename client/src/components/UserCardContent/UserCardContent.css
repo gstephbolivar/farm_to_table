@@ -1,5 +1,23 @@
-.addButton {
-    background-color: #3f51b5;
-    color: white;
-    font-weight: bold;
+.hvr-fade-add {
+  background-color: #873e97;
+  color: white;
+  font-size: 14px;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+.hvr-fade-add:hover,
+.hvr-fade-add:focus {
+  background-color: #672f73;
+  color: white;
+  box-shadow: none;
+}
+
+.productQuantity {
+  padding-top: 20px;
 }
