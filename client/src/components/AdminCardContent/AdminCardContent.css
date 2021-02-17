@@ -1,0 +1,15 @@
+.editButton{
+background-color:  #58A245;
+color: white;
+font-weight: bold;
+}
+
+.deleteButton{
+background-color: #F78F20;
+color: white;
+font-weight: bold;   
+}
+
+/* #FFC810 yellow */
+/* #F78F20 orange */
+/* #58A245 green */

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import API from "../../utils/API";
 import "./add.css";
+import productImages from "../../images.json";
 
 const productType = [
   {
@@ -40,6 +41,16 @@ const AddProductModal = (props) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    let pathway;
+
+// loop through image array by productObject.name to get pathway and then set below
+for (let i = 0; i < productImages.length; i++){
+  if(productObject.name.toLowerCase() === productImages[i].productName){
+    pathway = productImages[i].imagePathway;
+    console.log(pathway);
+  }
+}
+
     API.addProduct({
       name: productObject.name,
       unitSize: productObject.unitSize,
@@ -49,6 +60,7 @@ const AddProductModal = (props) => {
       unitType: productObject.unitType,
       description: productObject.description,
       totalAmount: productObject.totalAmount,
+      pathway: pathway
     })
       .then(() => {
         setProductObject({
@@ -80,8 +92,8 @@ const AddProductModal = (props) => {
                   <img
                     title="Stock Image"
                     id="product-image"
-                    src="https://www.placecage.com/c/250/250"
-                    alt="stock"
+                    src="./assets/icons/addproducts.svg" 
+                    alt="fresh produce"
                     height="auto"
                   />
                   <br />
