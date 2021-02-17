@@ -12,9 +12,11 @@ const ProductsSchema = new Schema({
   },
   unitType: {
     type: String,
+    required: ["Enter the unit type (pounds, ounces, grams, etc)."],
   },
   unitSize: {
     type: Number,
+    required: ["Enter how many units per package/container."],
   },
   price: {
     type: Number,
@@ -22,18 +24,14 @@ const ProductsSchema = new Schema({
   },
   quantity: {
     type: Number,
-    required: ["Enter a product quantity."],
+    required: ["Enter a product/container quantity."],
   },
   category: {
     type: String,
     required: ["Select a product category."],
   },
-  photo: {
-    type: String,
-    default: "https://placedog.net/300/300",
-  },
   pathway: {
-    type: String
+    type: String,
   },
 });
 
