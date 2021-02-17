@@ -13,56 +13,79 @@ const SignUp = () => {
     role: "customer",
   });
 
-  const [errors, setErrors] = useState({});
+  const [errorMessage, setErrorMessage] = useState({});
+
+  const validateForm = (value) => {
+    let errors = {};
+    let isValid = false;
+
+    const regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+
+    // email
+    if (!value.email) {
+      errors.email = "Email is Required";
+      isValid = false;
+    }
+
+    // Full Name
+    if (!value.name.trim()) {
+      errors.name = "Full Name Required";
+    }
+    if (!value.address) {
+      // Address
+      errors.address = "Address Required";
+    }
+
+    // password
+    if (!value.password) {
+      errors.password = "Password is Required";
+    }
+
+    if (Object.keys(errors).length === 0) {
+      isValid = true;
+    }
+
+    setErrorMessage(errors);
+    console.log(isValid);
+    return isValid;
+  };
 
   const history = useHistory();
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
-    const regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
-    console.log(value);
-    // validation for inputting account data
-    if (!regName.test(value)) {
-      console.log("Invalid name");
-    }
-
     setUserObject({ ...userObject, [name]: value });
-  };
-
-  const validate = (values) => {
-    let errorMessages = {};
-
-    if (!values.name.trim()) {
-      errorMessages.name = "Name Required!";
-    }
   };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    setErrors(validate(userObject));
+    const isValid = validateForm(userObject);
+    console.log(isValid);
 
-    API.addUser({
-      name: userObject.name,
-      address: userObject.address,
-      password: userObject.password,
-      email: userObject.email,
-      role: userObject.role,
-    })
-      .then(() => {
-        setUserObject({
-          name: "",
-          address: "",
-          password: "",
-          email: "",
-          role: "customer",
-        });
-        alert("Successfully created account! Please login to continue!");
-        // redirects page to login after account is created
-        history.push("/login");
+    if (isValid) {
+      API.addUser({
+        name: userObject.name,
+        address: userObject.address,
+        password: userObject.password,
+        email: userObject.email,
+        role: userObject.role,
       })
-      .catch((err) => console.log(err));
+        .then(() => {
+          setUserObject({
+            name: "",
+            address: "",
+            password: "",
+            email: "",
+            role: "customer",
+          });
+          alert("Successfully created account! Please login to continue!");
+          // redirects page to login after account is created
+          history.push("/login");
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   return (
@@ -107,7 +130,9 @@ const SignUp = () => {
                   />
                 </div>
               </div>
-
+              {errorMessage.email && (
+                <p className="errors">{errorMessage.email}</p>
+              )}
               {/* Full Name */}
               <div className="field">
                 <label className="label">Full Name</label>
@@ -126,7 +151,9 @@ const SignUp = () => {
                   />
                 </div>
               </div>
-              {errors.name && <p>{errors.name}</p>}
+              {errorMessage.name && (
+                <p className="errors">{errorMessage.name}</p>
+              )}
               {/* Home Address */}
               <div className="field">
                 <label className="label">Address</label>
@@ -144,7 +171,9 @@ const SignUp = () => {
                   />
                 </div>
               </div>
-
+              {errorMessage.address && (
+                <p className="errors">{errorMessage.address}</p>
+              )}
               {/* Password */}
               <div className="field">
                 <label className="label">Password</label>
@@ -161,9 +190,14 @@ const SignUp = () => {
                   />
                 </div>
               </div>
+              {errorMessage.password && (
+                <p className="errors">{errorMessage.password}</p>
+              )}
+
               <div className="field has-text-centered">
                 <button
                   className="button"
+                  type="submit"
                   id="signUp-btn"
                   onClick={handleFormSubmit}
                 >
