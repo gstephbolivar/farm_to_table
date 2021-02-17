@@ -86,14 +86,6 @@ const Cart = (props) => {
                           <h1 className="sub-title">Item</h1>
                         </div>
                       </th>
-                      <th className="is-vcentered total">
-                        <div
-                          className="vertical-center"
-                          style={{ height: 55, justifyContent: "center" }}
-                        >
-                          <h1 className="sub-title">Total Weight</h1>
-                        </div>
-                      </th>
                       <th className="is-vcentered">
                         <div
                           className="vertical-center"
@@ -117,12 +109,9 @@ const Cart = (props) => {
                     {lineItems.map((item, index) => (
                       <CartItem
                         lineItem={item}
-                        img="https://placedog.net/75/75"
                         key={index}
                         handleItemChange={props.handleAddToCart}
                         deleteItem={props.deleteItemFromCart}
-                        unitSize={item.unitSize}
-                        unitType={item.unitType}
                       />
                     ))}
                   </tbody>
