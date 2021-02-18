@@ -65,7 +65,7 @@ const ProductCard = ({
       let warningMessage =
         "We are sorry but the quantity you are trying to order would exceed the amount that we have in stock.\n";
       warningMessage += `The maximum amount of units you can order at this time ${maxCanOrder} units.`;
-      alert(warningMessage);
+      toast.dark(warningMessage, {hideProgressBar: true, closeOnClick: true})
       setDropDownState(maxCanOrder);
       return;
     }
@@ -93,7 +93,7 @@ const ProductCard = ({
       <div className="card" id="product-card">
         <div className="card-image">
           <figure className="image is-1by1">
-            <img src={process.env.PUBLIC_URL + pathway} alt={name} />
+            <img src={pathway} alt={name} />
           </figure>
         </div>
         {/* content to be displayed to users */}
