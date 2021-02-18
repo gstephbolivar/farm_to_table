@@ -75,6 +75,7 @@ const AddProductModal = (props) => {
         props.handleAddProductModalState();
       })
       .catch((err) => console.log(err));
+
   };
 
   return (

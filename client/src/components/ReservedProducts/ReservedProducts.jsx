@@ -5,8 +5,8 @@ const ReservedProducts = (props) => {
   return (
     <>
       {props.items.map((item) => (
-        <p class="panel-block">
-          <figure class="is-vcentered">
+        <p className="panel-block">
+          <figure className="is-vcentered">
             <img
               id="confirmationImage"
               src={item.pathway}
@@ -18,8 +18,8 @@ const ReservedProducts = (props) => {
           <p id="item-reserved">{item.name}</p>
         </p>
       ))}
-      <p class="panel-block">
-        <h4 class="subtitle is-6" id="total-reserved">
+      <p className="panel-block">
+        <h4 className="subtitle is-6" id="total-reserved">
           <strong>Total:</strong> {props.total}
         </h4>
       </p>

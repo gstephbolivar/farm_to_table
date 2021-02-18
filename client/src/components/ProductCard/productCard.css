@@ -37,6 +37,15 @@
   font-family: "Open Sans", sans-serif !important;
   font-weight: 600 !important;
   font-size: 14px !important;
+  box-shadow: none !important;
+}
+
+.Toastify__toast--dark {
+  background: #f09300 !important;
+  font-family: "Open Sans", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  box-shadow: none !important;
 }
 
 @media only screen and (max-width: 768px) {
