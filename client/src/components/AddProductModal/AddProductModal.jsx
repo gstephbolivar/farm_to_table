@@ -305,7 +305,7 @@ const AddProductModal = (props) => {
                     variant="outlined"
                     onChange={handleInputChange}
                     name="description"
-                    maxlength={50}
+                    maxLength={50}
                     value={productObject.description}
                   ></textarea>
                 </div>
