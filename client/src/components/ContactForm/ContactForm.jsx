@@ -1,26 +1,32 @@
 import React, { useState } from "react";
 
+// Form for the user to contact website 
 const ContactForm = () => {
   const [status, setStatus] = useState("Submit");
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus("Sending...");
-    const { name, email, message } = e.target.elements;
-    let details = {
-      name: name.value,
-      email: email.value,
-      message: message.value,
-    };
-    let response = await fetch("http://localhost:3000/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(details),
-    });
-    setStatus("Submit");
-    let result = await response.json();
-    alert(result.status);
+    try {
+      e.preventDefault();
+      await setStatus("Sending...");
+      const { name, email, message } = e.target.elements;
+      let details = {
+        name: name.value,
+        email: email.value,
+        message: message.value,
+      };
+      console.log(details);
+      let response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(details),
+      });
+    
+    console.log(response);
+    
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div>
