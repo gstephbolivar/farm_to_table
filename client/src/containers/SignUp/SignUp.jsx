@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import "./signUp.css";
 import states from "../SignUp/states.json";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignUp = () => {
   const [userObject, setUserObject] = useState({
@@ -123,11 +125,14 @@ const SignUp = () => {
             email: "",
             role: "customer",
           });
-          alert("Successfully created account! Please login to continue!");
+          toast.success("Successfully created account! Please login to continue.");
+    
           // redirects page to login after account is created
           history.push("/login");
         })
         .catch((err) => console.log(err));
+
+        
     }
   };
 
