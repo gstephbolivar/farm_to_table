@@ -89,21 +89,23 @@ const Login = (props) => {
         <div className="columns is-centered is-multiline">
           <div className="column is-two-thirds-tablet is-half-desktop is-one-third-widescreen">
             <form className="box">
-            <div className="columns is-grouped is-centered is-mobile">
-            <img
-              src="./assets/icons/login_2.svg"
-              className="figure-img img-fluid rounded"
-              id="login-icon-2"
-              alt="carrot cabbage icon"
-            />
-              <h3 className="title is-3" id="login-headline">Log in</h3>
-              <img
-              src="./assets/icons/login_1.svg"
-              className="figure-img img-fluid rounded"
-              id="login-icon-1"
-              alt="apple avocado icon"
-            />
-            </div>
+              <div className="columns is-grouped is-centered is-mobile">
+                <img
+                  src="./assets/icons/login_2.svg"
+                  className="figure-img img-fluid rounded"
+                  id="login-icon-2"
+                  alt="carrot cabbage icon"
+                />
+                <h3 className="title is-3" id="login-headline">
+                  Log in
+                </h3>
+                <img
+                  src="./assets/icons/login_1.svg"
+                  className="figure-img img-fluid rounded"
+                  id="login-icon-1"
+                  alt="apple avocado icon"
+                />
+              </div>
               <div className="field">
                 <label className="label">Email</label>
                 <div className="control">
@@ -141,10 +143,14 @@ const Login = (props) => {
                 </div>
               </div>
               <div className="field has-text-centered">
-              <button className="button" id="login-btn" onClick={handleFormSubmit}>
-                Login
-              </button>
-                </div>
+                <button
+                  className="button"
+                  id="login-btn"
+                  onClick={handleFormSubmit}
+                >
+                  Login
+                </button>
+              </div>
               {/* Directs to sign up page */}
 
               <h5 className="subtitle is-6 has-text-centered">

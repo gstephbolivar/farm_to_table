@@ -69,6 +69,11 @@
   box-shadow: none;
 }
 
+.addProd-errors {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
 /* TOAST */
 .Toastify__toast--danger {
   background: #ef4343 !important;
