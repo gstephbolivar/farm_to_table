@@ -7,7 +7,11 @@ import "./signUp.css";
 const SignUp = () => {
   const [userObject, setUserObject] = useState({
     name: "",
-    address: "",
+    // address: "",
+    street: "",
+    city: "",
+    state: "",
+    zip: "",
     password: "",
     email: "",
     role: "customer",
@@ -36,9 +40,24 @@ const SignUp = () => {
     } else if (!regName.test(value.name)) {
       errors.name = "Invalid Name entered (First Last)";
     }
-    if (!value.address) {
-      // Address
-      errors.address = "Address Required";
+    // Street
+    if (!value.street) {
+      errors.street = "Street Address Required";
+    }
+
+    // City
+    if (!value.city) {
+      errors.city = "City Required";
+    }
+
+    // state
+    if (!value.state) {
+      errors.state = "State Required";
+    }
+
+    //zip
+    if (!value.zip) {
+      errors.zip = "Zip Required";
     }
 
     // password
@@ -77,7 +96,13 @@ const SignUp = () => {
     if (isValid) {
       API.addUser({
         name: userObject.name,
-        address: userObject.address,
+        // address: userObject.address,
+        address: {
+          street: userObject.street,
+          city: userObject.city,
+          state: userObject.state,
+          zip: userObject.zip,
+        },
         password: userObject.password,
         email: userObject.email,
         role: userObject.role,
@@ -85,7 +110,11 @@ const SignUp = () => {
         .then(() => {
           setUserObject({
             name: "",
-            address: "",
+            // address: "",
+            street: "",
+            city: "",
+            state: "",
+            zip: "",
             password: "",
             email: "",
             role: "customer",
@@ -166,24 +195,82 @@ const SignUp = () => {
               )}
               {/* Home Address */}
               <div className="field">
-                <label className="label">Address</label>
+                <label className="label">Street</label>
                 <div className="control">
                   <input
                     className="input"
                     type="address"
-                    placeholder="3203 FM 1960 East Humble, Texas, 77338"
+                    placeholder="3203 FM 1960"
                     fullwidth="true"
-                    id="homeAddress"
-                    label="Home Address"
-                    name="address"
-                    value={userObject.address}
+                    id="street"
+                    label="street"
+                    name="street"
+                    value={userObject.street}
                     onChange={handleInputChange}
                   />
                 </div>
               </div>
-              {errorMessage.address && (
-                <p className="errors">{errorMessage.address}</p>
+              {errorMessage.street && (
+                <p className="errors">{errorMessage.street}</p>
               )}
+
+              <div className="field">
+                <label className="label">City</label>
+                <div className="control">
+                  <input
+                    className="input"
+                    type="address"
+                    placeholder="East Humble"
+                    fullwidth="true"
+                    id="city"
+                    label="city"
+                    name="city"
+                    value={userObject.city}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+              {errorMessage.city && (
+                <p className="errors">{errorMessage.city}</p>
+              )}
+
+              <div className="field">
+                <label className="label">State</label>
+                <div className="control">
+                  <input
+                    className="input"
+                    type="address"
+                    placeholder="Texas"
+                    fullwidth="true"
+                    id="state"
+                    label="state"
+                    name="state"
+                    value={userObject.state}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+              {errorMessage.state && (
+                <p className="errors">{errorMessage.state}</p>
+              )}
+
+              <div className="field">
+                <label className="label">Zip</label>
+                <div className="control">
+                  <input
+                    className="input"
+                    type="address"
+                    placeholder="77338"
+                    fullwidth="true"
+                    id="zip"
+                    label="zip"
+                    name="zip"
+                    value={userObject.zip}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+              {errorMessage.zip && <p className="errors">{errorMessage.zip}</p>}
               {/* Password */}
               <div className="field">
                 <label className="label">Password</label>
