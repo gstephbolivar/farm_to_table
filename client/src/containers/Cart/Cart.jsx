@@ -129,9 +129,9 @@ const Cart = (props) => {
               </div>
             </section>
 
-            <div class="columns is-mobile has-text-centered">
-              <div class="column is-four-fifths-desktop is-three-quarters-tablet is-two-thirds-mobile"></div>
-              <div class="column is-mobile">
+            <div className="columns is-mobile has-text-centered">
+              <div className="column is-four-fifths-desktop is-three-quarters-tablet is-two-thirds-mobile"></div>
+              <div className="column is-mobile">
                       <br/>
                       <br/>
                  <h6>Subtotal: ${subTotal.toFixed(2)}</h6> 

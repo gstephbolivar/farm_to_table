@@ -14,7 +14,7 @@ const Products = () => {
   const [modal, setModal] = useState("modal");
   const [addProductModal, setAddProductModal] = useState("modal");
   const [products, setProducts] = useState([]);
-
+  
   const handleModalState = (id) => {
     setProductID(id);
     if (modal === "modal") {
