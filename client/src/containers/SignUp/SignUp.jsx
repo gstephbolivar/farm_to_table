@@ -3,11 +3,16 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import "./signUp.css";
+import states from "../SignUp/states.json";
 
 const SignUp = () => {
   const [userObject, setUserObject] = useState({
     name: "",
-    address: "",
+    // address: "",
+    street: "",
+    city: "",
+    state: "",
+    zip: "",
     password: "",
     email: "",
     role: "customer",
@@ -22,6 +27,7 @@ const SignUp = () => {
 
     const regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
     const regEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const regZip = /^[0-9]{5}(?:-[0-9]{4})?$/;
 
     // email
     if (!value.email) {
@@ -36,9 +42,26 @@ const SignUp = () => {
     } else if (!regName.test(value.name)) {
       errors.name = "Invalid Name entered (First Last)";
     }
-    if (!value.address) {
-      // Address
-      errors.address = "Address Required";
+    // Street
+    if (!value.street) {
+      errors.street = "Street Address Required";
+    }
+
+    // City
+    if (!value.city) {
+      errors.city = "City Required";
+    }
+
+    // state
+    if (!value.state || value.state === "Select a State") {
+      errors.state = "State Required";
+    }
+
+    //zip
+    if (!value.zip) {
+      errors.zip = "Zip Required";
+    } else if (!regZip.test(value.zip)) {
+      errors.zip = "Invalid Zip entered";
     }
 
     // password
@@ -77,7 +100,13 @@ const SignUp = () => {
     if (isValid) {
       API.addUser({
         name: userObject.name,
-        address: userObject.address,
+        // address: userObject.address,
+        address: {
+          street: userObject.street,
+          city: userObject.city,
+          state: userObject.state,
+          zip: userObject.zip,
+        },
         password: userObject.password,
         email: userObject.email,
         role: userObject.role,
@@ -85,7 +114,11 @@ const SignUp = () => {
         .then(() => {
           setUserObject({
             name: "",
-            address: "",
+            // address: "",
+            street: "",
+            city: "",
+            state: "",
+            zip: "",
             password: "",
             email: "",
             role: "customer",
@@ -121,69 +154,152 @@ const SignUp = () => {
                   alt="tomato and pear icon"
                 />
               </div>
-
-              {/* Email */}
-              <div className="field">
-                <label className="label">Email</label>
-                <div className="control">
-                  <input
-                    className="input"
-                    type="email"
-                    fullwidth="true"
-                    placeholder="oldmacdonald@domain.com"
-                    id="email"
-                    required
-                    label="Email"
-                    name="email"
-                    value={userObject.email}
-                    onChange={handleInputChange}
-                  />
+              <div className="field is-grouped is-grouped-center">
+                {/* Email */}
+                <div className="control is-expanded">
+                  <div className="field">
+                    <label className="label">Email</label>
+                    <div className="control">
+                      <input
+                        className="input"
+                        type="email"
+                        fullwidth="true"
+                        placeholder="oldmacdonald@domain.com"
+                        id="email"
+                        required
+                        label="Email"
+                        name="email"
+                        value={userObject.email}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  </div>
+                  {errorMessage.email && (
+                    <p className="errors">{errorMessage.email}</p>
+                  )}
+                </div>
+                {/* Full Name */}
+                <div className="control is-expanded">
+                  <div className="field">
+                    <label className="label">Full Name</label>
+                    <div className="control">
+                      <input
+                        className="input"
+                        type="name"
+                        placeholder="Old Macdougal"
+                        fullwidth="true"
+                        id="fullName"
+                        required
+                        label="First and Last Name"
+                        name="name"
+                        value={userObject.name}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  </div>
+                  {errorMessage.name && (
+                    <p className="errors">{errorMessage.name}</p>
+                  )}
                 </div>
               </div>
-              {errorMessage.email && (
-                <p className="errors">{errorMessage.email}</p>
-              )}
-              {/* Full Name */}
-              <div className="field">
-                <label className="label">Full Name</label>
-                <div className="control">
-                  <input
-                    className="input"
-                    type="name"
-                    placeholder="Old Macdougal"
-                    fullwidth="true"
-                    id="fullName"
-                    required
-                    label="First and Last Name"
-                    name="name"
-                    value={userObject.name}
-                    onChange={handleInputChange}
-                  />
-                </div>
-              </div>
-              {errorMessage.name && (
-                <p className="errors">{errorMessage.name}</p>
-              )}
               {/* Home Address */}
               <div className="field">
-                <label className="label">Address</label>
+                <label className="label">Street</label>
                 <div className="control">
                   <input
                     className="input"
                     type="address"
-                    placeholder="3203 FM 1960 East Humble, Texas, 77338"
+                    placeholder="3203 FM 1960"
                     fullwidth="true"
-                    id="homeAddress"
-                    label="Home Address"
-                    name="address"
-                    value={userObject.address}
+                    id="street"
+                    label="street"
+                    name="street"
+                    value={userObject.street}
                     onChange={handleInputChange}
                   />
                 </div>
               </div>
-              {errorMessage.address && (
-                <p className="errors">{errorMessage.address}</p>
+              {errorMessage.street && (
+                <p className="errors">{errorMessage.street}</p>
               )}
+              <div className="field is-grouped is-grouped-center">
+                {/* City */}
+
+                <div className="control is-expanded">
+                  <div className="field">
+                    <label className="label">City</label>
+                    <div className="control">
+                      <input
+                        className="input"
+                        type="address"
+                        placeholder="East Humble"
+                        fullwidth="true"
+                        id="city"
+                        label="city"
+                        name="city"
+                        value={userObject.city}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  </div>
+                  {errorMessage.city && (
+                    <p className="errors">{errorMessage.city}</p>
+                  )}
+                </div>
+
+                {/* State */}
+                <div className="control is-expanded">
+                  <div className="field">
+                    <label className="label">State</label>
+                    <div className="control">
+                      <div className="select is-fullwidth">
+                        <select
+                          className="input"
+                          type="address"
+                          placeholder="Texas"
+                          fullwidth="true"
+                          id="state"
+                          label="state"
+                          name="state"
+                          value={userObject.state}
+                          onChange={handleInputChange}
+                        >
+                          {states.map((option) => (
+                            <option key={option.code} value={option.name}>
+                              {option.name}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  {errorMessage.state && (
+                    <p className="errors">{errorMessage.state}</p>
+                  )}
+                </div>
+                {/* Zip code */}
+                <div className="control is-expanded">
+                  <div className="field">
+                    <label className="label">Zip</label>
+                    <div className="control">
+                      <input
+                        className="input"
+                        type="address"
+                        placeholder="77338"
+                        fullwidth="true"
+                        id="zip"
+                        label="zip"
+                        name="zip"
+                        value={userObject.zip}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  </div>
+                  {errorMessage.zip && (
+                    <p className="errors">{errorMessage.zip}</p>
+                  )}
+                </div>
+              </div>
               {/* Password */}
               <div className="field">
                 <label className="label">Password</label>

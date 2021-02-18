@@ -15,6 +15,38 @@ const Login = (props) => {
     password: "",
   });
 
+  const [errorMessage, setErrorMessage] = useState({});
+
+  // validates input fields
+  const validateForm = (value) => {
+    let errors = {};
+    let isValid = false;
+
+    const regEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // email
+    if (!value.email) {
+      errors.email = "Email is Required";
+    } else if (!regEmail.test(value.email)) {
+      errors.email = "Invalid Email entered (name@email.com)";
+    }
+
+    // password
+    if (!value.password) {
+      errors.password = "Password is Required";
+    }
+
+    // sets the isValid flag to true if there are no errors
+    if (Object.keys(errors).length === 0) {
+      isValid = true;
+    }
+
+    // errors set to state and isValid flag returned
+    setErrorMessage(errors);
+    //console.log(isValid);
+    return isValid;
+  };
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setLoginObject({ ...loginObject, [name]: value });
@@ -23,65 +55,49 @@ const Login = (props) => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     //console.log(loginObject);
-    API.loginUser(loginObject)
-      .then((response) => {
-        //console.log(response.data);
 
-        jwt.verify(
-          response.data.token,
-          process.env.REACT_APP_JWT_SIGNATURE,
-          (err, decoded) => {
-            if (err) {
-              console.log(err);
-            } else {
-              props.setUserId(response.data._id);
-              // sets token to state
-              props.setToken(response.data.token);
+    const isValid = validateForm(loginObject);
 
-              // set the token to localStorage
-              localStorage.setItem("token", response.data.token);
+    if (isValid) {
+      API.loginUser(loginObject)
+        .then((response) => {
+          //console.log(response.data);
 
-              // set role to state
-              props.setRole(response.data.role);
+          jwt.verify(
+            response.data.token,
+            process.env.REACT_APP_JWT_SIGNATURE,
+            (err, decoded) => {
+              if (err) {
+                console.log(err);
+              } else {
+                props.setUserId(response.data._id);
+                // sets token to state
+                props.setToken(response.data.token);
 
-              //set role to local storage
-              localStorage.setItem("role", response.data.role);
-              alert("Successfully Logged in!");
-              // if user is an admin, redirect user to admin page otherwise redirect to all products page
-              response.data.role === "admin"
-                ? history.push("/admin")
-                : history.push("/allproducts");
+                // set the token to localStorage
+                localStorage.setItem("token", response.data.token);
+
+                // set role to state
+                props.setRole(response.data.role);
+
+                //set role to local storage
+                localStorage.setItem("role", response.data.role);
+                alert("Successfully Logged in!");
+                // if user is an admin, redirect user to admin page otherwise redirect to all products page
+                response.data.role === "admin"
+                  ? history.push("/admin")
+                  : history.push("/allproducts");
+              }
             }
-          }
-        );
-      })
-      .catch((err) => {
-        // potentially change this to a modal where user can click to sign up or just re-enter login info
-        console.log(err);
-        alert("Incorrect password or username entered!");
-      });
+          );
+        })
+        .catch((err) => {
+          // potentially change this to a modal where user can click to sign up or just re-enter login info
+          console.log(err);
+          alert("Incorrect password or username entered!");
+        });
+    }
   };
-  // checks if username and password match in database
-  // API.checkUser(loginObject)
-  //   .then((user) => {
-  //     console.log(loginObject);
-  //     console.log(user);
-
-  //     // checks if user has entered login information
-  //     if (!loginObject.email || !loginObject.password) {
-  //       alert("Please enter a username and password");
-  //     } // checks that login matches database user
-  //     else if (
-  //       user.data.email === loginObject.email &&
-  //       user.data.password === loginObject.password
-  //     ) {
-  //       props.setUserId(user.data._id);
-  //       alert("Successfully Logged in!");
-
-  //       // changes route to the admin products page
-  //       routeChange("/admin");
-  //     }
-  //   })
 
   return (
     <div>
@@ -123,6 +139,9 @@ const Login = (props) => {
                   />
                 </div>
               </div>
+              {errorMessage.email && (
+                <p className="errors">{errorMessage.email}</p>
+              )}
 
               <div className="field">
                 <label className="label">Password</label>
@@ -142,6 +161,9 @@ const Login = (props) => {
                   />
                 </div>
               </div>
+              {errorMessage.password && (
+                <p className="errors">{errorMessage.password}</p>
+              )}
               <div className="field has-text-centered">
                 <button
                   className="button"

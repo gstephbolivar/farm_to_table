@@ -15,14 +15,24 @@ const userSeed = [
   {
     email: "admin@mail.com",
     name: "Admin Admin",
-    address: "123 Admin Rd",
+    address: {
+      street: "123 Admin Rd",
+      city: "Atlanta",
+      state: "Georgia",
+      zip: "12345",
+    },
     password: "$2b$10$SBkLhziZQyGqPmMTlG0HROkNXh2LjpPJ7GovrCEco/3nR8wPgILVm", //admin1234
     role: "admin",
   },
   {
     email: "ngtych4@gmail.com",
     name: "Neil Gandhi",
-    address: "7506 SCUPPER DR",
+    address: {
+      street: "7506 Scupper Drive",
+      city: "Hanahan",
+      state: "South Carolina",
+      zip: "29410",
+    },
     password: "$2b$10$kH9V0nnPPRc1fwaNzSCBxOgCO4QAFC0AoWAOejO8Ses.TuyVDXF22", //password1234
     role: "customer",
   },
