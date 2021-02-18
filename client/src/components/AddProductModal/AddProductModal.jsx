@@ -92,10 +92,13 @@ const AddProductModal = (props) => {
 
     // loop through image array by productObject.name to get pathway and then set below
     for (let i = 0; i < productImages.length; i++) {
-      if (productObject.name.toLowerCase() === productImages[i].productName) {
-        pathway = productImages[i].imagePathway;
-        console.log(pathway);
-      }
+      if (productImages[i].productName.includes(productObject.name.toLowerCase())) {
+        pathway = process.env.PUBLIC_URL+productImages[i].imagePathway;
+      } 
+    }
+    if(!pathway){
+      let placeholder = "/assets/product_images/placeholder.png"
+      pathway = process.env.PUBLIC_URL+placeholder
     }
 
     if (isValid) {
@@ -115,7 +118,7 @@ const AddProductModal = (props) => {
             unitSize: 0,
             price: 0,
             quantity: 0,
-            category: "",
+            category: "fruit",
             unitType: "",
             description: "",
           });
@@ -141,7 +144,7 @@ const AddProductModal = (props) => {
               <div className="column is-10 is-offset-1">
                 <img
                   title="Stock Image"
-                  id="product-image"
+                  id="product-image-add"
                   src="./assets/icons/addproducts.svg"
                   alt="fresh produce"
                   height="auto"
@@ -156,7 +159,8 @@ const AddProductModal = (props) => {
                     <div className="control">
                       <div className="select">
                         <select
-                          id="selectCategory"
+                          placeholder="category"
+                          id="selectCategoryAdd"
                           label="Select Type"
                           name="category"
                           onChange={handleInputChange}
@@ -181,7 +185,7 @@ const AddProductModal = (props) => {
                         className="input"
                         type="text"
                         placeholder="Strawberries"
-                        id="productName"
+                        id="productNameAdd"
                         onChange={handleInputChange}
                         name="name"
                         value={productObject.name}
@@ -201,7 +205,7 @@ const AddProductModal = (props) => {
                         required
                         className="input"
                         type="number"
-                        id="quantity"
+                        id="quantityAdd"
                         onChange={handleInputChange}
                         name="quantity"
                         value={productObject.quantity}
@@ -221,7 +225,7 @@ const AddProductModal = (props) => {
                     <div className="control">
                       <input
                         className="input"
-                        id="unitSize"
+                        id="unitSizeAdd"
                         min="1"
                         onChange={handleInputChange}
                         name="unitSize"
@@ -241,7 +245,7 @@ const AddProductModal = (props) => {
                     <div className="control">
                       <input
                         className="input"
-                        id="unitType"
+                        id="unitTypeAdd"
                         required
                         name="unitType"
                         placeholder="lbs"
@@ -262,7 +266,7 @@ const AddProductModal = (props) => {
                       <span className="icon is-small is-left">$</span>
                       <input
                         className="input"
-                        id="productPrice"
+                        id="productPriceAdd"
                         onChange={handleInputChange}
                         name="price"
                         value={productObject.price}
@@ -287,7 +291,7 @@ const AddProductModal = (props) => {
                     className="textarea"
                     type="text"
                     placeholder="Organic Strawberries"
-                    label="Product Description"
+                    id="descriptionAdd"
                     multiline="true"
                     rows={2}
                     variant="outlined"
