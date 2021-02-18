@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./catCard.css";
-import { Link } from "react-router-dom";
 
 // List of items that user can choose from to filter food options
 const items = [
@@ -32,9 +31,11 @@ const items = [
 ];
 
 const CategoriesCard = ({ onClick }) => {
+
   const [menuItems, setMenuItems] = useState(items);
   const handleClick = (key) => {
     console.log(key);
+    
     const mapArray = menuItems.map((item, i) => {
       if (i === key) {
         item.selected = true;
@@ -45,25 +46,34 @@ const CategoriesCard = ({ onClick }) => {
       }
     });
     setMenuItems(mapArray);
+
   };
+
+  useEffect(() => {
+    setMenuItems(items);
+    return () => {
+      setMenuItems(items);
+    }
+  }, [])
 
   return (
     <div className="panel">
       <p className="panel-heading cat-head">Categories</p>
       {menuItems.map((item, key) => (
-        <Link
+        <div
           to="#"
           id={item.selected ? item.catID + "-selected" : item.catID}
-          className="panel-block"
+          className="panel-block block-hover"
           key={key}
           value={item.listText}
           name={item.listText}
           onClick={(e) => {
             onClick(e, item.listText);
             handleClick(key);
+            
           }}
         >
-          <Link
+          <div
             to="#"
             value={item.listText}
             name={item.listText}
@@ -74,8 +84,8 @@ const CategoriesCard = ({ onClick }) => {
             }}
           >
             {item.listText}
-          </Link>
-        </Link>
+          </div>
+        </div>
       ))}
     </div>
   );

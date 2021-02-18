@@ -1,11 +1,13 @@
 import React from "react";
 import "./reserved.css";
 
+
 const ReservedProducts = (props) => {
   return (
     <>
       {props.items.map((item) => (
-        <p className="panel-block">
+       
+        <div className="panel-block">
           <figure className="is-vcentered">
             <img
               id="confirmationImage"
@@ -13,16 +15,18 @@ const ReservedProducts = (props) => {
               alt="item thumbnail"
               width="50"
               height="50"
+              // key={item.id}
+
             />
           </figure>
           <p id="item-reserved">{item.name}</p>
-        </p>
+        </div>
       ))}
-      <p className="panel-block">
+      <div className="panel-block">
         <h4 className="subtitle is-6" id="total-reserved">
           <strong>Total:</strong> {props.total}
         </h4>
-      </p>
+      </div>
     </>
   );
 };
