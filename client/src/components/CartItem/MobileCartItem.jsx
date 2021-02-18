@@ -44,7 +44,7 @@ const MobileCartItem = (props) => {
                     <span>{props.lineItem.name} (${props.lineItem.price}/{props.lineItem.unitType})</span>
                 </div>
                 <div className="flex-row">
-                    <div class="half">
+                    <div className="half">
                         <label>Quantity: </label>
                         <input
                         type="number"

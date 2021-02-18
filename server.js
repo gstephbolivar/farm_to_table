@@ -2,9 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
-const sendMail = require('./utils/mailer.js')
-
-
+const sendMail = require("./utils/mailer.js");
+const contactMail = require("./utils/contactMailer");
 
 const app = express();
 const db = require("./models");
@@ -135,8 +134,8 @@ app.post("/api/lineitems", (req, res) => {
 });
 
 app.post("/api/sendconfirmation", (req, res) => {
-      sendMail(req, res);
-  })
+  sendMail(req, res);
+});
 
 async function updateProductQuantity(result) {
   db.Products.find({}).then(async (products) => {
@@ -194,37 +193,12 @@ app.delete("/api/products/:id", (req, res) => {
     });
 });
 
-//POST api route to create a user
-// app.post("/api/users", ({ body }, res) => {
-//   db.User.create(body)
-//     .then((result) => {
-//       res.json(result);
-//     })
-//     .catch((err) => {
-//       res.json(err);
-//     });
-// });
+// POST route for user to contact website
+app.post("/api/contact", (req, res) => {
+  contactMail(req, res);
+});
 
-// need to check the database
-// app.post("/api/login", (req, res) => {
-//   res.json({
-//     message: "Successfully logged in!",
-//     token: "AdminToken",
-//   });
-// });
 
-// GET api route to return selected user
-// app.get("/api/users", (req, res) => {
-//   db.User.findOne({
-//     email: req.query.email,
-//     password: req.query.password,
-//   })
-//     .then((result) => {
-//       console.log(req.query);
-//       res.json(result);
-//     })
-//     .catch((err) => res.json(err));
-// });
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"));
