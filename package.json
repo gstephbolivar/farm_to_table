@@ -37,6 +37,7 @@
     "mongoose-update-if-current": "^1.4.0",
     "node-sass": "^5.0.0",
     "nodemailer": "^6.4.18",
+    "nodemailer-mailgun-transport": "^2.0.2",
     "nodemon": "^2.0.7"
   }
 }
