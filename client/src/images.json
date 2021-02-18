@@ -103,5 +103,10 @@
 "id":21,
 "productName":["tomatoes", "red tomatoes", "tomatoes on the vine", "vine tomatoes", "whole tomatoes", "ripe tomatoes", "tomato"],
 "imagePathway": "/assets/product_images/vegetables/tomatoes.png"
+},
+{
+"id":22,
+"productName": ["banana", "bananas", "bunch of bananas", "banana bunch"],
+"imagePathway": "/assets/product_images/fruits/bananas.png"
 }
 ]

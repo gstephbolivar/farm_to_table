@@ -59,15 +59,16 @@ const EditProductModal = (props) => {
   };
 
   const handleFormSubmit = (event) => {
-    let newPathway;
     event.preventDefault();
+    let newPathway;
     props.handleModalState();
     for (let i = 0; i < productImages.length; i++){
       if(productImages[i].productName.includes(productObject.name.toLowerCase())){
-        newPathway = productImages[i].imagePathway;
-      } else {
-        newPathway = "./assets/icons/addproducts.svg";
+      newPathway = productImages[i].imagePathway;
       }
+    }
+    if(!newPathway){
+      newPathway = "./assets/icons/addproducts.svg";
     }
     API.updateProduct(props.id, {
       name: productObject.name,

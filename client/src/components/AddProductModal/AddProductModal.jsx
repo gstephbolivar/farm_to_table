@@ -47,12 +47,11 @@ const AddProductModal = (props) => {
     for (let i = 0; i < productImages.length; i++) {
       if (productImages[i].productName.includes(productObject.name.toLowerCase())) {
         pathway = productImages[i].imagePathway;
-        console.log(pathway);
-      } else {
-        pathway = "./assets/icons/addproducts.svg";
-      }
+      } 
     }
-
+    if(!pathway){
+      pathway = "./assets/icons/addproducts.svg";
+    }
     API.addProduct({
       name: productObject.name,
       unitSize: productObject.unitSize,
@@ -94,7 +93,7 @@ const AddProductModal = (props) => {
               <div className="column is-10 is-offset-1">
                 <img
                   title="Stock Image"
-                  id="product-image"
+                  id="product-imageAdd"
                   src="./assets/icons/addproducts.svg"
                   alt="fresh produce"
                   height="auto"
@@ -109,7 +108,7 @@ const AddProductModal = (props) => {
                     <div className="control">
                       <div className="select">
                         <select
-                          id="selectCategory"
+                          id="selectCategoryAdd"
                           label="Select Type"
                           name="category"
                           onChange={handleInputChange}
@@ -134,7 +133,7 @@ const AddProductModal = (props) => {
                         className="input"
                         type="text"
                         placeholder="Strawberries"
-                        id="productName"
+                        id="productNameAdd"
                         onChange={handleInputChange}
                         name="name"
                         value={productObject.name}
@@ -151,7 +150,7 @@ const AddProductModal = (props) => {
                         required
                         className="input"
                         type="number"
-                        id="quantity"
+                        id="quantityAdd"
                         onChange={handleInputChange}
                         name="quantity"
                         value={productObject.quantity}
@@ -168,7 +167,7 @@ const AddProductModal = (props) => {
                     <div className="control">
                       <input
                         className="input"
-                        id="unitSize"
+                        id="unitSizeAdd"
                         min="1"
                         onChange={handleInputChange}
                         name="unitSize"
@@ -185,7 +184,7 @@ const AddProductModal = (props) => {
                     <div className="control">
                       <input
                         className="input"
-                        id="unitType"
+                        id="unitTypeAdd"
                         required
                         name="unitType"
                         placeholder="lbs"
@@ -203,7 +202,7 @@ const AddProductModal = (props) => {
                       <span className="icon is-small is-left">$</span>
                       <input
                         className="input"
-                        id="productPrice"
+                        id="productPriceAdd"
                         onChange={handleInputChange}
                         name="price"
                         value={productObject.price}
@@ -225,7 +224,7 @@ const AddProductModal = (props) => {
                     className="textarea"
                     type="text"
                     placeholder="Organic Strawberries"
-                    label="Product Description"
+                    id="descriptionAdd"
                     multiline="true"
                     rows={2}
                     variant="outlined"
