@@ -111,7 +111,7 @@ const EditProductModal = (props) => {
               <div className="column is-10 is-offset-1">
                 <img
                   title="Stock Image"
-                  id="product-image"
+                  id="product-image-edit"
                   src="./assets/icons/addproducts.svg"
                   alt="fresh produce"
                   height="auto"
@@ -126,7 +126,7 @@ const EditProductModal = (props) => {
                     <div className="control">
                       <div className="select">
                         <select
-                          id="selectCategory"
+                          id="selectCategoryEdit"
                           label="Select Type"
                           name="category"
                           onChange={handleInputChange}
@@ -151,7 +151,7 @@ const EditProductModal = (props) => {
                         className="input"
                         type="text"
                         placeholder="Strawberries"
-                        id="productName"
+                        id="productNameEdit"
                         onChange={handleInputChange}
                         name="name"
                         value={productObject.name}
@@ -168,7 +168,7 @@ const EditProductModal = (props) => {
                         required
                         className="input"
                         type="number"
-                        id="quantity"
+                        id="quantityEdit"
                         onChange={handleInputChange}
                         name="quantity"
                         value={productObject.quantity}
@@ -185,7 +185,7 @@ const EditProductModal = (props) => {
                     <div className="control">
                       <input
                         className="input"
-                        id="unitSize"
+                        id="unitSizeEdit"
                         min="1"
                         onChange={handleInputChange}
                         name="unitSize"
@@ -202,7 +202,7 @@ const EditProductModal = (props) => {
                     <div className="control">
                       <input
                         className="input"
-                        id="unitType"
+                        id="unitTypeEdit"
                         required
                         name="unitType"
                         placeholder="lbs"
@@ -220,7 +220,7 @@ const EditProductModal = (props) => {
                       <span className="icon is-small is-left">$</span>
                       <input
                         className="input"
-                        id="productPrice"
+                        id="productPriceEdit"
                         onChange={handleInputChange}
                         name="price"
                         value={productObject.price}
@@ -242,9 +242,9 @@ const EditProductModal = (props) => {
                     className="textarea"
                     type="text"
                     placeholder="Organic Strawberries"
-                    label="Product Description"
                     multiline="true"
                     rows={2}
+                    id="descriptionEdit"
                     variant="outlined"
                     onChange={handleInputChange}
                     name="description"
@@ -256,10 +256,10 @@ const EditProductModal = (props) => {
           </form>
         </section>
         <footer className="modal-card-foot field is-grouped is-grouped-centered">
-          <button className="button is-success" id="add-save" onClick={handleFormSubmit}>
+          <button className="button is-success" id="edit-save" onClick={handleFormSubmit}>
             Save
           </button>
-          <button className="button"  id="add-cancel" onClick={props.handleModalState}>
+          <button className="button"  id="edit-cancel" onClick={props.handleModalState}>
             Cancel
           </button>
         </footer>
