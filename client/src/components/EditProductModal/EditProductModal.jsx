@@ -24,7 +24,6 @@ const productType = [
 
 const EditProductModal = (props) => {
 
-let newPathway;
 
   const [productObject, setProductObject] = useState({
     name: "",
@@ -60,11 +59,14 @@ let newPathway;
   };
 
   const handleFormSubmit = (event) => {
+    let newPathway;
     event.preventDefault();
     props.handleModalState();
     for (let i = 0; i < productImages.length; i++){
       if(productImages[i].productName.includes(productObject.name.toLowerCase())){
         newPathway = productImages[i].imagePathway;
+      } else {
+        newPathway = "./assets/icons/addproducts.svg";
       }
     }
     API.updateProduct(props.id, {

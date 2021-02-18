@@ -45,9 +45,11 @@ const AddProductModal = (props) => {
 
     // loop through image array by productObject.name to get pathway and then set below
     for (let i = 0; i < productImages.length; i++) {
-      if (productObject.name.toLowerCase() === productImages[i].productName) {
+      if (productImages[i].productName.includes(productObject.name.toLowerCase())) {
         pathway = productImages[i].imagePathway;
         console.log(pathway);
+      } else {
+        pathway = "./assets/icons/addproducts.svg";
       }
     }
 

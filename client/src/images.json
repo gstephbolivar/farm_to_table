@@ -1,107 +1,107 @@
 [
 {
 "id":1,
-"productName":"apples",
+"productName":["apples","apple","red apple","red apples","fuji apples","fuji apple","honeycrisp", "honeycrisp apples", "honeycrisp apples"],
 "imagePathway": "/assets/product_images/fruits/apples.png"
 },
 {
 "id":2,
-"productName":"blueberries",
+"productName":["blueberries","blueberry","blueberrie"],
 "imagePathway": "/assets/product_images/fruits/blueberries.png"
 },
 {
 "id":3,
-"productName":["peaches", "peach"],
+"productName":["peaches", "peach","georgia peaches", "georgia peach", "nectarine", "nectarines"],
 "imagePathway": "/assets/product_images/fruits/peaches.png"
 },
 {
 "id":4,
-"productName":"strawberries",
+"productName":["strawberries", "strawberry", "strawberrie"],
 "imagePathway": "/assets/product_images/fruits/strawberries.png"
 },
 {
 "id":5,
-"productName":"watermelon",
+"productName":["watermelon","seedless watermelon","seeded watermelon", "personal watermelon"],
 "imagePathway": "/assets/product_images/fruits/watermelon.png"
 },
 {
 "id":6,
-"productName":"eggs",
+"productName":["eggs", "egg", "brown egg", "brown eggs", "free range eggs", "free-range eggs"],
 "imagePathway": "/assets/product_images/dairy/eggs.png"
 },
 {
 "id":7,
-"productName":"blue cheese",
+"productName":["blue cheese", "blue-cheese", "blue cheeses", "blue-cheeses"],
 "imagePathway": "/assets/product_images/dairy/blueCheese.png"
 },
 {
 "id":8,
-"productName":"milk",
+"productName":["milk", "whole milk", "fat free milk", "1% milk", "2% milk", "skim milk"],
 "imagePathway": "/assets/product_images/dairy/milk.png"
 },
 {
 "id":9,
-"productName":"parmesan cheese",
+"productName":["parmesan cheese", "parmesan", "parm"],
 "imagePathway": "/assets/product_images/dairy/parmesanCheese.png"
 },
 {
 "id":10,
-"productName":"swiss cheese",
+"productName":["swiss cheese", "swiss"],
 "imagePathway": "/assets/product_images/dairy/swissCheese.png"
 },
 {
 "id":11,
-"productName":"chicken breast",
+"productName":["chicken breast", "chicken", "chicken breasts"],
 "imagePathway": "/assets/product_images/meat/chicken.png"
 },
 {
 "id":12,
-"productName":"filet mignon",
+"productName":["filet mignon", "sirloin", "filet", "top sirloin", "beef", "steak"],
 "imagePathway": "/assets/product_images/meat/filet.png"
 },
 {
 "id":13,
-"productName":"pork chops",
-"imagePathway": "/assets/product_images/meat/porkChops.png"
+"productName":["pork chops", "chops", "pork", "pork chop"],
+"imagePathway": "/assets/product_images/meat/porkChop.png"
 },
 {
 "id":14,
-"productName":"new york strip",
+"productName":["new york strip", "new york strip steak", "new york", "strip steak", "strip"],
 "imagePathway": "/assets/product_images/meat/strips.png"
 },
 {
 "id":15,
-"productName":"chicken wings",
+"productName":["chicken wings", "drumsticks", "chicken drumsticks", "wings", "drumettes", "drummettes", "chicken legs"],
 "imagePathway": "/assets/product_images/meat/wings.png"
 },
 {
 "id":16,
-"productName":"broccoli",
+"productName":["broccoli", "head of broccoli", "broccoli head"],
 "imagePathway": "/assets/product_images/vegetables/broccoli.png"
 },
 {
 "id":17,
-"productName":"cabbage",
+"productName":["cabbage", "head of cabbage", "whole head of cabbage", "cabbage head"],
 "imagePathway": "/assets/product_images/vegetables/cabbage.png"
 },
 {
 "id":18,
-"productName":"carrots",
+"productName":["carrots", "carrot", "whole carrots", "whole carrot", "orange carrots", "carrot bundle", "bundle of carrots", "bushel of carrots"],
 "imagePathway": "/assets/product_images/vegetables/carrots.png"
 },
 {
 "id":19,
-"productName":"corn",
+"productName":["corn", "yellow corn", "sweet corn", "corn on the cob", "corn stocks", "unshucked corn", "shucked corn"],
 "imagePathway": "/assets/product_images/vegetables/corn.png"
 },
 {
 "id":20,
-"productName":"eggplant",
+"productName":["eggplant", "eggplants"],
 "imagePathway": "/assets/product_images/vegetables/eggplant.png"
 },
 {
 "id":21,
-"productName":"tomatoes",
+"productName":["tomatoes", "red tomatoes", "tomatoes on the vine", "vine tomatoes", "whole tomatoes", "ripe tomatoes", "tomato"],
 "imagePathway": "/assets/product_images/vegetables/tomatoes.png"
 }
 ]
