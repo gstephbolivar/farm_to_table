@@ -50,13 +50,13 @@ const AddProductModal = (props) => {
     // unit type check
     if (!value.quantity) {
       errors.quantity = "Quantity required";
-    } else if (regQuant.test(value.quantity)) {
+    } else if (!regQuant.test(value.quantity)) {
       errors.quantity = "Enter a valid quantity";
     }
 
     if (!value.unitSize) {
       errors.unitSize = "Unit size required";
-    } else if (regQuant.test(value.unitSize)) {
+    } else if (!regQuant.test(value.unitSize)) {
       errors.unitSize = "Enter a valid unit size";
     }
 
@@ -66,7 +66,7 @@ const AddProductModal = (props) => {
 
     if (!value.price) {
       errors.price = "Price required";
-    } else if (regPrice.test(value.price)) {
+    } else if (!regPrice.test(value.price)) {
       errors.price = "Enter a valid price";
     }
 
