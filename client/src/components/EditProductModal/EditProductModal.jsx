@@ -64,11 +64,12 @@ const EditProductModal = (props) => {
     props.handleModalState();
     for (let i = 0; i < productImages.length; i++){
       if(productImages[i].productName.includes(productObject.name.toLowerCase())){
-      newPathway = productImages[i].imagePathway;
+      newPathway = process.env.PUBLIC_URL+productImages[i].imagePathway;
       }
     }
     if(!newPathway){
-      newPathway = "./assets/icons/addproducts.svg";
+      let placeholder = "/assets/product_images/placeholder.png"
+      newPathway = process.env.PUBLIC_URL+placeholder
     }
     API.updateProduct(props.id, {
       name: productObject.name,

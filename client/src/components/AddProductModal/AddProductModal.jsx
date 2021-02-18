@@ -46,11 +46,12 @@ const AddProductModal = (props) => {
     // loop through image array by productObject.name to get pathway and then set below
     for (let i = 0; i < productImages.length; i++) {
       if (productImages[i].productName.includes(productObject.name.toLowerCase())) {
-        pathway = productImages[i].imagePathway;
+        pathway = process.env.PUBLIC_URL+productImages[i].imagePathway;
       } 
     }
     if(!pathway){
-      pathway = "./assets/icons/addproducts.svg";
+      let placeholder = "/assets/product_images/placeholder.png"
+      pathway = process.env.PUBLIC_URL+placeholder
     }
     API.addProduct({
       name: productObject.name,
