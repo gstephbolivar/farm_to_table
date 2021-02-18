@@ -35,16 +35,6 @@ const API = {
   placeOrder: (order) => {
     return axios.post("/api/orders", order);
   },
-  // used for checking users in database
-  checkUser: (user) => {
-    //console.log(user);
-    return axios.get("/api/users", {
-      params: {
-        email: user.email,
-        password: user.password,
-      },
-    });
-  },
 
   loginUser: (user) => {
     return axios.post("/api/users/login", {
@@ -64,10 +54,10 @@ const API = {
   getEmail: (id) => {
     return axios.get("/api/users/email", {
       params: {
-        id: id
-      }
-    })
-  }
+        id: id,
+      },
+    });
+  },
 };
 
 export default API;
