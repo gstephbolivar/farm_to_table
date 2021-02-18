@@ -1,10 +1,12 @@
 const nodemailer = require("nodemailer");
 
 module.exports = function (req, res) {
-
   const body = req.body;
 
-  const template = `Thank you for your order, ${body.name}! Your confirmation number is ${body.orderId}. You may come pick up your order whenever you decide. We will hold your order for 3 days.`;
+  const template = `You received an email from: ${req.body.name} at ${req.body.email}
+  ------------
+  ${req.body.message}
+  `;
 
   let transporter = nodemailer.createTransport({
     service: "yahoo",
@@ -19,8 +21,8 @@ module.exports = function (req, res) {
 
   const options = {
     from: "FarmToTable<farrmtotable@yahoo.com>", // sender address
-    to: body.email,
-    subject: "Order Confirmation",
+    to: "farrmtotable@yahoo.com",
+    subject: `Contact Request from ${req.body.name}`,
     text: template,
     html: template,
   };

@@ -1,9 +1,7 @@
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import CartItem from "../../components/CartItem/CartItem";
-
-import Grid from "@material-ui/core/Grid";
-
+import MobileCartItem from "../../components/CartItem/MobileCartItem";
 import "./cart.css";
 import CartContext from "../../utils/CartContext";
 import API from "../../utils/API";
@@ -86,14 +84,6 @@ const Cart = (props) => {
                           <h1 className="sub-title">Item</h1>
                         </div>
                       </th>
-                      <th className="is-vcentered total">
-                        <div
-                          className="vertical-center"
-                          style={{ height: 55, justifyContent: "center" }}
-                        >
-                          <h1 className="sub-title">Total Weight</h1>
-                        </div>
-                      </th>
                       <th className="is-vcentered">
                         <div
                           className="vertical-center"
@@ -117,22 +107,31 @@ const Cart = (props) => {
                     {lineItems.map((item, index) => (
                       <CartItem
                         lineItem={item}
-                        img="https://placedog.net/75/75"
                         key={index}
                         handleItemChange={props.handleAddToCart}
                         deleteItem={props.deleteItemFromCart}
-                        unitSize={item.unitSize}
-                        unitType={item.unitType}
                       />
                     ))}
                   </tbody>
                 </table>
               </div>
+              <div id="mobile-cart">
+                {
+                  lineItems.map((item, index) => (
+                    <MobileCartItem
+                    lineItem={item}
+                    key={index}
+                    handleItemChange={props.handleAddToCart}
+                    deleteItem={props.deleteItemFromCart}
+                  />
+                  ))
+                }
+              </div>
             </section>
 
-            <div class="columns is-mobile has-text-centered">
-              <div class="column is-four-fifths-desktop is-three-quarters-tablet is-two-thirds-mobile"></div>
-              <div class="column is-mobile">
+            <div className="columns is-mobile has-text-centered">
+              <div className="column is-four-fifths-desktop is-three-quarters-tablet is-two-thirds-mobile"></div>
+              <div className="column is-mobile">
                       <br/>
                       <br/>
                  <h6>Subtotal: ${subTotal.toFixed(2)}</h6> 

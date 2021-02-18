@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import API from "../../utils/API";
 import productImages from "../../images.json";
 
-
 const productType = [
   {
     value: "fruit",
@@ -24,7 +23,6 @@ const productType = [
 
 const EditProductModal = (props) => {
 
-
   const [productObject, setProductObject] = useState({
     name: "",
     unitSize: 0,
@@ -33,24 +31,24 @@ const EditProductModal = (props) => {
     category: "",
     unitType: "",
     description: "",
-    pathway: ""
+    pathway: "",
   });
 
   useEffect(() => {
-    if(props.id){
-    API.getOneProduct(props.id).then((res) => {
-      setProductObject({
-        name: res.data.name,
-        unitSize: res.data.unitSize,
-        price: res.data.price,
-        quantity: res.data.quantity,
-        category: res.data.category,
-        unitType: res.data.unitType,
-        description: res.data.description,
-        pathway: res.data.pathway
+    if (props.id) {
+      API.getOneProduct(props.id).then((res) => {
+        setProductObject({
+          name: res.data.name,
+          unitSize: res.data.unitSize,
+          price: res.data.price,
+          quantity: res.data.quantity,
+          category: res.data.category,
+          unitType: res.data.unitType,
+          description: res.data.description,
+          pathway: res.data.pathway,
+        });
       });
-    });
-  }
+    }
   }, [props.id]);
 
   const handleInputChange = (event) => {
@@ -102,7 +100,7 @@ const EditProductModal = (props) => {
     <>
       <div className="modal-background"></div>
       <div className="modal-card is-mobile">
-      <header className="modal-card-head">
+        <header className="modal-card-head">
           <p className="modal-card-title has-text-centered add-product-headline">
             Edit Product
           </p>

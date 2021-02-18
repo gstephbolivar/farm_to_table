@@ -34,6 +34,51 @@ const AddProductModal = (props) => {
     pathway: "",
   });
 
+  const [errorMessage, setErrorMessage] = useState({});
+
+  const validateForm = (value) => {
+    let errors = {};
+    let isValid = false;
+
+    const regQuant = /^\d+$/;
+    const regPrice = /^\d+(?:\.\d{1,2})?$/;
+
+    // product name check
+    if (!value.name.trim()) {
+      errors.name = "Product Name required";
+    }
+    // unit type check
+    if (!value.quantity) {
+      errors.quantity = "Quantity required";
+    } else if (!regQuant.test(value.quantity)) {
+      errors.quantity = "Enter a valid quantity";
+    }
+
+    if (!value.unitSize) {
+      errors.unitSize = "Unit size required";
+    } else if (!regQuant.test(value.unitSize)) {
+      errors.unitSize = "Enter a valid unit size";
+    }
+
+    if (!value.unitType) {
+      errors.unitType = "Quantity required";
+    }
+
+    if (!value.price) {
+      errors.price = "Price required";
+    } else if (!regPrice.test(value.price)) {
+      errors.price = "Enter a valid price";
+    }
+
+    if (Object.keys(errors).length === 0) {
+      isValid = true;
+    }
+
+    setErrorMessage(errors);
+    //console.log(isValid);
+    return isValid;
+  };
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setProductObject({ ...productObject, [name]: value });
@@ -42,6 +87,8 @@ const AddProductModal = (props) => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     let pathway;
+
+    const isValid = validateForm(productObject);
 
     // loop through image array by productObject.name to get pathway and then set below
     for (let i = 0; i < productImages.length; i++) {
@@ -53,30 +100,33 @@ const AddProductModal = (props) => {
       let placeholder = "/assets/product_images/placeholder.png"
       pathway = process.env.PUBLIC_URL+placeholder
     }
-    API.addProduct({
-      name: productObject.name,
-      unitSize: productObject.unitSize,
-      price: productObject.price,
-      quantity: productObject.quantity,
-      category: productObject.category,
-      unitType: productObject.unitType,
-      description: productObject.description,
-      pathway: pathway,
-    })
-      .then(() => {
-        setProductObject({
-          name: "",
-          unitSize: 0,
-          price: 0,
-          quantity: 0,
-          category: "",
-          unitType: "",
-          description: "",
-        });
-        props.loadProducts();
-        props.handleAddProductModalState();
+
+    if (isValid) {
+      API.addProduct({
+        name: productObject.name,
+        unitSize: productObject.unitSize,
+        price: productObject.price,
+        quantity: productObject.quantity,
+        category: productObject.category,
+        unitType: productObject.unitType,
+        description: productObject.description,
+        pathway: pathway,
       })
-      .catch((err) => console.log(err));
+        .then(() => {
+          setProductObject({
+            name: "",
+            unitSize: 0,
+            price: 0,
+            quantity: 0,
+            category: "fruit",
+            unitType: "",
+            description: "",
+          });
+          props.loadProducts();
+          props.handleAddProductModalState();
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   return (
@@ -94,7 +144,7 @@ const AddProductModal = (props) => {
               <div className="column is-10 is-offset-1">
                 <img
                   title="Stock Image"
-                  id="product-imageAdd"
+                  id="product-image-add"
                   src="./assets/icons/addproducts.svg"
                   alt="fresh produce"
                   height="auto"
@@ -109,6 +159,7 @@ const AddProductModal = (props) => {
                     <div className="control">
                       <div className="select">
                         <select
+                          placeholder="category"
                           id="selectCategoryAdd"
                           label="Select Type"
                           name="category"
@@ -140,6 +191,9 @@ const AddProductModal = (props) => {
                         value={productObject.name}
                       />
                     </div>
+                    {errorMessage.name && (
+                      <p className="addProd-errors">{errorMessage.name}</p>
+                    )}
                   </div>
 
                   {/* This is the total number of "units" that are available to be sold. It is calculated for you as you enter the total amount of each product and the unit size to sell by. */}
@@ -157,6 +211,9 @@ const AddProductModal = (props) => {
                         value={productObject.quantity}
                       />
                     </div>
+                    {errorMessage.quantity && (
+                      <p className="addProd-errors">{errorMessage.quantity}</p>
+                    )}
                   </div>
                 </div>
 
@@ -177,6 +234,9 @@ const AddProductModal = (props) => {
                         type="number"
                       />
                     </div>
+                    {errorMessage.unitSize && (
+                      <p className="addProd-errors">{errorMessage.unitSize}</p>
+                    )}
                   </div>
 
                   {/* The unit type the product will be sold by */}
@@ -194,6 +254,9 @@ const AddProductModal = (props) => {
                         type="text"
                       />
                     </div>
+                    {errorMessage.unitType && (
+                      <p className="addProd-errors">{errorMessage.unitType}</p>
+                    )}
                   </div>
 
                   {/* the price at which each unit is sold per unit */}
@@ -212,6 +275,9 @@ const AddProductModal = (props) => {
                         type="number"
                       />
                     </div>
+                    {errorMessage.price && (
+                      <p className="addProd-errors">{errorMessage.price}</p>
+                    )}
                   </div>
                 </div>
               </div>
