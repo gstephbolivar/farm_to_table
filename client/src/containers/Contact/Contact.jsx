@@ -1,5 +1,4 @@
 import React from "react";
-import AdminContactCard from "../../components/AdminContactCard/AdminContactCard";
 import UserContactCard from "../../components/UserContactCard/UserContactCard";
 
 const Contact = () => {
@@ -19,9 +18,6 @@ const Contact = () => {
         </div>
 
         <div className="container">
-          {/* {window.location.pathname === "/admin/contact" && <AdminContactCard />} */}
-          {/* {window.location.pathname === "/user/contact" && <UserContactCard />} */}
-          {/* <AdminContactCard /> */}
           <UserContactCard />
         </div>
       </section>
