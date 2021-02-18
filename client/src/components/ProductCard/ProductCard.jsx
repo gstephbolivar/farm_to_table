@@ -30,7 +30,6 @@ const ProductCard = ({
     totalCost: 0,
     inStock: quantity,
     pathway: pathway,
-    totalWeight: 0,
     unitSize: unitSize,
     unitType: unitType,
   });
@@ -45,18 +44,12 @@ const ProductCard = ({
     return itemCost;
   };
 
-  const calculateTotalWeight = (quantity) => {
-    const weight = lineItemState.unitSize * quantity;
-    console.log(weight);
-    console.log(lineItemState.unitSize);
-    console.log(quantity);
-    return weight;
-  };
-
   const handleDeleteButton = () => {
     API.deleteProduct(_id)
       .then((res) => loadProducts())
       .catch((err) => console.log(err));
+
+      toast.dark("Item Deleted", { hideProgressBar: true, autoClose: 1000 });
   };
 
   const handleAddClick = (e) => {
@@ -66,7 +59,6 @@ const ProductCard = ({
     }
 
     let cost = calculateCost(dropDownState);
-    let weight = calculateTotalWeight(dropDownState);
 
     if (quantity < addedProductState + dropDownState) {
       const maxCanOrder = quantity - addedProductState;
@@ -82,7 +74,6 @@ const ProductCard = ({
       ...lineItemState,
       quantity: dropDownState,
       totalCost: cost,
-      totalWeight: weight,
     };
 
     setLineItemState({ ...lineItem });

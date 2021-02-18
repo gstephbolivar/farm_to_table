@@ -1,6 +1,18 @@
+.cat-head {
+  background-color: #e0ebd9;
+}
 .panel-block {
   height: 60px;
-  margin-left: 12px;
+  padding-left: 12px;
+  
+}
+
+.block-hover {
+  cursor: pointer;
+}
+
+.block-hover:hover {
+background-color: #f9f9f9;
 }
 
 .panel {

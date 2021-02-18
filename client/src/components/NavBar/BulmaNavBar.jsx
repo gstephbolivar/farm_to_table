@@ -5,8 +5,10 @@ import { useContext } from "react";
 import CartContext from "../../utils/CartContext";
 import CartBadge from "../CartBadge/CartBadge";
 
+
 const BulmaNavBar = ({ role, token, setRole, setToken, setCartState }) => {
   const { lineItems } = useContext(CartContext);
+
   const count = lineItems.reduce(
     (total, current) => total + current.quantity,
     0,
