@@ -68,3 +68,9 @@
   color: white;
   box-shadow: none;
 }
+
+.addProd-errors {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 10px;
+}

@@ -15,6 +15,7 @@ const SignUp = () => {
 
   const [errorMessage, setErrorMessage] = useState({});
 
+  // validates input fields
   const validateForm = (value) => {
     let errors = {};
     let isValid = false;
@@ -47,10 +48,12 @@ const SignUp = () => {
       errors.password = "Password must be longer than 6 characters";
     }
 
+    // sets the isValid flag to true if there are no errors
     if (Object.keys(errors).length === 0) {
       isValid = true;
     }
 
+    // errors set to state and isValid flag returned
     setErrorMessage(errors);
     //console.log(isValid);
     return isValid;
@@ -70,6 +73,7 @@ const SignUp = () => {
     const isValid = validateForm(userObject);
     //console.log(isValid);
 
+    // if there are no errors, the API call is made to create an account
     if (isValid) {
       API.addUser({
         name: userObject.name,
