@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import API from "../../utils/API";
 import productImages from "../../images.json";
 
-
 const productType = [
   {
     value: "fruit",
@@ -23,8 +22,7 @@ const productType = [
 ];
 
 const EditProductModal = (props) => {
-
-let newPathway;
+  let newPathway;
 
   const [productObject, setProductObject] = useState({
     name: "",
@@ -34,24 +32,24 @@ let newPathway;
     category: "",
     unitType: "",
     description: "",
-    pathway: ""
+    pathway: "",
   });
 
   useEffect(() => {
-    if(props.id){
-    API.getOneProduct(props.id).then((res) => {
-      setProductObject({
-        name: res.data.name,
-        unitSize: res.data.unitSize,
-        price: res.data.price,
-        quantity: res.data.quantity,
-        category: res.data.category,
-        unitType: res.data.unitType,
-        description: res.data.description,
-        pathway: res.data.pathway
+    if (props.id) {
+      API.getOneProduct(props.id).then((res) => {
+        setProductObject({
+          name: res.data.name,
+          unitSize: res.data.unitSize,
+          price: res.data.price,
+          quantity: res.data.quantity,
+          category: res.data.category,
+          unitType: res.data.unitType,
+          description: res.data.description,
+          pathway: res.data.pathway,
+        });
       });
-    });
-  }
+    }
   }, [props.id]);
 
   const handleInputChange = (event) => {
@@ -62,8 +60,10 @@ let newPathway;
   const handleFormSubmit = (event) => {
     event.preventDefault();
     props.handleModalState();
-    for (let i = 0; i < productImages.length; i++){
-      if(productImages[i].productName.includes(productObject.name.toLowerCase())){
+    for (let i = 0; i < productImages.length; i++) {
+      if (
+        productImages[i].productName.includes(productObject.name.toLowerCase())
+      ) {
         newPathway = productImages[i].imagePathway;
       }
     }
@@ -98,7 +98,7 @@ let newPathway;
     <>
       <div className="modal-background"></div>
       <div className="modal-card is-mobile">
-      <header className="modal-card-head">
+        <header className="modal-card-head">
           <p className="modal-card-title has-text-centered add-product-headline">
             Edit Product
           </p>
@@ -257,7 +257,11 @@ let newPathway;
           <button className="button" id="add-save" onClick={handleFormSubmit}>
             Save
           </button>
-          <button className="button"  id="add-cancel" onClick={props.handleModalState}>
+          <button
+            className="button"
+            id="add-cancel"
+            onClick={props.handleModalState}
+          >
             Cancel
           </button>
         </footer>
