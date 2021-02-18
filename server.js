@@ -2,9 +2,10 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
-const sendMail = require('./utils/mailer.js')
-
-
+const sendMail = require("./utils/mailer.js");
+const cors = require("cors");
+const nodemailer = require("nodemailer");
+const router = express.Router();
 
 const app = express();
 const db = require("./models");
@@ -13,6 +14,8 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use("/", router);
+app.use(cors());
 
 const AuthController = require("./controllers/authController");
 
@@ -135,8 +138,8 @@ app.post("/api/lineitems", (req, res) => {
 });
 
 app.post("/api/sendconfirmation", (req, res) => {
-      sendMail(req, res);
-  })
+  sendMail(req, res);
+});
 
 async function updateProductQuantity(result) {
   db.Products.find({}).then(async (products) => {
@@ -192,6 +195,66 @@ app.delete("/api/products/:id", (req, res) => {
     .catch((err) => {
       res.json(err);
     });
+});
+
+// let contactEmail = nodemailer.createTransport({
+//   service: "yahoo",
+//   host: "smtp.mail.yahoo.com",
+//   port: 587,
+//   secure: false,
+//   auth: {
+//     user: "farrmtotable@yahoo.com",
+//     pass: "rvocokhuzefmyrch",
+//   },
+// });
+
+// contactEmail.verify((error) => {
+//   if (error) {
+//     console.log(error);
+//   } else {
+//     console.log("Ready to send");
+//   }
+// });
+
+router.post("/contact", (req, res) => {
+  let contactEmail = nodemailer.createTransport({
+    service: "yahoo",
+    host: "smtp.mail.yahoo.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: "farrmtotable",
+      pass: "rvocokhuzefmyrch",
+    },
+  });
+  
+  contactEmail.verify((error) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Ready to send");
+    }
+  });
+  console.log(req.body);
+  const name = req.body.name;
+  const email = req.body.email;
+  const message = req.body.message;
+  const mail = {
+    from: "farrmtotable@yahoo.com",
+    to: email,
+    subject: "Contact Form Submission",
+    html: `<p>Name: ${name}</p>
+           <p>Email: ${email}</p>
+           <p>Message: ${message}</p>`,
+  };
+  contactEmail.sendMail(mail, (error) => {
+    console.log(error);
+    if (error) {
+      res.json({ status: "ERROR" });
+    } else {
+      res.json({ status: "Message Sent" });
+    }
+  });
 });
 
 //POST api route to create a user
