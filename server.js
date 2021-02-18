@@ -3,9 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const sendMail = require("./utils/mailer.js");
-const cors = require("cors");
-const nodemailer = require("nodemailer");
-const router = express.Router();
+const contactMail = require("./utils/contactMailer");
 
 const app = express();
 const db = require("./models");
@@ -14,8 +12,6 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use("/", router);
-app.use(cors());
 
 const AuthController = require("./controllers/authController");
 
@@ -197,97 +193,12 @@ app.delete("/api/products/:id", (req, res) => {
     });
 });
 
-// let contactEmail = nodemailer.createTransport({
-//   service: "yahoo",
-//   host: "smtp.mail.yahoo.com",
-//   port: 587,
-//   secure: false,
-//   auth: {
-//     user: "farrmtotable@yahoo.com",
-//     pass: "rvocokhuzefmyrch",
-//   },
-// });
-
-// contactEmail.verify((error) => {
-//   if (error) {
-//     console.log(error);
-//   } else {
-//     console.log("Ready to send");
-//   }
-// });
-
-router.post("/contact", (req, res) => {
-  let contactEmail = nodemailer.createTransport({
-    service: "yahoo",
-    host: "smtp.mail.yahoo.com",
-    port: 587,
-    secure: false,
-    auth: {
-      user: "farrmtotable",
-      pass: "rvocokhuzefmyrch",
-    },
-  });
-  
-  contactEmail.verify((error) => {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log("Ready to send");
-    }
-  });
-  console.log(req.body);
-  const name = req.body.name;
-  const email = req.body.email;
-  const message = req.body.message;
-  const mail = {
-    from: "farrmtotable@yahoo.com",
-    to: email,
-    subject: "Contact Form Submission",
-    html: `<p>Name: ${name}</p>
-           <p>Email: ${email}</p>
-           <p>Message: ${message}</p>`,
-  };
-  contactEmail.sendMail(mail, (error) => {
-    console.log(error);
-    if (error) {
-      res.json({ status: "ERROR" });
-    } else {
-      res.json({ status: "Message Sent" });
-    }
-  });
+// POST route for user to contact website
+app.post("/api/contact", (req, res) => {
+  contactMail(req, res);
 });
 
-//POST api route to create a user
-// app.post("/api/users", ({ body }, res) => {
-//   db.User.create(body)
-//     .then((result) => {
-//       res.json(result);
-//     })
-//     .catch((err) => {
-//       res.json(err);
-//     });
-// });
 
-// need to check the database
-// app.post("/api/login", (req, res) => {
-//   res.json({
-//     message: "Successfully logged in!",
-//     token: "AdminToken",
-//   });
-// });
-
-// GET api route to return selected user
-// app.get("/api/users", (req, res) => {
-//   db.User.findOne({
-//     email: req.query.email,
-//     password: req.query.password,
-//   })
-//     .then((result) => {
-//       console.log(req.query);
-//       res.json(result);
-//     })
-//     .catch((err) => res.json(err));
-// });
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"));
