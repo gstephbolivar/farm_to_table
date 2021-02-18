@@ -16,18 +16,9 @@ const CartItem = (props) => {
     return itemCost;
   };
 
-  const calculateTotalWeight = (quantity) => {
-    const weight = props.unitSize * quantity;
-    console.log(weight);
-    console.log(props.unitSize);
-    console.log(quantity);
-    return weight;
-  };
-
   const handleOnBlur = (e) => {
     let newQuantity = valueState === "" ? 0 : parseInt(valueState);
     let newCost = calculateCost(newQuantity);
-    let newWeight = calculateTotalWeight(newQuantity);
 
     if (props.lineItem.inStock < newQuantity) {
       let warningMessage =
@@ -37,11 +28,10 @@ const CartItem = (props) => {
       newQuantity = props.lineItem.inStock;
       setValueState(newQuantity);
       newCost = calculateCost(newQuantity);
-      newWeight = calculateCost(newQuantity);
     }
 
     props.handleItemChange(
-      { ...props.lineItem, quantity: newQuantity, totalCost: newCost , totalWeight: newWeight},
+      { ...props.lineItem, quantity: newQuantity, totalCost: newCost },
       true
     );
   };
@@ -51,17 +41,7 @@ const CartItem = (props) => {
       <td className="is-vcentered">
         <div className="vertical-center" style={{ padding: 10 }}>
           <img id="thumbnail" src={props.lineItem.pathway} alt="item description"  />
-          <span>{props.lineItem.name}</span>
-        </div>
-      </td>
-      <td className="is-vcentered total">
-        <div
-          className="vertical-center"
-          style={{ height: 55, justifyContent: "center" }}
-        >
-          <div>
-            <h1>{props.lineItem.totalWeight} {props.unitType}</h1>
-          </div>
+          <span>{props.lineItem.name} ({props.lineItem.price} per {props.lineItem.unitType})</span>
         </div>
       </td>
       <td className="is-vcentered">
@@ -87,7 +67,7 @@ const CartItem = (props) => {
           className="vertical-center"
           style={{ height: 55, justifyContent: "center" }}
         >
-          <div>${props.lineItem.price}</div>
+          <div>${props.lineItem.totalCost.toFixed(2)}</div>
         </div>
       </td>
       <td className="is-vcentered">

@@ -8,6 +8,7 @@ import AddProductModal from "../../components/AddProductModal/AddProductModal";
 import AddProductButtonCard from "../../components/AddProductButtonCard/AddProductButtonCard";
 import "./adminProducts.css";
 
+
 const Products = () => {
   const [productID, setProductID] = useState("");
   const [modal, setModal] = useState("modal");
@@ -83,6 +84,7 @@ const Products = () => {
   return (
     <div>
       <section className="section">
+      
         <div className="container">
           <div className="columns">
             <div className="column"></div>
