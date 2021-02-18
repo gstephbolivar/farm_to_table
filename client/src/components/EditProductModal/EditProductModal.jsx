@@ -22,7 +22,6 @@ const productType = [
 ];
 
 const EditProductModal = (props) => {
-
   const [productObject, setProductObject] = useState({
     name: "",
     unitSize: 0,
@@ -60,14 +59,16 @@ const EditProductModal = (props) => {
     event.preventDefault();
     let newPathway;
     props.handleModalState();
-    for (let i = 0; i < productImages.length; i++){
-      if(productImages[i].productName.includes(productObject.name.toLowerCase())){
-      newPathway = process.env.PUBLIC_URL+productImages[i].imagePathway;
+    for (let i = 0; i < productImages.length; i++) {
+      if (
+        productImages[i].productName.includes(productObject.name.toLowerCase())
+      ) {
+        newPathway = process.env.PUBLIC_URL + productImages[i].imagePathway;
       }
     }
-    if(!newPathway){
-      let placeholder = "/assets/product_images/placeholder.png"
-      newPathway = process.env.PUBLIC_URL+placeholder
+    if (!newPathway) {
+      let placeholder = "/assets/product_images/placeholder.png";
+      newPathway = process.env.PUBLIC_URL + placeholder;
     }
     API.updateProduct(props.id, {
       name: productObject.name,
@@ -248,6 +249,7 @@ const EditProductModal = (props) => {
                     variant="outlined"
                     onChange={handleInputChange}
                     name="description"
+                    maxlength={50}
                     value={productObject.description}
                   ></textarea>
                 </div>
@@ -256,10 +258,18 @@ const EditProductModal = (props) => {
           </form>
         </section>
         <footer className="modal-card-foot field is-grouped is-grouped-centered">
-          <button className="button is-success" id="edit-save" onClick={handleFormSubmit}>
+          <button
+            className="button is-success"
+            id="edit-save"
+            onClick={handleFormSubmit}
+          >
             Save
           </button>
-          <button className="button"  id="edit-cancel" onClick={props.handleModalState}>
+          <button
+            className="button"
+            id="edit-cancel"
+            onClick={props.handleModalState}
+          >
             Cancel
           </button>
         </footer>
