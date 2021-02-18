@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import ContactForm from "../ContactForm/ContactForm";
 
 const UserContactCard = () => {
-    const [contactForm, setContactForm] = useState({});
+
   return (
     <>
       <div className="container has-text-centered">
@@ -22,48 +22,6 @@ const UserContactCard = () => {
         </div>
         <div>
             <ContactForm />
-          {/* <div className="field">
-            <label className="label">Name</label>
-            <div className="control">
-              <input className="input" type="text" placeholder="Jane Doe" />
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="label">Email</label>
-            <div class="control has-icons-left has-icons-right">
-              <input
-                class="input is-danger"
-                type="email"
-                placeholder="Email input"
-                // value="hello@"
-              />
-              <span class="icon is-small is-left">
-                <i class="fas fa-envelope"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i class="fas fa-exclamation-triangle"></i>
-              </span>
-            </div>
-            <p class="help is-danger">This email is invalid</p>
-          </div>
-
-          <div className="field">
-            <label className="label">Message</label>
-            <div className="control">
-              <textarea
-                className="textarea"
-                placeholder="How can we help you?"
-              ></textarea>
-            </div>
-          </div>
-
-          <div className="field is-grouped">
-            <div className="control">
-              <button className="button is-link">Submit</button>
-            </div>
-          
-          </div> */}
         </div>
       </div>
     </>
