@@ -48,6 +48,8 @@ const ProductCard = ({
     API.deleteProduct(_id)
       .then((res) => loadProducts())
       .catch((err) => console.log(err));
+
+      toast.dark("Item Deleted", { hideProgressBar: true, autoClose: 1000 });
   };
 
   const handleAddClick = (e) => {

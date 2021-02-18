@@ -1,60 +1,60 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import ReservedProducts from "../../components/ReservedProducts/ReservedProducts";
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import "./confirmation.css";
 
 const Confirmation = (props) => {
-    const history= useHistory();
+  const history = useHistory();
   return (
-    <section>
+    <section className="section">
       <div className="container has-text-centered">
-        <div className="columns is-centered is-mulitline">
-          <div className="column is-8">
-            <h1>Ordered Confirmed.</h1>
-            <h3> Thank you for your order!</h3>
-            <p>
+        <div className="columns is-centered is-mulitline"></div>
+        <div className="columns is-vcentered">
+          <div className="column is-two-thirds">
+            <img
+              src="./assets/icons/login_1.svg"
+              className="figure-img img-fluid rounded"
+              id="IconConfirm"
+              alt="avocado and apple"
+            />
+            <h3 className="title confirm-head-one"> Thank You!</h3>
+            <h3 className="title confirm-head-two">
+              {" "}
+              Your order has been received!
+            </h3>
+            <p className="subtitle confirm-text">
               {" "}
               We look forward to seeing you and handing you only the freshest
-              ingredients available this season! We accept debit and credit card & cash.{" "}
+              ingredients available this season! We accept debit and credit card
+              & cash.{" "}
             </p>
-            <br />
-            <section className="hero has-text-centered">
-        <div className="table-container">
-          <table className="table is-fullwidth">
-            <thead>
-              <tr>
-                <th>
-                  <div className="center">
-                    <h1 className="sub-title">Item(s) Reserved</h1>
-                  </div>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <ReservedProducts 
-              items= {props.history.location.state.line}
-              total={props.history.location.state.subTotal}/>
-            </tbody>
-           
-          </table>
-        </div>
-      </section>
-            <br />
-            <div className="buttons are-medium is-centered">
-              <Link to="/" className="button" type="button" id="shopNow">
-                Home
-              </Link>
-            </div>
-            <div className="buttons are-medium is-centered">
+            <div className="buttons is-centered">
               <Link
                 to="/allproducts"
                 className="button"
                 type="button"
-                id="shopNow"
+                id="continueBtn"
               >
                 Continue Shopping
               </Link>
             </div>
+          </div>
+          <div className="column">
+            <nav className="panel">
+              <p className="panel-heading order-head">Order Summary</p>
+
+              <ReservedProducts
+                items={props.history.location.state.line}
+                total={props.history.location.state.subTotal}
+              />
+
+              <div className="field is-grouped is-grouped-centered previous-orders">
+                <button className="button is-half" id="view-previous-orders">
+                  View Previous Orders
+                </button>
+              </div>
+            </nav>
           </div>
         </div>
       </div>
