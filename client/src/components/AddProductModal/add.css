@@ -68,3 +68,12 @@
   color: white;
   box-shadow: none;
 }
+
+/* TOAST */
+.Toastify__toast--danger {
+  background: #ef4343 !important;
+  font-family: "Open Sans", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  box-shadow: none !important;
+}

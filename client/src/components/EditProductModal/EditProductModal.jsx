@@ -254,7 +254,7 @@ let newPathway;
           </form>
         </section>
         <footer className="modal-card-foot field is-grouped is-grouped-centered">
-          <button className="button is-success" id="add-save" onClick={handleFormSubmit}>
+          <button className="button" id="add-save" onClick={handleFormSubmit}>
             Save
           </button>
           <button className="button"  id="add-cancel" onClick={props.handleModalState}>
