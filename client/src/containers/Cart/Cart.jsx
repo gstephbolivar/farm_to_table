@@ -1,9 +1,7 @@
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import CartItem from "../../components/CartItem/CartItem";
-
-import Grid from "@material-ui/core/Grid";
-
+import MobileCartItem from "../../components/CartItem/MobileCartItem";
 import "./cart.css";
 import CartContext from "../../utils/CartContext";
 import API from "../../utils/API";
@@ -116,6 +114,18 @@ const Cart = (props) => {
                     ))}
                   </tbody>
                 </table>
+              </div>
+              <div id="mobile-cart">
+                {
+                  lineItems.map((item, index) => (
+                    <MobileCartItem
+                    lineItem={item}
+                    key={index}
+                    handleItemChange={props.handleAddToCart}
+                    deleteItem={props.deleteItemFromCart}
+                  />
+                  ))
+                }
               </div>
             </section>
 
