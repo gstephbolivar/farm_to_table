@@ -4,6 +4,7 @@ import Home from "./containers/Home/Home.jsx";
 import AllProducts from "./containers/AllProducts/AllProducts.jsx";
 import Cart from "./containers/Cart/Cart.jsx";
 import Confirmation from "./containers/Confirmation/Confirmation";
+import Contact from "./containers/Contact/Contact";
 import Login from "./containers/Login/Login";
 import SignUp from "./containers/SignUp/SignUp";
 import AdminProducts from "./containers/AdminProducts/AdminProducts";
@@ -114,6 +115,7 @@ function App() {
               )}
             />
             <Route path="/confirmation" component={Confirmation} />
+            <Route path="/contact" component={Contact} />
             <Route
               path="/login"
               render={(props) => (
