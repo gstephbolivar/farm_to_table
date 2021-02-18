@@ -12,6 +12,7 @@ import BulmaNavBar from "./components/NavBar/BulmaNavBar.jsx";
 import Footer from "./components/Footer/Footer";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import CartContext from "./utils/CartContext";
+import OrderHistory from "./containers/OrderHistory/OrderHistory";
 import "./App.css";
 
 function App() {
@@ -100,7 +101,11 @@ function App() {
             <Route
               path="/allproducts"
               render={(props) => (
-                <AllProducts {...props} handleAddToCart={handleAddToCart} token={token}/>
+                <AllProducts
+                  {...props}
+                  handleAddToCart={handleAddToCart}
+                  token={token}
+                />
               )}
             />
             <Route
@@ -128,6 +133,7 @@ function App() {
               )}
             />
             <Route path="/signup" component={SignUp} />
+            <Route path="/orderHistory" component={OrderHistory} />
 
             <ProtectedRoute
               exact

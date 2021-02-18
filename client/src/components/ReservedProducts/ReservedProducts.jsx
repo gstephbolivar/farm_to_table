@@ -1,13 +1,11 @@
 import React from "react";
 import "./reserved.css";
 
-
 const ReservedProducts = (props) => {
   return (
     <>
       {props.items.map((item) => (
-       
-        <div className="panel-block">
+        <div className="panel-block" key={item.name}>
           <figure className="is-vcentered">
             <img
               id="confirmationImage"
@@ -16,7 +14,6 @@ const ReservedProducts = (props) => {
               width="50"
               height="50"
               // key={item.id}
-
             />
           </figure>
           <p id="item-reserved">{item.name}</p>
