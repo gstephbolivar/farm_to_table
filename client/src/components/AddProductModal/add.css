@@ -16,19 +16,20 @@
   color: #a9a9a9;
 }
 
-#selectCategory,
+#selectCategoryEdit,
+#selectCategoryAdd,
 .input,
 .textarea {
   font-family: "Open Sans", sans-serif;
   font-weight: 500;
 }
 
-#product-image {
+#product-image-add, #product-image-edit {
   padding-bottom: 20px;
   width: 40%;
 }
 
-#add-save {
+#add-save, #edit-save {
   background-color: #873e97;
   color: white;
   width: 20%;
@@ -42,6 +43,8 @@
   transition-property: color, background-color;
 }
 #add-save:hover,
+#edit-save:hover,
+#edit-save:focus,
 #add-save:focus {
   background-color: #672f73;
   color: white;
@@ -49,7 +52,8 @@
 }
 
 /* Remove button animation fade */
-#add-cancel {
+#add-cancel,
+#edit-cancel {
   background-color: #58a245;
   color: white;
   width: 20%;
@@ -63,7 +67,9 @@
   transition-property: color, background-color;
 }
 #add-cancel:hover,
-#add-cancel:focus {
+#add-cancel:focus,
+#edit-cancel:hover,
+#edit-cancel:focus {
   background-color: #457e36;
   color: white;
   box-shadow: none;
