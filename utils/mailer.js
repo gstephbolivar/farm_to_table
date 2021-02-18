@@ -1,5 +1,4 @@
 const nodemailer = require("nodemailer");
-// const mailGun = require("nodemailer")
 
 module.exports = function (req, res) {
 
