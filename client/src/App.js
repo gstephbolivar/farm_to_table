@@ -13,6 +13,7 @@ import Footer from "./components/Footer/Footer";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import CartContext from "./utils/CartContext";
 import "./App.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const [token, setToken] = useState(
@@ -95,12 +96,17 @@ function App() {
             setToken={setToken}
             setCartState={setCartState}
           />
+          <ToastContainer />
           <Switch>
             <Route path="/home" component={Home} />
             <Route
               path="/allproducts"
               render={(props) => (
-                <AllProducts {...props} handleAddToCart={handleAddToCart} token={token}/>
+                <AllProducts
+                  {...props}
+                  handleAddToCart={handleAddToCart}
+                  token={token}
+                />
               )}
             />
             <Route
