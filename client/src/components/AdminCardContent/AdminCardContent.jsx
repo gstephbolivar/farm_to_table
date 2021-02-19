@@ -65,7 +65,11 @@ const AdminCardContent = (props) => {
           <button className="delete" aria-label="close" onClick={handleDeleteModalState} ></button>
         </header>
         <section className="modal-card-body">
-          <p>Are you sure you want to delete this product from your inventory? If you think you will carry this product again please click "Out of Season" and it will no longer display to customers.</p>
+          <p>Are you sure you want to delete this product from your inventory?</p>
+          <br/>
+          <p>If you think you will carry this product again please click "Out of Season", this will change the "category" so that the product will no longer display to customers.</p> 
+          <br/>
+          <p>When you are ready to display this product again in the future simply change the "category" back to normal.</p>
         </section>
         <footer className="modal-card-foot field is-grouped is-grouped-centered">
           <button
