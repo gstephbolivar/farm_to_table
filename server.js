@@ -66,6 +66,20 @@ app.get("/api/products", (req, res) => {
     });
 });
 
+app.get("/api/orders/:id", (req, res) => {
+  db.Order.findById(req.params.id)
+    // .populate("LineItem")
+    // .populate("product")
+    // .populate("name")
+    .then((orders) => {
+      res.json(orders);
+      console.log(orders);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
 //GET api route to return all products based on category
 app.get("/api/products/filtered/:category", (req, res) => {
   //console.log(req.params.category);
@@ -197,8 +211,6 @@ app.delete("/api/products/:id", (req, res) => {
 app.post("/api/contact", (req, res) => {
   contactMail(req, res);
 });
-
-
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"));

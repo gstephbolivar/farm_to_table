@@ -133,7 +133,10 @@ function App() {
               )}
             />
             <Route path="/signup" component={SignUp} />
-            <Route path="/orderHistory" component={OrderHistory} />
+            <Route
+              path="/orderHistory"
+              render={(props) => <OrderHistory {...props} />}
+            />
 
             <ProtectedRoute
               exact

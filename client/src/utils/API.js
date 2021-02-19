@@ -58,6 +58,15 @@ const API = {
       },
     });
   },
+
+  getOrders: (id) => {
+    console.log(id);
+    return axios.get("/api/orders", {
+      params: {
+        customer: id,
+      },
+    });
+  },
 };
 
 export default API;
