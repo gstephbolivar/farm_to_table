@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
+import OrderHistoryItem from "../../components/OrderHistoryItem/OrderHistoryItem";
 
 const OrderHistory = () => {
   const [customerOrders, setCustomerOrders] = useState([]);
+
   useEffect(() => {
     loadOrders();
-
-    // console.log(orders.data[2].LineItem[0].product.name);
   }, []);
 
   const loadOrders = () => {
@@ -28,39 +28,75 @@ const OrderHistory = () => {
     <section className="container">
       <div className="column">
         {customerOrders.map((order) => (
-          <div className="column">
-            <nav className="panel">
-              <p className="panel-heading order-head">
-                Order Date {order.orderDate}
-              </p>
-              {order.LineItem.map((line) => (
-                <div className="panel-block" key={line.product.name}>
-                  <figure className="is-vcentered">
-                    <img
-                      id="confirmationImage"
-                      src={line.product.pathway}
-                      alt="item thumbnail"
-                      width="50"
-                      height="50"
-                      // key={item.id}
-                    />
-                  </figure>
-                  <p id="item-reserved">{line.product.name}</p>
-                </div>
-              ))}
-            </nav>
+          <div className="column" key={order._id}>
+            <p className="panel-heading order-head">
+              Order Date {order.orderDate}
+            </p>
+            <table className="table is-fullwidth">
+              <thead>
+                <tr>
+                  <th>
+                    <div
+                      className="vertical-center"
+                      style={{
+                        height: 55,
+                        justifyContent: "left",
+                        padding: 10,
+                      }}
+                    >
+                      <h1 className="sub-title">Item</h1>
+                    </div>
+                  </th>
+                  <th className="is-vcentered">
+                    <div
+                      className="vertical-center"
+                      style={{ height: 55, justifyContent: "center" }}
+                    >
+                      <h1 className="sub-title">Quantity</h1>
+                    </div>
+                  </th>
+                  <th className="is-vcentered">
+                    <div
+                      className="vertical-center"
+                      style={{ height: 55, justifyContent: "center" }}
+                    >
+                      <h1 className="sub-title">Price</h1>
+                    </div>
+                  </th>
+                  <th className="is-vcentered">
+                    <div
+                      className="vertical-center"
+                      style={{ height: 55, justifyContent: "center" }}
+                    >
+                      <h1 className="sub-title">Total Cost</h1>
+                    </div>
+                  </th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {order.LineItem.map((line) => (
+                  <OrderHistoryItem lineItem={line} key={line._id} />
+                ))}
+              </tbody>
+            </table>
+            {/* {order.LineItem.map((line) => (
+              <div className="panel-block" key={line.product.name}>
+                <figure className="is-vcentered">
+                  <img
+                    id="confirmationImage"
+                    src={line.product.pathway}
+                    alt="item thumbnail"
+                    width="50"
+                    height="50"
+                    // key={item.id}
+                  />
+                </figure>
+                <p id="item-reserved">{line.product.name}</p>
+              </div>
+            ))} */}
           </div>
-          // <>
-          //   <p>{order.orderDate}</p>
-          //   {order.LineItem.map((line) => (
-          //     <p>
-          //       {line.product.name} {line.price}
-          //     </p>
-          //   ))}
-          // </>
         ))}
-
-        <div className="field is-grouped is-grouped-centered previous-orders"></div>
       </div>
     </section>
   );
