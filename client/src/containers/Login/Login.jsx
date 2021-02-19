@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import API from "../../utils/API";
 import jwt from "jsonwebtoken";
@@ -43,7 +43,7 @@ const Login = (props) => {
 
     // errors set to state and isValid flag returned
     setErrorMessage(errors);
-    //console.log(isValid);
+    
     return isValid;
   };
 
@@ -54,14 +54,14 @@ const Login = (props) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    //console.log(loginObject);
+  
 
     const isValid = validateForm(loginObject);
 
     if (isValid) {
       API.loginUser(loginObject)
         .then((response) => {
-          //console.log(response.data);
+          
 
           jwt.verify(
             response.data.token,
@@ -82,8 +82,8 @@ const Login = (props) => {
 
                 //set role to local storage
                 localStorage.setItem("role", response.data.role);
-                toast.success("Log in successful. Happy Shopping!");
-                // alert("Successfully Logged in!");
+                toast.success("Login successful. Happy Shopping!");
+                
                 // if user is an admin, redirect user to admin page otherwise redirect to all products page
                 response.data.role === "admin"
                   ? history.push("/admin")
@@ -96,14 +96,14 @@ const Login = (props) => {
           // potentially change this to a modal where user can click to sign up or just re-enter login info
           console.log(err);
           toast.dark("Username or password is incorrect. Please try again.");
-          // alert("Incorrect password or username entered!");
+          
         });
     }
   };
 
   return (
     <div>
-      <ToastContainer />
+
       <section className="section">
         <div className="columns is-centered is-multiline">
           <div className="column is-two-thirds-tablet is-half-desktop is-one-third-widescreen">
