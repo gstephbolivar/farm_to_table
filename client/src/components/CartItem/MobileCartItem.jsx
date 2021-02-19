@@ -36,54 +36,48 @@ const MobileCartItem = (props) => {
   };
 
   return (
-    <>
-      <div className="mobile-cart-item">
-        <div className="flex-row">
-          <div className="flex-col">
-            <div className="flex-row">
-              <img
-                className="mobile-thumbnail"
-                src={props.lineItem.pathway}
-                alt="item description"
-              />
-              <span>
-                {props.lineItem.name} (${props.lineItem.price}/
-                {props.lineItem.unitType})
-              </span>
-            </div>
-            <div className="flex-row">
-              <div className="half">
-                <label>Quantity: </label>
-                <input
-                  type="number"
-                  value={valueState}
-                  onChange={handleChange}
-                  onBlur={handleOnBlur}
-                  name="quantity"
-                  style={{ width: "50px", textAlign: "center" }}
-                  className="qtyInput"
-                />
-              </div>
-              <div className="half">
-                <label>Total Cost: </label>$
-                {props.lineItem.totalCost.toFixed(2)}
-              </div>
-            </div>
+    <div className="mobile-cart-item">
+      <div className="flex-row">
+        <div className="flex-col">
+          <div className="flex-row">
+            <img
+              className="mobile-thumbnail"
+              src={props.lineItem.pathway}
+              alt="item description"
+            />
+            <span>
+              {props.lineItem.name} (${props.lineItem.price}/
+              {props.lineItem.unitType})
+            </span>
           </div>
-          <div className="half">
-            <label>Total Cost: </label>${props.lineItem.totalCost.toFixed(2)}
+          <div className="flex-row">
+            <div className="half">
+              <label>Quantity: </label>
+              <input
+                type="number"
+                value={valueState}
+                onChange={handleChange}
+                onBlur={handleOnBlur}
+                name="quantity"
+                style={{ width: "50px", textAlign: "center" }}
+                className="qtyInput"
+              />
+            </div>
+            <div className="half">
+              <label>Total Cost: </label>${props.lineItem.totalCost.toFixed(2)}
+            </div>
           </div>
         </div>
+        <div className="mobile-remove">
+          <button
+            className="button delBtn hvr-fade-remove"
+            onClick={(e) => props.deleteItem(props.lineItem.product)}
+          >
+            X
+          </button>
+        </div>
       </div>
-      <div className="mobile-remove">
-        <button
-          className="button delBtn hvr-fade-remove"
-          onClick={(e) => props.deleteItem(props.lineItem.product)}
-        >
-          X
-        </button>
-      </div>
-    </>
+    </div>
   );
 };
 
