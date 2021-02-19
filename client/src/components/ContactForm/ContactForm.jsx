@@ -47,14 +47,14 @@ const ContactForm = () => {
             alt="apple avocado icon"
           />
         </div>
-        <p class="has-text-centered contact-text">
+        <p className="has-text-centered contact-text">
           Thank you for supporting your community and shopping locally! Please
           reach out to use with any questions.
         </p>
         <div className="field">
           <label className="label">Name:</label>
           <div className="control">
-            <input class="input" type="text" id="name" placeholder="Old Macdougal" required />
+            <input className="input" type="text" id="name" placeholder="Old Macdougal" required />
           </div>
         </div>
 
@@ -63,18 +63,18 @@ const ContactForm = () => {
             Email:
           </label>
           <div className="control">
-            <input class="input" type="email" id="email" placeholder="oldmacdonald@domain.com"required />
+            <input className="input" type="email" id="email" placeholder="oldmacdonald@domain.com"required />
           </div>
         </div>
         {/* it's a Message*/}
 
-        <div class="field">
-          <label class="label" htmlFor="message">
+        <div className="field">
+          <label className="label" htmlFor="message">
             Message
           </label>
-          <div class="control">
+          <div className="control">
             <textarea
-              class="textarea"
+              className="textarea"
               id="message"
               placeholder="How can we help?"
             ></textarea>
