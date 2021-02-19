@@ -71,7 +71,7 @@ const AllProducts = (props) => {
             </div>
             <div className="column is-9">
               <div className="columns is-centered is-multiline is-mobile is-tablet is-desktop is-fullhd">
-                {products.map((product) => (
+                {products.filter((product) => !product.category.includes("Out of Season")).map((product) => (
                   <ProductCard
                     {...product}
                     key={product._id}

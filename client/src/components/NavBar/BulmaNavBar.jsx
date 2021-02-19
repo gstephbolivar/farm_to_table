@@ -139,8 +139,8 @@ const BulmaNavBar = ({ role, token, setRole, setToken, setCartState }) => {
             {/* TODO: set a navbar image here */}
             <img
               className="nav-icons"
-              src="./assets/icons/home.svg"
-              alt="home farm icon"
+              src="./assets/icons/contact.svg"
+              alt="barn icon"
             />
           </span>
           <span id="nav-home">Contact</span>

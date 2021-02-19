@@ -14,6 +14,7 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import CartContext from "./utils/CartContext";
 import OrderHistory from "./containers/OrderHistory/OrderHistory";
 import "./App.css";
+import { ToastContainer, toast } from "react-toastify";
 
 function App() {
   const [token, setToken] = useState(
@@ -83,6 +84,7 @@ function App() {
       (item) => item.product.toString() !== id.toString()
     );
     setCartState({ ...cartState, lineItems: newCartItems });
+    toast.success("Item deleted from cart!", { hideProgressBar: true });
   };
 
   return (
@@ -96,6 +98,7 @@ function App() {
             setToken={setToken}
             setCartState={setCartState}
           />
+          <ToastContainer />
           <Switch>
             <Route path="/home" component={Home} />
             <Route

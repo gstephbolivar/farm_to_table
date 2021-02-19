@@ -46,6 +46,7 @@ const UserCardContent = (props) => {
               setDropDownState={props.setDropDownState}
             />
           )}
+
           {props.quantity > 0 && props.quantity < 6 && (
             <p className="subtitle productQuantity">
               {props.quantity} left in stock
