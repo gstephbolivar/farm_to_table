@@ -68,7 +68,7 @@ app.get("/api/products", (req, res) => {
 
 app.get("/api/orders/:id", (req, res) => {
   db.Order.findById(req.params.id)
-    // .populate("LineItem")
+    .populate({path: "LineItem",  populate: {"product" }, "price quantity totalCost"})
     // .populate("product")
     // .populate("name")
     .then((orders) => {
