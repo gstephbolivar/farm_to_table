@@ -1,8 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./AdminCardContent.css";
 
 const AdminCardContent = (props) => {
+
+  const [deleteModal, setDeleteModal] = useState("modal");
+  
+  const handleDeleteModalState = () => {
+    if (deleteModal === "modal") {
+      setDeleteModal("modal is-active");
+    } else {
+      setDeleteModal("modal");
+    }
+  };
+
     return (
+      <>
         <div className="card-content">
           <div className="media">
             <div className="media-content">
@@ -22,13 +34,43 @@ const AdminCardContent = (props) => {
                   Edit
                 </button>
                 <button
-                  onClick={props.handleDeleteButton}
+                  // onClick={props.handleDeleteButton}
+                  onClick={handleDeleteModalState}
                   className="button card-footer-item deleteButton"
                 >
                   Delete
                 </button>
           </footer>
         </div>
+
+<div className={deleteModal}>
+<div className="modal-background"></div>
+      <div className="modal-card is-mobile">
+        <header className="modal-card-head">
+          <p className="modal-card-title has-text-centered add-product-headline">
+            Delete Product
+          </p>
+        </header>
+        <section className="modal-card-body">
+          <p>Are you sure you want to delete this product?</p>
+        </section>
+        <footer className="modal-card-foot field is-grouped is-grouped-centered">
+          <button
+            className="button card-footer-item deleteButton"
+            onClick={props.handleDeleteButton}
+          >
+            Delete
+          </button>
+          <button
+            className="button"
+            onClick={handleDeleteModalState}
+          >
+            Cancel
+          </button>
+        </footer>
+      </div>
+</div>
+</>
     );
 };
 
