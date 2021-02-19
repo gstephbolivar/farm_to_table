@@ -38,13 +38,14 @@ const UserCardContent = (props) => {
           </p>
           <p className="subtitle productDesc">{props.description}</p>
 
-          {props.token ? (
+          {props.quantity < 1 || !props.token ? (
+            <></>
+          ) : (
             <QuantityDropdown
               dropDownState={props.dropDownState}
               setDropDownState={props.setDropDownState}
             />
-          ) : null}
-
+          )}
           {props.quantity > 0 && props.quantity < 6 && (
             <p className="subtitle productQuantity">
               {props.quantity} left in stock
