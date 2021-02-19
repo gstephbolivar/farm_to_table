@@ -64,6 +64,12 @@ const AddProductModal = (props) => {
       errors.unitType = "Quantity required";
     }
 
+    if (!value.description) {
+      errors.description = "Description required";
+    } else if (value.description.length > 50) {
+      errors.description = "Description is too long (40 character limit)";
+    }
+
     if (!value.price) {
       errors.price = "Price required";
     } else if (!regPrice.test(value.price)) {
@@ -92,13 +98,15 @@ const AddProductModal = (props) => {
 
     // loop through image array by productObject.name to get pathway and then set below
     for (let i = 0; i < productImages.length; i++) {
-      if (productImages[i].productName.includes(productObject.name.toLowerCase())) {
-        pathway = process.env.PUBLIC_URL+productImages[i].imagePathway;
-      } 
+      if (
+        productImages[i].productName.includes(productObject.name.toLowerCase())
+      ) {
+        pathway = process.env.PUBLIC_URL + productImages[i].imagePathway;
+      }
     }
-    if(!pathway){
-      let placeholder = "/assets/product_images/placeholder.png"
-      pathway = process.env.PUBLIC_URL+placeholder
+    if (!pathway) {
+      let placeholder = "/assets/product_images/placeholder.png";
+      pathway = process.env.PUBLIC_URL + placeholder;
     }
 
     if (isValid) {
@@ -297,9 +305,13 @@ const AddProductModal = (props) => {
                     variant="outlined"
                     onChange={handleInputChange}
                     name="description"
+                    maxLength={50}
                     value={productObject.description}
                   ></textarea>
                 </div>
+                {errorMessage.description && (
+                  <p className="addProd-errors">{errorMessage.description}</p>
+                )}
               </div>
             </div>
           </form>

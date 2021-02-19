@@ -1,6 +1,7 @@
 // import { PromiseProvider } from "mongoose";
 import { useState } from "react";
 import "./cartitem.css";
+import {toast} from "react-toastify";
 
 const CartItem = (props) => {
   const [valueState, setValueState] = useState(props.lineItem.quantity);
@@ -23,8 +24,8 @@ const CartItem = (props) => {
     if (props.lineItem.inStock < newQuantity) {
       let warningMessage =
         "We are sorry but the quantity you are trying to order would exceed the amount that we have in stock.\n";
-      warningMessage += `The maximum amount of units you can order at this time ${props.lineItem.inStock} units.`;
-      alert(warningMessage);
+      warningMessage += `The maximum amount of units you can order at this time is ${props.lineItem.inStock} units.`;
+      toast.dark(warningMessage, {closeOnClick: true, hideProgressBar: true});
       newQuantity = props.lineItem.inStock;
       setValueState(newQuantity);
       newCost = calculateCost(newQuantity);

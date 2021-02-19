@@ -14,9 +14,27 @@ const UserSchema = new Schema({
     required: ["Please enter your name!"],
   },
   //   can potentially break this into nested object with street, city, state, zip
+  // address: {
+  //   type: String,
+  //   required: ["Please enter a valid address!"],
+  // },
   address: {
-    type: String,
-    required: ["Please enter a valid address!"],
+    street: {
+      type: String,
+      required: ["Please enter a valid Street"],
+    },
+    city: {
+      type: String,
+      required: ["Please enter a valid City"],
+    },
+    state: {
+      type: String,
+      required: ["Please enter a valid State"],
+    },
+    zip: {
+      type: String,
+      required: ["Please enter a valid Zip"],
+    },
   },
   password: {
     type: String,
