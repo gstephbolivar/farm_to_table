@@ -5,7 +5,8 @@
   overflow: hidden;
 }
 
-#addProductBtn {
+#addProductBtn,
+#outOfSeasonBtn {
   background-color: #ef4343;
   margin-top: 10px;
   color: white;
@@ -21,7 +22,9 @@
   transition-property: color, background-color;
 }
 #addProductBtn:hover,
-#addProductBtn:focus {
+#outOfSeasonBtn,
+#addProductBtn:focus,
+#outOfSeasonBtn {
   background-color: #d61e1e;
   color: white;
   box-shadow: none;
