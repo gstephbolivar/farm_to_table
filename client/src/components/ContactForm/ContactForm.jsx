@@ -82,7 +82,7 @@ const ContactForm = () => {
         </div>
 
         <div className="field has-text-centered">
-          <button className="button" id="login-btn" type="submit">
+          <button className="button" id="login-btn" type="submit" >
             {status}
           </button>
         </div>
