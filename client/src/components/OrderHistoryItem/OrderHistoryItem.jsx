@@ -13,7 +13,7 @@ const OrderHistoryItem = ({ lineItem }) => {
 
           <span>
             {lineItem.product.name} ({lineItem.price} per{" "}
-            {lineItem.product.unitType})
+            {lineItem.product.unitSize}-{lineItem.product.unitType})
           </span>
         </div>
       </td>

@@ -46,6 +46,7 @@ const UserCardContent = (props) => {
               setDropDownState={props.setDropDownState}
             />
           )}
+          {props.error ? <p className="quantity-error">{props.error}</p> : null}
 
           {props.quantity > 0 && props.quantity < 6 && (
             <p className="subtitle productQuantity">

@@ -75,7 +75,7 @@ app.get("/api/orders/:customer", (req, res) => {
       select: { unitSize: 0 },
       populate: {
         path: "product",
-        select: { name: 1, _id: 0, pathway: 1, unitType: 1 },
+        select: { name: 1, _id: 0, pathway: 1, unitType: 1, unitSize: 1 },
       },
     })
     .then((orders) => {

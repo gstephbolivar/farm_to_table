@@ -31,11 +31,10 @@ const items = [
 ];
 
 const CategoriesCard = ({ onClick }) => {
-
   const [menuItems, setMenuItems] = useState(items);
   const handleClick = (key) => {
-    console.log(key);
-    
+    //console.log(key);
+
     const mapArray = menuItems.map((item, i) => {
       if (i === key) {
         item.selected = true;
@@ -46,15 +45,14 @@ const CategoriesCard = ({ onClick }) => {
       }
     });
     setMenuItems(mapArray);
-
   };
 
   useEffect(() => {
     setMenuItems(items);
     return () => {
       setMenuItems(items);
-    }
-  }, [])
+    };
+  }, []);
 
   return (
     <div className="panel">
@@ -70,7 +68,6 @@ const CategoriesCard = ({ onClick }) => {
           onClick={(e) => {
             onClick(e, item.listText);
             handleClick(key);
-            
           }}
         >
           <div
@@ -87,7 +84,6 @@ const CategoriesCard = ({ onClick }) => {
           </div>
         </div>
       ))}
-
     </div>
   );
 };

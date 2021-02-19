@@ -25,7 +25,19 @@ const OrderHistory = () => {
   };
 
   return (
-    <section className="container">
+    <section className="section">
+      <div className="container">
+        <div className="columns">
+          <div className="column is-12">
+            <div className="columns is-centered is-multiline">
+              <h3 className="title has-text-centered products-headline">
+                Previous Orders
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* if a customer has no previous orders, display message */}
       {customerOrders.length === 0 ? (
         <article className="message is-medium">
@@ -37,14 +49,14 @@ const OrderHistory = () => {
           </div>
         </article>
       ) : (
-        <div className="column">
+        <div className="column is-8 is-offset-2">
           {/* maps through the customerOrders state to create headings for each orderDate */}
           {customerOrders.map((order) => (
             <div className="column" key={order._id}>
               <p className="panel-heading order-head">
-                Order Date -{" "}
                 <span className="has-text-weight-semibold">
-                  {moment(order.orderDate).format("MMMM Do YYYY")}
+                  {/* formats the ISO date to Month Day, Year */}
+                  {moment(order.orderDate).format("MMMM D, YYYY")}
                 </span>
               </p>
               <table className="table is-fullwidth">
@@ -59,7 +71,9 @@ const OrderHistory = () => {
                           padding: 10,
                         }}
                       >
-                        <h1 className="sub-title">Item</h1>
+                        <h1 className="sub-title" style={{ paddingLeft: 100 }}>
+                          Item
+                        </h1>
                       </div>
                     </th>
                     <th className="is-vcentered">
