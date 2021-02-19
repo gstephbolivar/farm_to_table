@@ -4,23 +4,23 @@ const OrderHistoryItem = ({ lineItem }) => {
   return (
     <tr>
       <td className="is-vcentered" key={lineItem.product._id}>
-        <div className="vertical-center" style={{ padding: 10 }}>
+        <div className="vertical-center">
           <img
             id="thumbnail"
             src={lineItem.product.pathway}
             alt="item description"
           />
-          {lineItem.product.name}
-          {/* <span>
-            {props.lineItem.name} ({props.lineItem.price} per{" "}
-            {props.lineItem.unitType})
-          </span> */}
+
+          <span>
+            {lineItem.product.name} ({lineItem.price} per{" "}
+            {lineItem.product.unitType})
+          </span>
         </div>
       </td>
       <td className="is-vcentered">
         <div
           className="vertical-center"
-          style={{ height: 55, justifyContent: "center" }}
+          style={{ height: 20, justifyContent: "center" }}
         >
           {/* quantity */}
           {lineItem.quantity}
@@ -29,15 +29,7 @@ const OrderHistoryItem = ({ lineItem }) => {
       <td className="is-vcentered">
         <div
           className="vertical-center"
-          style={{ height: 55, justifyContent: "center" }}
-        >
-          <div>${lineItem.price} each</div>
-        </div>
-      </td>
-      <td className="is-vcentered">
-        <div
-          className="vertical-center"
-          style={{ height: 55, justifyContent: "center" }}
+          style={{ height: 20, justifyContent: "center" }}
         >
           <div>${lineItem.totalCost}</div>
         </div>

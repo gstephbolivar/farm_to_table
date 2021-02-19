@@ -5,19 +5,18 @@ import OrderHistoryItem from "../../components/OrderHistoryItem/OrderHistoryItem
 const OrderHistory = () => {
   const [customerOrders, setCustomerOrders] = useState([]);
 
+  // loads the orders on page load
   useEffect(() => {
     loadOrders();
   }, []);
 
   const loadOrders = () => {
     const customerId = localStorage.getItem("userId");
-    console.log(customerId);
 
+    // makes the API call to get the orders based on the customerId
     API.getOrders(customerId)
       .then((orders) => {
         setCustomerOrders(orders.data);
-
-        console.log(customerOrders);
       })
       .catch((err) => {
         console.log(err);
@@ -27,6 +26,7 @@ const OrderHistory = () => {
   return (
     <section className="container">
       <div className="column">
+        {/* maps through the customerOrders state to create headings for each orderDate */}
         {customerOrders.map((order) => (
           <div className="column" key={order._id}>
             <p className="panel-heading order-head">
@@ -39,7 +39,7 @@ const OrderHistory = () => {
                     <div
                       className="vertical-center"
                       style={{
-                        height: 55,
+                        height: 20,
                         justifyContent: "left",
                         padding: 10,
                       }}
@@ -50,7 +50,7 @@ const OrderHistory = () => {
                   <th className="is-vcentered">
                     <div
                       className="vertical-center"
-                      style={{ height: 55, justifyContent: "center" }}
+                      style={{ height: 20, justifyContent: "center" }}
                     >
                       <h1 className="sub-title">Quantity</h1>
                     </div>
@@ -58,43 +58,20 @@ const OrderHistory = () => {
                   <th className="is-vcentered">
                     <div
                       className="vertical-center"
-                      style={{ height: 55, justifyContent: "center" }}
+                      style={{ height: 20, justifyContent: "center" }}
                     >
                       <h1 className="sub-title">Price</h1>
                     </div>
                   </th>
-                  <th className="is-vcentered">
-                    <div
-                      className="vertical-center"
-                      style={{ height: 55, justifyContent: "center" }}
-                    >
-                      <h1 className="sub-title">Total Cost</h1>
-                    </div>
-                  </th>
-                  <th></th>
                 </tr>
               </thead>
               <tbody>
+                {/* maps through the lineItems array in the customerOrders object to display each item in the specified order */}
                 {order.LineItem.map((line) => (
                   <OrderHistoryItem lineItem={line} key={line._id} />
                 ))}
               </tbody>
             </table>
-            {/* {order.LineItem.map((line) => (
-              <div className="panel-block" key={line.product.name}>
-                <figure className="is-vcentered">
-                  <img
-                    id="confirmationImage"
-                    src={line.product.pathway}
-                    alt="item thumbnail"
-                    width="50"
-                    height="50"
-                    // key={item.id}
-                  />
-                </figure>
-                <p id="item-reserved">{line.product.name}</p>
-              </div>
-            ))} */}
           </div>
         ))}
       </div>
