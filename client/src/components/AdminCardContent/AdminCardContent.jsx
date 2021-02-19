@@ -73,12 +73,14 @@ const AdminCardContent = (props) => {
         </section>
         <footer className="modal-card-foot field is-grouped is-grouped-centered">
           <button
+            style={{backgroundColor: "#F78F20", color: "white"}}
             className="button"
             onClick={props.handleDeleteButton}
           >
             Delete
           </button>
           <button
+            style={{backgroundColor: "#873E97", color: "white"}}
             className="button"
             onClick={handleMakeOutOfSeason}
           >
