@@ -66,14 +66,21 @@ app.get("/api/products", (req, res) => {
     });
 });
 
-app.get("/api/orders/:id", (req, res) => {
-  db.Order.findById(req.params.id)
-    .populate({path: "LineItem",  populate: {"product" }, "price quantity totalCost"})
+app.get("/api/orders/:customer", (req, res) => {
+  db.Order.find({ customer: req.params.customer }, { orderDate: 1 })
+    .populate({
+      path: "LineItem",
+      select: { unitSize: 0 },
+      populate: { path: "product", select: { name: 1, _id: 0, pathway: 1 } },
+    })
+    .lean()
+
     // .populate("product")
     // .populate("name")
     .then((orders) => {
       res.json(orders);
       console.log(orders);
+      console.log(req.params);
     })
     .catch((err) => {
       res.json(err);
