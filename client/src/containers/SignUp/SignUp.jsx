@@ -326,7 +326,6 @@ const SignUp = () => {
               {errorMessage.password && (
                 <p className="errors">{errorMessage.password}</p>
               )}
-
               <div className="field has-text-centered">
                 <button
                   className="button"

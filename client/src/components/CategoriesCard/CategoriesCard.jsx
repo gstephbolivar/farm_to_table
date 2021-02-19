@@ -87,6 +87,7 @@ const CategoriesCard = ({ onClick }) => {
           </div>
         </div>
       ))}
+
     </div>
   );
 };

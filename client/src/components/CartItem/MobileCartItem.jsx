@@ -40,11 +40,11 @@ const MobileCartItem = (props) => {
         <div className="flex-row">
             <div className="flex-col">
                 <div className="flex-row">
-                    <img class="mobile-thumbnail" src={props.lineItem.pathway} alt="item description"/>
+                    <img className="mobile-thumbnail" src={props.lineItem.pathway} alt="item description"/>
                     <span>{props.lineItem.name} (${props.lineItem.price}/{props.lineItem.unitType})</span>
                 </div>
                 <div className="flex-row">
-                    <div class="half">
+                    <div className="half">
                         <label>Quantity: </label>
                         <input
                         type="number"
@@ -56,7 +56,7 @@ const MobileCartItem = (props) => {
                         className="qtyInput"
                         />
                     </div>
-                    <div class="half">
+                    <div className="half">
                         <label>Total Cost: </label>
                         ${props.lineItem.totalCost.toFixed(2)}
                     </div>
