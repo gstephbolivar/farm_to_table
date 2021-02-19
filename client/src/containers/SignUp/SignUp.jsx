@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import "./signUp.css";
 import states from "../SignUp/states.json";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignUp = () => {
   const [userObject, setUserObject] = useState({
@@ -123,7 +125,11 @@ const SignUp = () => {
             email: "",
             role: "customer",
           });
-          alert("Successfully created account! Please login to continue!");
+          toast.success(
+            "Successfully created account! Please login to continue.",
+            { hideProgressBar: true }
+          );
+
           // redirects page to login after account is created
           history.push("/login");
         })
@@ -136,6 +142,7 @@ const SignUp = () => {
       <section className="section">
         <div className="columns is-centered is-multiline">
           <div className="column is-two-thirds-tablet is-half-desktop is-one-third-widescreen">
+            <ToastContainer />
             <form className="box">
               <div className="columns is-grouped is-centered is-mobile">
                 <img
