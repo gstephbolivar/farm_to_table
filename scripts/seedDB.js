@@ -197,7 +197,7 @@ const productsSeed = [
     price: 2.99,
     quantity: 40,
     category: "dairy",
-    pathway: "/assets/product_images/dairy/milk.png",
+    pathway: "/assets/product_images/dairy/blueCheese.png",
   },
 ];
 
