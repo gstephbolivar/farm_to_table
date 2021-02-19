@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
 import OrderHistoryItem from "../../components/OrderHistoryItem/OrderHistoryItem";
+import moment from "moment";
 
 const OrderHistory = () => {
   const [customerOrders, setCustomerOrders] = useState([]);
@@ -41,7 +42,10 @@ const OrderHistory = () => {
           {customerOrders.map((order) => (
             <div className="column" key={order._id}>
               <p className="panel-heading order-head">
-                Order Date {order.orderDate}
+                Order Date -{" "}
+                <span className="has-text-weight-semibold">
+                  {moment(order.orderDate).format("MMMM Do YYYY")}
+                </span>
               </p>
               <table className="table is-fullwidth">
                 <thead>
