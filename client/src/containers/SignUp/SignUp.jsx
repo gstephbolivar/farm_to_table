@@ -126,7 +126,8 @@ const SignUp = () => {
             role: "customer",
           });
           toast.success(
-            "Successfully created account! Please login to continue."
+            "Successfully created account! Please login to continue.",
+            { hideProgressBar: true }
           );
 
           // redirects page to login after account is created

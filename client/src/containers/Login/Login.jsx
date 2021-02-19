@@ -82,7 +82,7 @@ const Login = (props) => {
 
                 //set role to local storage
                 localStorage.setItem("role", response.data.role);
-                toast.success("Login successful. Happy Shopping!");
+                toast.success("Login successful. Happy Shopping!", { hideProgressBar: true });
                 
                 // if user is an admin, redirect user to admin page otherwise redirect to all products page
                 response.data.role === "admin"
@@ -95,7 +95,7 @@ const Login = (props) => {
         .catch((err) => {
           // potentially change this to a modal where user can click to sign up or just re-enter login info
           console.log(err);
-          toast.dark("Username or password is incorrect. Please try again.");
+          toast.dark("Username or password is incorrect. Please try again.", { hideProgressBar: true });
           
         });
     }
