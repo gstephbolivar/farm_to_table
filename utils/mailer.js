@@ -1,8 +1,7 @@
 const nodemailer = require("nodemailer");
-const getTemplate = require('./confirmationTemplate');
+const getTemplate = require("./confirmationTemplate");
 
 module.exports = function (req, res) {
-
   const body = req.body;
 
   const template = getTemplate(body);

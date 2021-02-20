@@ -8,7 +8,6 @@ router.post("/", ({ body }, res) => {
   // hash password
 
   bcrypt.hash(body.password, 10).then((hashPassword) => {
-   
     // create database user object
     const newUser = {
       email: body.email,
@@ -16,7 +15,7 @@ router.post("/", ({ body }, res) => {
       address: body.address,
       password: hashPassword,
     };
-    
+
     // create user in database
     User.create(newUser)
       .then((user) => {
@@ -32,7 +31,6 @@ router.post("/", ({ body }, res) => {
 router.post("/login", (req, res) => {
   User.findOne({ email: req.body.email.toLowerCase() })
     .then((user) => {
-     
       bcrypt
         .compare(req.body.password, user.password)
         .then((result) => {
@@ -40,7 +38,7 @@ router.post("/login", (req, res) => {
             { _id: result._id },
             process.env.JWT_SIGNATURE
           );
-         
+
           if (result) {
             res.json({
               // send login token and userId

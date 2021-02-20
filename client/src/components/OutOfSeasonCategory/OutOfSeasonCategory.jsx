@@ -3,27 +3,22 @@ import "./outOfSeasonCat.css";
 
 const OutOfSeasonCategory = (props) => {
   return (
-
     <div className="panel">
+      <div
+        id="OOS-cat"
+        className="panel-block block-hover"
+        onClick={props.handleOutOfSeasonClick}
+      >
         <div
-          id="OOS-cat"
-          className="panel-block block-hover"
+          className="subtitle"
+          id="cat-items-subtitle"
           onClick={props.handleOutOfSeasonClick}
         >
-          <div
-            className="subtitle"
-            id="cat-items-subtitle"
-            onClick={props.handleOutOfSeasonClick}
-          >
-           Out of Season
-          </div>
+          Out of Season
         </div>
-
+      </div>
     </div>
-    
- );
+  );
 };
 
 export default OutOfSeasonCategory;
-
-

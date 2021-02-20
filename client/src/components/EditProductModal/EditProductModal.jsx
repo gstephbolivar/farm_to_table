@@ -80,7 +80,7 @@ const EditProductModal = (props) => {
     }
 
     setErrorMessage(errors);
-   
+
     return isValid;
   };
 
@@ -188,7 +188,7 @@ const EditProductModal = (props) => {
                           label="Select Type"
                           name="category"
                           onChange={handleInputChange}
-                          value={productObject.category}
+                          value={productObject.category || "category"}
                         >
                           {productType.map((option) => (
                             <option key={option.value} value={option.value}>
@@ -215,7 +215,7 @@ const EditProductModal = (props) => {
                         id="productNameEdit"
                         onChange={handleInputChange}
                         name="name"
-                        value={productObject.name}
+                        value={productObject.name || "name"}
                       />
                     </div>
                     {errorMessage.name && (
@@ -235,12 +235,9 @@ const EditProductModal = (props) => {
                         id="quantityEdit"
                         onChange={handleInputChange}
                         name="quantity"
-                        value={productObject.quantity}
+                        value={productObject.quantity || 0}
                       />
                     </div>
-                    {/* {errorMessage.quantity && (
-                      <p className="addProd-errors">{errorMessage.quantity}</p>
-                    )} */}
                   </div>
                 </div>
 
@@ -256,7 +253,7 @@ const EditProductModal = (props) => {
                         min="1"
                         onChange={handleInputChange}
                         name="unitSize"
-                        value={productObject.unitSize}
+                        value={productObject.unitSize || 0}
                         required
                         type="number"
                       />
@@ -276,7 +273,7 @@ const EditProductModal = (props) => {
                         required
                         name="unitType"
                         placeholder="lbs"
-                        value={productObject.unitType}
+                        value={productObject.unitType || "unit type"}
                         onChange={handleInputChange}
                         type="text"
                       />
@@ -296,7 +293,7 @@ const EditProductModal = (props) => {
                         id="productPriceEdit"
                         onChange={handleInputChange}
                         name="price"
-                        value={productObject.price}
+                        value={productObject.price || 0}
                         data-type="currency"
                         required
                         type="number"
@@ -325,7 +322,7 @@ const EditProductModal = (props) => {
                     onChange={handleInputChange}
                     name="description"
                     maxLength={50}
-                    value={productObject.description}
+                    value={productObject.description || "description"}
                   ></textarea>
                 </div>
                 {errorMessage.description && (
