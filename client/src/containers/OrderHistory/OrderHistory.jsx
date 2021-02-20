@@ -96,8 +96,12 @@ const OrderHistory = () => {
                 </thead>
                 <tbody>
                   {/* maps through the lineItems array in the customerOrders object to display each item in the specified order */}
-                  {order.LineItem.map((line) => (
-                    <OrderHistoryItem lineItem={line} key={line._id} />
+                  {order.LineItem.map((line, index) => (
+                    <OrderHistoryItem
+                      lineItem={line}
+                      key={line._id}
+                      index={index}
+                    />
                   ))}
                 </tbody>
               </table>
