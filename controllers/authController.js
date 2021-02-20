@@ -6,9 +6,9 @@ const jwt = require("jsonwebtoken");
 
 router.post("/", ({ body }, res) => {
   // hash password
-  //console.log(body.email);
+
   bcrypt.hash(body.password, 10).then((hashPassword) => {
-    //console.log(hashPassword);
+   
     // create database user object
     const newUser = {
       email: body.email,
@@ -16,7 +16,7 @@ router.post("/", ({ body }, res) => {
       address: body.address,
       password: hashPassword,
     };
-    //console.log(newUser);
+    
     // create user in database
     User.create(newUser)
       .then((user) => {
@@ -32,8 +32,7 @@ router.post("/", ({ body }, res) => {
 router.post("/login", (req, res) => {
   User.findOne({ email: req.body.email.toLowerCase() })
     .then((user) => {
-      //console.log(user.password);
-      //console.log(req.body.password);
+     
       bcrypt
         .compare(req.body.password, user.password)
         .then((result) => {
@@ -41,8 +40,7 @@ router.post("/login", (req, res) => {
             { _id: result._id },
             process.env.JWT_SIGNATURE
           );
-          //console.log(token);
-          //console.log(result);
+         
           if (result) {
             res.json({
               // send login token and userId

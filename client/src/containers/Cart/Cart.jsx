@@ -34,7 +34,7 @@ const Cart = (props) => {
             email: result.data.email,
             orderId: order.data._id,
           });
-          console.log(result.data);
+        
         });
       });
     });

@@ -81,7 +81,6 @@ const AddProductModal = (props) => {
     }
 
     setErrorMessage(errors);
-    //console.log(isValid);
     return isValid;
   };
 

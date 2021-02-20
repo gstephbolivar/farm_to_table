@@ -37,11 +37,11 @@ const Products = () => {
     loadProducts();
   }, []);
 
-  // FIXME: Remove duplicate routes
+ 
   const loadProducts = () => {
     API.getAllProducts()
       .then((response) => {
-        //console.log(response.data);
+       
         setProducts(response.data);
       })
       .catch((err) => {
@@ -52,8 +52,7 @@ const Products = () => {
   // sets the category filter
   const filterProducts = (e, item) => {
     const category = item;
-    // console.log(e);
-    //console.log(item);
+   
     if (category !== "All") {
       // filters the products displayed based on the category
       displayFilteredProducts(category);

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./contact.css";
 import { toast } from "react-toastify";
+import axios from "axios";
 // Form for the user to contact website
 const ContactForm = () => {
   const [status, setStatus] = useState("Submit");
@@ -17,16 +18,8 @@ const ContactForm = () => {
         email: email.value,
         message: message.value,
       };
-      console.log(details);
-      let response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json;charset=utf-8",
-        },
-        body: JSON.stringify(details),
-      });
 
-      console.log(response);
+      axios.post("/api/contact", details);
     } catch (err) {
       console.log(err);
     }
@@ -98,7 +91,7 @@ const ContactForm = () => {
         </div>
 
         <div className="field has-text-centered">
-          <button className="button" id="login-btn" type="submit" >
+          <button className="button" id="login-btn" type="submit">
             {status}
           </button>
         </div>
