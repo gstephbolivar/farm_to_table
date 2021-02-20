@@ -47,8 +47,8 @@ const CartItem = (props) => {
             alt="item description"
           />
           <span>
-            {props.lineItem.name} ({props.lineItem.price} per{" "}
-            {props.lineItem.unitSize}-{props.lineItem.unitType})
+            {props.lineItem.name} ( ${props.lineItem.price} per{" "}
+            {props.lineItem.unitSize}-{props.lineItem.unitType} )
           </span>
         </div>
       </td>

@@ -21,7 +21,7 @@ const ReservedProducts = (props) => {
       ))}
       <div className="panel-block">
         <h4 className="subtitle is-6" id="total-reserved">
-          <strong>Total:</strong> {props.total}
+          <strong>Total:</strong> ${props.total}
         </h4>
       </div>
     </>
