@@ -124,6 +124,7 @@ const ProductCard = ({
             category={category}
             _id={_id}
             quantity={quantity}
+            loadProducts={loadProducts}
           />
         )}
       </div>
