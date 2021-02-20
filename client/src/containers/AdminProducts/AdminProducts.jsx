@@ -92,7 +92,7 @@ const Products = () => {
           <div className="columns">
             <div className="column"></div>
             <div className="column is-9">
-              <div className="columns is-centered is-multiline">
+              <div className="columns is-grouped is-centered is-multiline is-mobile">
                 <img
                   src="./assets/icons/headline_left.svg"
                   className="figure-img img-fluid rounded"
