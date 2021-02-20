@@ -68,6 +68,11 @@
    * [Bulma](https://bulma.io/)
    * [Font awesome](https://fontawesome.com/)
    * [Bulma NavBar functionality](https://codepen.io/Nikitoss334/pen/VOEdVY)
+   * [Shutterstock: Skeleton Icon](https://www.shutterstock.com/g/rudiak)
+   * [Shutterstock: sokolfly](https://www.shutterstock.com/g/artemsokol)
+   * [Shutterstock: Ramosh Artworks](https://www.shutterstock.com/g/ramoshed)
+   * [Shutterstock: Sudowoodo](https://www.shutterstock.com/g/Sudowoodo)
+
   
     
   ## **License**
