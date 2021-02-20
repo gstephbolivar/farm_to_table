@@ -7,7 +7,7 @@ const ReservedProducts = (props) => {
     <>
       {props.items.map((item) => (
        
-        <div className="panel-block">
+        <div className="panel-block" key={item.product}>
           <figure className="is-vcentered">
             <img
               id="confirmationImage"

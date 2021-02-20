@@ -12,13 +12,12 @@ const Cart = (props) => {
   const items = lineItems;
 
   const routeChange = (path) => {
-    history.push({
-      pathname: path,
-      state: {
+    history.push(path,
+      {
         line: items,
         subTotal: subTotal,
       },
-    });
+    );
   };
 
   const handleCartSubmit = () => {
@@ -29,13 +28,13 @@ const Cart = (props) => {
       }).then((order) => {
         localStorage.removeItem("lineItems");
         props.clearCart();
-        API.getEmail(userId).then((result) => {
-          API.sendConfirmationEmail({
-            name: result.data.name,
-            email: result.data.email,
-            orderId: order.data._id,
-          });
-        });
+        // API.getEmail(userId).then((result) => {
+        //   API.sendConfirmationEmail({
+        //     name: result.data.name,
+        //     email: result.data.email,
+        //     orderId: order.data._id,
+        //   });
+        // });
       });
     });
 

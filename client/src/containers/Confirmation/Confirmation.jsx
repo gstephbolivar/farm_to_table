@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ReservedProducts from "../../components/ReservedProducts/ReservedProducts";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./confirmation.css";
 
 const Confirmation = (props) => {
-  // const history = useHistory();
+  const history = useHistory();
+  console.log(history);
+  console.log(props);
   return (
     <section className="section">
       <div className="container has-text-centered">
