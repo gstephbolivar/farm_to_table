@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./catCard.css";
 
 // List of items that user can choose from to filter food options
@@ -59,7 +59,6 @@ const CategoriesCard = ({ onClick }) => {
           onClick={(e) => {
             onClick(e, item.listText);
             handleClick(key);
-            
           }}
         >
           <div
@@ -76,7 +75,6 @@ const CategoriesCard = ({ onClick }) => {
           </div>
         </div>
       ))}
-
     </div>
   );
 };

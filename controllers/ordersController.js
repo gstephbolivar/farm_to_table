@@ -63,4 +63,23 @@ router.post("/api/lineitems", (req, res) => {
       });
   });
 
+  router.get("/api/orders/:customer", (req, res) => {
+    db.Order.find({ customer: req.params.customer }, { orderDate: 1 })
+      // populates the data from the referenced models and selects the fields specified
+      .populate({
+        path: "LineItem",
+        select: { unitSize: 0 },
+        populate: {
+          path: "product",
+          select: { name: 1, _id: 0, pathway: 1, unitType: 1, unitSize: 1 },
+        },
+      })
+      .then((orders) => {
+        res.json(orders);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  });
+
   module.exports = router;
