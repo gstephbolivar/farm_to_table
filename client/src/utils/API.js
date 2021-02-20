@@ -10,9 +10,6 @@ const API = {
   addProduct: (product) => {
     return axios.post("/api/products", product);
   },
-  getProduct: () => {
-    return axios.get("/api/products");
-  },
   getOneProduct: (id) => {
     return axios.get(`/api/products/${id}`);
   },

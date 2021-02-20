@@ -39,7 +39,7 @@ const Products = () => {
 
   // FIXME: Remove duplicate routes
   const loadProducts = () => {
-    API.getProduct()
+    API.getAllProducts()
       .then((response) => {
         //console.log(response.data);
         setProducts(response.data);
@@ -80,7 +80,7 @@ const Products = () => {
   };
 
   useEffect(() => {
-    API.getProduct()
+    API.getAllProducts()
       .then((response) => {
         setProducts(response.data);
       })
