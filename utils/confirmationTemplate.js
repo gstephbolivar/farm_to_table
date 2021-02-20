@@ -1,5 +1,5 @@
 const getTemplate = (body) => {
-    return `<!DOCTYPE html>
+  return `<!DOCTYPE html>
     <html
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:v="urn:schemas-microsoft-com:vml"
@@ -1214,7 +1214,7 @@ const getTemplate = (body) => {
         </div>
       </body>
     </html>
-    `
-}
+    `;
+};
 
 module.exports = getTemplate;

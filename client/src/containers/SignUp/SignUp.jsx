@@ -80,7 +80,7 @@ const SignUp = () => {
 
     // errors set to state and isValid flag returned
     setErrorMessage(errors);
-    //console.log(isValid);
+
     return isValid;
   };
 
@@ -96,7 +96,6 @@ const SignUp = () => {
     event.preventDefault();
 
     const isValid = validateForm(userObject);
-    //console.log(isValid);
 
     // if there are no errors, the API call is made to create an account
     if (isValid) {

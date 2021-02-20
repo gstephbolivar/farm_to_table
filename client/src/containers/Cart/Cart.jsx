@@ -12,12 +12,9 @@ const Cart = (props) => {
   const items = lineItems;
 
   const routeChange = (path) => {
-    history.push({
-      pathname: path,
-      state: {
-        line: items,
-        subTotal: subTotal,
-      },
+    history.push(path, {
+      line: items,
+      subTotal: subTotal,
     });
   };
 
@@ -116,37 +113,33 @@ const Cart = (props) => {
                 </table>
               </div>
               <div id="mobile-cart">
-                {
-                  lineItems.map((item, index) => (
-                    <MobileCartItem
+                {lineItems.map((item, index) => (
+                  <MobileCartItem
                     lineItem={item}
                     key={index}
                     handleItemChange={props.handleAddToCart}
                     deleteItem={props.deleteItemFromCart}
                   />
-                  ))
-                }
+                ))}
               </div>
             </section>
 
             <div className="columns is-mobile has-text-centered">
               <div className="column is-four-fifths-desktop is-three-quarters-tablet is-two-thirds-mobile"></div>
               <div className="column is-mobile">
-                      <br/>
-                      <br/>
-                 <h6>Subtotal: ${subTotal.toFixed(2)}</h6> 
-                 <br/>
+                <br />
+                <br />
+                <h6>Subtotal: ${subTotal.toFixed(2)}</h6>
+                <br />
 
-                 <button
+                <button
                   className="button cart-submit hvr-fade-reserve"
                   onClick={handleCartSubmit}
                 >
                   Reserve
                 </button>
-
               </div>
             </div>
-
           </>
         )}
       </div>
