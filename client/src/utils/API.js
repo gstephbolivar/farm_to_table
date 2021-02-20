@@ -10,9 +10,6 @@ const API = {
   addProduct: (product) => {
     return axios.post("/api/products", product);
   },
-  getProduct: () => {
-    return axios.get("/api/products");
-  },
   getOneProduct: (id) => {
     return axios.get(`/api/products/${id}`);
   },
@@ -55,6 +52,16 @@ const API = {
     return axios.get("/api/users/email", {
       params: {
         id: id,
+      },
+    });
+  },
+
+  // call to get the orders based on id
+  getOrders: (id) => {
+    //console.log(id);
+    return axios.get("/api/orders/" + id, {
+      params: {
+        customer: id,
       },
     });
   },

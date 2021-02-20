@@ -1,10 +1,11 @@
 const nodemailer = require("nodemailer");
+const getTemplate = require('./confirmationTemplate');
 
 module.exports = function (req, res) {
 
   const body = req.body;
 
-  const template = `Thank you for your order, ${body.name}! Your confirmation number is ${body.orderId}. You may come pick up your order whenever you decide. We will hold your order for 3 days.`;
+  const template = getTemplate(body);
 
   let transporter = nodemailer.createTransport({
     service: "yahoo",

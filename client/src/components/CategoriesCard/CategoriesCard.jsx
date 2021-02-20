@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./catCard.css";
 
 // List of items that user can choose from to filter food options
@@ -31,30 +31,19 @@ const items = [
 ];
 
 const CategoriesCard = ({ onClick }) => {
+  const itemsArrayClone = items.map((item) => {
+    return { ...item };
+  });
 
-  const [menuItems, setMenuItems] = useState(items);
+  const [menuItems, setMenuItems] = useState(itemsArrayClone);
+
   const handleClick = (key) => {
-    console.log(key);
-    
     const mapArray = menuItems.map((item, i) => {
-      if (i === key) {
-        item.selected = true;
-        return item;
-      } else {
-        item.selected = false;
-        return item;
-      }
+      item.selected = i === key;
+      return item;
     });
     setMenuItems(mapArray);
-
   };
-
-  useEffect(() => {
-    setMenuItems(items);
-    return () => {
-      setMenuItems(items);
-    }
-  }, [])
 
   return (
     <div className="panel">
@@ -70,7 +59,6 @@ const CategoriesCard = ({ onClick }) => {
           onClick={(e) => {
             onClick(e, item.listText);
             handleClick(key);
-            
           }}
         >
           <div
@@ -87,7 +75,6 @@ const CategoriesCard = ({ onClick }) => {
           </div>
         </div>
       ))}
-
     </div>
   );
 };

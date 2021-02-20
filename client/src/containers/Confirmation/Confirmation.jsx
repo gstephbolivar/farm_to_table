@@ -52,9 +52,13 @@ const Confirmation = (props) => {
               />
 
               <div className="field is-grouped is-grouped-centered previous-orders">
-                <button className="button is-half" id="view-previous-orders">
+                <Link
+                  className="button is-half"
+                  id="view-previous-orders"
+                  to="/orderHistory"
+                >
                   View Previous Orders
-                </button>
+                </Link>
               </div>
             </nav>
           </div>

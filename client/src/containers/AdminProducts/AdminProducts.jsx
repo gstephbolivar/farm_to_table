@@ -39,7 +39,7 @@ const Products = () => {
 
   // FIXME: Remove duplicate routes
   const loadProducts = () => {
-    API.getProduct()
+    API.getAllProducts()
       .then((response) => {
         //console.log(response.data);
         setProducts(response.data);
@@ -80,7 +80,7 @@ const Products = () => {
   };
 
   useEffect(() => {
-    API.getProduct()
+    API.getAllProducts()
       .then((response) => {
         setProducts(response.data);
       })
@@ -98,9 +98,21 @@ const Products = () => {
             <div className="column"></div>
             <div className="column is-9">
               <div className="columns is-centered is-multiline">
+              <img
+                  src="./assets/icons/headline_left.svg"
+                  className="figure-img img-fluid rounded"
+                  id="signUp-icon-2"
+                  alt="tomato and pear icon"
+                />
                 <h3 className="title has-text-centered inventory-headline">
-                  Current Inventory
+                Current Inventory
                 </h3>
+                <img
+                  src="./assets/icons/headline_right.svg"
+                  className="figure-img img-fluid rounded"
+                  id="signUp-icon-2"
+                  alt="tomato and pear icon"
+                />
               </div>
             </div>
           </div>

@@ -1,7 +1,6 @@
 import React from "react";
 import "./reserved.css";
 
-
 const ReservedProducts = (props) => {
   return (
     <>
@@ -16,7 +15,6 @@ const ReservedProducts = (props) => {
               width="50"
               height="50"
               // key={item.id}
-
             />
           </figure>
           <p id="item-reserved">{item.name}</p>
@@ -24,7 +22,7 @@ const ReservedProducts = (props) => {
       ))}
       <div className="panel-block">
         <h4 className="subtitle is-6" id="total-reserved">
-          <strong>Total:</strong> {props.total}
+          <strong>Total:</strong> ${props.total}
         </h4>
       </div>
     </>
