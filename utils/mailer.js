@@ -12,13 +12,13 @@ module.exports = function (req, res) {
     port: 587,
     secure: false,
     auth: {
-      user: "farrmtotable",
-      pass: "rvocokhuzefmyrch",
+      user: "farm_2_table",
+      pass: "huuxcyezihlvnyty",
     },
   });
 
   const options = {
-    from: "FarmToTable<farrmtotable@yahoo.com>", // sender address
+    from: "FarmToTable<farm_2_table@yahoo.com>", // sender address
     to: body.email,
     subject: "Order Confirmation",
     text: template,

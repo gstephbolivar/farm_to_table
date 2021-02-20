@@ -5,9 +5,9 @@ import "./reserved.css";
 const ReservedProducts = (props) => {
   return (
     <>
-      {props.items.map((item) => (
+      {props.items.map((item, index) => (
        
-        <div className="panel-block" key={item.product}>
+        <div className="panel-block" key={index}>
           <figure className="is-vcentered">
             <img
               id="confirmationImage"
