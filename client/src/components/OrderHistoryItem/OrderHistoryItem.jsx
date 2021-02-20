@@ -24,7 +24,7 @@ const OrderHistoryItem = ({ lineItem, index }) => {
               alt="item description"
             />
             {lineItem.product === null ? (
-              "Product Removed"
+              "Status 404: Product Not Found"
             ) : (
               <span>
                 {lineItem.product.name} ( ${lineItem.price} per{" "}
