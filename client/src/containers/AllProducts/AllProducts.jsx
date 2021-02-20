@@ -47,12 +47,12 @@ const AllProducts = (props) => {
 
   return (
     <div>
-      <section className="section">
+      <section className="section is-mobile">
         <div className="container">
           <div className="columns">
             <div className="column"></div>
             <div className="column is-9">
-              <div className="columns is-centered is-multiline">
+              <div className="columns is-grouped is-centered is-multiline is-mobile">
                 <img
                   src="./assets/icons/headline_left.svg"
                   className="figure-img img-fluid rounded"
@@ -60,7 +60,7 @@ const AllProducts = (props) => {
                   alt="tomato and pear icon"
                 />
                 <h3 className="title has-text-centered products-headline">
-                  Shop Our Seasonal Products
+                  Seasonal Products
                 </h3>
                 <img
                   src="./assets/icons/headline_right.svg"

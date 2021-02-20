@@ -196,8 +196,8 @@ const EditProductModal = (props) => {
                             </option>
                           ))}
                           <option key="Out of Season" value="Out of Season">
-                              Out of Season
-                            </option>
+                            Out of Season
+                          </option>
                         </select>
                       </div>
                     </div>
