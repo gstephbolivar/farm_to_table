@@ -31,28 +31,19 @@ const items = [
 ];
 
 const CategoriesCard = ({ onClick }) => {
-  const [menuItems, setMenuItems] = useState(items);
-  const handleClick = (key) => {
-    //console.log(key);
+  const itemsArrayClone = items.map((item) => {
+    return { ...item };
+  });
 
+  const [menuItems, setMenuItems] = useState(itemsArrayClone);
+
+  const handleClick = (key) => {
     const mapArray = menuItems.map((item, i) => {
-      if (i === key) {
-        item.selected = true;
-        return item;
-      } else {
-        item.selected = false;
-        return item;
-      }
+      item.selected = i === key;
+      return item;
     });
     setMenuItems(mapArray);
   };
-
-  useEffect(() => {
-    setMenuItems(items);
-    return () => {
-      setMenuItems(items);
-    };
-  }, []);
 
   return (
     <div className="panel">
