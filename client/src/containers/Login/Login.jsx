@@ -93,7 +93,7 @@ const Login = (props) => {
         })
         .catch((err) => {
           // potentially change this to a modal where user can click to sign up or just re-enter login info
-          //console.log(err);
+
           toast.dark("Username or password is incorrect. Please try again.", {
             hideProgressBar: true,
           });

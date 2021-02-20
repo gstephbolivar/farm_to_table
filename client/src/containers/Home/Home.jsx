@@ -23,7 +23,12 @@ const Home = () => {
             </p>
             <br />
             <div className="buttons are-medium is-centered">
-              <Link to="/allproducts" className="button" type="button" id="shopNow">
+              <Link
+                to="/allproducts"
+                className="button"
+                type="button"
+                id="shopNow"
+              >
                 Browse Products
               </Link>
             </div>

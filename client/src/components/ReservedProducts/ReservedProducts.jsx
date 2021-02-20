@@ -4,8 +4,8 @@ import "./reserved.css";
 const ReservedProducts = (props) => {
   return (
     <>
-      {props.items.map((item) => (
-        <div className="panel-block" key={item.name}>
+      {props.items.map((item, index) => (
+        <div className="panel-block" key={index}>
           <figure className="is-vcentered">
             <img
               id="confirmationImage"
@@ -13,7 +13,6 @@ const ReservedProducts = (props) => {
               alt="item thumbnail"
               width="50"
               height="50"
-              // key={item.id}
             />
           </figure>
           <p id="item-reserved">{item.name}</p>

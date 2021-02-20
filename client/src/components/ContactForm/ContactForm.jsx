@@ -1,28 +1,25 @@
 import React, { useState } from "react";
 import "./contact.css";
+import { toast } from "react-toastify";
+import axios from "axios";
 // Form for the user to contact website
 const ContactForm = () => {
   const [status, setStatus] = useState("Submit");
   const handleSubmit = async (e) => {
     try {
-      e.preventDefault();
       await setStatus("Sending...");
+      toast.success(
+        "Thank you for reaching out! We will get back to you soon.",
+        { hideProgressBar: true, autoClose: 5000 }
+      );
       const { name, email, message } = e.target.elements;
       let details = {
         name: name.value,
         email: email.value,
         message: message.value,
       };
-      console.log(details);
-      let response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json;charset=utf-8",
-        },
-        body: JSON.stringify(details),
-      });
 
-      console.log(response);
+      axios.post("/api/contact", details);
     } catch (err) {
       console.log(err);
     }
@@ -54,7 +51,13 @@ const ContactForm = () => {
         <div className="field">
           <label className="label">Name:</label>
           <div className="control">
-            <input className="input" type="text" id="name" placeholder="Old Macdougal" required />
+            <input
+              className="input"
+              type="text"
+              id="name"
+              placeholder="Old Macdougal"
+              required
+            />
           </div>
         </div>
 
@@ -63,7 +66,13 @@ const ContactForm = () => {
             Email:
           </label>
           <div className="control">
-            <input className="input" type="email" id="email" placeholder="oldmacdonald@domain.com"required />
+            <input
+              className="input"
+              type="email"
+              id="email"
+              placeholder="oldmacdonald@domain.com"
+              required
+            />
           </div>
         </div>
         {/* it's a Message*/}
@@ -82,7 +91,7 @@ const ContactForm = () => {
         </div>
 
         <div className="field has-text-centered">
-          <button className="button" id="login-btn" type="submit" >
+          <button className="button" id="login-btn" type="submit">
             {status}
           </button>
         </div>

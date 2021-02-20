@@ -24,12 +24,14 @@
   font-weight: 500;
 }
 
-#product-image-add, #product-image-edit {
+#product-image-add,
+#product-image-edit {
   padding-bottom: 20px;
   width: 40%;
 }
 
-#add-save, #edit-save {
+#add-save,
+#edit-save {
   background-color: #873e97;
   color: white;
   width: 20%;

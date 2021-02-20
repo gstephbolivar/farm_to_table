@@ -14,14 +14,14 @@ module.exports = function (req, res) {
     port: 587,
     secure: false,
     auth: {
-      user: "farrmtotable",
-      pass: "rvocokhuzefmyrch",
+      user: "farm_2_table",
+      pass: "huuxcyezihlvnyty",
     },
   });
 
   const options = {
-    from: "FarmToTable<farrmtotable@yahoo.com>", // sender address
-    to: "farrmtotable@yahoo.com",
+    from: "FarmToTable<farm_2_table@yahoo.com>", // sender address
+    to: "farm_2_table@yahoo.com",
     subject: `Contact Request from ${req.body.name}`,
     text: template,
     html: template,

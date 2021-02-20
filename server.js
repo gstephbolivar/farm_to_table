@@ -32,9 +32,9 @@ connection.on("error", (err) => {
 });
 
 const AuthController = require("./controllers/authController");
-const ProductsController = require('./controllers/productsController');
-const OrdersController = require('./controllers/ordersController');
-const ContactController = require('./controllers/contactController');
+const ProductsController = require("./controllers/productsController");
+const OrdersController = require("./controllers/ordersController");
+const ContactController = require("./controllers/contactController");
 
 app.use("/api/users", AuthController);
 app.use(ProductsController);
