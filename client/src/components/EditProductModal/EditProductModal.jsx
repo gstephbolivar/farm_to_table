@@ -46,12 +46,6 @@ const EditProductModal = (props) => {
     if (!value.name.trim()) {
       errors.name = "Product Name required";
     }
-    // unit type check
-    // if (!value.quantity) {
-    //   errors.quantity = "Quantity required";
-    // } else if (!regQuant.test(value.quantity)) {
-    //   errors.quantity = "Enter a valid quantity";
-    // }
 
     if (!value.unitSize) {
       errors.unitSize = "Unit size required";
@@ -188,7 +182,7 @@ const EditProductModal = (props) => {
                           label="Select Type"
                           name="category"
                           onChange={handleInputChange}
-                          value={productObject.category || "category"}
+                          value={productObject.category || ""}
                         >
                           {productType.map((option) => (
                             <option key={option.value} value={option.value}>
@@ -215,7 +209,7 @@ const EditProductModal = (props) => {
                         id="productNameEdit"
                         onChange={handleInputChange}
                         name="name"
-                        value={productObject.name || "name"}
+                        value={productObject.name || ""}
                       />
                     </div>
                     {errorMessage.name && (
@@ -273,7 +267,7 @@ const EditProductModal = (props) => {
                         required
                         name="unitType"
                         placeholder="lbs"
-                        value={productObject.unitType || "unit type"}
+                        value={productObject.unitType || ""}
                         onChange={handleInputChange}
                         type="text"
                       />
@@ -322,7 +316,7 @@ const EditProductModal = (props) => {
                     onChange={handleInputChange}
                     name="description"
                     maxLength={50}
-                    value={productObject.description || "description"}
+                    value={productObject.description || ""}
                   ></textarea>
                 </div>
                 {errorMessage.description && (
