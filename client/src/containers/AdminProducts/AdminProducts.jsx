@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import CategoriesCard from "../../components/CategoriesCard/CategoriesCard";
 import API from "../../utils/API";
-// import {useHistory} from "react-router-dom";
+import OutOfSeasonCategory from "../../components/OutOfSeasonCategory/OutOfSeasonCategory";
 import EditProductModal from "../../components/EditProductModal/EditProductModal";
 import AddProductModal from "../../components/AddProductModal/AddProductModal";
 import AddProductButtonCard from "../../components/AddProductButtonCard/AddProductButtonCard";
@@ -71,6 +71,14 @@ const Products = () => {
       .catch((err) => console.log(err));
   };
 
+  const handleOutOfSeasonClick = () => {
+    API.getFilteredProducts("Out of Season")
+    .then((response) => {
+      setProducts(response.data);
+    })
+    .catch((err) => console.log(err))
+  };
+
   useEffect(() => {
     API.getProduct()
       .then((response) => {
@@ -90,9 +98,21 @@ const Products = () => {
             <div className="column"></div>
             <div className="column is-9">
               <div className="columns is-centered is-multiline">
+              <img
+                  src="./assets/icons/headline_left.svg"
+                  className="figure-img img-fluid rounded"
+                  id="signUp-icon-2"
+                  alt="tomato and pear icon"
+                />
                 <h3 className="title has-text-centered inventory-headline">
-                  Current Inventory
+                Current Inventory
                 </h3>
+                <img
+                  src="./assets/icons/headline_right.svg"
+                  className="figure-img img-fluid rounded"
+                  id="signUp-icon-2"
+                  alt="tomato and pear icon"
+                />
               </div>
             </div>
           </div>
@@ -106,6 +126,8 @@ const Products = () => {
               />
               <br />
               <CategoriesCard onClick={filterProducts} />
+              <br />
+              <OutOfSeasonCategory handleOutOfSeasonClick={handleOutOfSeasonClick}/>
             </div>
             <div className="column is-9">
               <div className="columns is-centered is-multiline is-mobile is-tablet is-desktop is-fullhd">

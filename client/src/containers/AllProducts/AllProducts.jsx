@@ -4,7 +4,6 @@ import CategoriesCard from "../../components/CategoriesCard/CategoriesCard";
 import API from "../../utils/API";
 import "./products.css";
 
-
 const AllProducts = (props) => {
   const [products, setProducts] = useState([]);
 
@@ -49,16 +48,26 @@ const AllProducts = (props) => {
   return (
     <div>
       <section className="section">
-
-
-      <div className="container">
+        <div className="container">
           <div className="columns">
             <div className="column"></div>
             <div className="column is-9">
               <div className="columns is-centered is-multiline">
+                <img
+                  src="./assets/icons/headline_left.svg"
+                  className="figure-img img-fluid rounded"
+                  id="signUp-icon-2"
+                  alt="tomato and pear icon"
+                />
                 <h3 className="title has-text-centered products-headline">
                   Shop Our Seasonal Products
                 </h3>
+                <img
+                  src="./assets/icons/headline_right.svg"
+                  className="figure-img img-fluid rounded"
+                  id="signUp-icon-2"
+                  alt="tomato and pear icon"
+                />
               </div>
             </div>
           </div>
@@ -71,15 +80,19 @@ const AllProducts = (props) => {
             </div>
             <div className="column is-9">
               <div className="columns is-centered is-multiline is-mobile is-tablet is-desktop is-fullhd">
-                {products.map((product) => (
-                  <ProductCard
-                    {...product}
-                    key={product._id}
-                    handleAddToCart={props.handleAddToCart}
-                    totalQuantity={product.quantity}
-                    token={props.token}
-                  />
-                ))}
+                {products
+                  .filter(
+                    (product) => !product.category.includes("Out of Season")
+                  )
+                  .map((product) => (
+                    <ProductCard
+                      {...product}
+                      key={product._id}
+                      handleAddToCart={props.handleAddToCart}
+                      totalQuantity={product.quantity}
+                      token={props.token}
+                    />
+                  ))}
               </div>
             </div>
           </div>

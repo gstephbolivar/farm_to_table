@@ -1,0 +1,11 @@
+#OOS-cat {
+    background-image: url(icons/out-of-season.svg);
+    background-repeat: no-repeat;
+  }
+  
+  #OOS-cat:hover {
+    background-image: url(icons/out-of-season-hover.svg);
+    background-repeat: no-repeat;
+  }
+
+  

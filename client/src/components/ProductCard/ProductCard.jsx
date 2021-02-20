@@ -4,7 +4,7 @@ import API from "../../utils/API.js";
 import UserCardContent from "../../components/UserCardContent/UserCardContent";
 import AdminCardContent from "../../components/AdminCardContent/AdminCardContent";
 import "./productCard.css";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ProductCard = ({
@@ -49,7 +49,7 @@ const ProductCard = ({
       .then((res) => loadProducts())
       .catch((err) => console.log(err));
 
-      toast.dark("Item Deleted", { hideProgressBar: true, autoClose: 1000 });
+    toast.dark("Item Deleted", { hideProgressBar: true, autoClose: 1000 });
   };
 
   const handleAddClick = (e) => {
@@ -65,7 +65,7 @@ const ProductCard = ({
       let warningMessage =
         "We are sorry but the quantity you are trying to order would exceed the amount that we have in stock.\n";
       warningMessage += `The maximum amount of units you can order at this time ${maxCanOrder} units.`;
-      toast.dark(warningMessage, {hideProgressBar: true, closeOnClick: true})
+      toast.dark(warningMessage, { hideProgressBar: true, closeOnClick: true });
       setDropDownState(maxCanOrder);
       return;
     }
@@ -89,7 +89,6 @@ const ProductCard = ({
       className="column is-half-mobile is-half-tablet is-one-third-desktop is-one-quarter-widescreen is-one-quarter-fullhd has-text-centered"
       id="column"
     >
-      <ToastContainer />
       <div className="card" id="product-card">
         <div className="card-image">
           <figure className="image is-1by1">
@@ -125,6 +124,7 @@ const ProductCard = ({
             category={category}
             _id={_id}
             quantity={quantity}
+            loadProducts={loadProducts}
           />
         )}
       </div>
