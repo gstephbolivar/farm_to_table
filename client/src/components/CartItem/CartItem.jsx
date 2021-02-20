@@ -1,7 +1,7 @@
 // import { PromiseProvider } from "mongoose";
 import { useState } from "react";
 import "./cartitem.css";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 
 const CartItem = (props) => {
   const [valueState, setValueState] = useState(props.lineItem.quantity);
@@ -25,7 +25,7 @@ const CartItem = (props) => {
       let warningMessage =
         "We are sorry but the quantity you are trying to order would exceed the amount that we have in stock.\n";
       warningMessage += `The maximum amount of units you can order at this time is ${props.lineItem.inStock} units.`;
-      toast.dark(warningMessage, {closeOnClick: true, hideProgressBar: true});
+      toast.dark(warningMessage, { closeOnClick: true, hideProgressBar: true });
       newQuantity = props.lineItem.inStock;
       setValueState(newQuantity);
       newCost = calculateCost(newQuantity);
@@ -41,8 +41,15 @@ const CartItem = (props) => {
     <tr>
       <td className="is-vcentered">
         <div className="vertical-center" style={{ padding: 10 }}>
-          <img id="thumbnail" src={props.lineItem.pathway} alt="item description"  />
-          <span>{props.lineItem.name} ({props.lineItem.price} per {props.lineItem.unitType})</span>
+          <img
+            id="thumbnail"
+            src={props.lineItem.pathway}
+            alt="item description"
+          />
+          <span>
+            {props.lineItem.name} ( ${props.lineItem.price} per{" "}
+            {props.lineItem.unitSize}-{props.lineItem.unitType} )
+          </span>
         </div>
       </td>
       <td className="is-vcentered">
@@ -72,7 +79,12 @@ const CartItem = (props) => {
         </div>
       </td>
       <td className="is-vcentered">
-        <button className="button delBtn hvr-fade-remove" onClick={(e) => props.deleteItem(props.lineItem.product)}>Remove</button>
+        <button
+          className="button delBtn hvr-fade-remove"
+          onClick={(e) => props.deleteItem(props.lineItem.product)}
+        >
+          Remove
+        </button>
       </td>
     </tr>
   );

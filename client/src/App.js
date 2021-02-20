@@ -12,6 +12,7 @@ import BulmaNavBar from "./components/NavBar/BulmaNavBar.jsx";
 import Footer from "./components/Footer/Footer";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import CartContext from "./utils/CartContext";
+import OrderHistory from "./containers/OrderHistory/OrderHistory";
 import "./App.css";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -135,6 +136,10 @@ function App() {
               )}
             />
             <Route path="/signup" component={SignUp} />
+            <Route
+              path="/orderHistory"
+              render={(props) => <OrderHistory {...props} />}
+            />
 
             <ProtectedRoute
               exact

@@ -47,11 +47,11 @@ const EditProductModal = (props) => {
       errors.name = "Product Name required";
     }
     // unit type check
-    if (!value.quantity) {
-      errors.quantity = "Quantity required";
-    } else if (!regQuant.test(value.quantity)) {
-      errors.quantity = "Enter a valid quantity";
-    }
+    // if (!value.quantity) {
+    //   errors.quantity = "Quantity required";
+    // } else if (!regQuant.test(value.quantity)) {
+    //   errors.quantity = "Enter a valid quantity";
+    // }
 
     if (!value.unitSize) {
       errors.unitSize = "Unit size required";
@@ -238,9 +238,9 @@ const EditProductModal = (props) => {
                         value={productObject.quantity}
                       />
                     </div>
-                    {errorMessage.quantity && (
+                    {/* {errorMessage.quantity && (
                       <p className="addProd-errors">{errorMessage.quantity}</p>
-                    )}
+                    )} */}
                   </div>
                 </div>
 
