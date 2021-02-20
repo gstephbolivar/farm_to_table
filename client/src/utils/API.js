@@ -58,6 +58,16 @@ const API = {
       },
     });
   },
+
+  // call to get the orders based on id
+  getOrders: (id) => {
+    //console.log(id);
+    return axios.get("/api/orders/" + id, {
+      params: {
+        customer: id,
+      },
+    });
+  },
 };
 
 export default API;

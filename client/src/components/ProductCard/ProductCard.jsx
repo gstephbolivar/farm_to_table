@@ -36,6 +36,7 @@ const ProductCard = ({
 
   const [addedProductState, setAddedProductState] = useState(0);
   const [dropDownState, setDropDownState] = useState("Quantity");
+  const [quantityError, setQuantityError] = useState();
 
   const calculateCost = (qty) => {
     const cost = lineItemState.price * qty;
@@ -55,9 +56,10 @@ const ProductCard = ({
   const handleAddClick = (e) => {
     e.preventDefault();
     if (dropDownState === "Quantity") {
+      setQuantityError("Select a Quantity");
       return;
     }
-
+    setQuantityError();
     let cost = calculateCost(dropDownState);
 
     if (quantity < addedProductState + dropDownState) {
@@ -108,6 +110,7 @@ const ProductCard = ({
             unitType={unitType}
             description={description}
             quantity={quantity}
+            error={quantityError}
           />
         )}
 

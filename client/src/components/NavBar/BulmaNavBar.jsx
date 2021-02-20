@@ -5,7 +5,6 @@ import { useContext } from "react";
 import CartContext from "../../utils/CartContext";
 import CartBadge from "../CartBadge/CartBadge";
 
-
 const BulmaNavBar = ({ role, token, setRole, setToken, setCartState }) => {
   const { lineItems } = useContext(CartContext);
 
@@ -132,19 +131,30 @@ const BulmaNavBar = ({ role, token, setRole, setToken, setCartState }) => {
                 </span>
                 <span id="nav-signUp">Logout</span>
               </Link>{" "}
+              {/* past orders page */}
+              <Link className="navbar-item" to="/orderHistory">
+                <span className="icon">
+                  <img
+                    className="nav-icons"
+                    src="./assets/icons/previousOrders.svg"
+                    alt="wagon icon"
+                  />
+                </span>
+                <span id="nav-signUp">Previous Orders</span>
+              </Link>{" "}
             </>
           )}
           <Link className="navbar-item" to="/contact">
-          <span className="icon">
-            {/* TODO: set a navbar image here */}
-            <img
-              className="nav-icons"
-              src="./assets/icons/contact.svg"
-              alt="barn icon"
-            />
-          </span>
-          <span id="nav-home">Contact</span>
-        </Link>
+            <span className="icon">
+              {/* TODO: set a navbar image here */}
+              <img
+                className="nav-icons"
+                src="./assets/icons/contact.svg"
+                alt="barn icon"
+              />
+            </span>
+            <span id="nav-home">Contact</span>
+          </Link>
           {/* if a user is logged in as an admin renders dashboard link */}
           {role === "admin" ? (
             <Link className="navbar-item" to="/admin">

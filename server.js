@@ -66,6 +66,26 @@ app.get("/api/products", (req, res) => {
     });
 });
 
+// makes the mongoose query to select all orders and lineItems based on a customer
+app.get("/api/orders/:customer", (req, res) => {
+  db.Order.find({ customer: req.params.customer }, { orderDate: 1 })
+    // populates the data from the referenced models and selects the fields specified
+    .populate({
+      path: "LineItem",
+      select: { unitSize: 0 },
+      populate: {
+        path: "product",
+        select: { name: 1, _id: 0, pathway: 1, unitType: 1, unitSize: 1 },
+      },
+    })
+    .then((orders) => {
+      res.json(orders);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
 //GET api route to return all products based on category
 app.get("/api/products/filtered/:category", (req, res) => {
   //console.log(req.params.category);
@@ -89,18 +109,6 @@ app.post("/api/products", ({ body }, res) => {
     });
 });
 
-// GET api route to get a product by id
-// app.get("/api/products/:id", (req, res) => {
-//   console.log(req.params.id);
-//   db.Products.findOne({ _id: req.params.id })
-//     .then((result) => {
-//       console.log(result);
-//       res.json(result);
-//     })
-//     .catch((err) => {
-//       res.json(err);
-//     });
-// });
 //PUT route to update a product
 app.put("/api/products/:id", (req, res) => {
   db.Products.findByIdAndUpdate(req.params.id, req.body, { new: true })
@@ -197,8 +205,6 @@ app.delete("/api/products/:id", (req, res) => {
 app.post("/api/contact", (req, res) => {
   contactMail(req, res);
 });
-
-
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"));
