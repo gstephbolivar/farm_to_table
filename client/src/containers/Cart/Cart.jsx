@@ -104,7 +104,7 @@ const Cart = (props) => {
                     {lineItems.map((item, index) => (
                       <CartItem
                         lineItem={item}
-                        key={index}
+                        key={item.product}
                         handleItemChange={props.handleAddToCart}
                         deleteItem={props.deleteItemFromCart}
                       />

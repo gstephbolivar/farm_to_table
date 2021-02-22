@@ -1,6 +1,7 @@
 const QuantityDropdown = (props) => {
   const handleQuantityChange = (e) => {
-    props.setDropDownState(parseInt(e.target.value));
+    const value = e.target.value === "Quantity" ? "Quantity" : parseInt(e.target.value);
+    props.setDropDownState(value);
   };
 
   return (
